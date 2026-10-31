@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nantucket Community Television — Vision. Voice. Life.</title>
+<meta name="description" content="NCTV broadcasts island life on Channels 8 and 1072: Nantucket town board meetings, high school sports, school events, documentaries and two film festivals.">
+<link rel="canonical" href="https://www.ournctv.org/">
+<!-- Open Graph: what Facebook, Instagram, iMessage, WhatsApp and X show when
+     someone shares a link to this page. Without these a shared NCTV link
+     renders as a bare URL with no picture and no headline. X reads the Open
+     Graph tags too, so it needs only the card type. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nantucket Community Television">
+<meta property="og:title" content="Nantucket Community Television — Vision. Voice. Life.">
+<meta property="og:description" content="NCTV broadcasts island life on Channels 8 and 1072: Nantucket town board meetings, high school sports, school events, documentaries and two film festivals.">
+<meta property="og:url" content="https://www.ournctv.org/">
+<meta property="og:image" content="https://www.ournctv.org/assets/og-card.jpg?v=415">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Nantucket Community Television building at 9 Bayberry Court">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://player.vimeo.com">
+<link rel="preconnect" href="https://f.vimeocdn.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,700;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;650;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=415">
+</head>
+<body data-page="index.html">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header id="site-nav" class="nav">
+    <div class="wrap">
+      <a class="nav__brand" href="index.html" aria-label="Nantucket Community Television — home">
+        <img src="assets/nctv-nav-lockup-white.webp?v=415" alt="Nantucket Community TV — Civic + HD · Channels 8 | 1072">
+      </a>
+      <button class="nav__burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav__menu" aria-label="Primary">
+        <div class="nav__item">
+          <button class="nav__link" aria-haspopup="true" aria-expanded="false">
+            About<span class="chev" aria-hidden="true"></span>
+          </button>
+          <div class="nav__panel"><a href="about-staff.html">Staff &amp; Board</a><a href="about-hours-contact.html">Hours & Contact</a></div>
+        </div>
+        <div class="nav__item">
+          <button class="nav__link" aria-haspopup="true" aria-expanded="false">
+            Watch<span class="chev" aria-hidden="true"></span>
+          </button>
+          <div class="nav__panel"><a href="videos-live.html">Live TV</a><a href="videos-civic.html">Nantucket Civic TV</a><a href="videos-nantucket-life.html">Nantucket Life</a><a href="videos-sports-connection.html">Nantucket Sports Connection</a><a href="videos-partner-programs.html">Nonprofit Videos</a><a href="videos-school.html">School Videos</a><a href="videos-past-shows.html">Past TV Shows</a></div>
+        </div>
+        <div class="nav__item">
+          <a class="nav__link" href="events-shorts-fest.html">Shorts Fest</a>
+        </div>
+        <div class="nav__item">
+          <a class="nav__link" href="events-new-moon-fest.html">New Moon Fest</a>
+        </div>
+        <div class="nav__item">
+          <button class="nav__link" aria-haspopup="true" aria-expanded="false">
+            Services<span class="chev" aria-hidden="true"></span>
+          </button>
+          <div class="nav__panel"><a href="create.html">Free Services</a><a href="services-professional.html">Professional Services</a></div>
+        </div>
+        <div class="nav__item">
+          <a class="nav__link" href="https://donate.stripe.com/7sYbJ0dFD8IVd7k9XQ0VO07" target="_blank" rel="noopener">Donate</a>
+        </div>
+      <form class="nav__search" role="search" action="search.html">
+        <input class="nav__search-input" type="search" name="q" placeholder="Search videos"
+               aria-label="Search videos" autocomplete="off" spellcheck="false">
+        <button class="nav__search-btn" type="submit" aria-label="Search">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
+               stroke-width="2.2" stroke-linecap="round">
+            <circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.6-3.6"></path>
+          </svg>
+        </button>
+      </form></nav>
+    </div></header>
+
+<main id="main" tabindex="-1">
+  <section class="hero">
+    <div class="hero__media">
+      <!-- Fallback photo: always shown behind the banner video. If the video
+           cannot play, or has not started yet, the visitor sees this instead
+           of an error box.
+
+           All three banner fallbacks are the FIRST FRAME of their own video,
+           taken from the master on the owner's Desktop rather than off the
+           Vimeo stream -- first generation, and easier. That is deliberate:
+           the photo and the video's opening frame are the same picture, so
+           the cross-fade when playback starts is invisible. Replace the
+           video and this has to be re-extracted with it, or the banner will
+           visibly jump. The ?v= matters for the same reason: without it a
+           returning visitor keeps the old photo behind the new video. -->
+      <img class="hero__fallback" src="assets/hero-fallback-home.webp?v=415"
+           alt="An aerial view of a floodlit sports field at night, with players on the field"
+           fetchpriority="high">
+      <!-- The banner video is built INSIDE this box by the script further
+           down, as a plain <video>. Empty until that script runs. -->
+      <div class="hero__video" aria-hidden="true"></div>
+    </div>
+    <div class="hero__scrim"></div>
+    <div class="hero__inner wrap">
+      <h1 class="hero__wordmark"><span class="our">OUR</span><span class="nctv">nctv</span></h1>
+      <p class="hero__sub">NCTV engages Nantucket by connecting stories to audiences,
+        government to citizens, and students to hands-on learning.</p>
+      <div class="hero__watch">
+        <span class="hero__watch-label">Click to Watch:</span>
+        <a class="hero-chip" href="videos-civic.html" aria-label="Nantucket Civic TV">
+          <img src="assets/Nantucket_Civic_Television_Logo_4.webp?v=415" alt="Nantucket Civic Television"></a>
+        <a class="hero-chip" href="videos-nantucket-life.html" aria-label="Nantucket Life">
+          <img src="assets/nantucket-life.webp" alt="Nantucket Life"></a>
+        <a class="hero-chip" href="videos-sports-connection.html" aria-label="Nantucket Sports Connection">
+          <img src="assets/sports-connection.webp" alt="Nantucket Sports Connection"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       BANNER VIDEO
+       To change the banner video, upload it to Vimeo and point
+       BANNER_VIDEO (top of this script) at the new "<id>:<hash>".
+       Plays muted + looped; if it can't load, the photo above stays visible.
+       =================================================================== -->
+  <script>
+  (function(){
+    // Respect "reduce motion": skip the video entirely, keep the photo.
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+
+    var wrap  = document.querySelector(".hero__video");
+    var media = document.querySelector(".hero__media");
+    if (!wrap) return;
+    // Reveal only a player that actually occupies space. A cross-origin iframe
+    // that has been hidden -- by a content blocker, a privacy extension, or any
+    // layout we failed to anticipate -- still loads and still reports ready,
+    // play and an advancing currentTime, so the player's own word is not
+    // evidence that anything is on screen. Trading a good photo for a box with
+    // no pixels in it is the one outcome worse than not playing at all.
+    function boxed(){
+      if (!frame) return false;
+      var r = frame.getBoundingClientRect();
+      return r.width > 1 && r.height > 1;
+    }
+    function show(){
+      if (!media || !boxed()) return;
+      media.classList.add("is-playing");
+    }
+
+    var frame = null, timer = null, onMessage = null, sizer = null, attempts = 0;
+
+    // Give the player back. Safari holds a navigated-away page in its
+    // back/forward cache intact -- iframe, Vimeo player and video decoder --
+    // and decoders are a fixed, per-process resource. Leave them held and the
+    // SECOND banner page of a session never gets one: its player loads, reports
+    // nothing, and the banner sits empty until Safari is quit. Blanking the src
+    // before dropping the node is deliberate; removing the node alone does not
+    // reliably make WebKit release the decoder.
+    function teardown(){
+      if (timer) { clearTimeout(timer); timer = null; }
+      if (onMessage) { window.removeEventListener("message", onMessage); onMessage = null; }
+      if (sizer) { sizer(); sizer = null; }
+      if (frame) {
+        try { frame.src = "about:blank"; } catch (err) { /* dropping it anyway */ }
+        if (frame.parentNode) frame.parentNode.removeChild(frame);
+        frame = null;
+      }
+    }
+
+    function build(){
+      teardown();
+
+      // background=1 gives autoplay, muted, looped and a player with no
+      // controls. dnt=1 asks Vimeo not to track the visitor. The player
+      // letterboxes to fit its frame, so styles.css oversizes the iframe and
+      // lets the hero clip it -- the cover crop an iframe cannot do itself.
+      var f = document.createElement("iframe");
+      f.setAttribute("frameborder", "0");
+      f.setAttribute("tabindex", "-1");
+      f.allow = "autoplay";
+      frame = f;
+      var SRC = "https://player.vimeo.com/video/1241589049?h=76cd5a88fc" +
+                "&background=1&autoplay=1&loop=1&muted=1&dnt=1";
+
+      // Cover the hero box: the smallest 16:9 rectangle that contains it,
+      // centred by the transform in styles.css. This was container query units
+      // in CSS until 2026-10-30, when WebKit was found resolving them to zero
+      // on every banner page after the first in a session -- a healthy, playing
+      // video inside a 0x0 iframe. Measuring the box is deterministic and rests
+      // on no feature support. Re-measure on resize, so the crop follows the
+      // window; ResizeObserver watches the hero itself, which also catches the
+      // layout settling after fonts load.
+      // Find a box to cover. Normally that is .hero__video itself; if it has
+      // collapsed, climb to whichever ancestor still has size and hand its
+      // dimensions back down, because .hero__video clips with overflow:hidden
+      // and a 0x0 clip hides the iframe however large the iframe is.
+      function hostBox(){
+        var el = wrap, r;
+        while (el) {
+          r = el.getBoundingClientRect();
+          if (r.width && r.height) return r;
+          el = el.parentElement;
+        }
+        return null;
+      }
+      function fit(){
+        if (!frame) return;
+        var r = hostBox();
+        if (!r) return;
+        var own = wrap.getBoundingClientRect();
+        if (!own.width || !own.height) {
+          wrap.style.width  = r.width + "px";
+          wrap.style.height = r.height + "px";
+        }
+        var s = Math.max(r.width / 16, r.height / 9);
+        frame.style.width  = (16 * s) + "px";
+        frame.style.height = (9 * s) + "px";
+      }
+      fit();
+      f.addEventListener("load", fit);
+      if (window.ResizeObserver) {
+        var ro = new ResizeObserver(fit);
+        ro.observe(wrap);
+        sizer = function(){ ro.disconnect(); };
+      } else {
+        window.addEventListener("resize", fit);
+        sizer = function(){ window.removeEventListener("resize", fit); };
+      }
+
+      // Hold the photo until the player reports real frames. This is Vimeo's
+      // own postMessage protocol, used directly so we need not fetch player.js
+      // (about 30 KB) for the sake of a single event.
+      //
+      // Subscribe when the player says "ready", NOT on the iframe's load event.
+      // Load fires first -- about 130ms against 160ms for ready -- and the
+      // player silently discards any method call that arrives before it is
+      // ready, so subscribing on load left this waiting for a "play" that never
+      // came, and the banner appeared on the backstop timer instead.
+      //
+      // "ready" also decides whether the timer below may fire at all. Revealing
+      // on a timer is a gamble: it drops the photo whether or not a frame has
+      // painted. These videos are HLS with no progressive file, so a first frame
+      // needs the player bundle, two playlists and a media segment. Anything
+      // slower -- a cold cache, a thin connection, Low Power Mode, a blocker on
+      // player.vimeo.com -- used to leave a black banner where a good photo had
+      // been. So once "ready" proves the player is talking to us, drop the timer
+      // and wait for the real "play", however long it takes; a video that never
+      // plays keeps its photo. The timer is now only for a player that never
+      // says anything at all, which is why it can afford to be patient.
+      onMessage = function(e){
+        if (!f.contentWindow || e.source !== f.contentWindow) return;
+        var d = e.data;
+        try { if (typeof d === "string") d = JSON.parse(d); } catch (err) { return; }
+        if (!d) return;
+        if (d.event === "ready") {
+          try {
+            f.contentWindow.postMessage(
+              JSON.stringify({ method: "addEventListener", value: "play" }),
+              "https://player.vimeo.com");
+            // Only after the subscribe lands: a throw leaves the timer armed.
+            clearTimeout(timer); timer = null;
+          } catch (err) { /* the timer still reveals it */ }
+        } else if (d.event === "play" || d.event === "playing") {
+          show();
+          // Layout may not have settled when play arrives; keep looking for a
+          // short while before concluding the player has no box.
+          var tries = 0;
+          var poll = setInterval(function(){
+            if (!frame || ++tries > 20 || media.classList.contains("is-playing")) {
+              clearInterval(poll); return;
+            }
+            fit(); show();
+          }, 250);
+        }
+      };
+      window.addEventListener("message", onMessage);
+      timer = setTimeout(show, 8000);
+
+      // Insert the frame empty, force layout, and check that WebKit actually
+      // gave it a renderer BEFORE starting the cross-origin load.
+      //
+      // Safari refuses a renderer to any iframe inserted while a freshly
+      // navigated page is still settling. Not just this one: a plain
+      // same-origin about:blank control frame, hard-coded to 120x80, measured
+      // 0x0 at the same moment. The frame still loads and the video inside it
+      // still plays -- it reports ready, play and an advancing currentTime --
+      // it simply has no box, and no amount of restyling gives it one. On the
+      // first page of a Safari session it never happens; on every page after
+      // it, it happens every time. Quitting Safari resets it. Chromium never
+      // does it at all.
+      //
+      // So: insert, measure, and if there is no box, throw the frame away and
+      // build again a moment later. Checking before the load matters -- doing
+      // it afterwards meant fetching a whole player and its HLS segments into
+      // a dead frame and discarding them, which cost about 2.5 seconds.
+      wrap.appendChild(f);
+      void f.offsetWidth;
+      fit();
+      f.src = SRC;
+
+      // Safari withholds a renderer from an iframe inserted while a freshly
+      // navigated page is still settling. It loads, and the video inside it
+      // plays -- ready, play, an advancing currentTime -- inside a box that
+      // computes to 0x0 with display:block and visibility:visible, discarding
+      // any width set on it, and it never recovers. A plain same-origin
+      // about:blank control frame did the same thing at the same moment, so
+      // this is about iframes, not about Vimeo or cross-origin content.
+      //
+      // There is no synchronous test for it: a just-appended iframe measures 0
+      // in WebKit whether or not it is going to get a renderer, because layout
+      // is deferred. Checking immediately reported failure on every page
+      // including ones that were about to work perfectly. So the only reliable
+      // test is to look a while later and start over if there is still no box.
+      // That discards one player load per retry, which is the price; in
+      // practice the first retry succeeds. The photo is up throughout, so the
+      // visitor sees a still banner rather than an empty one.
+      var waits = [1200, 2000, 3000, 4000];
+      if (attempts < waits.length) {
+        var wait = waits[attempts];
+        setTimeout(function(){
+          if (frame !== f) return;              // already superseded
+          if (boxed()) { attempts = 0; return; }  // got a renderer, nothing to do
+          attempts++;
+          build();
+        }, wait);
+      }
+    }
+
+    build();
+
+    // pagehide covers both leaving for good and going into the back/forward
+    // cache. Put the photo back too, so a page restored from that cache shows
+    // the photo while its new player boots rather than an empty hero.
+    window.addEventListener("pagehide", function(){
+      teardown();
+      if (media) media.classList.remove("is-playing");
+    });
+    window.addEventListener("pageshow", function(e){
+      if (e.persisted) build();
+    });
+  })();
+  </script>
+
+  <!-- latest news: one card at a time, its neighbours either side -->
+  <section class="section home-news">
+    <div class="wrap">
+      <p class="newsreel__signup" data-reveal>Would you like NCTV to email you
+        the latest news about our events, videos, classes, auctions, and
+        giveaways? If so, please
+        <a href="https://lp.constantcontactpages.com/su/J1R7rh8/NCTV" target="_blank" rel="noopener">click here</a>
+        to sign up for our email list.</p>
+      <div class="section__head section__head--tight" data-reveal>
+        <span class="eyebrow"><span class="dot"></span>Latest NCTV News</span>
+      </div>
+      <div class="newsreel" data-newsreel data-newsreel-ms="12000" data-reveal
+           role="group" aria-roledescription="carousel" aria-label="Latest NCTV news">
+        <div class="newsreel__stage">
+          <button type="button" class="newsreel__peek newsreel__peek--prev" data-newsreel-prev
+                  tabindex="-1" aria-hidden="true">
+            <img data-newsreel-peek="prev" alt=""
+                 src="assets/news-spotlight-cross-country.webp?v=415"
+                 width="1080" height="1300" loading="lazy">
+          </button>
+          <ul class="newsreel__track">
+            <li class="newsreel__slide is-current" role="group"
+                aria-roledescription="slide" aria-label="1 of 7">
+              <a class="newsreel__link" href="https://calendar.app.google/uscVAZHWcLDqj9ot6"
+                 target="_blank" rel="noopener">
+                <img class="newsreel__img"
+                   src="assets/news-free-podcast-studio.webp?v=415"
+                   width="1080" height="1300"
+                   alt="A woman in glasses and a pink scarf speaking into a studio microphone in front of a curtain. Caption: Free podcast recording and editing for Nantucketers">
+              </a>
+            </li>
+            <li class="newsreel__slide" role="group"
+                aria-roledescription="slide" aria-label="2 of 7">
+              <a class="newsreel__link" href="https://filmfreeway.com/NEWMoonFest"
+                 target="_blank" rel="noopener">
+                <img class="newsreel__img"
+                   src="assets/news-2027-new-moon-submissions.webp?v=415"
+                   width="1080" height="1300" loading="lazy"
+                   alt="New Moon Fest logo: a woman paddling a canoe across water drawn as the island of Nantucket, a ring behind her, with the words Nantucket Empowering Women. Caption: 2027 New Moon Fest submissions are open!">
+              </a>
+            </li>
+            <li class="newsreel__slide" role="group"
+                aria-roledescription="slide" aria-label="3 of 7">
+              <a class="newsreel__link" href="https://www.youtube.com/watch?v=7Y3sAP0an_U"
+                 target="_blank" rel="noopener">
+                <img class="newsreel__img"
+                   src="assets/news-island-cup-broadcast.webp?v=415"
+                   width="1080" height="1300" loading="lazy"
+                   alt="A football team raising the Island Cup trophy at dusk. Caption: The Island Cup broadcast is live on YouTube and TV at 2:30pm on 10/31">
+              </a>
+            </li>
+            <li class="newsreel__slide" role="group"
+                aria-roledescription="slide" aria-label="4 of 7">
+              <img class="newsreel__img"
+                   src="assets/news-chris-morris-farewell.webp?v=415"
+                   width="1080" height="1300" loading="lazy"
+                   alt="Chris Morris in a Whalers cap and pullover, holding a pen and clipboard beside a rink. Caption: Thank you and farewell to Nantucket Sports Connection founder Chris Morris">
+            </li>
+            <li class="newsreel__slide" role="group"
+                aria-roledescription="slide" aria-label="5 of 7">
+              <a class="newsreel__link" href="https://www.youtube.com/watch?v=A1T1aHVSnj4&amp;t=4s"
+                 target="_blank" rel="noopener">
+                <img class="newsreel__img"
+                   src="assets/news-spotlight-golf.webp?v=415"
+                   width="1080" height="1300" loading="lazy"
+                   alt="NCTV presents Nantucket Whalers Team Spotlight: Golf, Nantucket Golf Club. Caption: Premiere of Spotlight, Whaler golf">
+              </a>
+            </li>
+            <li class="newsreel__slide" role="group"
+                aria-roledescription="slide" aria-label="6 of 7">
+              <a class="newsreel__link" href="https://nantucketcommunitytelevision.vhx.tv/products/2026-nantucket-shorts-fest"
+                 target="_blank" rel="noopener">
+                <img class="newsreel__img"
+                   src="assets/news-2026-shorts-fest-online.webp?v=415"
+                   width="1080" height="1300" loading="lazy"
+                   alt="A Nantucket Shorts Festival clapperboard above a photograph of a pair of hands holding a camera. Caption: Watch the 2026 Nantucket Shorts Fest online">
+              </a>
+            </li>
+            <li class="newsreel__slide" role="group"
+                aria-roledescription="slide" aria-label="7 of 7">
+              <a class="newsreel__link" href="https://www.youtube.com/watch?v=E6DWX7nHMjk"
+                 target="_blank" rel="noopener">
+                <img class="newsreel__img"
+                   src="assets/news-spotlight-cross-country.webp?v=415"
+                   width="1080" height="1300" loading="lazy"
+                   alt="NCTV presents Nantucket Whalers Team Spotlight: Cross Country. Caption: Premiere of Spotlight, Whaler cross country">
+              </a>
+            </li>
+          </ul>
+          <button type="button" class="newsreel__peek newsreel__peek--next" data-newsreel-next
+                  tabindex="-1" aria-hidden="true">
+            <img data-newsreel-peek="next" alt=""
+                 src="assets/news-2027-new-moon-submissions.webp?v=415"
+                 width="1080" height="1300" loading="lazy">
+          </button>
+        </div>
+        <ul class="newsreel__copies">
+          <li class="newsreel__copy is-current">
+            <p><span class="newsreel__date">11/7/26</span> &mdash; NCTV is now offering free recordings in our podcast studio on Saturdays for all Nantucketers. Share your story, start a show, or just come to try it out. We&rsquo;ll be happy to walk you through every step (all for free). To sign up or to see the terms and conditions, <a href="https://calendar.app.google/uscVAZHWcLDqj9ot6" target="_blank" rel="noopener">click here</a>.</p>
+          </li>
+          <li class="newsreel__copy">
+            <p><span class="newsreel__date">11/1/26</span> &mdash; New Moon Fest (NMF) is returning in 2027. We are excited for another evening of food, drink, community, and engaging short films created by female filmmakers. Film submissions for NMF just opened now. To learn about the submission criteria and to submit, click this button: <a class="ff-btn" href="https://filmfreeway.com/NEWMoonFest" target="_blank" rel="noopener"><img src="assets/filmfreeway-gold.webp?v=415" alt="Submit on FilmFreeway Gold" width="210" height="30" loading="lazy"></a></p>
+          </li>
+          <li class="newsreel__copy">
+            <p><span class="newsreel__date">10/31/26</span> &mdash; The Nantucket Sports Connection (NSC) will start its live broadcast of the Island Cup game at 2:30pm on 10/31 on the NSC YouTube channel (<a href="https://www.youtube.com/watch?v=7Y3sAP0an_U" target="_blank" rel="noopener">click here</a>). It will also be simulcast on NCTV Civic Channel 8 &amp; on NCTV HD Channel 1072. To watch NCTV&rsquo;s documentary about the history of this storied rivalry, <a href="https://www.youtube.com/watch?v=lftcwt6wXJk&amp;t=1543s" target="_blank" rel="noopener">click here</a>.</p>
+          </li>
+          <li class="newsreel__copy">
+            <p><span class="newsreel__date">10/31/26</span> &mdash; Chris Morris is the founder and lead broadcaster of the Nantucket Sports Connection (NSC). He is moving from Nantucket to Maine and his last game as the &ldquo;voice of Whaler sports&rdquo; will be at the Island Cup at 2:30pm on 10/31. NCTV &amp; Whalers National are so grateful for his passion, determination, and live commentary skills that created the NSC. It has not just celebrated hundreds of student athletes, but given many teens a headstart in careers in sports journalism. Thank you, Chris and godspeed!</p>
+          </li>
+          <li class="newsreel__copy">
+            <p><span class="newsreel__date">10/29/26</span> &mdash; &ldquo;Spotlight&rdquo; highlights NHS teams that Nantucket Sports Connection (NSC) can&rsquo;t film on a live broadcast. In this Spotlight episode (<a href="https://www.youtube.com/watch?v=A1T1aHVSnj4&amp;t=4s" target="_blank" rel="noopener">click here</a>), the NSC profiles the golf team at its 10/5/26 competition against Nauset Regional High School at the Nantucket Golf Club.</p>
+          </li>
+          <li class="newsreel__copy">
+            <p><span class="newsreel__date">10/28/26</span> &mdash; The 2026 Nantucket Shorts Fest sold out again! For the first time ever, NCTV is putting all the films online for $15 and giving 100% of the proceeds raised to all the filmmakers selected to be in the 2026 Shorts Fest. To watch the 2026 Shorts Fest and support filmmakers on Nantucket, please <a href="https://nantucketcommunitytelevision.vhx.tv/products/2026-nantucket-shorts-fest" target="_blank" rel="noopener">click here</a>.</p>
+          </li>
+          <li class="newsreel__copy">
+            <p><span class="newsreel__date">10/26/26</span> &mdash; &ldquo;Spotlight&rdquo; highlights NHS teams that Nantucket Sports Connection (NSC) can&rsquo;t film on a live broadcast. In this Spotlight episode (<a href="https://www.youtube.com/watch?v=E6DWX7nHMjk" target="_blank" rel="noopener">click here</a>), the NSC profiles the Boys &amp; Girls Cross Country teams at their 10/6/26 meet with Falmouth High School at Gardner Farm on Nantucket.</p>
+          </li>
+        </ul>
+        <div class="newsreel__controls">
+          <button type="button" class="newsreel__arrow newsreel__arrow--prev"
+                  data-newsreel-prev aria-label="Previous item"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <div class="newsreel__dots">
+            <button type="button" class="newsreel__dot is-current"
+                    data-newsreel-to="0" aria-current="true"
+                    aria-label="Show item 1 of 7"></button>
+            <button type="button" class="newsreel__dot"
+                    data-newsreel-to="1"
+                    aria-label="Show item 2 of 7"></button>
+            <button type="button" class="newsreel__dot"
+                    data-newsreel-to="2"
+                    aria-label="Show item 3 of 7"></button>
+            <button type="button" class="newsreel__dot"
+                    data-newsreel-to="3"
+                    aria-label="Show item 4 of 7"></button>
+            <button type="button" class="newsreel__dot"
+                    data-newsreel-to="4"
+                    aria-label="Show item 5 of 7"></button>
+            <button type="button" class="newsreel__dot"
+                    data-newsreel-to="5"
+                    aria-label="Show item 6 of 7"></button>
+            <button type="button" class="newsreel__dot"
+                    data-newsreel-to="6"
+                    aria-label="Show item 7 of 7"></button>
+          </div>
+          <button type="button" class="newsreel__arrow newsreel__arrow--next"
+                  data-newsreel-next aria-label="Next item"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- featured video -->
+  <section class="section section--tight-top">
+    <div class="wrap">
+      <div class="section__head" data-reveal>
+        <span class="eyebrow"><span class="dot"></span>Featured Video</span>
+      </div>
+    <div class="videos">
+      <article class="video" data-reveal>
+        <div class="video__frame">
+          <iframe loading="lazy"
+            src="https://www.youtube-nocookie.com/embed/9BnRkR2W9Zc?rel=0"
+            title="NCTV Featured Video"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+      </article>
+    </div>
+      <p class="featured__desc" data-reveal>This promo explains how NCTV chose our
+        new web address &mdash; <a href="https://www.ournctv.org">www.OURnctv.org</a>.</p>
+    </div>
+  </section>
+
+  <!-- partner programs -->
+  <section class="section section--paper">
+    <div class="wrap">
+      <div class="channels-head">
+        <div class="section__head" data-reveal>
+          <span class="eyebrow"><span class="dot"></span>Partner Programs</span>
+          <h2>NCTV is a proud member of the Nantucket nonprofit family. Click below
+            to watch videos we produced for our partners.</h2>
+        </div>
+        <div class="channels-art-wrap" data-reveal data-reveal-d="2">
+          <img class="channels-art" src="assets/home-languages.webp" loading="lazy"
+               alt="The word &quot;home&quot; written in many languages across a map of Nantucket">
+        </div>
+      </div>
+      <div class="partners">
+        <a class="partner" href="partner-dreamland.html" aria-label="Dreamland" data-reveal data-reveal-d="1">
+          <img class="partner__logo" src="assets/partner-dreamland.webp?v=415" alt="Dreamland" loading="lazy">
+        </a>
+        <a class="partner" href="partner-linda-loring.html" aria-label="Linda Loring Nature Foundation" data-reveal data-reveal-d="2">
+          <img class="partner__logo" src="assets/partner-linda-loring.webp?v=415" alt="Linda Loring Nature Foundation" loading="lazy">
+        </a>
+        <a class="partner" href="partner-atheneum.html" aria-label="Nantucket Atheneum" data-reveal data-reveal-d="3">
+          <img class="partner__logo" src="assets/partner-atheneum.webp?v=415" alt="Nantucket Atheneum" loading="lazy">
+        </a>
+        <a class="partner" href="partner-book-fest.html" aria-label="Nantucket Book Festival" data-reveal data-reveal-d="4">
+          <img class="partner__logo" src="assets/partner-book-fest.webp?v=415" alt="Nantucket Book Festival" loading="lazy">
+        </a>
+        <a class="partner" href="partner-civic-league.html" aria-label="Nantucket Civic League" data-reveal data-reveal-d="1">
+          <img class="partner__logo" src="assets/partner-civic-league.webp?v=415" alt="Nantucket Civic League" loading="lazy">
+        </a>
+        <a class="partner" href="partner-conservation-foundation.html" aria-label="Nantucket Conservation Foundation" data-reveal data-reveal-d="2">
+          <img class="partner__logo" src="assets/partner-conservation-foundation.webp?v=415" alt="Nantucket Conservation Foundation" loading="lazy">
+        </a>
+        <a class="partner" href="partner-cottage-hospital.html" aria-label="Nantucket Cottage Hospital" data-reveal data-reveal-d="3">
+          <img class="partner__logo" src="assets/partner-cottage-hospital.webp?v=415" alt="Nantucket Cottage Hospital" loading="lazy">
+        </a>
+        <a class="partner" href="partner-film-festival.html" aria-label="Nantucket Film Festival" data-reveal data-reveal-d="4">
+          <img class="partner__logo" src="assets/partner-film-festival.webp?v=415" alt="Nantucket Film Festival" loading="lazy">
+        </a>
+        <a class="partner" href="partner-ngcf.html" aria-label="Nantucket Golf Club Foundation" data-reveal data-reveal-d="1">
+          <img class="partner__logo" src="assets/partner-ngcf.webp?v=415" alt="Nantucket Golf Club Foundation" loading="lazy">
+        </a>
+        <a class="partner" href="partner-nha.html" aria-label="Nantucket Historical Association" data-reveal data-reveal-d="2">
+          <img class="partner__logo" src="assets/partner-nha.webp?v=415" alt="Nantucket Historical Association" loading="lazy">
+        </a>
+        <a class="partner" href="partner-chamber-of-commerce.html" aria-label="Nantucket Island Chamber of Commerce" data-reveal data-reveal-d="3">
+          <img class="partner__logo" src="assets/partner-chamber-of-commerce.webp?v=415" alt="Nantucket Island Chamber of Commerce" loading="lazy">
+        </a>
+        <a class="partner" href="partner-land-water-council.html" aria-label="Nantucket Land &amp; Water Council" data-reveal data-reveal-d="4">
+          <img class="partner__logo" src="assets/Nantucket_Land___Water_Council.webp?v=415" alt="Nantucket Land &amp; Water Council" loading="lazy">
+        </a>
+        <a class="partner" href="partner-remain.html" aria-label="Remain Nantucket" data-reveal data-reveal-d="1">
+          <img class="partner__logo" src="assets/partner-remain.webp?v=415" alt="Remain Nantucket" loading="lazy">
+        </a>
+        <a class="partner" href="partner-rossini-club.html" aria-label="The Rossini Club" data-reveal data-reveal-d="2">
+          <img class="partner__logo" src="assets/partner-rossini-club.webp?v=415" alt="The Rossini Club" loading="lazy">
+        </a>
+        <a class="partner" href="partner-wpi.html" aria-label="Worcester Polytechnic Institute: Nantucket Project" data-reveal data-reveal-d="3">
+          <img class="partner__logo" src="assets/partner-wpi.webp?v=415" alt="Worcester Polytechnic Institute: Nantucket Project" loading="lazy">
+        </a>
+      </div>
+    </div>
+    <!-- The Foundation and its four Initiative Funds. Without this the home
+         page showed 15 of the 20 nonprofits (Frank, 2026-10-31). It sits
+         INSIDE the paper section, after the wrap closes: .cfn-funds brings
+         its own .wrap and no background, so between the two paper sections
+         it would have read as a fog-coloured stripe. Same shape the
+         Nonprofit Videos page uses. -->
+<section class="section cfn-funds">
+  <div class="wrap">
+    <div class="cfn-funds__grid" data-reveal>
+      <a class="cfn-funds__mark" href="partner-community-foundation.html"
+         aria-label="Community Foundation for Nantucket">
+        <img src="assets/cfn-logo.webp?v=415"
+             alt="Community Foundation for Nantucket" loading="lazy">
+      </a>
+      <p class="cfn-funds__text">The Community Foundation for Nantucket (CFN)
+        manages several Initiative Funds that support causes such as the arts,
+        education, healthcare, and environmental conservation. To watch videos
+        related to these funds, please click their logos below. To watch videos
+        related to the CFN itself, click the logo next to this paragraph.</p>
+    </div>
+    <div class="cfn-funds__list">
+      <a class="partner cfn-fund" href="partner-arts-council.html" aria-label="Nantucket Arts Council"
+         data-reveal data-reveal-d="1">
+        <img class="partner__logo" src="assets/cfn-arts-council.webp?v=415" alt="Nantucket Arts Council" loading="lazy">
+      </a>
+      <a class="partner cfn-fund" href="partner-biodiversity.html" aria-label="Nantucket Biodiversity Initiative"
+         data-reveal data-reveal-d="2">
+        <img class="partner__logo" src="assets/cfn-biodiversity.webp?v=415" alt="Nantucket Biodiversity Initiative" loading="lazy">
+      </a>
+      <a class="partner cfn-fund" href="partner-nffra.html" aria-label="Nantucket Food, Fuel &amp; Rental Assistance"
+         data-reveal data-reveal-d="3">
+        <img class="partner__logo" src="assets/cfn-nffra.webp?v=415" alt="Nantucket Food, Fuel &amp; Rental Assistance" loading="lazy">
+      </a>
+      <a class="partner cfn-fund" href="partner-pond-coalition.html" aria-label="Nantucket Pond Coalition"
+         data-reveal data-reveal-d="4">
+        <img class="partner__logo" src="assets/cfn-pond-coalition.webp?v=415" alt="Nantucket Pond Coalition" loading="lazy">
+      </a>
+    </div>
+  </div>
+</section>
+  </section>
+
+  <!-- membership banner -->
+  <section class="section section--paper">
+    <div class="wrap">
+      <div class="appt" data-reveal>
+        <span class="eyebrow" style="color:var(--green)"><span class="dot"></span>Free for Nantucket</span>
+        <h3 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-top:14px">Membership is free for every islander &amp; organization.</h3>
+        <p>Borrow gear, book studio time, and learn filmmaking, TV production and podcasting — at no cost.</p>
+        <a class="btn btn--green" href="create.html"><span class="play"></span>Become a member</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer" class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <p class="footer__addr">
+          Nantucket Community Television<br>
+          9 Bayberry Court<br>
+          Nantucket, MA 02554<br><br>
+          <a href="mailto:info@ournctv.org">info@ournctv.org</a><br>
+          <a href="tel:+15089015499">508-901-5499</a>
+          <span class="footer__social"><span class="footer__social-label">Connect with us:</span><a href="https://www.facebook.com/ournctv" target="_blank" rel="noopener" aria-label="NCTV on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M15.1 8.2V6.6c0-.73.49-.9.83-.9h2.1V2.6l-2.9-.01c-3.2 0-3.93 2.39-3.93 3.92V8.2H9.3v3.25h1.9V21h3.9v-9.55h2.6l.34-3.25h-2.94z"/></svg></a><a href="https://www.instagram.com/ournctv/" target="_blank" rel="noopener" aria-label="NCTV on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor" stroke="none"/></svg></a></span>
+        </p>
+        <span class="footer__brand">
+          <img src="assets/nctv-logo-whitetext.webp" alt="NCTV — Nantucket Community Television">
+        </span>
+      </div>
+      <div class="footer__bar">
+        <span>© <span id="footer-year">2026</span> Nantucket Community Television</span>
+        <span>TV CHANNELS: CIVIC 8 &amp; HD 1072 · NANTUCKET, MA</span>
+      </div>
+    </div></footer>
+
+<script src="site.js?v=415"></script>
+</body>
+</html>
