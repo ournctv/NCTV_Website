@@ -1011,7 +1011,36 @@ SPORTS_VIDEOS = {
     "DeConto Stadium, coming to you live both on the NSC YouTube channel as well as on NCTV HD "
     "Channel 1072."
     , False),
-   ("7Y3sAP0an_U", "The Island Cup - Nantucket Whalers Football vs. Martha&rsquo;s Vineyard - October 31, 2026", "", True),
+   ("7Y3sAP0an_U", "The Island Cup - Nantucket Whalers Football vs. Martha&rsquo;s Vineyard - October 31, 2026",
+    "The Nantucket Sports Connection proudly presents the spookiest showdown yet between these "
+    "cross-island foes, as the Whalers square off against the Vineyarders on a Halloween Day "
+    "Island Cup!<br><br>This is one of the most storied rivalries in all of Massachusetts sports, "
+    "and the 77th meeting overall between these two programs, with Nantucket owning a 41-32-3 "
+    "advantage coming in.<br><br>Last year&rsquo;s Island Cup was supposed to be played on "
+    "Martha&rsquo;s Vineyard, but a last-minute decision by Coach Tony Mottola forfeited the game "
+    "and the rest of the Vineyarders&rsquo; season, and was recorded in the MIAA Power Rankings as "
+    "a 14-0 default victory by Nantucket.<br><br>Mottola since decided to depart the island to be "
+    "head coach at Bonita Springs High School in Southwest Florida, handing the reigns to Zeke "
+    "Vought, who&rsquo;s served as an assistant coach since 2018. Nantucket likewise has a new "
+    "coach at the helm, with former CPS coach Fernando Jones leading the Whalers this "
+    "season.<br><br>The prior Island Cup in 2024 was one for the ages as the teams travelled to "
+    "Fenway Park and slugged their way to a 14-14 tie at the end of regulation, with the "
+    "Vineyarders missing a 26-yard field goal with two seconds left in the fourth quarter; the "
+    "sudden death overtime that followed saw Arann Hanlon run in both the 8-yard touchdown and the "
+    "two point conversion to give the Whalers a 22-14 victory. Naturally this game was the most "
+    "viewed in the history of the NSC: https://youtube.com/live/1P3DZywTnR4<br><br>These two teams "
+    "last met at Vito Capizzo in 2023, another contest that came down to the final seven seconds "
+    "of the contest, with Martha&rsquo;s Vineyard kicking an incredible 38-yard field goal to cap "
+    "a comeback victory after a two-touchdown deficit late in the third quarter in front of a big "
+    "Nantucket crowd: https://youtube.com/live/jthWbKobYVI<br><br>The last time the Whalers "
+    "travelled with the cup was in 2022, when they similarly lost a heartbreaker 14-13, breaking a "
+    "5-game Nantucket winning streak. Overall the The Island Cup has been won 22 times by the "
+    "Vineyarders and 23 times by the Whalers since 1978. This game always represents more than a "
+    "football game, so much so that NCTV led by Frank Schadt made an award-winning documentary "
+    "about it: https://www.youtube.com/watch?v=lftcwt6wXJk<br><br>Our live coverage begins at 2:30 "
+    "with kickoff set for 3pm from Vito Capizzo Stadium, coming to you live both on the NSC "
+    "YouTube channel as well as on NCTV HD Channel 1072."
+    , False),
   ],
  },
  "Volleyball": {
@@ -1324,6 +1353,22 @@ SPORTS_VIDEOS = {
    ("H9UeILwfBXU", "Nantucket Whalers Girls Soccer vs. Nauset Warriors - October 8, 2026",
     "The Nantucket Sports Connection proudly presents the Nantucket Whalers varsity girls soccer "
     "squad as they host the Nauset Warriors in a key league matchup with playoff implications."
+    , False),
+   ("nvN0scKAiXw", "Nantucket Whalers Girls Soccer vs. Vineyard - October 31, 2026",
+    "The Nantucket Sports Connection proudly presents the Nantucket Whalers varsity girls soccer "
+    "squad as they host the Vineyarders as the first part of today&rsquo;s Island Cup "
+    "doubleheader.<br><br>The Whalers (5-10, #56 in Div. 3) are looking for payback after falling "
+    "3-1 over on Martha&rsquo;s Vineyard in their first away game of the season on Sept. 12. A win "
+    "today would also secure a Golden Anchor for this girls soccer squad for the first time since "
+    "this piece of hardware was inaugurated as a companion to football&rsquo;s Island Cup in "
+    "2023.<br><br>The Vineyarders (8-8, #40 in Div. 3) are on the knife&rsquo;s edge this "
+    "Halloween morning, as a loss by the Vineyarders would help sink their chances for a "
+    "postseason tournament berth due to their spot well outside the Top 32, meaning they must "
+    "finish the season with at least a .500 record to qualify for the playoffs. Martha&rsquo;s "
+    "Vineyard is also defending a nine-game winning streak on the soccer pitch &mdash; the Whalers "
+    "last won this grudge match exactly five years ago, on Halloween Day in 2021.<br><br>Our live "
+    "coverage begins at 11am with kickoff set for 11:15am from the Nobadeer Farm Field, coming to "
+    "you live both on the NSC YouTube channel as well as on NCTV HD Channel 1072."
     , False),
    ("txPt6UGEmeY", "Nantucket Whalers Girls Soccer vs. St. John Paul II Lions - November 2, 2026", "", True),
   ],
@@ -3496,14 +3541,13 @@ NEWS = [
       alt="Chris Morris in a Whalers cap and pullover, holding a pen and "
           "clipboard beside a rink. Caption: Thank you and farewell to "
           "Nantucket Sports Connection founder Chris Morris",
-      body='Chris Morris is the founder and lead broadcaster of the Nantucket '
-           'Sports Connection (NSC). He is moving from Nantucket to Maine and his '
-           'last game as the &ldquo;voice of Whaler sports&rdquo; will be at the '
-           'Island Cup at 2:30pm on 10/31. NCTV &amp; Whalers National are so '
-           'grateful for his passion, determination, and live commentary skills '
-           'that created the NSC. It has not just celebrated hundreds of student '
-           'athletes, but given many teens a headstart in careers in sports '
-           'journalism. Thank you, Chris and godspeed!'),
+      body='Chris Morris is the founder and lead broadcaster of the Nantucket Sports Connection '
+           '(NSC). He is moving from Nantucket to Maine and his last game as the &ldquo;voice of '
+           'Whaler sports&rdquo; was the 2026 Island Cup. NCTV &amp; Whalers Nation are so '
+           'grateful for his passion, determination, and live commentary skills that created the '
+           'NSC. To watch a short video about his impact on Whalers Nation, <a '
+           'href="https://youtu.be/gnn7C-UdDns?si=RCK2NvhnIC9MO_Va" target="_blank" '
+           'rel="noopener">click here</a>.'),
 
  dict(img="news-spotlight-golf.webp", date="10/29/26",
       alt="NCTV presents Nantucket Whalers Team Spotlight: Golf, Nantucket "
@@ -3557,8 +3601,10 @@ def news_section():
         # The card itself goes where its copy's first "click here" goes.
         # Reading it back out of the copy is deliberate: change the link in
         # the paragraph and the card follows it, with nothing to keep in
-        # step by hand. The Chris Morris card has no link, so it is a plain
-        # picture -- an <a href=""> would reload the page.
+        # step by hand. A card whose copy carries no link stays a plain
+        # picture -- an <a href=""> would reload the page. The Chris Morris
+        # card was the one example until 2026-11-02, when Frank gave it the
+        # farewell video; every card in NEWS links somewhere now.
         href = re.search(r'href="([^"]+)"', item["body"])
         img = ('<img class="newsreel__img"\n'
                '                   src="assets/' + item["img"] + '?v=' + ASSET_VER + '"\n'
@@ -41999,7 +42045,7 @@ videos_pages = {
     "Watch · Sports", "Nantucket Sports Connection",
     "Providing Nantucket youth with hands-on training in live TV production while broadcasting Nantucket High School sports to Whaler Nation.",
     "Sports Connection", 1, "Game",
-    featured=("Featured Video", "Nantucket Sports Connection Promo", "3O5i5cAhBDo"),
+    featured=("Featured Video", "Thank You Chris Morris", "gnn7C-UdDns"),
     below_hero=sports_intro_section() + "\n" + sports_sponsors_section() + "\n"
               + sports_top_section() + "\n" + sports_rest_sponsors_section(),
     hero=sports_banner()),
