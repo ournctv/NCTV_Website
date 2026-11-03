@@ -1370,7 +1370,22 @@ SPORTS_VIDEOS = {
     "coverage begins at 11am with kickoff set for 11:15am from the Nobadeer Farm Field, coming to "
     "you live both on the NSC YouTube channel as well as on NCTV HD Channel 1072."
     , False),
-   ("txPt6UGEmeY", "Nantucket Whalers Girls Soccer vs. St. John Paul II Lions - November 2, 2026", "", True),
+   ("txPt6UGEmeY", "Nantucket Whalers Girls Soccer vs. St. John Paul II Lions - November 2, 2026",
+    "Nantucket Sports Connection brings you live coverage of Nantucket Whalers varsity girls "
+    "soccer as they welcome the Lions from across the sound in Hyannis.<br><br>The Whalers (5-8) "
+    "are fighting for their postseason lives as they must win four of their final five games in "
+    "order to qualify for a play-in game in the MIAA tournament.<br><br>Nantucket comes into this "
+    "matchup looking for revenge after a narrow 4-3 road loss to St. John Paul II on Oct. 30, 2025 "
+    "shut them out of postseason competition for the first time in four years. The Whalers&rsquo; "
+    "last win here on island was likewise by a 4-3 score on Sept 15, 2022, only their third win in "
+    "a 4-8-4 overall head-to-head record.<br><br>The Lions (2-9-1) finished 10-7-4 in 2025, "
+    "entering as the #5 seed in Div 5 and advancing all the way to the quarterfinals, where they "
+    "fell 5-3 to Monson, the runner up in the state title game. They&rsquo;ve made the playoffs "
+    "every year since the MIAA converted to the statewide divisional system.<br><br>Our live "
+    "coverage begins at 1:45 with kickoff set for 2pm from Nobadeer Farm Field, coming to you live "
+    "both on the NSC YouTube channel as well as on NCTV HD Channel 1072.<br><br>[Game postponed "
+    "from earlier this season due to weather.]"
+    , False),
   ],
  },
  "Boys Soccer": {
