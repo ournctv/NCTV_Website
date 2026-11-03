@@ -15,7 +15,7 @@ BANNER_VIDEO = "1241589049:76cd5a88fc"  # home hero; Vimeo id:hash
 FEATURED_ID = "9BnRkR2W9Zc"  # home "Featured Video" section
 # Bump this whenever styles.css or site.js changes — it forces browsers to
 # fetch the fresh files instead of serving a cached (stale) copy.
-ASSET_VER = "415"
+ASSET_VER = "416"
 
 # The address the finished site will answer to. Everything absolute on the
 # site comes from this one string: the canonical link in every <head>, the
@@ -5538,6 +5538,7 @@ CIVIC_BOARDS = {
    ("s2F1Kc0n1Co", "Oct. 13th, 2026 Nantucket Historic District Commission", 10),
    ("II5dIr_p4JI", "Oct. 20th, 2026 Nantucket Historic District Commission", 10),
    ("lD_hiVvZU1s", "Oct. 27th, 2026 Nantucket Historic District Commission", 10),
+    ("ZRsz4cxcoTQ", "Nov. 3rd, 2026 Nantucket Historic District Commission", 11),
   ],
  },
  "Finance Committee": {
@@ -6079,6 +6080,7 @@ CIVIC_BOARDS = {
    ("9TxKvhjZMzY", "Jul. 27th, 2026 NP&amp;EDC", 7),
    ("bF3BU9jbD0k",
     "Sep. 28th, 2026 Nantucket Planning &amp; Economic Development Commission", 9),
+    ("6V8kXvyLsjk", "Oct. 26th, 2026 NP&amp;EDC Meeting", 10),
   ],
  },
  "Planning Board": {
@@ -6887,6 +6889,7 @@ CIVIC_BOARDS = {
    ("7F25QxA6Ngg", "Oct. 19th, 2026 Nantucket Select Board (Licensing &amp; Petitions)", 10),
    ("EGzgmcRU2zY", "Oct. 21st, 2026 Nantucket Select Board", 10),
    ("WKo4F_u1jXw", "Oct. 28th, 2026 Nantucket Select Board", 10),
+    ("eh76nuJyXCY", "Nov. 4th, 2026 Nantucket Select Board", 11),
   ],
  },
  "Zoning Board of Appeals": {
@@ -25002,6 +25005,107 @@ CIVIC_AGENDAS = {
   "naming its own board first, so the agenda follows once.</p><ol><li>Call to "
   "order:</li><li>Joint meeting of the Planning Board and Zoning Board of Appeals &ndash; Update "
   "and overview of recent legislative changes to M.G.L. c.40A</li><li>Adjournment:</li></ol>",
+ "6V8kXvyLsjk":
+  "<p>Monday, October 26, 2026 at 5:00 P.M.</p><ol><li>Call to Order:</li><li>Establishment of "
+  "Quorum:</li><li>Approval of Agenda:</li><li>Public Comment:</li><li>Minutes<ol><li>September "
+  "28, 2026</li></ol></li><li>Announcements:<ol><li>The November and December NP&amp;EDC meetings "
+  "have been combined into a single meeting held on Monday, December 7, 2026</li><li>The Tom "
+  "Nevers Road, Sparks Avenue, and Newtown Road multi-use path projects were advertised for "
+  "construction in October with anticipated completion by the 2027 summer "
+  "season.</li><li>Nantucket Police Department was recognized with a Gold Award at the Annual AAA "
+  "Traffic Safety Awards on October 20, 2026 for its ongoing commitment to improving traffic "
+  "safety throughout the community.</li></ol></li><li>Action/Discussion Items:<ol><li>MVP "
+  "(Municipal Vulnerability Preparedness Program) 2.0 Overview, Courtney Rocha, Southeast "
+  "Regional Coordinator, MA Executive Office of Energy and Environmental Affairs, votes may be "
+  "taken</li><li>Response Letter to Advisory Council on Historic Preservation&rsquo;s Proposed "
+  "Changes to S106 of the National Historic Preservation Act, votes may be "
+  "taken</li><li>Discussion of Proposed 2030 Census Changes and Comment Letter, votes may be "
+  "taken</li><li>Discussion of 2027 Meeting Schedule, votes may be "
+  "taken</li></ol></li><li>Adjournment:</li></ol>",
+ "ZRsz4cxcoTQ":
+  "<p>Tuesday, November 3, 2026 at 4:00 P.M. &ndash; no later than 8:00 "
+  "PM.</p><ol><li>COMMISSIONER COMMENTS</li><li>COMMISSIONER Q &amp; A WITH PRESERVATION "
+  "PLANNER</li><li>CONSENTS<ol><li>26 Wigwam Rd LLC 15509 26 Wigwam Rd Move off demo/MH 77/8.9 "
+  "MCA+ SW</li><li>Wamasquid Pl PropCo 15477 2 Wamasquid Place Demo/Move off dwelling 56/113.3 "
+  "Ridgevale Development JP</li><li>Eric Rogers 15469 199 Hummock Pond Rd Move on shed from 5 "
+  "Huckelberry 65/22 Self CP</li></ol></li><li>CONSENT WITH CONDITIONS<ol><li>Gary Renee Phillips "
+  "Tr 15413 9 Heath Ln Pool 76/91 Nantucket Pool &amp; Spa VO<ol><li>Pool must not be visible at "
+  "time of inspection and in perpetuity. No grade change from existing or as noted on the "
+  "application.</li></ol></li></ol></li><li>OLD BUSINESS 10/20/2026<ol><li>Robert Collamore 15032 "
+  "32 Woodbury Ln Window replacement 41/379.1 Southern NE Windows<ol><li>Commissioners: MacLeod "
+  "(Acting Chair), Pohl, Welch, Thornewill, Paul; Alternates: Patten; Recused: Oliver Last heard "
+  "09/01/2026</li></ol></li></ol></li><li>OLD BUSINESS 11/03/2026<ol><li>C&amp;A Muhlhauser 15415 "
+  "100 Main St Guest house 42.3.3/154 Bentley &amp; Churchill<ol><li>Commissioners: Pohl, "
+  "MacLeod, Camp, Welch, Thornewill; Alternates: Paul, Patten; Sat off: Oliver Last heard "
+  "10/13/2026</li></ol></li><li>Reade, Arthur 15384 19 Monomoy Rd Revise railing 54/260 Gryphon "
+  "Architects<ol><li>Commissioners: Pohl, MacLeod, Camp, Oliver, Thornewill; Alternates: Welch, "
+  "Paul, Patten Last heard 10/13/2026</li></ol></li><li>Nobadeer LLC 15424 11 Adams St New "
+  "Dwelling 79/67 EMDA<ol><li>Commissioners: Pohl, MacLeod, Camp, Oliver, Thornewill; Alternates: "
+  "Welch, Paul, Patten Last heard 10/13/2026</li></ol></li><li>Surfside Nant. Part. 15042 6 "
+  "Clifford St As-built deer fence, gate, cattle grate 79/20 David Troast<ol><li>Commissioners: "
+  "Pohl, MacLeod, Camp, Oliver, Paul; Alternates: Thornewill; Recused: Welch Last heard "
+  "09/08/2026</li></ol></li><li>Surfside Nant. Part. 15043 8 Clifford St As-built deer fence, "
+  "gate, cattle grate 88/3 David Troast<ol><li>Commissioners: Pohl, MacLeod, Camp, Oliver, Paul; "
+  "Alternates: Thornewill; Recused: Welch Last heard 09/08/2026</li></ol></li><li>5 Sea Invest "
+  "Prop LLC 15214 5 Bank St VIEW Alteration to deck 73.2.4/8 LFW<ol><li>Commissioners: Pohl, "
+  "MacLeod, Camp, Oliver, Welch; Alternates: Thornewill, Patten, Paul Last heard "
+  "10/13/2026</li></ol></li><li>Michell Kolb 13662 8 Macy Rd Hardscape 60.2.4/46 "
+  "Self<ol><li>Commissioners: Camp (Acting Chair), MacLeod, Patten, Paul, Thornewill; Alternates: "
+  "none Last heard 12/16/2025</li></ol></li><li>Andrew West 15440 118 Eel Point Rd Cabana 32/34 "
+  "Emeritus, LTD<ol><li>Commissioners: Pohl, MacLeod, Camp, Oliver, Thornewill; Alternates: "
+  "Welch, Patten, Paul Last heard 10/13/2026</li></ol></li><li>West, Andrew 15370 118 Eel Point "
+  "Rd Hardscape alterations 32/34 Atlantic Landscaping<ol><li>Commissioners: Pohl, MacLeod, Camp, "
+  "Oliver, Welch; Alternates: Thornewill, Patten, Paul Last heard "
+  "10/13/2026</li></ol></li><li>Middle C LLC 15441 56 Center St Fence 42.4.3/80 Emeritus, "
+  "LTD<ol><li>Commissioners: Pohl, MacLeod, Camp, Oliver, Patten; Alternates: Welch, Thornewill, "
+  "Paul Last heard 10/13/2026</li></ol></li><li>Three Sea St. LLC 15273 3 Sea St New Inn "
+  "42.4.2/54.2 Emeritus, LTD<ol><li>Commissioners: Pohl, MacLeod, Camp, Oliver, Welch; "
+  "Alternates: Paul Last heard 10/20/2026</li></ol></li><li>Grey Lady Capital, LLC 15201 8 Derry "
+  "Ln New dwelling 41/100 Emeritus, LTD<ol><li>Commissioners: MacLeod (Acting Chair), Oliver, "
+  "Welch, Paul; Alternates: none Last heard 10/20/2026</li></ol></li><li>450 Green Park, LLC "
+  "14653 2 Stone Alley Rev. 8882; add railing 42.3.1/102 Linda Williams<ol><li>Commissioners: "
+  "Pohl (Acting Chair), Welch, Camp, Oliver MacLeod; Alternates: Patten, Paul Last heard "
+  "10/20/2026</li></ol></li><li>Ellis 10849 14 New Mill St Window replacement 55.4.4/72 Scott "
+  "Chase<ol><li>Commissioners: Welch, Pohl, MacLeod, Thornewill, Patten; Alternates: none Last "
+  "heard 07/14/2026</li></ol></li><li>Atanas Borisov 14849 4 Rose Bud Ln Duplex 68/781 Sanne "
+  "Payne<ol><li>Commissioners: Pohl (Acting Chair), MacLeod, Camp, Welch, Paul; Alternates: "
+  "Thornewill Last heard 10/20/2026</li></ol></li></ol></li><li>OTHER BUSINESS<ol><li>Discussion "
+  "&ndash; Building with Nantucket in Mind- top 5 poll priorities</li><li>Approve "
+  "Minutes</li><li>Next HDC Meeting November 10, 2026- New Business</li><li>Future Discussion "
+  "Topics: Discussion on distinguishing between solid and veneer brick on chimneys and "
+  "foundations.</li><li>Classification of street trees &amp; vegetation mapping.</li><li>Review "
+  "policy of move/demo hearings in relation to new dwellings and historic "
+  "dwellings.</li><li>Hardscaping</li><li>Discussion of salvaging demos and options for house "
+  "moves.</li><li>Value of written submission and submission deadlines.</li><li>Discussion on "
+  "presentation of applications limited to prior approval or existing; prior submitted and "
+  "currently proposed.</li><li>3D "
+  "Renderings</li><li>Walkthroughs</li><li>Consents</li></ol></li></ol>",
+ "eh76nuJyXCY":
+  "<p>Wednesday, November 4, 2026 at 5:30 PM.</p><ol><li>CALL TO ORDER</li><li>SELECT BOARD "
+  "ACCEPTANCE OF AGENDA</li><li>ANNOUNCEMENTS<ol><li>The Select Board Meeting is Being Audio and "
+  "Video Recorded.</li><li>Somerset Needs Area Sewer Extension Project Info Session Remote Public "
+  "Information Session to be Held Via Zoom on Thursday, November 5, 2026 at 5:30 PM. Zoom Link: "
+  "https://us06web.zoom.us/webinar/register/WN_Ao7JIJpeTVC6dtf3P78Q2A YouTube: "
+  "https://youtube.com/live/MzSFEXeDykE.</li><li>Veterans&rsquo; Day Town Offices Closed, No "
+  "Select Board Meeting on Wednesday, November 11, 2026 in Observation of Veterans&rsquo; Day. "
+  "Next Select Board Meeting on Wednesday, November 18, 2026.</li><li>May 10, 2027 Annual Town "
+  "Meeting Warrant Open for Citizen Warrant Article Submittals through Monday, November 16, 2026 "
+  "at 4:00 PM.</li><li>Select Board Announcements/Comments.</li></ol></li><li>UPDATE ON PUBLIC "
+  "COMMENT QUESTIONS FROM PRIOR SELECT BOARD MEETINGS (see "
+  "https://nantucket-ma.gov/3788/2026-Public-Comment-Questions-Responses)</li><li>PUBLIC "
+  "COMMENT*</li><li>NEW BUSINESS**</li><li>APPROVAL OF MINUTES, WARRANTS AND PENDING "
+  "CONTRACTS<ol><li>Approval of Minutes of October 28, 2026 at 5:30 PM.</li><li>Approval of "
+  "Treasury Warrants for November 4, 2026.</li><li>Approval of Pending Contracts for November 4, "
+  "2026 - as Set Forth on the Spreadsheet Identified as Exhibit 1, Which Exhibit is Incorporated "
+  "Herein by Reference.</li></ol></li><li>CITIZEN/DEPARTMENTAL/COMMITTEE "
+  "REQUESTS/REPORTS<ol><li>Harbor and Shellfish Advisory Board: Request to Authorize Natural "
+  "Resources Department to Make Adjustments to Commercial Scallop Bushel Limit During the "
+  "2026-2027 Season, if Warranted, Based on Fishing Effort, Landings and Updated Information "
+  "Regarding Surveyed Resource.</li><li>Affordable Housing Trust Quarterly "
+  "Update.</li></ol></li><li>TOWN MANAGER&rsquo;S REPORT<ol><li>Update on New Our Island Home "
+  "Project.</li><li>Continued Review of Town-sponsored 2027 Annual Town Meeting Warrant "
+  "Articles.</li></ol></li><li>SELECT BOARD REPORTS/COMMENT<ol><li>Committee "
+  "Reports.</li></ol></li><li>ADJOURNMENT</li></ol>",
 }
 
 
@@ -31350,6 +31454,28 @@ CIVIC_DESCRIPTIONS = {
   "special permit granting authority, provided the work meets the height and setback rules. "
   "Abandonment timelines and the provisions freezing the rules that apply to a filed project are "
   "revised with it. The session runs a little over half an hour and closes without votes.",
+ "6V8kXvyLsjk":
+  "The commission spends about twenty minutes on an overview of the state&rsquo;s Municipal "
+  "Vulnerability Preparedness program. Courtney Rocha, Southeast regional coordinator at the "
+  "Massachusetts Executive Office of Energy and Environmental Affairs, explains that the program "
+  "holds two funds, action grants of up to $3 million for a single municipality and a planning "
+  "grant. Nantucket is due for recertification and must go through the updated planning process "
+  "the state calls MVP 2.0 before it is eligible for action grants again. That grant opens in "
+  "November, pays $45,000 in the first year and $50,000 in the second, and runs a prescriptive "
+  "nine-step process with a vendor and a state equity partner. For a town up for recertification "
+  "it is close to non-competitive. The update emphasizes social resilience, built through a core "
+  "team drawn half from residents usually left out of planning. The commission votes to authorize "
+  "staff to pursue an application. It then authorizes two letters, one opposing a bipartisan bill "
+  "before Congress and separate proposals from the Advisory Council on Historic Preservation that "
+  "would both narrow Section 106 of the National Historic Preservation Act, and one opposing "
+  "changes to the 2030 census. Discussion of the draft 2027 meeting schedule runs about thirteen "
+  "minutes; commissioners object to the gaps left by combining months, and it passes with a "
+  "meeting added on Monday, August 24. The next meeting is December 7, jointly with the Select "
+  "Board.",
+ "ZRsz4cxcoTQ":
+  "Video description coming soon.",
+ "eh76nuJyXCY":
+  "Video description coming soon.",
 }
 
 

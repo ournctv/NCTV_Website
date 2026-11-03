@@ -403,10 +403,18 @@ function startReels(root){
   });
 }
 
-/* ---------- a sport with one school year opens it for you ----------
-   Cross Country and Golf have run for a single season each, so their year
-   picker holds exactly one button and pressing it is the only move the page
-   offers. Asked for on 2026-10-30: choose the sport and the games appear.
+/* ---------- choosing a sport opens its most recent school year ----------
+   Asked for on 2026-11-03: click a sport and the latest season's games are
+   already there, instead of a row of year buttons and nothing to read. This
+   replaced an earlier version that only opened the year when a sport had
+   exactly one of them, which covered Cross Country and Golf and left the
+   other thirteen sports needing a second click.
+
+   "Most recent" is the greatest data-year, not the last button in the DOM.
+   The two are the same today -- sport_year_picker() emits sorted(...) -- but
+   reading the attribute means a change to that loop's order cannot quietly
+   break this. The labels are all "School Yr NN-NN", so a plain string compare
+   is a date compare; it would need rethinking only at a century rollover.
 
    The button is clicked rather than switched on by hand, so the year picker's
    own handler does the work -- it unhides the panel, starts the reels and sets
@@ -416,14 +424,12 @@ function startReels(root){
    the one to rot: a description has no measurable height until its panel is
    showing, so it has to be measured after the reveal, not before.
 
-   This counts buttons, so it needs no list of sport names and takes care of
-   itself: a sport picks up a second school year and the auto-open stops, the
-   way Field Hockey's would have the moment its 26-27 group was added.
-
    Disabled buttons do not count. A greyed year is a year with nothing behind
-   it, so a sport holding one real year beside a greyed one should still open
-   the real one. */
-function autoOpenLoneYear(sportPanel){
+   it, so a sport holding real years beside a greyed one should open a real
+   one. Spring sports are the live example: Lacrosse, Softball and Baseball
+   top out at 25-26 because their 26-27 seasons have not been played, and the
+   newest year they actually have is the right one to open. */
+function autoOpenNewestYear(sportPanel){
   var pick = sportPanel.querySelector(".yearpick");
   if(!pick) return;
   // Only this picker's own buttons, on the off chance a panel ever nests
@@ -431,11 +437,16 @@ function autoOpenLoneYear(sportPanel){
   var btns = Array.prototype.filter.call(
     pick.querySelectorAll(".year-btn:not([disabled])"),
     function(b){ return b.closest(".yearpick") === pick; });
-  if(btns.length !== 1) return;
-  // Already open means this was called on a panel that never closed; clicking
-  // now would toggle the only year shut, which is the opposite of the point.
-  if(btns[0].classList.contains("is-active")) return;
-  btns[0].click();
+  if(!btns.length) return;
+  // Any year already showing means this was called on a panel that never
+  // closed. Clicking then would either toggle that year shut or throw away a
+  // choice the reader had made, so leave it as it is.
+  var live = btns.some(function(b){ return b.classList.contains("is-active"); });
+  if(live) return;
+  var newest = btns.reduce(function(a, b){
+    return b.getAttribute("data-year") > a.getAttribute("data-year") ? b : a;
+  });
+  newest.click();
 }
 
 function initSportPicker(){
@@ -461,7 +472,7 @@ function initSportPicker(){
         // After the loop, not inside it: the year button's own handler starts
         // the reels in the panel it reveals, and startReels skips anything
         // still inside a [hidden] ancestor.
-        if(opened) autoOpenLoneYear(opened);
+        if(opened) autoOpenNewestYear(opened);
       });
     });
   });

@@ -625,16 +625,28 @@ highlight reel, so `civic_card` greys their Highlight button out. That is
 correct, not a gap to fill. `SPORT_UPCOMING` still says "This game is
 upcoming", which would read oddly on a Spotlight; nothing uses it there yet.
 
-**A sport with one school year opens it for you.** Asked for on 2026-10-30.
-`autoOpenLoneYear()` in `site.js` runs at the end of the sport-button handler:
-if the sport panel's own year picker holds exactly one enabled `.year-btn`, it
-clicks it. Cross Country and Golf are the only two today, both having run a
-single season.
+**Choosing a sport opens its most recent school year.** Asked for on
+2026-11-03. `autoOpenNewestYear()` in `site.js` runs at the end of the
+sport-button handler: it finds the sport panel's own enabled `.year-btn`s and
+clicks the one with the greatest `data-year`. Every sport gets this, so the
+games are on screen after one click rather than two.
 
-Three things about it are load-bearing:
+This replaced `autoOpenLoneYear()`, which fired only when a sport had exactly
+one year — true of Cross Country and Golf alone, leaving the other thirteen
+sports a click short.
 
-- **It counts buttons; it names no sports.** A sport that picks up a second
-  school year stops auto-opening on its own, with no code to remember.
+Four things about it are load-bearing:
+
+- **It reads `data-year`; it names no sports and counts nothing.** The greatest
+  label wins. `sport_year_picker()` emits `sorted(...)`, so that is also the
+  last button today, but reading the attribute means reordering that loop
+  cannot quietly break the feature. Every label is `School Yr NN-NN`, so a
+  string compare is a date compare — only a century rollover would need
+  rethinking.
+- **Disabled buttons do not count.** A greyed year has nothing behind it. The
+  spring sports are the live case: Lacrosse, Softball and Baseball stop at
+  25-26 until their 26-27 seasons are played, and the newest year they really
+  have is the right one to open.
 - **It clicks the button instead of setting the classes.** The year picker's
   handler unhides the panel and starts the reels, and a separate listener on
   `.year-btn` re-measures the descriptions. Styling the button by hand here
@@ -644,10 +656,15 @@ Three things about it are load-bearing:
   anything still inside a `[hidden]` ancestor, so the sport panel has to be
   visible before the year beneath it is opened.
 
-Note the year button still toggles: with one year, pressing it collapses the
-only thing there is to see and leaves the sport open and empty. That is the
-pre-existing `yearpick--toggle` behavior, not something the auto-open
-introduced, and it was left alone.
+It bails out if any year in that picker is already showing, which means the
+panel never closed: clicking then would either toggle the open year shut or
+discard a year the reader had chosen. Hiding a sport panel runs `clearPicks`
+over its year buttons, so a reopened sport always starts with none active and
+the newest year opens again.
+
+The year button still toggles, so pressing the open year collapses it and
+leaves the sport showing an empty picker. That is the pre-existing
+`yearpick--toggle` behavior, not something the auto-open introduced.
 
 **Resolved: the card that pointed at the wrong game.** `SJEJ-n9dEzw` sat in
 Volleyball 26-27 titled *"vs Monomoy Sharks - October 21, 2026"* while the
