@@ -618,6 +618,35 @@ playlist URL, `sport_buttons()` unpacks it as `url`, and it is never emitted
 anywhere. Cross Country and Golf carry `""` because no playlist exists for
 them. Don't go hunting for one, and don't assume a missing URL is a bug.
 
+**Every list is newest-first, by the date printed in the card title.** Frank
+asked for this on 2026-11-05; until then all 59 lists were oldest-first. The
+order lives in the data here, unlike the Civic page, so a new card goes at the
+**top** of its season. The date comes in five forms -- `September 14, 2026`,
+`Nov. 7 2024` with no comma, `12/28/2021`, `12/22/22`, and one Girls Soccer
+card reading `27 de septiembre de 2025` -- so read the title, not the shape
+you expect. Upcoming games sort on their dates like anything else, which puts
+the furthest-away game at the top of an all-upcoming season; Frank confirmed
+that reading the same day and asked to keep it. `verify.py` checks every
+list from the built page.
+
+**A card whose title has no date is dated by `SPORT_CARD_DATES`.** 27 of them
+exist -- the 22-23 Basketball, Hockey and Lacrosse runs, where the title is
+often just `Whalers Boys Varsity Lacrosse`. Until 2026-11-05 nothing could
+place such a card and it kept whatever position it landed in; Frank's rule now
+is the **streaming date**, or the posting date when the video was never a
+stream. The table sits under `SPORTS_VIDEOS` in build.py, renders nothing, and
+holds yt-dlp's `release_date` with `upload_date` as the fallback.
+
+Use `release_date`, not `upload_date`: those games began in the evening
+Eastern, so their UTC `upload_date` is the next day and would date every one of
+them a day late. All 27 were already in the right place under the new rule, so
+adding it moved no cards.
+
+`verify.py` **fails** on an undated card that is missing from the table, which
+is the point -- a card with no date anywhere has no position the rule can
+derive, and silently leaving it where it fell is what the table replaces. The
+Civic page has the same arrangement in `CIVIC_CARD_DATES`.
+
 **Not every card is a game.** Cross Country and Golf (added 2026-10-30) hold
 *Spotlight* features — NSC's profiles of the teams it cannot carry on a live
 broadcast. They have no opponent in the title, no `vs.`, and no Instagram
@@ -1145,9 +1174,12 @@ suffix, then the year and the body, and no dash between them —
 `Sep. 15th, 2026 School Committee`. The 2,732 Civic TV titles were converted to
 this from `September 15, 2026 - School Committee` at the site owner's request.
 
-Nothing parses these dates. A civic card's quarter comes from the third element
-of its tuple in `CIVIC_BOARDS`, and the agendas and descriptions are keyed by
-video id, so the format is display only — it also supplies each thumbnail's
+Nothing in build.py parses these dates: a civic card's quarter comes from the
+third element of its tuple in `CIVIC_BOARDS`, and the agendas and descriptions
+are keyed by video id, so the format is display only as far as the build goes.
+`verify.py` does read them, to check that each list runs newest-first, so a
+date typed into a title wrongly is now a build failure rather than only a
+wrong-looking card — it also supplies each thumbnail's
 `alt` text. Dates written inside an agenda or a description are the meeting
 posting's own wording and are left long.
 
@@ -1161,12 +1193,45 @@ filling it in, since a board can be taken back out of that set.
 
 **Meetings are stored oldest-first and drawn newest-first.** `civic_year_cards()`
 and `civic_forum_cards()` reverse the list as they render, so a quarter or a
-forum year reads newest at the top; the School Committee list does the same
-through `programs_section(..., newest_first=True)`. The reversal is deliberately
-at render time and not in the data: new meetings are **appended** to the end of
-a year's list, and storing them backwards would silently invert that for every
-future addition. Keep appending. The hairline still falls between cards, since
-`rule=(i != last)` is applied after the reversal.
+forum year reads newest at the top; every list on the School Videos page does
+the same through `programs_section(..., newest_first=True)`. The reversal is deliberately
+at render time and not in the data, which keeps the storage order stable while
+the page order is derived from it. The hairline still falls between cards,
+since `rule=(i != last)` is applied after the reversal.
+
+**Place a new meeting by its date, which usually means appending.** A meeting
+is normally the newest in its year, so the end of the list is where it goes --
+and because the list is drawn in reverse, that puts it at the top of its
+quarter. But appending is a *position*, not a date: append a meeting posted
+late, or a backfilled re-upload, and it lands above meetings that happened
+after it. Appending a January meeting in December tops the Jan-Mar panel above
+March. So insert at the position the date gives it, and append when that
+position is the end. `verify.py` fails the build on either mistake, which is
+the backstop, not the rule.
+
+`verify.py` checks the order from the BUILT page and never from
+`CIVIC_BOARDS`: measuring the literal reports every list as backwards when the
+page is perfectly right, which is a mistake that has already been made once.
+
+**A card whose title has no readable date is dated by `CIVIC_CARD_DATES`**,
+which sits under `CIVIC_FORUMS` and renders nothing. Six cards need it: four
+Public Forums, one video that was never streamed, and the Article 12 info
+session. The rule, Frank's from 2026-11-05, is the **streaming date**, or the
+posting date when the video was never a stream, and `verify.py` fails on an
+undated card missing from the table. All six were already in the right place,
+so adding it moved nothing.
+
+A title that does carry a date still wins over the table. `ymII7Vgyx04` is
+cross-listed as an undated Public Forum and as "Feb. 2nd, 2019 Nantucket: 2030
+& Beyond" under Select Board 2019; one entry places the first and the title
+places the second.
+
+Two rows are worth not "simplifying". `rr8dnFrxNCY` prints its date as
+`7 18 18`, which the date reader cannot parse, and its upload is a week after
+the meeting -- taking the upload date files it above the Jul. 23rd forum.
+`Wcgd7v_Kvsk` was an evening stream, so its UTC upload lands the next day and
+would date it May 1st instead of Apr. 30th. Both are enforced by the check,
+not just written here.
 
 The year and quarter buttons are not reversed — they stay oldest-left, by
 request. Nantucket Government 101 is not a meeting list and keeps its own
@@ -2152,6 +2217,32 @@ repeated three times down the page.
 ("School Yr 25-26") rather than the integer years every other section uses.
 `program_group()` sorts and renders dict keys as-is, so string keys need no
 code change.
+
+**Every list on this page reads newest-first.** All three of them --
+`NPS_COMMITTEE`, `WHALER_WORD` and `CPS_PULSE` -- are stored oldest-first and
+rendered through `programs_section(..., newest_first=True)`, so the END of a
+list is the TOP of its panel. Frank asked for this on 2026-11-05. Until then
+only the School Committee list was reversed; Whaler Word and The CPS Pulse ran
+**Episode 1 at the top**, which read naturally for a numbered series. He was
+told that flipping them makes the episode runs count down -- Episode 34 first,
+Episode 1 last -- and asked for it anyway, so the whole site now follows one
+rule. Do not revert either list to episode order.
+
+`newest_first` is passed per CALL and applies to every group in it, so the two
+edits also reversed Graduation, Senior Awards and 8th Grade Promotion. Those
+hold exactly one card per year panel, so it changed nothing for them -- but a
+second card added to any of those panels now sorts newest-first too.
+
+**Place a new card by its date, which usually means appending**, exactly as on
+the Civic page. `verify.py`'s `school-dates-descending` checks all 18 dated
+lists from the built page and fails the build if one runs backwards, including
+if a `newest_first=True` is ever dropped.
+
+**Flagged, not fixed: two CPS Pulse cards are both "Episode 25"** --
+Apr. 11th and Mar. 28th 2025. The dates are right and the page order is right;
+the numbering is NSC's own in the YouTube titles, and that 17-card year is a
+partial run with real gaps anyway (36, 35, 34, 31, 30, 29, 26, 25, 25, ...),
+so the duplicate is the only thing out of place. Left as posted.
 
 Deliberate, and not to be "fixed":
 

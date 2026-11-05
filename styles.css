@@ -1898,6 +1898,13 @@ a.cfn-funds__mark:focus-visible img{transform:scale(1.09)}
    its selectors with -- so all that is left here is the gap to the label
    under it. This rule comes after that one, so it wins on margin. */
 .newsreel__signup{margin-bottom:calc(clamp(20px,2.6vw,32px) + 10px)}
+/* Every news card has aged out, so the reel and the label under this sentence
+   are not written at all, and that bottom gap has nothing left to lead to.
+   Zero it and the section's own bottom padding becomes the whole gap, exactly
+   as in every other section. news_section() puts .home-news--bare on the
+   section only in that case -- see NEWS_MAX_AGE_DAYS in build.py. Specificity
+   0,2,0 beats the rule above, and it sits after it as well. */
+.home-news--bare .newsreel__signup{margin-bottom:0}
 /* Frank asked on 2026-10-30 for the sentence to sit closer to the hero. It is
    the first thing in this section, so the section's own top padding was the
    whole gap -- clamp(56px,8vw,104px) from .section, which is 104px at desktop

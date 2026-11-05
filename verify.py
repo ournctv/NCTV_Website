@@ -618,14 +618,17 @@ def _():
     return bad
 
 
-def panel_spans(h):
-    """(start, end, data-year) for every year-panel, by matching div depth.
+def panel_spans(h, classes=("year-panel",)):
+    """(start, end, label) for every panel of these classes, by div depth.
 
     Needed because the panels nest: Browse by Topic -> "Whales, Whaling and
-    Whale Ecology" -> a year picker of its own.
+    Whale Ecology" -> a year picker of its own, and on the Civic page a
+    quarter-panel inside a year-panel. The default is year-panel alone so
+    that duplicate-video-ids keeps scoping to the year it always has.
     """
     out = []
-    for m in re.finditer(r'<div class="year-panel"[^>]*data-year="([^"]+)"', h):
+    pat = r'<div class="(?:%s)"[^>]*data-(?:year|quarter)="([^"]+)"' % "|".join(classes)
+    for m in re.finditer(pat, h):
         depth, i = 0, m.start()
         while i < len(h):
             n = re.compile(r"<div\b|</div>").search(h, i)
@@ -685,6 +688,192 @@ def _():
     if n == 0:
         bad.append("no --pending agenda buttons found at all on videos-civic.html")
     return bad
+
+
+# -- card order ---------------------------------------------------------------
+
+_MONTHS = {}
+for _i, _m in enumerate(("January February March April May June July August "
+                         "September October November December").split()):
+    _MONTHS[_m.lower()] = _i + 1
+    _MONTHS[_m[:3].lower()] = _i + 1
+_MONTHS["sept"] = 9
+for _i, _m in enumerate(("enero febrero marzo abril mayo junio julio agosto "
+                         "septiembre octubre noviembre diciembre").split()):
+    _MONTHS[_m] = _i + 1
+
+
+def title_date(t):
+    """The date printed in a card title, in every form the site uses.
+
+    Five forms, because a parser that only reads "September 14, 2026" misses a
+    third of the Sports page: "Nov. 7 2024" with no comma, "Jan. 8th, 2026"
+    with an ordinal, "12/28/2021" and "12/22/22" from the 2021-23 titles, and
+    "27 de septiembre de 2025" -- one Girls Soccer card is in Spanish.
+
+    Takes the LAST match of the first form that matches, so a title that
+    mentions another date first ("a rematch of the Oct. 8, 2025 meeting") is
+    still dated by its own. No title on the site carries two dates today;
+    the rule is there so that one arriving later does not silently misfile.
+
+    None when a title carries no date at all -- 27 Sports cards and 6 Civic
+    ones. Those are skipped rather than failed; see card_order.
+    """
+    for pat, pick in (
+            # "27 de septiembre de 2025"
+            (r"(\d{1,2})\s+de\s+([a-z]+)\s+de\s+(\d{4})",
+             lambda g: (int(g[2]), _MONTHS.get(g[1].lower()), int(g[0]))),
+            # "September 14, 2026" / "Nov. 7 2024" / "Jan. 8th, 2026"
+            (r"([A-Za-z]{3,9})\.?\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4})",
+             lambda g: (int(g[2]), _MONTHS.get(g[0].lower()), int(g[1]))),
+            # "12/28/2021" / "12/22/22"
+            (r"(\d{1,2})/(\d{1,2})/(\d{2,4})",
+             lambda g: (int(g[2]) + (2000 if int(g[2]) < 100 else 0),
+                        int(g[0]), int(g[1]))),
+    ):
+        best = None
+        for m in re.finditer(pat, t, re.I):
+            y, mo, d = pick(m.groups())
+            if mo and 1 <= d <= 31:
+                best = (y, mo, d)
+        if best:
+            return best
+    return None
+
+
+def card_dates(name):
+    """A build.py fallback table: the date for a card whose title has none.
+
+    SPORT_CARD_DATES or CIVIC_CARD_DATES. Read out of the source rather than
+    imported, because importing build.py would run it. Each is a plain dict of
+    video id -> "YYYY-MM-DD", and the per-row comments carry the provenance.
+    """
+    if not hasattr(card_dates, "_c"):
+        card_dates._c = {}
+    if name not in card_dates._c:
+        src = open("build.py", encoding="utf-8").read()
+        m = re.search(r"^%s = \{.*?^\}" % name, src, re.S | re.M)
+        if not m:
+            raise ValueError("%s not found in build.py" % name)
+        card_dates._c[name] = {
+            vid: tuple(int(x) for x in d.split("-"))
+            for vid, d in re.findall(
+                r'"([A-Za-z0-9_-]{11})":\s*"(\d{4}-\d{2}-\d{2})"', m.group(0))}
+        if not card_dates._c[name]:
+            raise ValueError("%s parsed as empty" % name)
+    return card_dates._c[name]
+
+
+def card_order(page, fallback=None, table_name=None):
+    """Every list on one page, newest-first, by the date in each card title.
+
+    A "list" is one innermost panel -- one year on the Sports page, one
+    quarter of one year on the Civic page. Checking the page as a whole would
+    be meaningless: it holds 425 separate lists whose dates interleave.
+
+    Cards outside every panel are not checked. On the Civic page those are the
+    ten Nantucket Government 101 department videos, which sit in a flat
+    alphabetical list; CLAUDE.md says that one is not a meeting list and keeps
+    its own order, and it has no dates to sort by anyway.
+
+    `fallback` maps a video id to a date for cards whose title carries none,
+    and `table_name` is what to call it in a failure. Given one, a card that is
+    in neither the title nor the table is a FAILURE, not a skip -- that is what
+    stops an undated card from being dropped into a list at no particular
+    position. A title that does carry a date still wins over the table, so a
+    video cross-listed under a dated title and an undated one is placed
+    correctly in both.
+
+    Equal dates pass. Two meetings on one day is ordinary -- the Select Board
+    met twice on Jul. 17th 2024 -- and nothing in the page decides which of
+    the two should read first.
+    """
+    h = pages()[page]
+    spans = panel_spans(h, ("year-panel", "quarter-panel"))
+    buckets = collections.defaultdict(list)
+    for m in re.finditer(r'<article class="watch-episode".*?</article>', h, re.S):
+        inner = max((s for s in spans if s[0] < m.start() < s[1]),
+                    key=lambda s: s[0], default=None)
+        if not inner:
+            continue
+        t = re.search(r'<h3 class="watch-episode__title">(.*?)</h3>', m.group(0), re.S)
+        v = re.search(r'(?:v=|youtu\.be/|embed/)([A-Za-z0-9_-]{11})', m.group(0))
+        buckets[(inner[0], inner[2])].append(
+            (t.group(1) if t else "(no title)", v.group(1) if v else None))
+    if not buckets:
+        return ["%s: no panelled card lists found -- has the markup changed?" % page]
+    bad, dateless = [], []
+    for (start, label), cards in sorted(buckets.items()):
+        dated = []
+        for title, vid in cards:
+            d = title_date(title)
+            if d is None and fallback is not None:
+                d = fallback.get(vid)
+                if d is None:
+                    dateless.append(
+                        "%s, panel %s: %r has no date in its title and none in "
+                        "%s, so nothing puts it in order -- add its streaming "
+                        "date (or its posting date if it was never streamed)"
+                        % (page, label, title[:60], table_name))
+                    continue
+            if d:
+                dated.append((title, d))
+        for i in range(1, len(dated)):
+            if dated[i][1] > dated[i - 1][1]:
+                bad.append("%s, panel %s: %r sits below %r -- the list is "
+                           "newest-first by the date in the title"
+                           % (page, label, dated[i][0][:60], dated[i - 1][0][:60]))
+    return dateless + bad
+
+
+@check("civic-dates-descending", "every Civic TV list is newest-first by its titles' dates")
+def _():
+    # The honest test reads the BUILT page, never CIVIC_BOARDS. The data is
+    # stored oldest-first on purpose -- Update_CTV appends -- and
+    # civic_year_cards() reverses it as it renders. Measuring the literal
+    # says every list is backwards when the page is perfectly right, which is
+    # exactly the mistake this check exists to stop. It also catches the
+    # reverse: a renderer that stopped reversing.
+    #
+    # Six cards carry no readable date in the title -- five Public Forums and
+    # one cross-listed video -- so CIVIC_CARD_DATES places them and this fails
+    # on any undated card missing from it.
+    return card_order("videos-civic.html", card_dates("CIVIC_CARD_DATES"),
+                      "CIVIC_CARD_DATES")
+
+
+@check("school-dates-descending", "every School Videos list is newest-first by its titles' dates")
+def _():
+    # Added 2026-11-05, when Frank had the whole page put newest-first. Until
+    # then Whaler Word and The CPS Pulse ran Episode 1 at the top, so the page
+    # held lists going both ways and could not be checked as one thing; he
+    # asked for every list on it to read newest to oldest, which made it
+    # checkable. Both lists are now rendered through
+    # programs_section(newest_first=True) like the School Committee one.
+    #
+    # No fallback table: 21 school cards carry no date (the Class of YYYY
+    # graduations, Senior Awards and the 8th Grade Promotions), and every one
+    # of them sits alone in its own year panel, where order cannot be wrong.
+    # Should a second card ever join one of those panels, this check would
+    # skip the undated one -- add a CARD_DATES table then, as the other two
+    # pages have.
+    return card_order("videos-school.html")
+
+
+@check("sports-dates-descending", "every Sports Connection list is newest-first by its titles' dates")
+def _():
+    # Here the order really is in the data, so this check and a glance at
+    # SPORTS_VIDEOS agree. Upcoming games are sorted on their dates like any
+    # other card, which puts the furthest-away game at the top of an
+    # all-upcoming season; Frank confirmed that reading on 2026-11-05.
+    #
+    #
+    # The fallback table makes this total: 27 cards carry no date in the
+    # title, and passing SPORT_CARD_DATES both places them and fails on any
+    # undated card that is missing from it.
+    return card_order("videos-sports-connection.html",
+                      card_dates("SPORT_CARD_DATES"), "SPORT_CARD_DATES")
+
 
 
 def main():
