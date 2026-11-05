@@ -1248,6 +1248,7 @@ SPORTS_VIDEOS = {
     "for 4:30pm, presented on the Nantucket Sports Connection YouTube channel as well as on NCTV "
     "HD Channel 1072."
     , False),
+   ("fEyIEkohlAo", "MIAA Preliminary Round: Nantucket Whalers Volleyball AT Dennis-Yarmouth Dolphins - November 5, 2026", "", True),
   ],
  },
  "Field Hockey": {
@@ -2876,6 +2877,7 @@ SPORT_HIGHLIGHTS = {
  "ZCDsKvWv7Cw": "DeFPBmLoxOF",    # Falmouth Clippers, Oct. 2, 2026
  "W4OUx85JdNE": "DexCGstI3N_",    # Dennis-Yarmouth Dolphins, Oct. 15, 2026
  "Ads77gh567Y": "DfAbsT0o1oK",    # AT Sandwich Blue Knights, Oct. 23, 2026
+ "7Y3sAP0an_U": "DfVnLXlo22o",    # Island Cup vs. Martha's Vineyard, Oct. 31, 2026
  # Volleyball
  "P3J1bZS8S-E": "DezY0D1ITTh",    # Sturgis East Storm, Oct. 13, 2026 (reel covers two games)
  "XplMJXN2hcM": "DezY0D1ITTh",    # Sturgis West Navigators, Oct. 14, 2026 (same reel)
@@ -3599,10 +3601,62 @@ NEWS = [
            'Falmouth High School at Gardner Farm on Nantucket.'),
 ]
 
+# How long a card stays on the home page. Frank, 2026-11-05: anything two
+# weeks old or older comes off by itself, so the reel never carries stale
+# news. A card dated exactly fourteen days ago IS two weeks old and goes.
+NEWS_MAX_AGE_DAYS = 14
+
+# The filter runs at BUILD TIME, and it has to. The dots, the "n of N"
+# labels, which card loads eagerly and the two peek images either side are
+# all baked into the HTML by news_section() below, so nothing can drop a card
+# after the page has been written. A card therefore leaves the live site the
+# next time the site is built *and published* -- in practice the next update
+# run -- rather than on the stroke of its fourteenth day.
+#
+# One consequence worth knowing: index.html now depends on the day it was
+# built, so a rebuild with no edit at all can legitimately show index.html in
+# the diff. The footer year has always worked this way; this moves the same
+# effect from once a year to any day a card crosses the line.
+
+
+def news_live(today=None):
+    """NEWS with every card two weeks old or older removed, newest first.
+
+    A card dated in the FUTURE is kept. Frank writes one ahead of its day --
+    the podcast-studio card was dated 11/7 and went in on 11/5 -- so the test
+    is how OLD a card is and never whether its date has arrived yet.
+
+    A date that will not parse keeps its card, with a warning. The two
+    failure modes are not symmetrical: a stale card is on the home page where
+    somebody sees it and says so, while a card dropped because its date was
+    mistyped simply disappears.
+    """
+    today = today or datetime.date.today()
+    kept = []
+    for item in NEWS:
+        try:
+            when = datetime.datetime.strptime(item["date"], "%m/%d/%y").date()
+        except ValueError:
+            print("  news: KEEPING %s -- cannot read its date %r"
+                  % (item["img"], item["date"]))
+            kept.append(item)
+            continue
+        age = (today - when).days
+        if age >= NEWS_MAX_AGE_DAYS:
+            print("  news: dropping %s (%s, %d days old)"
+                  % (item["img"], item["date"], age))
+        else:
+            kept.append(item)
+    return kept
+
+
 def news_section():
-    n = len(NEWS)
+    # The expired cards are gone before any of the counting below happens, so
+    # the dots, the labels and the peeks all describe what is really there.
+    items = news_live()
+    n = len(items)
     slides, copies, dots = [], [], []
-    for i, item in enumerate(NEWS):
+    for i, item in enumerate(items):
         first = (i == 0)
         # The first card is on screen the moment the page paints, so it is the
         # only one worth fetching up front. The rest are behind an arrow.
@@ -3661,30 +3715,36 @@ def news_section():
                 f'                 width="1080" height="1300" loading="lazy">\n'
                 f'          </button>')
     nl = chr(10)
-    return f"""  <!-- latest news: one card at a time, its neighbours either side -->
-  <section class="section home-news">
-    <div class="wrap">
-      <p class="newsreel__signup" data-reveal>Would you like NCTV to email you
+
+    signup = f"""      <p class="newsreel__signup" data-reveal>Would you like NCTV to email you
         the latest news about our events, videos, classes, auctions, and
         giveaways? If so, please
         <a href="{NEWS_SIGNUP_URL}" target="_blank" rel="noopener">click here</a>
-        to sign up for our email list.</p>
-      <div class="section__head section__head--tight" data-reveal>
-        <span class="eyebrow"><span class="dot"></span>Latest NCTV News</span>
-      </div>
-      <div class="newsreel" data-newsreel data-newsreel-ms="{NEWS_INTERVAL_MS}" data-reveal
-           role="group" aria-roledescription="carousel" aria-label="Latest NCTV news">
-        <div class="newsreel__stage">
-{peek("prev", NEWS[-1])}
-          <ul class="newsreel__track">
-{nl.join(slides)}
-          </ul>
-{peek("next", NEWS[1])}
-        </div>
-        <ul class="newsreel__copies">
-{nl.join(copies)}
-        </ul>
-        <div class="newsreel__controls">
+        to sign up for our email list.</p>"""
+
+    # Every card has aged out. The sign-up paragraph lives inside this
+    # section, so dropping the section whole would take the mailing-list
+    # invitation down with it; instead the eyebrow and the reel go and the
+    # invitation stays, rather than leaving "Latest NCTV News" over nothing.
+    if n == 0:
+        return f"""  <!-- latest news: every card has aged out; the sign-up stays -->
+  <section class="section home-news">
+    <div class="wrap">
+{signup}
+    </div>
+  </section>
+"""
+
+    # One card left. initNewsreel() in site.js returns early below two
+    # slides, so the arrows and the lone dot could never do anything and the
+    # peeks either side would show that same picture twice more. None of them
+    # is written; the card reads as a picture and a paragraph.
+    if n == 1:
+        peek_prev = peek_next = controls = ""
+    else:
+        peek_prev = peek("prev", items[-1]) + nl
+        peek_next = peek("next", items[1]) + nl
+        controls = f"""        <div class="newsreel__controls">
           <button type="button" class="newsreel__arrow newsreel__arrow--prev"
                   data-newsreel-prev aria-label="Previous item">{chev}</button>
           <div class="newsreel__dots">
@@ -3693,7 +3753,26 @@ def news_section():
           <button type="button" class="newsreel__arrow newsreel__arrow--next"
                   data-newsreel-next aria-label="Next item">{chev}</button>
         </div>
+"""
+
+    return f"""  <!-- latest news: one card at a time, its neighbours either side -->
+  <section class="section home-news">
+    <div class="wrap">
+{signup}
+      <div class="section__head section__head--tight" data-reveal>
+        <span class="eyebrow"><span class="dot"></span>Latest NCTV News</span>
       </div>
+      <div class="newsreel" data-newsreel data-newsreel-ms="{NEWS_INTERVAL_MS}" data-reveal
+           role="group" aria-roledescription="carousel" aria-label="Latest NCTV news">
+        <div class="newsreel__stage">
+{peek_prev}          <ul class="newsreel__track">
+{nl.join(slides)}
+          </ul>
+{peek_next}        </div>
+        <ul class="newsreel__copies">
+{nl.join(copies)}
+        </ul>
+{controls}      </div>
     </div>
   </section>
 """
@@ -4809,6 +4888,7 @@ CIVIC_BOARDS = {
    ("jLy8OuOSIHY", "Oct. 15th, 2026 Nantucket Conservation Commission", 10),
    ("jQngdY2OANo", "Oct. 22nd, 2026 Conservation Commission (Special Meeting)", 10),
    ("dNyUHzwdMDU", "Oct. 29th, 2026 Nantucket Conservation Commission", 10),
+   ("90lq9haY6CU", "Nov. 5th, 2026 Nantucket Conservation Commission", 11),
   ],
  },
  "Historic District Commission": {
@@ -7199,6 +7279,9 @@ CIVIC_FORUMS = {
   ("CwTYstsLk0w",
    "Public Info Session: Wauwinet Road Multi-use Path Alignment Alternatives - August 12, 2026"),
   ("sqRH2lYIcio", "Public Info Session: Somerset Sewer Project - August 26, 2026"),
+  ("MzSFEXeDykE",
+   "Info Session: Somerset Needs Area Sewer Extension &amp; Roadway Improvement Project - "
+   "November 5, 2026"),
  ],
 }
 
@@ -25106,12 +25189,59 @@ CIVIC_AGENDAS = {
   "Project.</li><li>Continued Review of Town-sponsored 2027 Annual Town Meeting Warrant "
   "Articles.</li></ol></li><li>SELECT BOARD REPORTS/COMMENT<ol><li>Committee "
   "Reports.</li></ol></li><li>ADJOURNMENT</li></ol>",
+ "90lq9haY6CU":
+  "<p>Thursday, November 5, 2026 at 5:00 P.M.</p><ol><li>Call To Order</li><li>Acceptance of the "
+  "Agenda</li><li>Announcements<ol><li>The Nantucket Conservation Commission Meeting is being "
+  "audio and Video Recorded.</li></ol></li><li>Update on Public Comment Questions from Prior "
+  "Meetings</li><li>Public Comment</li><li>Public Hearing<ol><li>Notice of Intent- No Waiver "
+  "Required<ol><li>Taliento- 12 Madequecham Valley Road (89-12) SE48-4002 (Rits)</li><li>*74A "
+  "Madaket Road LLC- 74A Madaket Road (41-811) SE48-4006 (Rits)</li></ol></li><li>Notice of "
+  "Intent- Waiver Required<ol><li>Nantucket Islands Land Bank- Falmouth Avenue Relocation (82-30) "
+  "NAN-144 (Phelps)</li><li>Ven Den Born- 145 Wauwinet Road (11-7) SE48-3990 "
+  "(Rits)</li><li>*Callmomndadagain Realty Trust- 41A Cliff Road (42.4.4-2) SE48-4005 "
+  "(Santos)</li><li>*Nantucket Islands Land Bank- Consue Springs (various) SE48-4004 "
+  "(Phelps)</li><li>*Town of Nantucket-130 Tom Nevers Road (91-109) "
+  "SE48-4007(McComb)</li></ol></li><li>Amended Orders of Conditions- No Waiver Required "
+  "(none)</li><li>Amended Orders of Conditions- Waiver Required<ol><li>*Nantucket Maria Mitchell "
+  "Association, LLC- 27, 25R Washington Street &amp; 10 Coffin Street (42.3.2-79, 80, &amp; 81) "
+  "SE48- 3682 (Madden)</li></ol></li></ol></li><li>Public Meeting<ol><li>Orders of Conditions/ "
+  "Amended Orders of Conditions- No Waiver Required<ol><li>Taliento- 12 Madequecham Valley Road "
+  "(89-12) SE48-4002 (Rits)</li><li>*74A Madaket Road LLC- 74A Madaket Road (41-811) SE48-4006 "
+  "(Rits)</li></ol></li><li>Orders of Conditions/ Amended Orders of Conditions- Waiver "
+  "Required<ol><li>Nantucket Islands Land Bank- Falmouth Avenue Relocation (82-30) NAN-144 "
+  "(Phelps)</li><li>Ven Den Born- 145 Wauwinet Road (11-7) SE48-3990 "
+  "(Rits)</li><li>*Callmomndadagain Realty Trust- 41A Cliff Road (42.4.4-2) SE48-4005 "
+  "(Santos)</li><li>*Nantucket Islands Land Bank-Consue Springs (various) SE48-4004 "
+  "(Phelps)</li><li>*Town of Nantucket-130 Tom Nevers Road (91-109) SE48-4007 "
+  "(McComb)</li><li>*Nantucket Maria Mitchell Association, LLC- 27, 25R Washington Street &amp; "
+  "10 Coffin Street (42.3.2-79, 80, &amp;81) SE48-3682 (Madden)</li></ol></li><li>Request for "
+  "Determination of Applicability- Delineation Only (none)</li><li>Request for Determination of "
+  "Applicability- Work Requested</li><li>Minor Modifications (none)</li><li>Certificate of "
+  "Compliance<ol><li>Perkins- 11 Stone Barn Way (29-907) SE48-1406 (Glidden)</li><li>Perkins- 11 "
+  "Stone Barn Way (29-907) SE48-1797 (Glidden)</li><li>Perkins- 11 Stone Barn Way (29-907) "
+  "SE48-2135 (Glidden)</li><li>Nantucket Center for Elder Affairs, Inc.- 81 Washington Street "
+  "(42.2.3-23, 24, &amp; 25) SE48-3966 (Santos)</li></ol></li><li>Extension Requests<ol><li>32 "
+  "Hulbert Ave Rear Lot Trust- 27 Willard Street (29-72.2) SE48-3714 (Gasbarro)</li><li>Boathouse "
+  "Realty Trust- 52 Warrens Landing (38-29) SE48-3579 (Godfrey)</li></ol></li><li>Other "
+  "Business<ol><li>Approval of Minutes 10/15/2026, 10/22/2006, 10/29/2026</li><li>Monitoring "
+  "Reports</li><li>Committee Reports- CRAC, CPC, NP &amp; EDC, Harbor Plan, "
+  "etc.</li><li>Enforcement Actions/Potential Enforcement Actions - 21R Madaket Road - 16 Meadow "
+  "Lane -Baxter Road Geotubes- Scheduling of special meeting (s) on avenue for "
+  "repair</li><li>Commissioner Comments</li><li>Staff Reports</li></ol></li></ol></li></ol>",
 }
 
 
 # What happened at a meeting, keyed by video id. Kept apart from CIVIC_BOARDS so
 # the video lists stay one line per meeting; a meeting with no entry simply
 # shows its title, as they all did before.
+# The fixed opening of every Historic District Commission summary. HDC
+# agendas run to ~100 items, most disposed of in seconds, so a description
+# covers only the handful that took the most time and says so up front.
+# One constant rather than 87 copies: a copy that drifted would be invisible.
+HDC_SUMMARY_PREFIX = (
+ "This summary skips many topics because of the quantity discussed; "
+ "some principal topics include: ")
+
 CIVIC_DESCRIPTIONS = {
  "bbc3cz61R9A":
   "The legislative delegation gives its annual update: Senator Cyr and Representative Moakley on "
@@ -26253,24 +26383,22 @@ CIVIC_DESCRIPTIONS = {
   "fitted into the existing basement, could come in at a fraction of $6 million. The direction is "
   "to separate the two and bring back real numbers. The preliminary fiscal 2028 budget is up less "
   "than one percent.",
- "38A_urEC-_k":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: new dwellings at 53 Nobadeer Avenue, 1 Pawguvet Lane and 7 Orange Street. Nobadeer "
-  "took the longest, about twenty-three minutes. A two-story house on a stretch of one-story "
-  "cottages drew letters from abutters. One neighbor spoke of erosion, of moving his own house "
-  "back twice, and of a precedent that would remake that shoreline. Pawguvet came next. A 1986 "
-  "house there became a tear-down once the flood plain required raising it, so the owner asked to "
-  "move it off, holding demolition in reserve through a six-month notification. Its replacement "
-  "stands four feet up to clear the flood plain, which a neighbor said pushes the ridge to "
-  "twenty-nine feet. The Orange Street gambrel would sit beside an older brick gambrel, near the "
-  "Unitarian church. Its three-over-five bay came from a hand sketch of a house demolished around "
-  "1870. Most commissioners found it too large for its neighbors. All three were held for "
-  "revisions, as were 78 Cliff Road and a cottage at 13 Williams Street meant for hospital staff.",
- "N6OzW5cIYEo":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: 85 Vestal Street, 17 Hooper Farm Road, and 37 Squam Road. Vestal took about thirty "
-  "minutes, its seventh appearance before the commission. A main house, guest house and pool sit "
-  "on a steep lot. The owner&rsquo;s attorney argued that substantive changes had been made. "
+ "38A_urEC-_k": HDC_SUMMARY_PREFIX + (
+  "new dwellings at 53 Nobadeer Avenue, 1 Pawguvet Lane and 7 Orange Street. Nobadeer took the "
+  "longest, about twenty-three minutes. A two-story house on a stretch of one-story cottages drew "
+  "letters from abutters. One neighbor spoke of erosion, of moving his own house back twice, and "
+  "of a precedent that would remake that shoreline. Pawguvet came next. A 1986 house there became "
+  "a tear-down once the flood plain required raising it, so the owner asked to move it off, "
+  "holding demolition in reserve through a six-month notification. Its replacement stands four "
+  "feet up to clear the flood plain, which a neighbor said pushes the ridge to twenty-nine feet. "
+  "The Orange Street gambrel would sit beside an older brick gambrel, near the Unitarian church. "
+  "Its three-over-five bay came from a hand sketch of a house demolished around 1870. Most "
+  "commissioners found it too large for its neighbors. All three were held for revisions, as were "
+  "78 Cliff Road and a cottage at 13 Williams Street meant for hospital staff."),
+ "N6OzW5cIYEo": HDC_SUMMARY_PREFIX + (
+  "85 Vestal Street, 17 Hooper Farm Road, and 37 Squam Road. Vestal took about thirty minutes, "
+  "its seventh appearance before the commission. A main house, guest house and pool sit on a "
+  "steep lot. The owner&rsquo;s attorney argued that substantive changes had been made. "
   "Commissioners answered that the overall volume had not come down. One said that if the board "
   "were consistent, the application would have been denied four rounds ago. The chair set out the "
   "three-strike policy: the project is two hearings into three, and a denial can carry prejudice. "
@@ -26278,75 +26406,69 @@ CIVIC_DESCRIPTIONS = {
   "place of a denial. The Squam Road application is a sport barn, enclosing a padel court and a "
   "gym on a rural road. Asked why it could not be sunk, the architect cited groundwater. One "
   "commissioner said it reads less like a barn than a ballroom. The commission also voted to "
-  "appoint a member to the Planning and Economic Development Commission.",
- "2mbczar2Z_c":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a new dwelling at 74 Monomoy Road, window and door revisions at 23 Orange Street, and "
-  "a historic determination the preservation planner declined to put on consent. This was a short "
+  "appoint a member to the Planning and Economic Development Commission."),
+ "2mbczar2Z_c": HDC_SUMMARY_PREFIX + (
+  "a new dwelling at 74 Monomoy Road, window and door revisions at 23 Orange Street, and a "
+  "historic determination the preservation planner declined to put on consent. This was a short "
   "meeting, under an hour. Monomoy took the longest, about ten minutes. The Orange Street "
   "application replaces four rotting windows from the 1950s and shifts a set of doors. The "
   "determination was held back because photographs suggested the foundation may have been raised "
   "from its historic elevation, and the planner wanted the board to decide rather than staff. The "
   "commission settled it by changing the figure in the determination from 96 percent to 75. "
   "Twelve Pine Street was called, passed over, and finally dropped when nobody appeared; the "
-  "chair allowed six minutes before rescheduling it. Old Business hours move to 4:00 to 7:00 p.m.",
- "mDDZP6jzyOw":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a 1985 house on Eel Point Road that cannot be raised to meet FEMA, an unpermitted "
-  "tent at 85 Pleasant Street, and Land Bank buildings to be moved off. The Eel Point house is "
-  "not a contributing structure, so it cannot be held to anything less than FEMA requires. Staff "
-  "was blunt. Without an elevation certificate or a letter from an engineer, raising it is not "
-  "going to happen. The Pleasant Street application is after the fact. A hoop tent for equipment "
+  "chair allowed six minutes before rescheduling it. Old Business hours move to 4:00 to 7:00 "
+  "p.m."),
+ "mDDZP6jzyOw": HDC_SUMMARY_PREFIX + (
+  "a 1985 house on Eel Point Road that cannot be raised to meet FEMA, an unpermitted tent at 85 "
+  "Pleasant Street, and Land Bank buildings to be moved off. The Eel Point house is not a "
+  "contributing structure, so it cannot be held to anything less than FEMA requires. Staff was "
+  "blunt. Without an elevation certificate or a letter from an engineer, raising it is not going "
+  "to happen. The Pleasant Street application is after the fact. A hoop tent for equipment "
   "storage went up without approval or a building permit and drew a violation letter from the "
   "zoning inspector, though a surveyor has since confirmed it is out of the setback. The Land "
   "Bank item posed the opposite problem. Commissioners were asked to approve moving buildings off "
   "without being told where they are going, which procurement rules have delayed. Smaller matters "
   "filled the rest: a shed at 57 Somerset Road, a board fence inside a privet hedge, and a "
-  "vehicle gate on Monomoy Road.",
- "XlM3j12-4Zg":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a new hotel building at 30 North Beach Street, window replacement at 14 New Mill "
-  "Street, and a chimney at 126R Main Street. New Mill Street ran longest at about twenty-five "
-  "minutes, on an application first heard in August 2024. The hotel took twenty-two. Its "
-  "architect noted that the new building sits roughly eight feet back from the structure it "
-  "replaces, which is already approved for demolition. The chimney took twenty minutes on its "
-  "own, and concerned the chimney alone, with no change to the house. Its representative showed "
-  "photographs of neighboring chimneys that run the full height of an exterior wall. The "
-  "commission approved it only after stripping the bottom three quarters of the corbelling from "
-  "the cap and pulling in its projection. An addition at 83 Washington Street opened the meeting. "
-  "The architect offered three schemes and the board took the third, which drops the full-height "
-  "columns, on the grounds that the site is very visible. Doors and shutters in Essex Green "
-  "passed four to one.",
- "_zsCVlxFAhE":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: 9 New Jersey Avenue, a group of sign applications, revisions at 22 Bassett Street, "
-  "and a sports court. At four and a half hours, this was the longest meeting of the winter. New "
-  "Jersey Avenue took the most time. An approved renovation had evolved until every side of the "
-  "old structure was changing, at which point there was little left to keep. The representative "
+  "vehicle gate on Monomoy Road."),
+ "XlM3j12-4Zg": HDC_SUMMARY_PREFIX + (
+  "a new hotel building at 30 North Beach Street, window replacement at 14 New Mill Street, and a "
+  "chimney at 126R Main Street. New Mill Street ran longest at about twenty-five minutes, on an "
+  "application first heard in August 2024. The hotel took twenty-two. Its architect noted that "
+  "the new building sits roughly eight feet back from the structure it replaces, which is already "
+  "approved for demolition. The chimney took twenty minutes on its own, and concerned the chimney "
+  "alone, with no change to the house. Its representative showed photographs of neighboring "
+  "chimneys that run the full height of an exterior wall. The commission approved it only after "
+  "stripping the bottom three quarters of the corbelling from the cap and pulling in its "
+  "projection. An addition at 83 Washington Street opened the meeting. The architect offered "
+  "three schemes and the board took the third, which drops the full-height columns, on the "
+  "grounds that the site is very visible. Doors and shutters in Essex Green passed four to one."),
+ "_zsCVlxFAhE": HDC_SUMMARY_PREFIX + (
+  "9 New Jersey Avenue, a group of sign applications, revisions at 22 Bassett Street, and a "
+  "sports court. At four and a half hours, this was the longest meeting of the winter. New Jersey "
+  "Avenue took the most time. An approved renovation had evolved until every side of the old "
+  "structure was changing, at which point there was little left to keep. The representative "
   "apologized for not returning to the commission before the work was done. The Bassett Street "
   "revisions were pulled off consent by the preservation planner, who thought a second roof walk "
   "central enough to deserve a hearing. The sports court is surfaced in rubberized interlocking "
   "tiles, chosen to kill the noise of hard pack, set at the back of more than an acre in a "
   "subdued gray. The chair headed off a discussion of pickleball. A structure already approved "
   "for Dukes Road was also allowed to move to Vestal Street, carrying its approved changes with "
-  "it.",
- "Z20CrXoI_mI":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a house move at 8 North Mill Street, a public hearing on the commission&rsquo;s fee "
-  "schedule, and a fence and mechanical equipment at 18 Fair Street. North Mill took about thirty "
-  "minutes, the longest of the night. The application is to move the house five feet on its own "
-  "lot. It had not been back in a year, held up by matters in the applicant&rsquo;s family, and "
-  "the agent pressed to finish so the owner could get a certificate of occupancy. The fee hearing "
-  "ran twenty-six minutes. Staff explained that the schedule has not been updated in roughly a "
+  "it."),
+ "Z20CrXoI_mI": HDC_SUMMARY_PREFIX + (
+  "a house move at 8 North Mill Street, a public hearing on the commission&rsquo;s fee schedule, "
+  "and a fence and mechanical equipment at 18 Fair Street. North Mill took about thirty minutes, "
+  "the longest of the night. The application is to move the house five feet on its own lot. It "
+  "had not been back in a year, held up by matters in the applicant&rsquo;s family, and the agent "
+  "pressed to finish so the owner could get a certificate of occupancy. The fee hearing ran "
+  "twenty-six minutes. Staff explained that the schedule has not been updated in roughly a "
   "decade, and that the Planning Board and Zoning Board of Appeals schedules have already been "
   "revised, leaving the commission last. Fair Street is St. Paul&rsquo;s Episcopal. The argument "
   "was less about the fence than the machinery. National Grid dictates where the switch gear "
   "sits. The condensers were cut from five units to two, then tucked behind the church sign and a "
-  "four-foot privet hedge.",
- "dqOPRbyou5A":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a new building at 159 Orange Street, and painting a roof black at 79 Orange Street to "
-  "allow rooftop solar. The new building took about thirty-seven minutes, the longest item. "
+  "four-foot privet hedge."),
+ "dqOPRbyou5A": HDC_SUMMARY_PREFIX + (
+  "a new building at 159 Orange Street, and painting a roof black at 79 Orange Street to allow "
+  "rooftop solar. The new building took about thirty-seven minutes, the longest item. "
   "Commissioners wanted the taller mass held away from the street and buffered with trees. The "
   "roof question took twenty-six. The owner needs the shingles dark for the solar array to be "
   "approved, and it was not clear whether the roof should be repainted or replaced. A "
@@ -26354,71 +26476,65 @@ CIVIC_DESCRIPTIONS = {
   "on asphalt shingles had held up for six years. The commissioner noted that six years is not "
   "very long. The commission also adopted its meeting and deadline schedule through August 11, "
   "and introduced a lightning round, complete with a sound effect, to move the shorter "
-  "applications along.",
- "iJxE4twtAbs":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a new dwelling at 7 Orange Street, a new dwelling at 85 Vestal Street, and pools at 8 "
-  "and 10 Cato Lane. The meeting opened with two policy votes, on the definition of demolition "
-  "and on unapproved demolitions and the fines for them. Orange Street then took the better part "
-  "of thirty-five minutes. The chimneys have been moved to the central ridge, and commissioners "
+  "applications along."),
+ "iJxE4twtAbs": HDC_SUMMARY_PREFIX + (
+  "a new dwelling at 7 Orange Street, a new dwelling at 85 Vestal Street, and pools at 8 and 10 "
+  "Cato Lane. The meeting opened with two policy votes, on the definition of demolition and on "
+  "unapproved demolitions and the fines for them. Orange Street then took the better part of "
+  "thirty-five minutes. The chimneys have been moved to the central ridge, and commissioners "
   "compared that against illustrations of the house that stood there, which show a chimney "
   "forward near the front. Vestal took twenty-eight. The chair tried to narrow it, asking the "
   "board to opine on the design of the main house alone. Cato Lane brought the two adjacent lots "
   "onto a single plan at the commission&rsquo;s request, and the applicant reported that the "
   "zoning there requires an extra ten-foot setback nobody had accounted for. The preservation "
   "planner reported that Nantucket is one of about four communities in the Commonwealth receiving "
-  "Certified Local Government funding this year.",
- "PtyiiPF9zew":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: housing units being moved off 41 Jefferson Avenue, a church at 42 Monohansett Road, "
-  "and a new dwelling at 118 Eel Point Road. The Jefferson move-ons took about thirty minutes "
-  "across two applications. The Land Bank and the Housing Authority are relocating the units to "
-  "159 Hummock Pond Road and 158 Madaket Road. One is the only two-story structure in the group. "
-  "Another shares a wall with a unit that stays behind, which leaves a blank elevation to be "
-  "dealt with once it is exposed. The church took twenty-two minutes. It revises a building "
-  "approved on the site in 2004 and is smaller than what was permitted then. Eel Point ran "
-  "thirteen. Its architect said the street carries a range of architectural language, some of it "
-  "ornate, and that the design aims between. The commission also ratified its votes from the week "
-  "before on the definition of demolition and on unapproved demolitions and fines.",
- "3iV2LhPm4gQ":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a 400-square-foot addition at 4 Westmoor Lane, and a new dwelling at 7 Orange Street. "
-  "Westmoor Lane ran about thirty minutes. The longest item of the night, at thirty-seven, was an "
+  "Certified Local Government funding this year."),
+ "PtyiiPF9zew": HDC_SUMMARY_PREFIX + (
+  "housing units being moved off 41 Jefferson Avenue, a church at 42 Monohansett Road, and a new "
+  "dwelling at 118 Eel Point Road. The Jefferson move-ons took about thirty minutes across two "
+  "applications. The Land Bank and the Housing Authority are relocating the units to 159 Hummock "
+  "Pond Road and 158 Madaket Road. One is the only two-story structure in the group. Another "
+  "shares a wall with a unit that stays behind, which leaves a blank elevation to be dealt with "
+  "once it is exposed. The church took twenty-two minutes. It revises a building approved on the "
+  "site in 2004 and is smaller than what was permitted then. Eel Point ran thirteen. Its "
+  "architect said the street carries a range of architectural language, some of it ornate, and "
+  "that the design aims between. The commission also ratified its votes from the week before on "
+  "the definition of demolition and on unapproved demolitions and fines."),
+ "3iV2LhPm4gQ": HDC_SUMMARY_PREFIX + (
+  "a 400-square-foot addition at 4 Westmoor Lane, and a new dwelling at 7 Orange Street. Westmoor "
+  "Lane ran about thirty minutes. The longest item of the night, at thirty-seven, was an "
   "application the chair took unusual care to frame. He set out the order of business before "
   "anyone spoke. Presentation, then questions, then comments confined to the commission&rsquo;s "
   "purview of shape, massing and architectural features, then deliberation. He noted that this "
   "was a public meeting and not a public hearing. Orange Street took twenty-two minutes and ended "
   "in a condition about planting. Screening on the exposed side must have a columnar habit, which "
   "rules out arborvitae and leyland cypress. The commission took that in place of a trellis to "
-  "soften the gable facing the neighbor.",
- "5tDKuVEgfoI":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: an addition at 55 Baxter Road, a new dwelling and guest house at 44 Nonantum Avenue, "
-  "and alterations on Tuckernuck. Baxter Road took about thirty minutes, the longest of the "
-  "night. The architect described the house, called Flagship, as one of the oldest on that road, "
-  "if not the oldest. Nonantum took twenty. The existing guest house is to be donated and moved "
-  "away, with a new main house and guest house in their place. The commission held it for a view, "
+  "soften the gable facing the neighbor."),
+ "5tDKuVEgfoI": HDC_SUMMARY_PREFIX + (
+  "an addition at 55 Baxter Road, a new dwelling and guest house at 44 Nonantum Avenue, and "
+  "alterations on Tuckernuck. Baxter Road took about thirty minutes, the longest of the night. "
+  "The architect described the house, called Flagship, as one of the oldest on that road, if not "
+  "the oldest. Nonantum took twenty. The existing guest house is to be donated and moved away, "
+  "with a new main house and guest house in their place. The commission held it for a view, "
   "asking for stakes set at the outside corners so the footprint can be read on the ground. "
   "Tuckernuck took nineteen, and the problem was not design. The project was approved last "
   "summer. Afterward the applicant found a conservation restriction from 1974. It limits the site "
   "to a single story and a footprint of 1,800 square feet. He has been negotiating with the "
-  "conservancy that holds it.",
- "Hc6UxWDKHHQ":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the church at 42 Monohansett Road, the gym structure at 37 Squam Road, and two "
-  "applicants who asked to be held. The meeting opened with the held requests and ran half an "
-  "hour. One came in the afternoon before, the other arrived just before the previous meeting, "
-  "once it was clear there would be no quorum. The chair pressed staff on when each had been "
-  "received and whether abutters had been in touch. Monohansett took twenty-four minutes. Little "
-  "was left to settle beyond the treatment of the exterior stair and kick panels on the doors "
-  "facing the parking. Squam Road took nineteen, and is the structure the commission has been "
-  "calling a sport barn since January. Another applicant spent nearly half an hour on a dormer. "
-  "Before the vote the chair paused to ask whether the condition being proposed would actually "
-  "suit him, or whether revisions would serve better.",
- "11PVvcMAN_0":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a citizen article on demolition permits, hardscape at 22 Nonantum Avenue, and a house "
-  "whose move fell through. The article came first and ran nearly half an hour. Article 72 on the "
+  "conservancy that holds it."),
+ "Hc6UxWDKHHQ": HDC_SUMMARY_PREFIX + (
+  "the church at 42 Monohansett Road, the gym structure at 37 Squam Road, and two applicants who "
+  "asked to be held. The meeting opened with the held requests and ran half an hour. One came in "
+  "the afternoon before, the other arrived just before the previous meeting, once it was clear "
+  "there would be no quorum. The chair pressed staff on when each had been received and whether "
+  "abutters had been in touch. Monohansett took twenty-four minutes. Little was left to settle "
+  "beyond the treatment of the exterior stair and kick panels on the doors facing the parking. "
+  "Squam Road took nineteen, and is the structure the commission has been calling a sport barn "
+  "since January. Another applicant spent nearly half an hour on a dormer. Before the vote the "
+  "chair paused to ask whether the condition being proposed would actually suit him, or whether "
+  "revisions would serve better."),
+ "11PVvcMAN_0": HDC_SUMMARY_PREFIX + (
+  "a citizen article on demolition permits, hardscape at 22 Nonantum Avenue, and a house whose "
+  "move fell through. The article came first and ran nearly half an hour. Article 72 on the "
   "Annual Town Meeting warrant would change the quantum of votes required for a demolition "
   "permit. The chair asked for it on the agenda after it surfaced at a meeting of the local "
   "government program. Nonantum drew a long line of public comment. The hardscape plan filed in "
@@ -26426,141 +26542,127 @@ CIVIC_DESCRIPTIONS = {
   "history. The board found the house significant and contributing in January 2025 and allowed a "
   "move but not a demolition. A destination at 4 Pocomo Road was approved, then fell through when "
   "moving it in sections proved impractical. A new owner has now come forward. A cattle grate at "
-  "190 Cliff Road took twelve minutes.",
- "Afy59fFqR0I":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a fence at the pocket park at 106 Main Street, a new dwelling at 44 Easton Street, "
-  "and a garage apartment at 28 Miacomet Road. No single item dominated this meeting, which ran "
-  "past four hours on a long list of small ones. Main Street is a Land Bank park. Vegetation was "
+  "190 Cliff Road took twelve minutes."),
+ "Afy59fFqR0I": HDC_SUMMARY_PREFIX + (
+  "a fence at the pocket park at 106 Main Street, a new dwelling at 44 Easton Street, and a "
+  "garage apartment at 28 Miacomet Road. No single item dominated this meeting, which ran past "
+  "four hours on a long list of small ones. Main Street is a Land Bank park. Vegetation was "
   "cleared and planters added last year, which brought noticeably more people in, and neighbors "
   "then asked for a fence along one side. Easton Street takes its cues from the house next door, "
   "historic and moved to the site from town years ago, borrowing its hipped roof and the handling "
   "of its dormers. It sits lower to the ground because it is in the flood zone rather than the "
   "velocity zone. Miacomet Road is a garage studio joined to the house by a roof carried off the "
   "existing porch. It passed, but not unanimously, with one vote against and another cast "
-  "reluctantly.",
- "owKQTyFaGYc":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a new dwelling at 118 Eel Point Road, several applications at 7 Maxey Pond Road, and "
-  "85 Vestal Street. Eel Point took about forty minutes, by far the longest. The revisions answer "
-  "earlier objections. The center gable still carries the height, but the rest of the structure "
-  "now sits between twenty-five and twenty-seven feet, the chimney owls are gone, and the front "
-  "porch has been cut back eighteen inches. Maxey Pond took twenty-three. The applicant asked to "
-  "begin with the garage rather than the pool house, since the garage had been the "
-  "commission&rsquo;s main concern. Vestal took twenty-two. An abutter from 34 Dukes Road thanked "
-  "the team for downsizing but warned that without meaningful screening the buildings will be "
-  "plainly visible from his road in winter.",
- "PBJ6erEf4aA":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the new harbormaster building at 34 Washington Street, a new dwelling at 123 Orange "
-  "Street, and a driveway wall at 126 Main Street. Washington Street took the longest, about "
-  "twenty minutes, without ever being opened. No representative appeared. The commission used the "
-  "time to look at what staff had done with the filing, which ran to 124 pages before it was "
-  "pared back. Orange Street took seventeen. The new dwelling sits behind a duplex already "
-  "approved, reached down the side from Bear Way. Main Street drew the sharpest comment of the "
-  "night. A speaker pointed out that the applicant had subdivided the lot voluntarily. The "
-  "driveway and garage had served 126 Main Street for well over a century, and the side yard is "
-  "already crowded. An earlier vote had limited the driveway to a width no greater than that of a "
-  "typical car.",
- "t3tm4p6EUhk":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a new dwelling at 9 New Jersey Street, and a gambrel whose eaves and dormers the "
-  "commission worked over at length. New Jersey took about sixty-eight minutes. That is the "
-  "longest any single application has held this commission so far this year, and it ran so long "
-  "the chair called a two-minute break in the middle of it. The gambrel took twenty-three. "
-  "Commissioners wanted the eave dropped a foot or so to distinguish the wings from the main "
-  "mass, and said the pergolas out front were not the way to achieve it. They also found the "
-  "reverse gambrels running perpendicular to the main mass too close to the dormers at the ends. "
-  "A later item turned on whether a motion was, as someone put it, essentially a ratification of "
-  "the previous approvals. The commission decided it was not that simple.",
- "o8zL755X_68":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a renovation at 5 New Street, and a new dwelling at 6 Berkeley Avenue. New Street "
-  "took about fifty minutes. The building is the old warehouse of Murray&rsquo;s Toggery Shop, "
-  "and the applicant had worked with staff to compile its history before coming in. Berkeley "
-  "Avenue took forty-three. The house it replaces was approved for demolition and is effectively "
-  "invisible, reached by an easement across another property and screened entirely by the house "
-  "in front. The architect could only show it to the commission in a photograph taken from a "
-  "drone. The new house is proposed within four feet of where the old one stands, on the flat "
-  "ground that is the only sensible place for it. The meeting also spent its first forty-eight "
-  "minutes on consents, signs and staff comments, with one consent item pulled onto the regular "
-  "agenda.",
- "9bzB9fAjaak":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a driveway gate at 18 Gladlands Avenue, and the new dwelling at 118 Eel Point Road. "
-  "Gladlands took about fifty-seven minutes, the longest item of the night. It covered a gate, a "
-  "deer fence, and an area of Belgian block. Parts of it had already been approved through staff. "
-  "The commission worked through the plan and the neighbors&rsquo; situation in detail before "
+  "reluctantly."),
+ "owKQTyFaGYc": HDC_SUMMARY_PREFIX + (
+  "a new dwelling at 118 Eel Point Road, several applications at 7 Maxey Pond Road, and 85 Vestal "
+  "Street. Eel Point took about forty minutes, by far the longest. The revisions answer earlier "
+  "objections. The center gable still carries the height, but the rest of the structure now sits "
+  "between twenty-five and twenty-seven feet, the chimney owls are gone, and the front porch has "
+  "been cut back eighteen inches. Maxey Pond took twenty-three. The applicant asked to begin with "
+  "the garage rather than the pool house, since the garage had been the commission&rsquo;s main "
+  "concern. Vestal took twenty-two. An abutter from 34 Dukes Road thanked the team for downsizing "
+  "but warned that without meaningful screening the buildings will be plainly visible from his "
+  "road in winter."),
+ "PBJ6erEf4aA": HDC_SUMMARY_PREFIX + (
+  "the new harbormaster building at 34 Washington Street, a new dwelling at 123 Orange Street, "
+  "and a driveway wall at 126 Main Street. Washington Street took the longest, about twenty "
+  "minutes, without ever being opened. No representative appeared. The commission used the time "
+  "to look at what staff had done with the filing, which ran to 124 pages before it was pared "
+  "back. Orange Street took seventeen. The new dwelling sits behind a duplex already approved, "
+  "reached down the side from Bear Way. Main Street drew the sharpest comment of the night. A "
+  "speaker pointed out that the applicant had subdivided the lot voluntarily. The driveway and "
+  "garage had served 126 Main Street for well over a century, and the side yard is already "
+  "crowded. An earlier vote had limited the driveway to a width no greater than that of a typical "
+  "car."),
+ "t3tm4p6EUhk": HDC_SUMMARY_PREFIX + (
+  "a new dwelling at 9 New Jersey Street, and a gambrel whose eaves and dormers the commission "
+  "worked over at length. New Jersey took about sixty-eight minutes. That is the longest any "
+  "single application has held this commission so far this year, and it ran so long the chair "
+  "called a two-minute break in the middle of it. The gambrel took twenty-three. Commissioners "
+  "wanted the eave dropped a foot or so to distinguish the wings from the main mass, and said the "
+  "pergolas out front were not the way to achieve it. They also found the reverse gambrels "
+  "running perpendicular to the main mass too close to the dormers at the ends. A later item "
+  "turned on whether a motion was, as someone put it, essentially a ratification of the previous "
+  "approvals. The commission decided it was not that simple."),
+ "o8zL755X_68": HDC_SUMMARY_PREFIX + (
+  "a renovation at 5 New Street, and a new dwelling at 6 Berkeley Avenue. New Street took about "
+  "fifty minutes. The building is the old warehouse of Murray&rsquo;s Toggery Shop, and the "
+  "applicant had worked with staff to compile its history before coming in. Berkeley Avenue took "
+  "forty-three. The house it replaces was approved for demolition and is effectively invisible, "
+  "reached by an easement across another property and screened entirely by the house in front. "
+  "The architect could only show it to the commission in a photograph taken from a drone. The new "
+  "house is proposed within four feet of where the old one stands, on the flat ground that is the "
+  "only sensible place for it. The meeting also spent its first forty-eight minutes on consents, "
+  "signs and staff comments, with one consent item pulled onto the regular agenda."),
+ "9bzB9fAjaak": HDC_SUMMARY_PREFIX + (
+  "a driveway gate at 18 Gladlands Avenue, and the new dwelling at 118 Eel Point Road. Gladlands "
+  "took about fifty-seven minutes, the longest item of the night. It covered a gate, a deer "
+  "fence, and an area of Belgian block. Parts of it had already been approved through staff. The "
+  "commission worked through the plan and the neighbors&rsquo; situation in detail before "
   "settling it. Eel Point took forty-six. The commission has seen it more than once, and the "
   "comments have centered on height, which the applicant has now dropped. The meeting opened with "
   "a long stretch of routine business, running more than forty minutes through consents, five "
   "signs carrying recommendations from the sign advisory council, and questions for the "
-  "preservation planner.",
- "iUP58CygDXc":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a new dwelling at 2 Sea Street, a cedar fence at 27 Ridge Lane, and a new dwelling at "
-  "56 Vesper Lane. Sea Street took about thirty minutes. Ridge Lane took twenty-five, and the "
+  "preservation planner."),
+ "iUP58CygDXc": HDC_SUMMARY_PREFIX + (
+  "a new dwelling at 2 Sea Street, a cedar fence at 27 Ridge Lane, and a new dwelling at 56 "
+  "Vesper Lane. Sea Street took about thirty minutes. Ridge Lane took twenty-five, and the "
   "application is after the fact. The fence is in Fishers Landing and is already built. The "
   "applicant opened by apologizing for not having asked first. Vesper Lane took twenty-two. The "
   "owners want a second dwelling beside the one they live in, kept deliberately plain. It is a "
   "simple single-family house with an accessory unit above a garage off the side. The trim is "
   "natural cedar, the sash black, the roof black asphalt. This was a shorter meeting than most, "
-  "at two and a half hours.",
- "P3GAdWxF1sw":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a new cottage and garage at 35 Morey Lane, and three applications to move houses onto "
-  "112 Wauwinet Road. Morey Lane took about thirty-four minutes, the longest of the night. Much "
-  "of it went to a new hedge meant to screen a porch and tie it into the lawn, and to photographs "
-  "taken from the lane in both directions. Wauwinet took twenty-four. The house being moved there "
-  "comes from 81 Pocomo Road. Its agent recapped the history. More than a year ago the commission "
-  "found the house historically significant and approved a move but not a demolition. It has "
-  "taken until now to find it somewhere to go. Another new dwelling took thirty-one minutes and "
-  "came back visibly altered. The roof walk is narrower, a projecting gable over the front door "
-  "is gone, and the continuous eave at the dormer is now broken by a shingle course. The "
-  "commission also discussed holding an organizational meeting.",
- "PvM6e314m8w":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the airport terminal at 14 Airport Road, town buildings to be demolished or moved at "
-  "39 Washington Street, and a fence at 38 Lovers Lane. The airport took about eighteen minutes. "
-  "Its architect appeared for both the town and the airport, and described the purpose plainly: "
-  "take down the seasonal hold room tent and build in its place. Washington Street took "
-  "seventeen. The town is asking to demolish or move two buildings there, with a third "
-  "application on Okorwaw Avenue alongside it. Lovers Lane took fourteen and was the simplest "
-  "thing on the agenda. The owner wanted a fence and gate to keep deer off her hydrangeas, said "
-  "so in about a sentence, and the commission approved it four to one.",
- "MEmLXqb3Pkw":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: window replacement at 14 New Mill Street, and fenestration changes at 4 South Mill "
-  "Street. This was a short meeting, under an hour and a half, and no item ran past twenty "
-  "minutes. New Mill Street took sixteen. The application has been in front of the commission on "
-  "and off since 2024, and the board had to sort out who was seated on it before the presentation "
-  "could begin. South Mill Street opened old business. The preservation planner noted that she "
-  "had written comments on every application on the agenda. Some ran long, because several were "
-  "appearing yet again.",
- "RWeo6WkWh8E":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a Superior Court remand concerning 43A Union Street, hardscape at 50 Starbuck Road, "
-  "and a carport. The remand came first, though only a preliminary discussion was held. Town "
-  "counsel George Pucci laid out the history. The commission denied permission to demolish a "
-  "garage at 43A Union Street. The owner appealed to the Select Board, which upheld the denial, "
-  "then appealed again to Superior Court, where the case was tried and the preservation planner "
+  "at two and a half hours."),
+ "P3GAdWxF1sw": HDC_SUMMARY_PREFIX + (
+  "a new cottage and garage at 35 Morey Lane, and three applications to move houses onto 112 "
+  "Wauwinet Road. Morey Lane took about thirty-four minutes, the longest of the night. Much of it "
+  "went to a new hedge meant to screen a porch and tie it into the lawn, and to photographs taken "
+  "from the lane in both directions. Wauwinet took twenty-four. The house being moved there comes "
+  "from 81 Pocomo Road. Its agent recapped the history. More than a year ago the commission found "
+  "the house historically significant and approved a move but not a demolition. It has taken "
+  "until now to find it somewhere to go. Another new dwelling took thirty-one minutes and came "
+  "back visibly altered. The roof walk is narrower, a projecting gable over the front door is "
+  "gone, and the continuous eave at the dormer is now broken by a shingle course. The commission "
+  "also discussed holding an organizational meeting."),
+ "PvM6e314m8w": HDC_SUMMARY_PREFIX + (
+  "the airport terminal at 14 Airport Road, town buildings to be demolished or moved at 39 "
+  "Washington Street, and a fence at 38 Lovers Lane. The airport took about eighteen minutes. Its "
+  "architect appeared for both the town and the airport, and described the purpose plainly: take "
+  "down the seasonal hold room tent and build in its place. Washington Street took seventeen. The "
+  "town is asking to demolish or move two buildings there, with a third application on Okorwaw "
+  "Avenue alongside it. Lovers Lane took fourteen and was the simplest thing on the agenda. The "
+  "owner wanted a fence and gate to keep deer off her hydrangeas, said so in about a sentence, "
+  "and the commission approved it four to one."),
+ "MEmLXqb3Pkw": HDC_SUMMARY_PREFIX + (
+  "window replacement at 14 New Mill Street, and fenestration changes at 4 South Mill Street. "
+  "This was a short meeting, under an hour and a half, and no item ran past twenty minutes. New "
+  "Mill Street took sixteen. The application has been in front of the commission on and off since "
+  "2024, and the board had to sort out who was seated on it before the presentation could begin. "
+  "South Mill Street opened old business. The preservation planner noted that she had written "
+  "comments on every application on the agenda. Some ran long, because several were appearing yet "
+  "again."),
+ "RWeo6WkWh8E": HDC_SUMMARY_PREFIX + (
+  "a Superior Court remand concerning 43A Union Street, hardscape at 50 Starbuck Road, and a "
+  "carport. The remand came first, though only a preliminary discussion was held. Town counsel "
+  "George Pucci laid out the history. The commission denied permission to demolish a garage at "
+  "43A Union Street. The owner appealed to the Select Board, which upheld the denial, then "
+  "appealed again to Superior Court, where the case was tried and the preservation planner "
   "testified for the commission. The judge has sent it back. Commissioners were urged to read the "
   "decision themselves, and the formal remand hearing the court ordered was set for August 4. "
   "Elsewhere a carport passed four to one, over an objection about what would be visible from a "
-  "public way.",
- "FB47DL6Qxz4":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the new harbormaster building at 34 Washington Street, and a pool at 3 Pops Lane. "
-  "Washington Street took about forty-five minutes, by far the longest. Two firms presented for "
-  "the town. They came with a supplemental document a commissioner had asked for at the previous "
-  "hearing. It sets out, point by point, how the current revisions differ from what was submitted "
-  "and approved in 2020. Pops Lane opened old business. A fence at 11 Bluet Court, held for a "
-  "view at the last meeting, was passed over again because nobody appeared to represent it.",
- "uBLfKHX_Jho":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the Superior Court remand hearing on 43A Union Street. It took roughly three quarters "
-  "of an hour and opened the meeting. Town counsel explained the posture. The court has ordered "
-  "the commission to rehear the application to demolish a garage and to issue a new decision. The "
+  "public way."),
+ "FB47DL6Qxz4": HDC_SUMMARY_PREFIX + (
+  "the new harbormaster building at 34 Washington Street, and a pool at 3 Pops Lane. Washington "
+  "Street took about forty-five minutes, by far the longest. Two firms presented for the town. "
+  "They came with a supplemental document a commissioner had asked for at the previous hearing. "
+  "It sets out, point by point, how the current revisions differ from what was submitted and "
+  "approved in 2020. Pops Lane opened old business. A fence at 11 Bluet Court, held for a view at "
+  "the last meeting, was passed over again because nobody appeared to represent it."),
+ "uBLfKHX_Jho": HDC_SUMMARY_PREFIX + (
+  "the Superior Court remand hearing on 43A Union Street. It took roughly three quarters of an "
+  "hour and opened the meeting. Town counsel explained the posture. The court has ordered the "
+  "commission to rehear the application to demolish a garage and to issue a new decision. The "
   "required public notice had been given, so the rehearing could proceed properly. Commissioners "
   "had been told the week before to read the judge&rsquo;s decision for themselves. The "
   "preservation planner reported separately on a Community Preservation Committee project with "
@@ -26568,85 +26670,75 @@ CIVIC_DESCRIPTIONS = {
   "commissioners to circulate its survey before it closes at Labor Day. Later, on a historic "
   "determination, she asked that any approval carry an explicit finding that the structure will "
   "keep its historic character once the work is done. A commissioner stopped the vote to confirm "
-  "that the motion included her language.",
- "CMf5ux4kuJw":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the house move at 8 North Mill Street, and the new building at 1 Cherry Street. This "
-  "was a short meeting, a little over an hour. North Mill Street took twenty-six minutes. Cherry "
-  "Street took twenty-two and was the last application of the day, once the others in the queue "
-  "had asked to be held. It passed four to one. Earlier the commission approved work at the Salt "
+  "that the motion included her language."),
+ "CMf5ux4kuJw": HDC_SUMMARY_PREFIX + (
+  "the house move at 8 North Mill Street, and the new building at 1 Cherry Street. This was a "
+  "short meeting, a little over an hour. North Mill Street took twenty-six minutes. Cherry Street "
+  "took twenty-two and was the last application of the day, once the others in the queue had "
+  "asked to be held. It passed four to one. Earlier the commission approved work at the Salt "
   "Marsh Center and added language of its own to the motion. The building is not owned by the "
-  "town, but the land under it is, and the property is public.",
- "a-Y1_klc8sw":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: as-built revisions at 34 Bosworth Road, and the Affordable Housing Trust&rsquo;s "
-  "production plan. Bosworth Road took about thirty-two minutes. Its agent called the project old "
-  "and cold. He had drawn it in 2016, and it failed its final inspection then over trim color, "
-  "which is why it is back. The fine was waived. The housing discussion came early and ran about "
-  "fifteen minutes. A representative of the housing office walked the commission through the "
-  "production plan and what it might mean for this board. The Superior Court remand on 43A Union "
-  "Street was on the agenda again. The commission also declined to take up one application at "
-  "all, the chair saying he was not inclined to hear it without anyone there to explain it.",
- "LXMbFjX7OLY":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: an addition to the barn at 39 Orange Street, the new building at 1 Cherry Street, and "
-  "the harbormaster building at 34 Washington Street. Orange Street and Cherry Street together "
-  "filled fifty-five minutes. Washington Street took thirty-three. Its architects put three "
-  "elevations on one page: the original approved in 2020, the revision brought on July 28, and "
-  "what they proposed now in answer to the comments they received then. A new dwelling at 19R "
-  "Hooper Farm Road took twenty-eight minutes. A commissioner opened the meeting with a question "
-  "he had not been able to get a plain answer to. What percentage of a structure has to go before "
-  "the work counts as a demolition?",
- "U3vWtAKmR_w":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the commission&rsquo;s own rules. This was a special organizational meeting, held on "
-  "a Friday and running a little over an hour, with no applications on the agenda at all. The "
-  "commission worked through a list of its own making. Whether to hold applications for a view "
-  "only. How as-built reviews should be handled and what a motion on one should say. A tiered "
-  "structure of fines for as-builts. The definition of demolition, including how other "
-  "commissions set their fines. Guidelines for fences, gates and cattle grates, which have come "
-  "before the board repeatedly this year. And updates to both the approved roof shingle colors "
-  "and the approved paint colors. Scheduling was deferred, since not every commissioner was "
-  "present to settle it.",
- "h9rOTfDcaFs":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: brickwork at 51 Main Street, and a report from the preservation planner. Main Street "
-  "took about thirty-nine minutes, the longest item. The application is to take brick off a "
-  "historic facade and put it back. It came to the full board rather than staff for a reason. On "
-  "a facade like that, the choice of brick and of mortar is the whole question. The "
-  "planner&rsquo;s report ran eighteen minutes. She told the commission she had written to the "
-  "island&rsquo;s representatives about proposed changes to Section 106 of the National Historic "
-  "Preservation Act, and that she considers them a serious mistake. She also flagged an "
-  "application on Derry Lane that had not been highlighted, because the site abuts Land Bank open "
-  "space.",
- "HD3JdSUxHik":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a cottage and duplex at 4 Rose Bud Lane, and a shed at 37 Cliff Road. Rose Bud Lane "
-  "took about thirty-three minutes, the longest of the night, and most of it went to screening. "
-  "Liquid amber trees go at the front on either side, Swedish aspen every ten feet down the east "
-  "side. The dormers on the cottage were stepped back and the trim around the door made heavier. "
-  "Cliff Road returned for a second look. The decking had been shown wrapping the pool in the "
-  "earlier drawings, and the applicant explained that the landscape architect will come "
-  "separately rather than assume permission. As-built deer fences, gates and cattle grates at 6 "
-  "and 8 Clifford Street also came back.",
- "ZM3pyBusX7Q":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a pool, a building held over a conflict, and a new pump station at 77 Bartlett Road. "
-  "The pool took about twenty-five minutes. Its designer argued the size down carefully. Fourteen "
-  "feet by fourteen is 196 square feet, above the 150 that would make it small by definition. But "
-  "on his own survey of the seventeen pools in that neighborhood, it would still be by far the "
-  "smallest. It carried, with one nay. Another application stalled before it began. The presenter "
-  "had scanned the building inside and out, as he does with historic structures, but a "
-  "commissioner turned out to have drawn the previous plans for the same owner, could not sit, "
-  "and the item was held.",
- "pnZoUjplfHY":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: four applications at 5 Nonantum Avenue, and a garage apartment at 1 Mothball Way. "
-  "This was a short meeting, an hour and a half. Nonantum took about twenty minutes for all four. "
-  "The commission worked through them in sequence. It approved the new dwelling, then the cabana, "
-  "an open structure at the back of the site with a small bathroom attached, then the shed and "
-  "the pool together as revised. It went quickly enough that a commissioner proposed cutting to "
-  "the chase and taking the last two in one motion.",
+  "town, but the land under it is, and the property is public."),
+ "a-Y1_klc8sw": HDC_SUMMARY_PREFIX + (
+  "as-built revisions at 34 Bosworth Road, and the Affordable Housing Trust&rsquo;s production "
+  "plan. Bosworth Road took about thirty-two minutes. Its agent called the project old and cold. "
+  "He had drawn it in 2016, and it failed its final inspection then over trim color, which is why "
+  "it is back. The fine was waived. The housing discussion came early and ran about fifteen "
+  "minutes. A representative of the housing office walked the commission through the production "
+  "plan and what it might mean for this board. The Superior Court remand on 43A Union Street was "
+  "on the agenda again. The commission also declined to take up one application at all, the chair "
+  "saying he was not inclined to hear it without anyone there to explain it."),
+ "LXMbFjX7OLY": HDC_SUMMARY_PREFIX + (
+  "an addition to the barn at 39 Orange Street, the new building at 1 Cherry Street, and the "
+  "harbormaster building at 34 Washington Street. Orange Street and Cherry Street together filled "
+  "fifty-five minutes. Washington Street took thirty-three. Its architects put three elevations "
+  "on one page: the original approved in 2020, the revision brought on July 28, and what they "
+  "proposed now in answer to the comments they received then. A new dwelling at 19R Hooper Farm "
+  "Road took twenty-eight minutes. A commissioner opened the meeting with a question he had not "
+  "been able to get a plain answer to. What percentage of a structure has to go before the work "
+  "counts as a demolition?"),
+ "U3vWtAKmR_w": HDC_SUMMARY_PREFIX + (
+  "the commission&rsquo;s own rules. This was a special organizational meeting, held on a Friday "
+  "and running a little over an hour, with no applications on the agenda at all. The commission "
+  "worked through a list of its own making. Whether to hold applications for a view only. How "
+  "as-built reviews should be handled and what a motion on one should say. A tiered structure of "
+  "fines for as-builts. The definition of demolition, including how other commissions set their "
+  "fines. Guidelines for fences, gates and cattle grates, which have come before the board "
+  "repeatedly this year. And updates to both the approved roof shingle colors and the approved "
+  "paint colors. Scheduling was deferred, since not every commissioner was present to settle it."),
+ "h9rOTfDcaFs": HDC_SUMMARY_PREFIX + (
+  "brickwork at 51 Main Street, and a report from the preservation planner. Main Street took "
+  "about thirty-nine minutes, the longest item. The application is to take brick off a historic "
+  "facade and put it back. It came to the full board rather than staff for a reason. On a facade "
+  "like that, the choice of brick and of mortar is the whole question. The planner&rsquo;s report "
+  "ran eighteen minutes. She told the commission she had written to the island&rsquo;s "
+  "representatives about proposed changes to Section 106 of the National Historic Preservation "
+  "Act, and that she considers them a serious mistake. She also flagged an application on Derry "
+  "Lane that had not been highlighted, because the site abuts Land Bank open space."),
+ "HD3JdSUxHik": HDC_SUMMARY_PREFIX + (
+  "a cottage and duplex at 4 Rose Bud Lane, and a shed at 37 Cliff Road. Rose Bud Lane took about "
+  "thirty-three minutes, the longest of the night, and most of it went to screening. Liquid amber "
+  "trees go at the front on either side, Swedish aspen every ten feet down the east side. The "
+  "dormers on the cottage were stepped back and the trim around the door made heavier. Cliff Road "
+  "returned for a second look. The decking had been shown wrapping the pool in the earlier "
+  "drawings, and the applicant explained that the landscape architect will come separately rather "
+  "than assume permission. As-built deer fences, gates and cattle grates at 6 and 8 Clifford "
+  "Street also came back."),
+ "ZM3pyBusX7Q": HDC_SUMMARY_PREFIX + (
+  "a pool, a building held over a conflict, and a new pump station at 77 Bartlett Road. The pool "
+  "took about twenty-five minutes. Its designer argued the size down carefully. Fourteen feet by "
+  "fourteen is 196 square feet, above the 150 that would make it small by definition. But on his "
+  "own survey of the seventeen pools in that neighborhood, it would still be by far the smallest. "
+  "It carried, with one nay. Another application stalled before it began. The presenter had "
+  "scanned the building inside and out, as he does with historic structures, but a commissioner "
+  "turned out to have drawn the previous plans for the same owner, could not sit, and the item "
+  "was held."),
+ "pnZoUjplfHY": HDC_SUMMARY_PREFIX + (
+  "four applications at 5 Nonantum Avenue, and a garage apartment at 1 Mothball Way. This was a "
+  "short meeting, an hour and a half. Nonantum took about twenty minutes for all four. The "
+  "commission worked through them in sequence. It approved the new dwelling, then the cabana, an "
+  "open structure at the back of the site with a small bathroom attached, then the shed and the "
+  "pool together as revised. It went quickly enough that a commissioner proposed cutting to the "
+  "chase and taking the last two in one motion."),
  "i1EG5Xr1Ong":
   "The Land Bank comes to relocate part of Falmouth Avenue, the dirt road that reaches Cisco "
   "Beach from the east. Its southwest end has been compromised by erosion, so the plan is to pull "
@@ -27116,11 +27208,10 @@ CIVIC_DESCRIPTIONS = {
   "survey-quality plan showing where new conduit would run. Both petitions pass contingent on "
   "that plan and department sign-off. Two National Grid petitions on Somerset Lane are continued "
   "to November 16.",
- "HwPVp7rFUMk":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: as-built fines, 4 Rose Bud Lane, 115 Cliff Road and 5 Columbus Avenue. The longest "
-  "discussion, about thirty-nine minutes, is the commission&rsquo;s own policy on as-built fines. "
-  "One commissioner proposes a graduated system with defined categories, a scoring worksheet and "
+ "HwPVp7rFUMk": HDC_SUMMARY_PREFIX + (
+  "as-built fines, 4 Rose Bud Lane, 115 Cliff Road and 5 Columbus Avenue. The longest discussion, "
+  "about thirty-nine minutes, is the commission&rsquo;s own policy on as-built fines. One "
+  "commissioner proposes a graduated system with defined categories, a scoring worksheet and "
   "repeat-offender status. Members debate whether the owner, the architect or the builder should "
   "carry the penalty, and settle on the owner, who holds the certificate of appropriateness. "
   "Several observe that a flat fine falls unevenly given the range of incomes on the island. "
@@ -27130,7 +27221,7 @@ CIVIC_DESCRIPTIONS = {
   "height relative to its neighbors, and is held for revisions. 115 Cliff Road is approved three "
   "votes to two, with conditions on hedge screening and cedar detailing beneath the dormer sills. "
   "The pool at 5 Columbus Avenue is held for revisions after neighbors object that it would be "
-  "visible from the road. 1 Mothball Way is approved as submitted.",
+  "visible from the road. 1 Mothball Way is approved as submitted."),
  "UWfC1SmQUVM":
   "The commission works through its hearing list and issues an order on each filing it closes. "
   "The longest item, about twelve minutes, is Sankaty Head Golf Club&rsquo;s proposal to move a "
@@ -27203,10 +27294,9 @@ CIVIC_DESCRIPTIONS = {
   "feasibility study. The others are its annual town report, a comment letter on the "
   "state&rsquo;s draft priority habitat map, and a comment letter on accessory dwelling unit "
   "regulations. The meeting adjourns to executive session.",
- "nEw70DaNOWE":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: 2 Wingspread Road, 4 South Mill Street, 3 Sea Street and 9 Swift Rock Road. The "
-  "longest stretch, about twenty-eight minutes, is three applications at 2 Wingspread Road: a new "
+ "nEw70DaNOWE": HDC_SUMMARY_PREFIX + (
+  "2 Wingspread Road, 4 South Mill Street, 3 Sea Street and 9 Swift Rock Road. The longest "
+  "stretch, about twenty-eight minutes, is three applications at 2 Wingspread Road: a new "
   "dwelling, a garage and a pool house. The commission asks for variation in the roof line across "
   "the flanking wings, which run at the same height for some eighty-eight feet, and for site "
   "sections showing existing and proposed grades. All three are held for revisions. 4 South Mill "
@@ -27216,7 +27306,7 @@ CIVIC_DESCRIPTIONS = {
   "demolition of the existing dwelling is approved with a condition added to the certificate. The "
   "new inn proposed for the site is held for revisions. The commission asks for material placing "
   "it in context with its surroundings. The sports court at 9 Swift Rock Road turns on fence "
-  "height and on screening that holds through the winter.",
+  "height and on screening that holds through the winter."),
  "1Ht3AokwDcI":
   "No Description.",
  "4QS0LIrV-ZM":
@@ -27637,36 +27727,33 @@ CIVIC_DESCRIPTIONS = {
   "The longest argument is over Beach Plum Village, where abandoning two easement areas would "
   "quietly take away a neighboring lot&rsquo;s driveway access, and no written easement exists "
   "to say what the rights ever were.",
- "s2F1Kc0n1Co":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: 100 Main Street, 5 Bank Street and 6 Gay Street. The three applications at 100 Main "
-  "Street &mdash; a guest house, a greenhouse and a fence &mdash; run about forty-five minutes, "
-  "the longest stretch of the meeting. The guest house is faulted for reading as a meeting house "
+ "s2F1Kc0n1Co": HDC_SUMMARY_PREFIX + (
+  "100 Main Street, 5 Bank Street and 6 Gay Street. The three applications at 100 Main Street "
+  "&mdash; a guest house, a greenhouse and a fence &mdash; run about forty-five minutes, the "
+  "longest stretch of the meeting. The guest house is faulted for reading as a meeting house "
   "rather than a cottage, on account of its doors and the roof above them; the greenhouse is "
   "glass and aluminum painted green; and the fence, wanted against deer, is settled only after "
   "the commission works out which run is to be tall and which low, with the site plan to be "
   "annotated accordingly. One member would rather see thick planting than fencing where the aim "
-  "is to block sound. It carries on a roll call. The deck alteration at 5 Bank Street takes "
-  "about half an hour, turning on a viewing porch with a natural-to-weather railing and a "
-  "removable ship&rsquo;s ladder, on how much of the little Codfish Park cottage disappears "
-  "behind the addition, and on a roofed patio never authorized; a site viewing is scheduled. 6 "
-  "Gay Street, a historic determination and an addition, is approved with a shingled rail in "
-  "place of balusters.",
- "II5dIr_p4JI":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: 126 Main Street, 2 Wingspread Lane and 19R Hooper Farm Road. The driveway and wall "
-  "at 126 Main Street, back before the commission since the spring, take some forty-five "
-  "minutes. The applicant argues for consistent treatment and points to photographs of nearby "
-  "properties; an abutter asks the commission to hold to what it said in May about how much of a "
-  "Main Street side yard is being given up. Members worry that the rendering reads as a runway "
-  "running from the sidewalk to the back gate, and option two is approved on the condition that "
-  "the brick between sidewalk and driveway, the two wheel strips and the grass between them all "
-  "become cobble, leaving a brick sidewalk, a cobble drive and a brick landing, with a gate to "
-  "be shown on an exhibit. 2 Wingspread Lane, heard as a dwelling, a garage and a pool house, "
-  "runs nearly as long over the gambrel wings, a balustrade above the front door and an "
-  "inconsistency between the site plan and the elevations. 19R Hooper Farm Road is pushed to "
-  "simplify and to screen, with vegetative screening only acceptable if its maintenance is "
-  "conditioned.",
+  "is to block sound. It carries on a roll call. The deck alteration at 5 Bank Street takes about "
+  "half an hour, turning on a viewing porch with a natural-to-weather railing and a removable "
+  "ship&rsquo;s ladder, on how much of the little Codfish Park cottage disappears behind the "
+  "addition, and on a roofed patio never authorized; a site viewing is scheduled. 6 Gay Street, a "
+  "historic determination and an addition, is approved with a shingled rail in place of "
+  "balusters."),
+ "II5dIr_p4JI": HDC_SUMMARY_PREFIX + (
+  "126 Main Street, 2 Wingspread Lane and 19R Hooper Farm Road. The driveway and wall at 126 Main "
+  "Street, back before the commission since the spring, take some forty-five minutes. The "
+  "applicant argues for consistent treatment and points to photographs of nearby properties; an "
+  "abutter asks the commission to hold to what it said in May about how much of a Main Street "
+  "side yard is being given up. Members worry that the rendering reads as a runway running from "
+  "the sidewalk to the back gate, and option two is approved on the condition that the brick "
+  "between sidewalk and driveway, the two wheel strips and the grass between them all become "
+  "cobble, leaving a brick sidewalk, a cobble drive and a brick landing, with a gate to be shown "
+  "on an exhibit. 2 Wingspread Lane, heard as a dwelling, a garage and a pool house, runs nearly "
+  "as long over the gambrel wings, a balustrade above the front door and an inconsistency between "
+  "the site plan and the elevations. 19R Hooper Farm Road is pushed to simplify and to screen, "
+  "with vegetative screening only acceptable if its maintenance is conditioned."),
  "A1JOWEBGgLA":
   "Charter captains open public comment by telling the board that no marine diesel is available "
   "on the island, and ask the town to act before next season. The board fills a seat on the "
@@ -29065,250 +29152,230 @@ CIVIC_DESCRIPTIONS = {
   "public comment: the traffic, the buses held up in it, and the want of a sidewalk on a street "
   "about to take more cars. A Nancy Ann Lane subdivision inside the wellhead recharge district "
   "is laid out, and the Summer House is continued again.",
- "-c_dFqHMLww":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the garage apartment at 6 Fargo Way, hardscape at 32 Hulbert Avenue, and hardscape "
-  "at 8 Macy Road. Fargo Way ran close to twenty minutes. The dormer was simplified and brought "
-  "to the center of the elevation, the second floor exit moved out onto the deck rather than "
-  "through the side of the dormer, and the header heights made consistent across the dwelling. "
-  "Hulbert Avenue returned with options for three arbors and gates, drawn after members asked at "
-  "the last hearing for the lattice to come off and the upper portion to be simplified, and "
-  "after one called the arbor over elaborate while allowing that the granite border might pass. "
-  "Each option was offered for all three locations: the curved beams cut straight, the lattice "
-  "filled in with wood to match the lower half of the gate, or the top arched to follow the "
-  "curve of the door below. Members disagreed about how many of the gates can be seen from the "
-  "road. Macy Road is gates as well, two of them salvaged, one at the driveway off Macy Lane and "
-  "one at the rear of the property where it cannot be seen. A new boathouse and garage in "
-  "Madaket drew a neighbor who said the twenty-two foot building will loom over a street of "
-  "single story houses, and who asked whether anything provides for drainage or spillage from "
-  "the boat and fuel stored there. The commission answered that twenty-four feet is permissible "
-  "there.",
- "-l-ANxcql9Q":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a new dwelling at 7 White Street, an as-built chimney cap at 1 Farmer Street, and "
-  "alterations at 100 Low Beach Road. White Street had been approved before. The property then "
-  "changed hands, and the new owner redesigned the house almost entirely, at the same size as "
-  "the one approved. Members found it approvable on a large and well set back lot, but returned "
-  "to how it meets the two story structure already standing there. The two speak different "
-  "languages, one with two over two sash and the other six over six, and an earlier cupola and "
-  "barnboard siding had been stripped away so that the windows would match. Farmer Street came "
-  "to the commission on a neighbor&rsquo;s complaint. The mason, who said he has worked on the "
-  "island&rsquo;s fireplaces for thirty years, had replaced a bluestone cap with a powder coated "
-  "black guard, arguing that spark and wind guards keep rain and animals out while a five "
-  "hundred pound stone cap leaves no way to service the flue. The owner had not paid the "
-  "as-built fee and asked the commission to waive it. Low Beach Road is a brick driveway widened "
-  "to the foundation of the house, and the advice ran to a three foot planter to soften that "
-  "edge, running bond rather than herringbone, a gate lowered a few inches from seven feet, and "
-  "the air conditioning units moved inside the fence.",
- "0QfAtbb48MA":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a re-siting at 16 Walsh Street, a second floor addition at 8 Federal Street, and "
-  "main house revisions at 85 Vestal Street. Walsh Street ran about twenty-five minutes. The "
-  "house has been in one family since 1978, and the owners spoke to that history before the "
-  "architect took up the drawings. He had pulled the structure south and rotated it so that one "
-  "gabled end stands more than five feet off the setback line, and he extended the porch across "
-  "the East Lincoln elevation to cut a tall double gable in half. Members still objected to two "
-  "tall gables close to the street, asked for the lower masses to step down, and suggested "
-  "marrying the shed roof to the porch roof so that the eave line between the gables disappears. "
-  "Rotating the house toward East Lincoln would mean cutting off the kitchen and the upstairs "
-  "bedrooms, the architect said. Federal Street is the Artists Association&rsquo;s building, "
-  "bought for its location and last used as a real estate office. Ornamentation was removed and "
-  "the building was lowered. Members missed the steep roof pitch found elsewhere on the street "
-  "and questioned the cupola and the window panes, while the applicant said wall height is "
-  "needed to hang work. Vestal Street returned for at least the fifth time, now with the center "
-  "mass tallest and the sides stepping down. Two neighbors opposed it, and the engineered "
-  "section showing cut and fill was missing.",
- "3Xy_ZdElclM":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: an addition at 47 Quidnet Road, a main house addition at 35 Meadow View Drive, and a "
-  "rebuild at 12 Oak Hollow Lane. Each ran about twelve minutes. Quidnet Road brought massing "
-  "changes. The mass at the far left of one elevation moved out about three feet and was widened "
-  "so that the rear facade sits flush, two dormers now peak out of the main gable, and a bay "
-  "pops off the first floor. A member said the new dormers carry extra height above their "
-  "windows, which the commission does not usually see. Abutter comments had been filed, but no "
-  "abutter was present to speak. Meadow View Drive is the main house, the guest house and the "
-  "garage having been held two weeks earlier. The chair stopped the presentation because the "
-  "previous drawings were not laid beside the proposal at the same scale with the changes "
-  "bubbled. Members then objected to a flush dormer that joins the entry gable to the gable "
-  "beside it with no setback, and to two large skylights on one front roof plane. Oak Hollow "
-  "Lane is a rebuild of a house already approved for demolition. The footprint changes little, "
-  "the trim will weather naturally, and the windows will be platinum gray casements. A member "
-  "asked for muntins somewhere, since clear glass on new construction is not ideal.",
- "4fGYPwRlNtM":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: three applications at 15 Pilgrim Road, a new dwelling at 27 Willard Street, and work "
-  "at 11 Pine Street. Pilgrim Road took the longest, about half an hour. The architect described "
-  "a main house just over 2,500 square feet on the ground, its highest ridge at twenty-eight "
-  "feet telescoping down in two steps, with wood windows and doors rather than clad, and a wood "
-  "roof. Commissioners objected to the height and to a grade change of up to a foot, and "
-  "questioned whether the guest house should present an entrance to Pilgrim Road rather than sit "
-  "behind a vegetated screen. The dwelling and guest house were held for revisions and added to "
-  "the site view. A garage with a studio above was heard after them. Willard Street is the rear "
-  "lot of a parcel split into three, behind a gambrel the same designer built facing Hulbert "
-  "Avenue. The new house is a gable design, meant to read as an older separate house rather than "
-  "part of a compound. With no photographs of the surrounding houses in front of them, "
-  "commissioners held it for minor revisions. At Pine Street several members asked why the "
-  "existing garage should be demolished rather than reused or moved. The commission also voted "
-  "to appoint Cathy Flynn, the town&rsquo;s land use specialist, as an HDC enforcement officer.",
- "4pUTceoPra0":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a garage apartment and a duplex at 10 Marble Way, a cattle grate at 6 Hinckley, and "
-  "a shed and driveway revision at 22 Coffin Street. Marble Way ran about fifteen minutes and "
-  "drew the neighborhood. A resident said three original lots have been subdivided by right into "
-  "six, that four of them already carry eleven dwellings and four commercial spaces, and that "
-  "three more dwellings and another commercial space were now sought. He asked the commission to "
-  "view the site before reviewing any design, said conditions on distance from the front "
-  "property lines had not been met, and described a neighborhood of one and a half story single "
-  "family houses on lots of about eight thousand square feet. A member replied that this side of "
-  "the street is commercial residential and the other side is not. Hinckley is a grate set in a "
-  "driveway to keep deer off the plantings. Members who dislike grates accepted this one once it "
-  "was established that the drive is an easement and not a public way, although the chair found "
-  "that the locus plan and the site plan disagree on how far the access sits from the street. "
-  "Coffin Street was heard late, after the agent&rsquo;s slot had passed. The lot is small and "
-  "the house sits at the rear, so the shed was designed small, set into the hill and screened. A "
-  "rooftop array at 41 Macy Lane was held for a screening plan.",
- "7xxl1l0Z1sw":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: an as-built fence at 15 Allens Lane, fenestration revisions at 47 Hulbert Avenue, "
-  "and a fence, gate and hardscape plan at 27 Baxter Road. Allens Lane ran about fifteen minutes "
-  "and came in answer to a violation letter. The fence was never approved, and neither was the "
-  "one that replaced it. Members accepted that it is there, but raised sight lines at the "
-  "intersection and asked that the end approaching the corner be lowered and sloped back up as "
-  "the older fence had been. A solid board fence does not meet the guidelines, so any approval "
-  "would be written to cover this fence and not its replacements. Hulbert Avenue has been "
-  "approved twice already, and the architect returned at the owner&rsquo;s request to the "
-  "oceanside elevation, with minor fenestration shuffling on the east. Two skylights were "
-  "proposed where the rule allows one to a roof plane. A gable blocks any view of both at once, "
-  "but the one on the west was struck, and the motion carried three to two. Baxter Road is a "
-  "pool, gates and fencing behind a privet hedge about five feet wide. Only two short sections "
-  "of fence read from the road, each about seven feet long, and members were satisfied as long "
-  "as the deer fencing and the plank fence stay hidden by the hedge. An apron was proposed at "
-  "the garage, not at the road.",
- "868iamx9s0w":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the new dwellings at 8 and 10 Cato Lane, hardscape at 12 Angola Street, and the main "
-  "house at 35 Meadow View Drive. Cato Lane ran about thirteen minutes. The architect brought "
-  "the pairing the commission had asked for over several hearings, the two houses drawn together "
-  "as seen from the street with site plans showing the driveways and the layout. He said the "
-  "house at number 8 meets the front, side and rear setbacks, and described red cedar trim, "
-  "white cedar shingles and a Quaker gray stain. Angola Street came down to one retaining wall "
-  "with about thirty inches exposed, supported by engineer plans and a letter from a neighbor. "
-  "Members wanted the wall to read as natural rock rather than the poured concrete the "
-  "engineering calls for, and a rounded sawn veneer was offered in answer. The street side fence "
-  "divided them. It had been changed from a board fence to a painted white type to match what "
-  "was approved next door, and one member said it now reads as part of the federal style "
-  "buildings beside it rather than the more rural setting the design suggests. Another asked to "
-  "hold it for a view. Meadow View Drive kept its chimney, lost the horizontal railing leading "
-  "to the basement bulkhead, changed the dining room windows to a two over two pattern and "
-  "steepened the shed dormer.",
- "9ZFYwKmo8uQ":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: St. Mary&rsquo;s rectory at 6 Orange Street, hardscape at 18 to 26 Sparks Avenue, "
-  "and 1 North Swift Rock Road. Orange Street took the longest, about half an hour over two "
-  "applications. The rectory was built in 1800 for Captain James Easton, and the contractor "
-  "described work already done to preserve it: every existing window reconditioned with new "
-  "pulleys and old-fashioned metal weatherstripping, and an Andersen window replaced with an "
-  "arched one to match the rest. At issue was a second-floor sun room at the rear, never "
-  "properly insulated and not original to the house. The commission settled on sliding sash "
-  "rather than awning or casement. The hardscape covers the north side of the lot, the open lawn "
-  "below the rectory as Orange Street rises out of town, where a masonry wall is heaving. That "
-  "was held for revisions because a walk appeared to run under a tree. Sparks Avenue is a "
-  "commercial hardscape: brick to match the existing sidewalks, granite pavers rather than "
-  "cobblestones, the recessed granite curb extended flush, and a crosswalk the applicant will "
-  "petition the town to build across to the Cumberland Farms opening. An atypical fence becomes "
-  "a five-in-one. It was held a week so the commission can see the wording, with members invited "
-  "to name plant preferences. North Swift Rock Road came back with revisions to a dwelling "
-  "approved seven or eight months ago.",
- "AsmokYdoXJ0":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the rehabilitation of the brick building at 5 Candle Street, a painted wall sign at "
-  "57 Main Street, and an as-built at 13A Willard Street. Candle Street took the longest, about "
-  "half an hour. It is the former Nantucket Electric building, and the commission split the "
-  "question in two, approving the scope of work and leaving the materials to come back. The vote "
-  "was unanimous, on conditions: the glass block on the east and west elevations to be restored "
-  "rather than removed, the Secretary of the Interior&rsquo;s standards and industry practice "
-  "for period brick buildings to be followed, and the brick selections returned to the "
-  "commission for approval. One member had pointed out that the panel of glass block proposed "
-  "for removal on the east elevation looks original to the building. Main Street is a painted "
-  "wall sign, a ghost sign most of which has worn away over the years. The Sign Advisory "
-  "Committee recommended holding it: only three of its five members were present that morning, "
-  "and the application carries images but no exact paint colors and no finished design. Willard "
-  "Street is work already done, a skirt around the house of the kind on 13B, 13C and the house "
-  "opposite, and a condenser pad that was not on the approved elevations. The condensers cannot "
-  "be seen from the street.",
- "BT5BikyGS-M":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a re-used structure allowance, amendments to Chapter 124 of the town code, and the "
-  "cottage colony article. This was a work session on Annual Town Meeting warrant articles, not "
-  "a hearing, and no applications were taken up. The re-used structure allowance ran longest, "
-  "about thirty-five minutes. Applicants secure a move off and then find the receiving lot "
-  "cannot absorb the ground cover, so the sponsor floated tiered relief: a letter approval for a "
-  "small overage, a planning board special permit for a large one, with language written to keep "
-  "the system from being gamed. Members asked where zoning ends and the commission&rsquo;s "
-  "review of massing and character begins. The Chapter 124 article would move the demolition "
-  "delay out from under a heading about signs, satellite dishes and roof lines, where the "
-  "sponsor said nobody would think to look for it, and rewrite the minimum maintenance "
-  "standards, which he called too vague to follow. It would go to the Select Board rather than "
-  "through zoning. Planning staff explained the cottage colony article: small owner-occupied "
-  "clusters for year-round buyers at or below 240 percent of area median income, by planning "
-  "board special permit, with no added ground cover and a 24-foot height limit.",
- "Cdjp1zb7n_4":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: retaining walls at 12 Angola Street and 8 North Mill Street, the reconsidered "
-  "demolition of 10 New Whale Street, and a report from the preservation planner. The two walls "
-  "took nearly fifty minutes between them. The properties adjoin, and both had their walls "
-  "staked for the commission to look at. Photographs showed the top of the second tier falling "
-  "below the sightline of the house. Angola Street was held for revisions, the commission asking "
-  "to see one wall built as a sample first. Members observed that three properties on that slope "
-  "are tied together, and that an outside party may be needed to find one solution for all of "
-  "them. New Whale Street came back on a motion to reconsider the tie vote, after a letter from "
-  "a preservation architectural conservator said restoration remains possible and has been done "
-  "elsewhere, taking time and money rather than being futile. The fire chief&rsquo;s view is "
-  "that the building must come down. The owner&rsquo;s counsel said they cannot commit to a "
-  "replica on a timetable, because they may not own the property by the time it is developed. "
-  "The chair accepted that the commission cannot require a particular building in advance, but "
-  "said future development could be conditioned to pay homage to the character of what stands "
-  "there. The preservation planner also reported on Certified Local Government business and on "
-  "education webinars.",
- "GIZIdVejy1k":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the new dwelling at 8 Cato Lane, four new structures at 7 Maxey Pond Road, and "
-  "hardscape at 32 Hulbert Avenue. Cato Lane ran longest, better than twenty minutes. The "
-  "application had been withdrawn and resubmitted because the members who heard it last were not "
-  "all present, and the commission found itself working without the streetscape drawing that "
-  "showed the house beside its approved neighbor at number 10. Members said the design itself is "
-  "fine, but that two near identical houses pressed together will read as an anomaly on a rural "
-  "lane. They settled on an approval conditioned on number 10 standing at least five feet "
-  "further back, with different trim and window colors. Maxey Pond Road is a pool house, a "
-  "garage, an open cabana and a shed at the rear of the property, their trim matching the main "
-  "house. A bridge is proposed between the second floor decks of the pool house and the main "
-  "house because the living space is upstairs. Members found the pool house too vertical to "
-  "screen, and the chair noted that the site plan clears vegetation for parking to the edge of a "
-  "right of way where the planting does not belong to the owner. Hulbert Avenue returned from a "
-  "site visit with photographs of arbors, granite curbing and gates from the surrounding "
-  "streets, offered as precedent for the as-built gate and a proposed Belgian block border.",
- "GORcAO6XAzI":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the nine applications at 1 Toombs Court, an as-built retaining wall at 42 Chuck "
-  "Hollow Road, and the guest house at 3 Pops Lane. Toombs Court took the longest, about "
-  "twenty-five minutes. Each of the three lots carries a duplex, a mixed-use building and "
-  "hardscape, and the two buildings on a lot stand at the same height. Members argued over "
-  "whether a gable or an eave should face the street, a gable forward being the more aggressive "
-  "approach to the streetscape and an eave forward softening it, and over whether that amounts "
-  "to asking for a redesign. The chair put a hypothetical about a subdivision whose lots come in "
-  "one at a time under separate owners, and whether the commission can object to the whole of "
-  "it. Chuck Hollow Road is a wall already built, presented by the owner himself. Pops Lane "
-  "returned once more on the guest house, with the owner and his attorney on Zoom. The architect "
-  "said the architecture has never been in question, only where the building sits, and brought a "
-  "page of site plan options. The commission also looked at 14 Silver Street, a house of about "
-  "1834, where a window survey taken with the addition&rsquo;s approval showed that many windows "
-  "in the main structure had already been replaced with vinyl clad while the originals on the "
-  "second floor are wood.",
- "HypNhF-HON0":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the town&rsquo;s new Our Island Home at 43 Sherburne Commons, fenestration changes "
-  "at 8 Jefferson Avenue, and alterations at 36B Sesachacha Road. Our Island Home took most of "
-  "the first hour. An architect for the town walked the commission through three applications, a "
+ "-c_dFqHMLww": HDC_SUMMARY_PREFIX + (
+  "the garage apartment at 6 Fargo Way, hardscape at 32 Hulbert Avenue, and hardscape at 8 Macy "
+  "Road. Fargo Way ran close to twenty minutes. The dormer was simplified and brought to the "
+  "center of the elevation, the second floor exit moved out onto the deck rather than through the "
+  "side of the dormer, and the header heights made consistent across the dwelling. Hulbert Avenue "
+  "returned with options for three arbors and gates, drawn after members asked at the last "
+  "hearing for the lattice to come off and the upper portion to be simplified, and after one "
+  "called the arbor over elaborate while allowing that the granite border might pass. Each option "
+  "was offered for all three locations: the curved beams cut straight, the lattice filled in with "
+  "wood to match the lower half of the gate, or the top arched to follow the curve of the door "
+  "below. Members disagreed about how many of the gates can be seen from the road. Macy Road is "
+  "gates as well, two of them salvaged, one at the driveway off Macy Lane and one at the rear of "
+  "the property where it cannot be seen. A new boathouse and garage in Madaket drew a neighbor "
+  "who said the twenty-two foot building will loom over a street of single story houses, and who "
+  "asked whether anything provides for drainage or spillage from the boat and fuel stored there. "
+  "The commission answered that twenty-four feet is permissible there."),
+ "-l-ANxcql9Q": HDC_SUMMARY_PREFIX + (
+  "a new dwelling at 7 White Street, an as-built chimney cap at 1 Farmer Street, and alterations "
+  "at 100 Low Beach Road. White Street had been approved before. The property then changed hands, "
+  "and the new owner redesigned the house almost entirely, at the same size as the one approved. "
+  "Members found it approvable on a large and well set back lot, but returned to how it meets the "
+  "two story structure already standing there. The two speak different languages, one with two "
+  "over two sash and the other six over six, and an earlier cupola and barnboard siding had been "
+  "stripped away so that the windows would match. Farmer Street came to the commission on a "
+  "neighbor&rsquo;s complaint. The mason, who said he has worked on the island&rsquo;s fireplaces "
+  "for thirty years, had replaced a bluestone cap with a powder coated black guard, arguing that "
+  "spark and wind guards keep rain and animals out while a five hundred pound stone cap leaves no "
+  "way to service the flue. The owner had not paid the as-built fee and asked the commission to "
+  "waive it. Low Beach Road is a brick driveway widened to the foundation of the house, and the "
+  "advice ran to a three foot planter to soften that edge, running bond rather than herringbone, "
+  "a gate lowered a few inches from seven feet, and the air conditioning units moved inside the "
+  "fence."),
+ "0QfAtbb48MA": HDC_SUMMARY_PREFIX + (
+  "a re-siting at 16 Walsh Street, a second floor addition at 8 Federal Street, and main house "
+  "revisions at 85 Vestal Street. Walsh Street ran about twenty-five minutes. The house has been "
+  "in one family since 1978, and the owners spoke to that history before the architect took up "
+  "the drawings. He had pulled the structure south and rotated it so that one gabled end stands "
+  "more than five feet off the setback line, and he extended the porch across the East Lincoln "
+  "elevation to cut a tall double gable in half. Members still objected to two tall gables close "
+  "to the street, asked for the lower masses to step down, and suggested marrying the shed roof "
+  "to the porch roof so that the eave line between the gables disappears. Rotating the house "
+  "toward East Lincoln would mean cutting off the kitchen and the upstairs bedrooms, the "
+  "architect said. Federal Street is the Artists Association&rsquo;s building, bought for its "
+  "location and last used as a real estate office. Ornamentation was removed and the building was "
+  "lowered. Members missed the steep roof pitch found elsewhere on the street and questioned the "
+  "cupola and the window panes, while the applicant said wall height is needed to hang work. "
+  "Vestal Street returned for at least the fifth time, now with the center mass tallest and the "
+  "sides stepping down. Two neighbors opposed it, and the engineered section showing cut and fill "
+  "was missing."),
+ "3Xy_ZdElclM": HDC_SUMMARY_PREFIX + (
+  "an addition at 47 Quidnet Road, a main house addition at 35 Meadow View Drive, and a rebuild "
+  "at 12 Oak Hollow Lane. Each ran about twelve minutes. Quidnet Road brought massing changes. "
+  "The mass at the far left of one elevation moved out about three feet and was widened so that "
+  "the rear facade sits flush, two dormers now peak out of the main gable, and a bay pops off the "
+  "first floor. A member said the new dormers carry extra height above their windows, which the "
+  "commission does not usually see. Abutter comments had been filed, but no abutter was present "
+  "to speak. Meadow View Drive is the main house, the guest house and the garage having been held "
+  "two weeks earlier. The chair stopped the presentation because the previous drawings were not "
+  "laid beside the proposal at the same scale with the changes bubbled. Members then objected to "
+  "a flush dormer that joins the entry gable to the gable beside it with no setback, and to two "
+  "large skylights on one front roof plane. Oak Hollow Lane is a rebuild of a house already "
+  "approved for demolition. The footprint changes little, the trim will weather naturally, and "
+  "the windows will be platinum gray casements. A member asked for muntins somewhere, since clear "
+  "glass on new construction is not ideal."),
+ "4fGYPwRlNtM": HDC_SUMMARY_PREFIX + (
+  "three applications at 15 Pilgrim Road, a new dwelling at 27 Willard Street, and work at 11 "
+  "Pine Street. Pilgrim Road took the longest, about half an hour. The architect described a main "
+  "house just over 2,500 square feet on the ground, its highest ridge at twenty-eight feet "
+  "telescoping down in two steps, with wood windows and doors rather than clad, and a wood roof. "
+  "Commissioners objected to the height and to a grade change of up to a foot, and questioned "
+  "whether the guest house should present an entrance to Pilgrim Road rather than sit behind a "
+  "vegetated screen. The dwelling and guest house were held for revisions and added to the site "
+  "view. A garage with a studio above was heard after them. Willard Street is the rear lot of a "
+  "parcel split into three, behind a gambrel the same designer built facing Hulbert Avenue. The "
+  "new house is a gable design, meant to read as an older separate house rather than part of a "
+  "compound. With no photographs of the surrounding houses in front of them, commissioners held "
+  "it for minor revisions. At Pine Street several members asked why the existing garage should be "
+  "demolished rather than reused or moved. The commission also voted to appoint Cathy Flynn, the "
+  "town&rsquo;s land use specialist, as an HDC enforcement officer."),
+ "4pUTceoPra0": HDC_SUMMARY_PREFIX + (
+  "a garage apartment and a duplex at 10 Marble Way, a cattle grate at 6 Hinckley, and a shed and "
+  "driveway revision at 22 Coffin Street. Marble Way ran about fifteen minutes and drew the "
+  "neighborhood. A resident said three original lots have been subdivided by right into six, that "
+  "four of them already carry eleven dwellings and four commercial spaces, and that three more "
+  "dwellings and another commercial space were now sought. He asked the commission to view the "
+  "site before reviewing any design, said conditions on distance from the front property lines "
+  "had not been met, and described a neighborhood of one and a half story single family houses on "
+  "lots of about eight thousand square feet. A member replied that this side of the street is "
+  "commercial residential and the other side is not. Hinckley is a grate set in a driveway to "
+  "keep deer off the plantings. Members who dislike grates accepted this one once it was "
+  "established that the drive is an easement and not a public way, although the chair found that "
+  "the locus plan and the site plan disagree on how far the access sits from the street. Coffin "
+  "Street was heard late, after the agent&rsquo;s slot had passed. The lot is small and the house "
+  "sits at the rear, so the shed was designed small, set into the hill and screened. A rooftop "
+  "array at 41 Macy Lane was held for a screening plan."),
+ "7xxl1l0Z1sw": HDC_SUMMARY_PREFIX + (
+  "an as-built fence at 15 Allens Lane, fenestration revisions at 47 Hulbert Avenue, and a fence, "
+  "gate and hardscape plan at 27 Baxter Road. Allens Lane ran about fifteen minutes and came in "
+  "answer to a violation letter. The fence was never approved, and neither was the one that "
+  "replaced it. Members accepted that it is there, but raised sight lines at the intersection and "
+  "asked that the end approaching the corner be lowered and sloped back up as the older fence had "
+  "been. A solid board fence does not meet the guidelines, so any approval would be written to "
+  "cover this fence and not its replacements. Hulbert Avenue has been approved twice already, and "
+  "the architect returned at the owner&rsquo;s request to the oceanside elevation, with minor "
+  "fenestration shuffling on the east. Two skylights were proposed where the rule allows one to a "
+  "roof plane. A gable blocks any view of both at once, but the one on the west was struck, and "
+  "the motion carried three to two. Baxter Road is a pool, gates and fencing behind a privet "
+  "hedge about five feet wide. Only two short sections of fence read from the road, each about "
+  "seven feet long, and members were satisfied as long as the deer fencing and the plank fence "
+  "stay hidden by the hedge. An apron was proposed at the garage, not at the road."),
+ "868iamx9s0w": HDC_SUMMARY_PREFIX + (
+  "the new dwellings at 8 and 10 Cato Lane, hardscape at 12 Angola Street, and the main house at "
+  "35 Meadow View Drive. Cato Lane ran about thirteen minutes. The architect brought the pairing "
+  "the commission had asked for over several hearings, the two houses drawn together as seen from "
+  "the street with site plans showing the driveways and the layout. He said the house at number 8 "
+  "meets the front, side and rear setbacks, and described red cedar trim, white cedar shingles "
+  "and a Quaker gray stain. Angola Street came down to one retaining wall with about thirty "
+  "inches exposed, supported by engineer plans and a letter from a neighbor. Members wanted the "
+  "wall to read as natural rock rather than the poured concrete the engineering calls for, and a "
+  "rounded sawn veneer was offered in answer. The street side fence divided them. It had been "
+  "changed from a board fence to a painted white type to match what was approved next door, and "
+  "one member said it now reads as part of the federal style buildings beside it rather than the "
+  "more rural setting the design suggests. Another asked to hold it for a view. Meadow View Drive "
+  "kept its chimney, lost the horizontal railing leading to the basement bulkhead, changed the "
+  "dining room windows to a two over two pattern and steepened the shed dormer."),
+ "9ZFYwKmo8uQ": HDC_SUMMARY_PREFIX + (
+  "St. Mary&rsquo;s rectory at 6 Orange Street, hardscape at 18 to 26 Sparks Avenue, and 1 North "
+  "Swift Rock Road. Orange Street took the longest, about half an hour over two applications. The "
+  "rectory was built in 1800 for Captain James Easton, and the contractor described work already "
+  "done to preserve it: every existing window reconditioned with new pulleys and old-fashioned "
+  "metal weatherstripping, and an Andersen window replaced with an arched one to match the rest. "
+  "At issue was a second-floor sun room at the rear, never properly insulated and not original to "
+  "the house. The commission settled on sliding sash rather than awning or casement. The "
+  "hardscape covers the north side of the lot, the open lawn below the rectory as Orange Street "
+  "rises out of town, where a masonry wall is heaving. That was held for revisions because a walk "
+  "appeared to run under a tree. Sparks Avenue is a commercial hardscape: brick to match the "
+  "existing sidewalks, granite pavers rather than cobblestones, the recessed granite curb "
+  "extended flush, and a crosswalk the applicant will petition the town to build across to the "
+  "Cumberland Farms opening. An atypical fence becomes a five-in-one. It was held a week so the "
+  "commission can see the wording, with members invited to name plant preferences. North Swift "
+  "Rock Road came back with revisions to a dwelling approved seven or eight months ago."),
+ "AsmokYdoXJ0": HDC_SUMMARY_PREFIX + (
+  "the rehabilitation of the brick building at 5 Candle Street, a painted wall sign at 57 Main "
+  "Street, and an as-built at 13A Willard Street. Candle Street took the longest, about half an "
+  "hour. It is the former Nantucket Electric building, and the commission split the question in "
+  "two, approving the scope of work and leaving the materials to come back. The vote was "
+  "unanimous, on conditions: the glass block on the east and west elevations to be restored "
+  "rather than removed, the Secretary of the Interior&rsquo;s standards and industry practice for "
+  "period brick buildings to be followed, and the brick selections returned to the commission for "
+  "approval. One member had pointed out that the panel of glass block proposed for removal on the "
+  "east elevation looks original to the building. Main Street is a painted wall sign, a ghost "
+  "sign most of which has worn away over the years. The Sign Advisory Committee recommended "
+  "holding it: only three of its five members were present that morning, and the application "
+  "carries images but no exact paint colors and no finished design. Willard Street is work "
+  "already done, a skirt around the house of the kind on 13B, 13C and the house opposite, and a "
+  "condenser pad that was not on the approved elevations. The condensers cannot be seen from the "
+  "street."),
+ "BT5BikyGS-M": HDC_SUMMARY_PREFIX + (
+  "a re-used structure allowance, amendments to Chapter 124 of the town code, and the cottage "
+  "colony article. This was a work session on Annual Town Meeting warrant articles, not a "
+  "hearing, and no applications were taken up. The re-used structure allowance ran longest, about "
+  "thirty-five minutes. Applicants secure a move off and then find the receiving lot cannot "
+  "absorb the ground cover, so the sponsor floated tiered relief: a letter approval for a small "
+  "overage, a planning board special permit for a large one, with language written to keep the "
+  "system from being gamed. Members asked where zoning ends and the commission&rsquo;s review of "
+  "massing and character begins. The Chapter 124 article would move the demolition delay out from "
+  "under a heading about signs, satellite dishes and roof lines, where the sponsor said nobody "
+  "would think to look for it, and rewrite the minimum maintenance standards, which he called too "
+  "vague to follow. It would go to the Select Board rather than through zoning. Planning staff "
+  "explained the cottage colony article: small owner-occupied clusters for year-round buyers at "
+  "or below 240 percent of area median income, by planning board special permit, with no added "
+  "ground cover and a 24-foot height limit."),
+ "Cdjp1zb7n_4": HDC_SUMMARY_PREFIX + (
+  "retaining walls at 12 Angola Street and 8 North Mill Street, the reconsidered demolition of 10 "
+  "New Whale Street, and a report from the preservation planner. The two walls took nearly fifty "
+  "minutes between them. The properties adjoin, and both had their walls staked for the "
+  "commission to look at. Photographs showed the top of the second tier falling below the "
+  "sightline of the house. Angola Street was held for revisions, the commission asking to see one "
+  "wall built as a sample first. Members observed that three properties on that slope are tied "
+  "together, and that an outside party may be needed to find one solution for all of them. New "
+  "Whale Street came back on a motion to reconsider the tie vote, after a letter from a "
+  "preservation architectural conservator said restoration remains possible and has been done "
+  "elsewhere, taking time and money rather than being futile. The fire chief&rsquo;s view is that "
+  "the building must come down. The owner&rsquo;s counsel said they cannot commit to a replica on "
+  "a timetable, because they may not own the property by the time it is developed. The chair "
+  "accepted that the commission cannot require a particular building in advance, but said future "
+  "development could be conditioned to pay homage to the character of what stands there. The "
+  "preservation planner also reported on Certified Local Government business and on education "
+  "webinars."),
+ "GIZIdVejy1k": HDC_SUMMARY_PREFIX + (
+  "the new dwelling at 8 Cato Lane, four new structures at 7 Maxey Pond Road, and hardscape at 32 "
+  "Hulbert Avenue. Cato Lane ran longest, better than twenty minutes. The application had been "
+  "withdrawn and resubmitted because the members who heard it last were not all present, and the "
+  "commission found itself working without the streetscape drawing that showed the house beside "
+  "its approved neighbor at number 10. Members said the design itself is fine, but that two near "
+  "identical houses pressed together will read as an anomaly on a rural lane. They settled on an "
+  "approval conditioned on number 10 standing at least five feet further back, with different "
+  "trim and window colors. Maxey Pond Road is a pool house, a garage, an open cabana and a shed "
+  "at the rear of the property, their trim matching the main house. A bridge is proposed between "
+  "the second floor decks of the pool house and the main house because the living space is "
+  "upstairs. Members found the pool house too vertical to screen, and the chair noted that the "
+  "site plan clears vegetation for parking to the edge of a right of way where the planting does "
+  "not belong to the owner. Hulbert Avenue returned from a site visit with photographs of arbors, "
+  "granite curbing and gates from the surrounding streets, offered as precedent for the as-built "
+  "gate and a proposed Belgian block border."),
+ "GORcAO6XAzI": HDC_SUMMARY_PREFIX + (
+  "the nine applications at 1 Toombs Court, an as-built retaining wall at 42 Chuck Hollow Road, "
+  "and the guest house at 3 Pops Lane. Toombs Court took the longest, about twenty-five minutes. "
+  "Each of the three lots carries a duplex, a mixed-use building and hardscape, and the two "
+  "buildings on a lot stand at the same height. Members argued over whether a gable or an eave "
+  "should face the street, a gable forward being the more aggressive approach to the streetscape "
+  "and an eave forward softening it, and over whether that amounts to asking for a redesign. The "
+  "chair put a hypothetical about a subdivision whose lots come in one at a time under separate "
+  "owners, and whether the commission can object to the whole of it. Chuck Hollow Road is a wall "
+  "already built, presented by the owner himself. Pops Lane returned once more on the guest "
+  "house, with the owner and his attorney on Zoom. The architect said the architecture has never "
+  "been in question, only where the building sits, and brought a page of site plan options. The "
+  "commission also looked at 14 Silver Street, a house of about 1834, where a window survey taken "
+  "with the addition&rsquo;s approval showed that many windows in the main structure had already "
+  "been replaced with vinyl clad while the originals on the second floor are wood."),
+ "HypNhF-HON0": HDC_SUMMARY_PREFIX + (
+  "the town&rsquo;s new Our Island Home at 43 Sherburne Commons, fenestration changes at 8 "
+  "Jefferson Avenue, and alterations at 36B Sesachacha Road. Our Island Home took most of the "
+  "first hour. An architect for the town walked the commission through three applications, a "
   "nursing home building, staff housing and hardscape, on the east side of the Sherburne Commons "
   "campus. The project moves the home off its East Creek Road site. Commissioners said one "
   "building reads as a dormitory and asked for the long dark roof to be broken up, the ganged "
@@ -29319,526 +29386,485 @@ CIVIC_DESCRIPTIONS = {
   "should stop. At Sesachacha Road a door flanked by windows becomes a sun room, with several "
   "roof changes; it was approved on an exhibit that set the window spacing and corner boards. A "
   "pool at 64 and 66 Baxter Road was approved after the commission asked whether the paper road "
-  "beside it will be needed for the Baxter Road relocation.",
- "J43peZ0XjPI":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a violation at 8 North Mill Street, four applications at 3 Pops Lane, and a new "
-  "dwelling at 36 Tennessee Avenue. North Mill Street took about an hour, the longest of the "
-  "night. The chair opened by reading the commission&rsquo;s best practices on the conduct of "
-  "application hearings. He then noted that the project carries a cease and desist order from "
-  "the commission and a stop work order from the Building Commissioner, so nothing is being "
-  "built there. He set out the options: approve subject to an as-built fee, a daily fine, or "
-  "modifications, or else deny. Rather than choose, the commission agreed to walk Angola Street, "
-  "North Mill Street and the blocks around them to see what comparable elements exist, and to "
-  "take the case up again at a later old business meeting. No new drawings had been submitted "
-  "that day. Pops Lane returned with its main house, guest house, garage and pool, and was held "
-  "again for revisions. Tennessee Avenue came back with photographs taken from the creek in "
-  "summer, which the commission had asked for. Most of the comment was on the rear elevation "
-  "facing the water. It was held for revisions and for options.",
- "Jldf_sGzna4":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the demolition of the garage at 25 Hussey Street, an addition at 11 Pleasant Street, "
-  "and hardscape at 89 Easton Street. The meeting opened with the chair reporting what Town "
-  "Counsel advised about the tie vote taken two weeks earlier: a motion to deny must carry a "
-  "stated reason, and a motion to approve that fails simply leaves nothing decided. Hussey "
-  "Street followed, the longest item of the afternoon. The applicant&rsquo;s agent, himself a "
+  "beside it will be needed for the Baxter Road relocation."),
+ "J43peZ0XjPI": HDC_SUMMARY_PREFIX + (
+  "a violation at 8 North Mill Street, four applications at 3 Pops Lane, and a new dwelling at 36 "
+  "Tennessee Avenue. North Mill Street took about an hour, the longest of the night. The chair "
+  "opened by reading the commission&rsquo;s best practices on the conduct of application "
+  "hearings. He then noted that the project carries a cease and desist order from the commission "
+  "and a stop work order from the Building Commissioner, so nothing is being built there. He set "
+  "out the options: approve subject to an as-built fee, a daily fine, or modifications, or else "
+  "deny. Rather than choose, the commission agreed to walk Angola Street, North Mill Street and "
+  "the blocks around them to see what comparable elements exist, and to take the case up again at "
+  "a later old business meeting. No new drawings had been submitted that day. Pops Lane returned "
+  "with its main house, guest house, garage and pool, and was held again for revisions. Tennessee "
+  "Avenue came back with photographs taken from the creek in summer, which the commission had "
+  "asked for. Most of the comment was on the rear elevation facing the water. It was held for "
+  "revisions and for options."),
+ "Jldf_sGzna4": HDC_SUMMARY_PREFIX + (
+  "the demolition of the garage at 25 Hussey Street, an addition at 11 Pleasant Street, and "
+  "hardscape at 89 Easton Street. The meeting opened with the chair reporting what Town Counsel "
+  "advised about the tie vote taken two weeks earlier: a motion to deny must carry a stated "
+  "reason, and a motion to approve that fails simply leaves nothing decided. Hussey Street "
+  "followed, the longest item of the afternoon. The applicant&rsquo;s agent, himself a "
   "commissioner, brought the additional information the commission had asked for: photographs of "
   "the interior framing, and a statement of how much of the structure would be reconstructed and "
   "how much is actually coming down. Pleasant Street is an addition on Starbuck&rsquo;s Court, a "
   "private way. The designer removed a balcony that had sat over the addition, dropped a "
   "replacement bay window in favor of three windows under a shed roof after studying four "
-  "options, and changed the doors. Easton Street, known as Captain&rsquo;s Corner and next to "
-  "the Nantucket Hotel, came back with the wall along North Avenue cut from twenty-four inches "
-  "to fifteen and run on another five or six feet with planting to screen the drive-down, vines "
+  "options, and changed the doors. Easton Street, known as Captain&rsquo;s Corner and next to the "
+  "Nantucket Hotel, came back with the wall along North Avenue cut from twenty-four inches to "
+  "fifteen and run on another five or six feet with planting to screen the drive-down, vines "
   "added on its uphill side to soften the brick, and the outdoor shower and pergola dropped "
-  "altogether.",
- "KVKFNeKcQy0":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: three new lots at 1 Tombs Court, four applications at 3 Pops Lane, and the sign "
-  "recommendations that opened the meeting. Tombs Court took the longest, about three quarters "
-  "of an hour. The property is where Espresso To Go sits now. It has been sold and divided into "
+  "altogether."),
+ "KVKFNeKcQy0": HDC_SUMMARY_PREFIX + (
+  "three new lots at 1 Tombs Court, four applications at 3 Pops Lane, and the sign "
+  "recommendations that opened the meeting. Tombs Court took the longest, about three quarters of "
+  "an hour. The property is where Espresso To Go sits now. It has been sold and divided into "
   "three lots by an approval-not-required subdivision, fronting Tombs Court across from the "
   "dentist&rsquo;s office and the new Thai House development, with another subdivision going in "
-  "off Young&rsquo;s Way. The commission held the buildings for revisions and asked for poles "
-  "set along the street for the two buildings nearest it on each lot, so their proximity can be "
+  "off Young&rsquo;s Way. The commission held the buildings for revisions and asked for poles set "
+  "along the street for the two buildings nearest it on each lot, so their proximity can be "
   "judged, and for a site plan showing the footprints of the existing buildings in context. Pops "
-  "Lane ran about forty minutes over four applications. The main house was approved through "
-  "staff on an exhibit that keeps the sill in the screened porch continuous and gives the "
-  "chimney a more traditional cap. The three-car garage has become a single bay, 456 square feet "
-  "smaller and four feet lower at the ridge, with out-swinging doors. A view was arranged with "
-  "ridge poles staked, which may make further revisions unnecessary. The pool was questioned for "
+  "Lane ran about forty minutes over four applications. The main house was approved through staff "
+  "on an exhibit that keeps the sill in the screened porch continuous and gives the chimney a "
+  "more traditional cap. The three-car garage has become a single bay, 456 square feet smaller "
+  "and four feet lower at the ridge, with out-swinging doors. A view was arranged with ridge "
+  "poles staked, which may make further revisions unnecessary. The pool was questioned for "
   "listing no materials beyond bluestone. The meeting opened by approving the signs on the Sign "
-  "Advisory Committee&rsquo;s recommendations.",
- "M4qgbxJ0Mls":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a new dwelling at 4 East Lincoln Avenue, three applications at 2 L Street, and an "
-  "enclosed deck at 41 Orange Street. East Lincoln took the longest, about twenty-two minutes. "
-  "Its architect said the house would stand where an earlier one stood before another firm moved "
-  "it back and made it a garage studio. He argued the scale matches 6, 10, 12 and 14 East "
-  "Lincoln, and that the neighbors&rsquo; stone walls and flood plain raises already set the "
-  "height of the street. Commissioners asked for the front elevation to be simplified. A "
-  "suggestion to push the house back another six feet drew little support. It was held for "
-  "revisions. At 2 L Street the commission allowed a 1966 structure to be moved off but not "
-  "demolished, on the preservation planner&rsquo;s recommendation. The replacement dwelling was "
-  "held for revisions, the chair noting that an applicant has three meetings to make material "
-  "changes before a denial. A garage there was taken up after it. The Orange Street application "
-  "would close in a second-floor deck as a sleeping porch. Commissioners wanted it brought in, "
-  "with wider divisions between the banks of windows, and held it for revisions.",
- "OIjvZ3Uj7mY":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a new educational research center at 220 Milestone Road, the former Harbor House at "
-  "19 North Water Street, and an outdoor shower at 5 Holders Court. Milestone Road took the "
-  "longest. The Nantucket Conservation Foundation&rsquo;s executive director set out the goals "
-  "for the project and the architect leading the design team presented the building. "
-  "Commissioners discussed the gray standing-seam roof and the solar panels proposed as a field "
-  "across the south elevation, comparing them with the array at the ice rink, which sits close "
-  "to the street and reads harshly. The chair said a ground-mounted array is worth considering, "
-  "and warned that roof color will matter to some members when the solar application returns. "
-  "North Water Street is the North Water side of what was the Harbor House and is now part of "
-  "the White Elephant Resorts. The architects plan to rehabilitate it from the inside out, "
-  "taking the roof off and rebuilding it while salvaging, reframing and sistering what is "
-  "underneath. It was approved on an exhibit, with a one-foot planting bed along the driveway "
-  "foundation and a freestanding lattice panel beside the generator if more than four square "
-  "feet of it shows. Holders Court is an outdoor shower built by a local contractor and "
-  "presented by the owner&rsquo;s father, with questions about where it sits and the wall it "
-  "stands against.",
- "Q8aJM392-0w":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: four applications at 3 Pops Lane, a minimum maintenance hearing on 10 New Whale "
-  "Street, and an as-built review of 21 Pleasant Street. Pops Lane took the longest, about "
-  "thirty-six minutes. Its architect returned with a main house, guest house, garage and pool, "
-  "revised since October. The pool had been moved off the water side to a plunge pool between "
-  "the buildings, and Conservation Commission and septic approvals were in hand. Commissioners "
-  "pressed on raised grade, siding and trim, and asked for more separation between the "
-  "structures. It was held for revisions, the chair repeating that three meetings of material "
-  "changes is the limit before a denial. The New Whale Street hearing came from a citizen "
-  "complaint under the minimum maintenance bylaw. Counsel and an engineer for National Grid "
-  "called the 1927 building unsafe and said the fire department recommends demolition. A "
-  "demolition application had been filed the day before. The chair said the bylaw sets no "
-  "well-defined terms, referred questions about the commission&rsquo;s authority to Town "
-  "Counsel, and asked members to submit further questions through staff. Pleasant Street is a "
-  "1920s foursquare with three applications left unfinished and violation fees already paid. Its "
-  "main house and hardscape were held for revisions.",
- "QiUISaS_7K8":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: parking revisions at 126 Main Street, the demolition of the dwelling at 12 Atlantic "
-  "Avenue, and an as-built deer fence at 111 Surfside Road. Main Street ran about twenty-six "
-  "minutes. The agent moved an approved parking space about eighteen inches to stay clear of a "
-  "tree, extended the approved rock wall further around it, and proposed a second space surfaced "
-  "with a membrane that sits under the grass so that nothing shows. Members said the plans and "
-  "the narrative did not agree, that a car parked on a lawn would set a poor example, and that "
-  "reinforced lawn grids turn brown. The space is visible from the Main Street sidewalk, and the "
-  "planning board had required it. The chair opened the hearing by asking members for short "
-  "declarative statements of what an approval requires, so that applications are not heard three "
-  "and four times. Atlantic Avenue came as commissioner discussion and a vote on an unsafe or "
-  "dangerous condition. The front wall and the ceiling had imploded, and because the structure "
-  "stood at the sidewalk the building commissioner gave one week to take it down, which is one "
-  "of the few instances in which demolition may precede a certificate of appropriateness. "
-  "Surfside Road is a fence already built, presented by the owner, routed between vegetation "
-  "where the yard backs onto the road and the bike path.",
- "Qvs7pHsUxoU":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: four applications at 8 Sandwich Road, a move and alterations at 12 Baltimore Street, "
-  "and a garage at 25 Hussey Street. Sandwich Road took the longest, close to half an hour "
-  "across a dwelling, a garage apartment, a zoning shed and a pool. The architect said the road "
-  "itself reads more like a driveway, and that the lot has a second access on Chatham. "
-  "Commissioners asked for the same reductions on the garage apartment they had asked for on the "
-  "house, dropping the ridge and the eave, and were satisfied that its intersecting shed dormers "
-  "sit on an inside corner. The shed was held for revisions. The Baltimore Street house dates "
-  "from 1880. The plan is to lift it, move it clear of the setbacks, set it on a full foundation "
-  "and renovate inside while leaving the exterior largely intact. It was held for revisions. At "
-  "25 Hussey Street the applicant asked to demolish a garage that stands almost on the property "
-  "line and has been taking on water, to make room for a guest house with a garage component "
-  "behind a house of about 1730. He offered deconstruction and rebuilding as an alternative, "
-  "citing a recent approval the preservation planner found in which a structure was taken down "
-  "in panels and set on a new foundation. The commission does not meet on February 25.",
- "SBhY2q3GjTk":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the demolition and replacement cottage at 10R Academy Lane, an as-built retaining "
-  "wall at 42 Chuck Hollow Road, and an as-built mini-split at 31 Easy Street. Academy Lane took "
-  "the longest, a little over twenty minutes across the two applications. A member of the "
-  "Historic Structures Advisory Group reported for that body. The documentation disagrees about "
-  "the building&rsquo;s age, one account treating it as rather old and the applicant&rsquo;s as "
+  "Advisory Committee&rsquo;s recommendations."),
+ "M4qgbxJ0Mls": HDC_SUMMARY_PREFIX + (
+  "a new dwelling at 4 East Lincoln Avenue, three applications at 2 L Street, and an enclosed "
+  "deck at 41 Orange Street. East Lincoln took the longest, about twenty-two minutes. Its "
+  "architect said the house would stand where an earlier one stood before another firm moved it "
+  "back and made it a garage studio. He argued the scale matches 6, 10, 12 and 14 East Lincoln, "
+  "and that the neighbors&rsquo; stone walls and flood plain raises already set the height of the "
+  "street. Commissioners asked for the front elevation to be simplified. A suggestion to push the "
+  "house back another six feet drew little support. It was held for revisions. At 2 L Street the "
+  "commission allowed a 1966 structure to be moved off but not demolished, on the preservation "
+  "planner&rsquo;s recommendation. The replacement dwelling was held for revisions, the chair "
+  "noting that an applicant has three meetings to make material changes before a denial. A garage "
+  "there was taken up after it. The Orange Street application would close in a second-floor deck "
+  "as a sleeping porch. Commissioners wanted it brought in, with wider divisions between the "
+  "banks of windows, and held it for revisions."),
+ "OIjvZ3Uj7mY": HDC_SUMMARY_PREFIX + (
+  "a new educational research center at 220 Milestone Road, the former Harbor House at 19 North "
+  "Water Street, and an outdoor shower at 5 Holders Court. Milestone Road took the longest. The "
+  "Nantucket Conservation Foundation&rsquo;s executive director set out the goals for the project "
+  "and the architect leading the design team presented the building. Commissioners discussed the "
+  "gray standing-seam roof and the solar panels proposed as a field across the south elevation, "
+  "comparing them with the array at the ice rink, which sits close to the street and reads "
+  "harshly. The chair said a ground-mounted array is worth considering, and warned that roof "
+  "color will matter to some members when the solar application returns. North Water Street is "
+  "the North Water side of what was the Harbor House and is now part of the White Elephant "
+  "Resorts. The architects plan to rehabilitate it from the inside out, taking the roof off and "
+  "rebuilding it while salvaging, reframing and sistering what is underneath. It was approved on "
+  "an exhibit, with a one-foot planting bed along the driveway foundation and a freestanding "
+  "lattice panel beside the generator if more than four square feet of it shows. Holders Court is "
+  "an outdoor shower built by a local contractor and presented by the owner&rsquo;s father, with "
+  "questions about where it sits and the wall it stands against."),
+ "Q8aJM392-0w": HDC_SUMMARY_PREFIX + (
+  "four applications at 3 Pops Lane, a minimum maintenance hearing on 10 New Whale Street, and an "
+  "as-built review of 21 Pleasant Street. Pops Lane took the longest, about thirty-six minutes. "
+  "Its architect returned with a main house, guest house, garage and pool, revised since October. "
+  "The pool had been moved off the water side to a plunge pool between the buildings, and "
+  "Conservation Commission and septic approvals were in hand. Commissioners pressed on raised "
+  "grade, siding and trim, and asked for more separation between the structures. It was held for "
+  "revisions, the chair repeating that three meetings of material changes is the limit before a "
+  "denial. The New Whale Street hearing came from a citizen complaint under the minimum "
+  "maintenance bylaw. Counsel and an engineer for National Grid called the 1927 building unsafe "
+  "and said the fire department recommends demolition. A demolition application had been filed "
+  "the day before. The chair said the bylaw sets no well-defined terms, referred questions about "
+  "the commission&rsquo;s authority to Town Counsel, and asked members to submit further "
+  "questions through staff. Pleasant Street is a 1920s foursquare with three applications left "
+  "unfinished and violation fees already paid. Its main house and hardscape were held for "
+  "revisions."),
+ "QiUISaS_7K8": HDC_SUMMARY_PREFIX + (
+  "parking revisions at 126 Main Street, the demolition of the dwelling at 12 Atlantic Avenue, "
+  "and an as-built deer fence at 111 Surfside Road. Main Street ran about twenty-six minutes. The "
+  "agent moved an approved parking space about eighteen inches to stay clear of a tree, extended "
+  "the approved rock wall further around it, and proposed a second space surfaced with a membrane "
+  "that sits under the grass so that nothing shows. Members said the plans and the narrative did "
+  "not agree, that a car parked on a lawn would set a poor example, and that reinforced lawn "
+  "grids turn brown. The space is visible from the Main Street sidewalk, and the planning board "
+  "had required it. The chair opened the hearing by asking members for short declarative "
+  "statements of what an approval requires, so that applications are not heard three and four "
+  "times. Atlantic Avenue came as commissioner discussion and a vote on an unsafe or dangerous "
+  "condition. The front wall and the ceiling had imploded, and because the structure stood at the "
+  "sidewalk the building commissioner gave one week to take it down, which is one of the few "
+  "instances in which demolition may precede a certificate of appropriateness. Surfside Road is a "
+  "fence already built, presented by the owner, routed between vegetation where the yard backs "
+  "onto the road and the bike path."),
+ "Qvs7pHsUxoU": HDC_SUMMARY_PREFIX + (
+  "four applications at 8 Sandwich Road, a move and alterations at 12 Baltimore Street, and a "
+  "garage at 25 Hussey Street. Sandwich Road took the longest, close to half an hour across a "
+  "dwelling, a garage apartment, a zoning shed and a pool. The architect said the road itself "
+  "reads more like a driveway, and that the lot has a second access on Chatham. Commissioners "
+  "asked for the same reductions on the garage apartment they had asked for on the house, "
+  "dropping the ridge and the eave, and were satisfied that its intersecting shed dormers sit on "
+  "an inside corner. The shed was held for revisions. The Baltimore Street house dates from 1880. "
+  "The plan is to lift it, move it clear of the setbacks, set it on a full foundation and "
+  "renovate inside while leaving the exterior largely intact. It was held for revisions. At 25 "
+  "Hussey Street the applicant asked to demolish a garage that stands almost on the property line "
+  "and has been taking on water, to make room for a guest house with a garage component behind a "
+  "house of about 1730. He offered deconstruction and rebuilding as an alternative, citing a "
+  "recent approval the preservation planner found in which a structure was taken down in panels "
+  "and set on a new foundation. The commission does not meet on February 25."),
+ "SBhY2q3GjTk": HDC_SUMMARY_PREFIX + (
+  "the demolition and replacement cottage at 10R Academy Lane, an as-built retaining wall at 42 "
+  "Chuck Hollow Road, and an as-built mini-split at 31 Easy Street. Academy Lane took the "
+  "longest, a little over twenty minutes across the two applications. A member of the Historic "
+  "Structures Advisory Group reported for that body. The documentation disagrees about the "
+  "building&rsquo;s age, one account treating it as rather old and the applicant&rsquo;s as "
   "perhaps 1950, and the replacement is so close to the existing cottage in size and proportion "
-  "that the group asked whether the cottage could be kept and added to instead. The "
-  "owner&rsquo;s attorney answered that the proposal rests on a medical need. The vote drew "
-  "three in favor and two abstentions, one of them recorded late, and a member of the public "
-  "raised a point of order asking whether two members had been talked out of voting no. The "
-  "chair said he had heard no vote against. Chuck Hollow Road is a wall and gate already built "
-  "behind the house and not visible from the street. Staff noted that the as-built fee had not "
-  "been collected, and the commission discussed adding it. Easy Street is a mini-split a tenant "
-  "installed, which reached the commission on a citizen complaint. The co-trustee offered to "
-  "paint the covering over the piping, and the fence screening one condenser, white to match a "
-  "fence already approved.",
- "Z_heI4IuD1I":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: 8 North Mill Street, three applications at 11 Osprey Way, and alterations at 14 "
-  "Silver Street. North Mill Street took almost eighty minutes, by far the longest item. The "
-  "owner, Robert Sarkisian, opened by apologizing. He had misunderstood the status of his "
-  "approvals and believed a change was already allowed. He said the house is his year-round home "
-  "rather than a speculative build, and that it was moved five feet forward of the approved plan "
-  "without altering the first floor height or its angle to Angola Street. The commission asked "
-  "for more material before it decides, including sections and streetscapes, and a full-scale "
-  "mockup of the addition. The motion also tracks the hardscape application with the house, in "
-  "case modifications follow. Osprey Way returned after more than a year with a main dwelling, a "
+  "that the group asked whether the cottage could be kept and added to instead. The owner&rsquo;s "
+  "attorney answered that the proposal rests on a medical need. The vote drew three in favor and "
+  "two abstentions, one of them recorded late, and a member of the public raised a point of order "
+  "asking whether two members had been talked out of voting no. The chair said he had heard no "
+  "vote against. Chuck Hollow Road is a wall and gate already built behind the house and not "
+  "visible from the street. Staff noted that the as-built fee had not been collected, and the "
+  "commission discussed adding it. Easy Street is a mini-split a tenant installed, which reached "
+  "the commission on a citizen complaint. The co-trustee offered to paint the covering over the "
+  "piping, and the fence screening one condenser, white to match a fence already approved."),
+ "Z_heI4IuD1I": HDC_SUMMARY_PREFIX + (
+  "8 North Mill Street, three applications at 11 Osprey Way, and alterations at 14 Silver Street. "
+  "North Mill Street took almost eighty minutes, by far the longest item. The owner, Robert "
+  "Sarkisian, opened by apologizing. He had misunderstood the status of his approvals and "
+  "believed a change was already allowed. He said the house is his year-round home rather than a "
+  "speculative build, and that it was moved five feet forward of the approved plan without "
+  "altering the first floor height or its angle to Angola Street. The commission asked for more "
+  "material before it decides, including sections and streetscapes, and a full-scale mockup of "
+  "the addition. The motion also tracks the hardscape application with the house, in case "
+  "modifications follow. Osprey Way returned after more than a year with a main dwelling, a "
   "second dwelling and a pool. Its architect recounted a pond cottage renovation and a second "
   "cottage moved onto a foundation from an adjacent property. Discussion centered on the view "
   "from across the pond, where a flat roof makes the two buildings read as disconnected. The "
   "front door, two hundred feet from Osprey Way, is not visible from the road at all. Silver "
   "Street is a historic house in poor repair that the applicant would rather demolish. It was "
-  "held for revisions.",
- "_55oCTbJhlg":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the duplex at 63 Hinsdale Road, a question period with the preservation planner, and "
-  "two applications at 2 L Street. Hinsdale Road took the longest, about forty minutes. Its "
-  "designer listed the revisions made since the last hearing: the two ridge heights separated by "
-  "eight or nine inches, smaller windows, a front porch added to the right side, that side "
-  "reduced and pushed three feet back, and the dormers removed on the Hinsdale Street elevation. "
+  "held for revisions."),
+ "_55oCTbJhlg": HDC_SUMMARY_PREFIX + (
+  "the duplex at 63 Hinsdale Road, a question period with the preservation planner, and two "
+  "applications at 2 L Street. Hinsdale Road took the longest, about forty minutes. Its designer "
+  "listed the revisions made since the last hearing: the two ridge heights separated by eight or "
+  "nine inches, smaller windows, a front porch added to the right side, that side reduced and "
+  "pushed three feet back, and the dormers removed on the Hinsdale Street elevation. "
   "Commissioners returned to the continuous eave running the length of the building and to how "
-  "the roof planes and pitches on the small gables meet the central element. One warned the "
-  "house would read as an oversized suburban home if the height were cut. It was held for "
-  "revisions. The preservation planner took questions early in the meeting. She described a Land "
-  "Bank project and the town&rsquo;s coastal resiliency plan, including a state-funded "
-  "feasibility study of a flood barrier at Easy Street with three alternatives and public "
-  "sessions underway. The chair also explained an administrative change: her historic reference "
-  "materials now reach commissioners before a meeting, since she no longer sits through all four "
-  "and a half hours. The 2 L Street applications are an infill dwelling in a FEMA flood zone and "
-  "a garage. Both were held for revisions, over height and over the garage doors.",
- "bTwA3hkWJa8":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the four applications at 85 Vestal Street, the addition and move at 6 Lily Street, "
-  "and a four hundred square foot addition at 4 Westmore Lane. Vestal Street took better than "
-  "half an hour. The architect had lowered the first floor by about a foot, switched the massing "
-  "so that the house reads lower from the street, and reworked the grading, the pool patio and "
-  "the retaining walls. The landscape designer described terracing from the road down the back "
-  "slope, with the tallest wall at six feet and evergreen and deciduous planting cascading down "
-  "it. A commissioner who had recused spoke as a neighbor. Members accepted the architecture of "
-  "the main house and returned to the amount of program on the site, then held the garage and "
-  "studio as a two story building dressed as a story and a half, with oversized flush dormers "
-  "and a basement that shows toward Dukes Road. Lily Street is an Underhill cottage. Its two "
-  "parcels have now been merged, which the agent said removes the density that separate "
-  "development would bring. Surveys of every house on the street were produced, the street was "
-  "scanned in three dimensions, and the proposal was superimposed to argue that it sits within "
-  "inches of the average setback. Westmore Lane came back compressed in height and simplified, "
-  "with a trellis and a larger window on the north, although a neighbor said the building is "
-  "growing taller beside a well traveled corner.",
- "cyUHf_gFXX4":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: four applications at 3 Pops Lane, three at 85 Orange Street, and outbuildings at 2 "
-  "Hamblin Road. Pops Lane took the longest, more than forty minutes, and the conversation again "
-  "settled on the rear elevation facing the water. The architect said the heights had come down "
-  "across the board. The chair had asked for two feet, which would have left no room for a "
-  "full-height door, so the plates dropped as far as they could, one wing from seventeen feet "
-  "eight inches to sixteen feet ten. The main house was held for revisions, and the guest house, "
-  "garage and pool held with it. Orange Street came back with sills added so the windows no "
-  "longer read as picture frames, the window manufacturer named in the schedule, and the stoop "
-  "detailed to match a historic photograph in the plans. Its front and rear hardscape were voted "
-  "on together at the end. Hamblin Road is two outbuildings standing close together. They were "
-  "reviewed as one and approved as submitted, one commissioner noting that their doors all face "
-  "into the site rather than the road. The commission also took 36 Tennessee Avenue for a third "
-  "time, with the two secondary masses dropped a foot to separate them from the primary one.",
- "espbghXX8Ec":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: new buildings on Marble Way, a new dwelling at 36 Tennessee Avenue, and the main "
-  "house and hardscape at 21 Pleasant Street. Marble Way took the longest, about thirty-six "
-  "minutes. The applications cover a dwelling on one lot and garages on two others, served by "
-  "three shared driveways. The agent said a larger proposal for a duplex is being withdrawn "
-  "after neighbors objected to the parking, and that landscaping equipment is being moved off so "
-  "the site can be employee housing for the landscape company that owns it. Commissioners "
-  "counted nine gables facing the street and suggested rotating the secondary buildings ninety "
-  "degrees so the primary ones face front. The applications were held for architectural "
-  "revisions and for site plan information. Tennessee Avenue replaces a c.1938 Colonial Revival "
-  "the commission allowed to be moved across the street. The architect described gray trim, "
-  "two-over-two sash, and pent roofs instead of posts to keep work back from the wetlands. It "
-  "was held for revisions after a discussion of the flood zone on the survey. Pleasant Street "
-  "has been before the commission for more than two years. The applicant agreed to score the "
-  "foundation so it reads as block and to cap the picket fence. The height of the hedge on "
-  "Candle House Lane was left open.",
- "geZ4KqBZB-w":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a new dwelling at 8 Cannonbury Lane, a barn at 4 Dukes Road, and a relocation at 12 "
+  "the roof planes and pitches on the small gables meet the central element. One warned the house "
+  "would read as an oversized suburban home if the height were cut. It was held for revisions. "
+  "The preservation planner took questions early in the meeting. She described a Land Bank "
+  "project and the town&rsquo;s coastal resiliency plan, including a state-funded feasibility "
+  "study of a flood barrier at Easy Street with three alternatives and public sessions underway. "
+  "The chair also explained an administrative change: her historic reference materials now reach "
+  "commissioners before a meeting, since she no longer sits through all four and a half hours. "
+  "The 2 L Street applications are an infill dwelling in a FEMA flood zone and a garage. Both "
+  "were held for revisions, over height and over the garage doors."),
+ "bTwA3hkWJa8": HDC_SUMMARY_PREFIX + (
+  "the four applications at 85 Vestal Street, the addition and move at 6 Lily Street, and a four "
+  "hundred square foot addition at 4 Westmore Lane. Vestal Street took better than half an hour. "
+  "The architect had lowered the first floor by about a foot, switched the massing so that the "
+  "house reads lower from the street, and reworked the grading, the pool patio and the retaining "
+  "walls. The landscape designer described terracing from the road down the back slope, with the "
+  "tallest wall at six feet and evergreen and deciduous planting cascading down it. A "
+  "commissioner who had recused spoke as a neighbor. Members accepted the architecture of the "
+  "main house and returned to the amount of program on the site, then held the garage and studio "
+  "as a two story building dressed as a story and a half, with oversized flush dormers and a "
+  "basement that shows toward Dukes Road. Lily Street is an Underhill cottage. Its two parcels "
+  "have now been merged, which the agent said removes the density that separate development would "
+  "bring. Surveys of every house on the street were produced, the street was scanned in three "
+  "dimensions, and the proposal was superimposed to argue that it sits within inches of the "
+  "average setback. Westmore Lane came back compressed in height and simplified, with a trellis "
+  "and a larger window on the north, although a neighbor said the building is growing taller "
+  "beside a well traveled corner."),
+ "cyUHf_gFXX4": HDC_SUMMARY_PREFIX + (
+  "four applications at 3 Pops Lane, three at 85 Orange Street, and outbuildings at 2 Hamblin "
+  "Road. Pops Lane took the longest, more than forty minutes, and the conversation again settled "
+  "on the rear elevation facing the water. The architect said the heights had come down across "
+  "the board. The chair had asked for two feet, which would have left no room for a full-height "
+  "door, so the plates dropped as far as they could, one wing from seventeen feet eight inches to "
+  "sixteen feet ten. The main house was held for revisions, and the guest house, garage and pool "
+  "held with it. Orange Street came back with sills added so the windows no longer read as "
+  "picture frames, the window manufacturer named in the schedule, and the stoop detailed to match "
+  "a historic photograph in the plans. Its front and rear hardscape were voted on together at the "
+  "end. Hamblin Road is two outbuildings standing close together. They were reviewed as one and "
+  "approved as submitted, one commissioner noting that their doors all face into the site rather "
+  "than the road. The commission also took 36 Tennessee Avenue for a third time, with the two "
+  "secondary masses dropped a foot to separate them from the primary one."),
+ "espbghXX8Ec": HDC_SUMMARY_PREFIX + (
+  "new buildings on Marble Way, a new dwelling at 36 Tennessee Avenue, and the main house and "
+  "hardscape at 21 Pleasant Street. Marble Way took the longest, about thirty-six minutes. The "
+  "applications cover a dwelling on one lot and garages on two others, served by three shared "
+  "driveways. The agent said a larger proposal for a duplex is being withdrawn after neighbors "
+  "objected to the parking, and that landscaping equipment is being moved off so the site can be "
+  "employee housing for the landscape company that owns it. Commissioners counted nine gables "
+  "facing the street and suggested rotating the secondary buildings ninety degrees so the primary "
+  "ones face front. The applications were held for architectural revisions and for site plan "
+  "information. Tennessee Avenue replaces a c.1938 Colonial Revival the commission allowed to be "
+  "moved across the street. The architect described gray trim, two-over-two sash, and pent roofs "
+  "instead of posts to keep work back from the wetlands. It was held for revisions after a "
+  "discussion of the flood zone on the survey. Pleasant Street has been before the commission for "
+  "more than two years. The applicant agreed to score the foundation so it reads as block and to "
+  "cap the picket fence. The height of the hedge on Candle House Lane was left open."),
+ "geZ4KqBZB-w": HDC_SUMMARY_PREFIX + (
+  "a new dwelling at 8 Cannonbury Lane, a barn at 4 Dukes Road, and a relocation at 12 "
   "Madequecham Valley. Cannonbury Lane took the longest, more than half an hour. It is a new "
-  "house on an empty site. Commissioners thought one column capital too slender to look as "
-  "though it carries the beam, asked where tapered posts would be visible, and spent some time "
-  "on chimney pots, wanting more character than plain three-foot terracotta. Dukes Road is a "
-  "barn beside a house of 1920 that has stood on cribbing for months while a demolition was "
-  "sought. The proposal keeps the box shape of the existing structure and extends its roof "
-  "upward into a new addition, with new openings cut for doors. One commissioner noted how "
-  "little of the old building survives once the plan opens into the addition. A member of the "
-  "commission presented it as the applicant&rsquo;s agent, a capacity the agenda records. "
-  "Madequecham Valley moves an existing house back from an eroding shoreline, as close to the "
-  "road as the lot allows, with two additions. A variance will be sought, as others in that area "
-  "have been granted because of the erosion and an adjacent paper road. The commission also "
-  "heard 20 Cliff Road, where shutters would be added to two elevations of a house of 1747, "
-  "their earlier presence documented from several sources.",
- "gxGYQD2HfxQ":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the five applications at 115 Cliff Road, an as-built retaining wall at 42 Chuck "
-  "Hollow, and rooftop solar at 41 Macy&rsquo;s Lane. Cliff Road ran longest, about twenty "
-  "minutes across the dwelling, the garage and guest house, the pool house, the pool and a "
-  "re-sited shed. The agent had simplified the trim throughout, removed the pilasters and "
-  "replaced them with shingle, reduced the frieze boards, added double hung windows to the "
-  "kitchen bay and taken the double columns off the side portico. Members called the central "
-  "gambrel well proportioned but questioned the flanking gambrels, which face in several "
-  "directions at once, and asked that a dormer stop where it meets the main roof rather than cut "
-  "into the plane. Two said the design is handsome but out of place on the last property leaving "
-  "town, and the garage doors drew objections for being too tall for their width. Chuck Hollow "
-  "is a wall already built, presented by the owner, who offered to lower the stone columns about "
-  "a foot and to let rhododendron and viburnum cover the wall rather than screen it with "
-  "lattice. Macy&rsquo;s Lane sits close to the street, and the panels face the front of the "
-  "main structure, which the guidelines discourage. The agent said the lot leaves nowhere to "
-  "plant, and the chair asked whether island organizations might lend at low interest for ground "
-  "arrays instead.",
- "jHsNIxQlPlA":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: garage apartments at 2A and 2B Forrest Avenue, alterations at 4 Spruce Street, and a "
-  "new dwelling at 68 Shawkemo Road. The Forrest Avenue pair took the longest, about eighteen "
-  "minutes. Each is a three-bay garage with a two-bedroom apartment above, a cedar roof and "
-  "cedar garage doors, and the designer described them as being as simple as possible. The "
-  "commissioner who kept them off consent asked to see them in the context of every other "
-  "structure planned for the lot. One on its own might be approvable as it stands, she said, but "
-  "a row of identical buildings would need variation. The second was taken as a repeat of the "
-  "first. Spruce Street was approved on an exhibit that changed fifteen-light French doors to "
-  "six-light. Shawkemo Road is a new house on a site of just over five acres, where an existing "
-  "dwelling remains and a garage had already been approved on consent. Earlier the commission "
-  "heard four applications at 4 Van Fleet, to demolish a main house and a guest house and build "
-  "their replacements. The new house would sit more than four hundred feet back on a densely "
-  "vegetated lot that falls about seven feet, with no change of grade asked for beyond what "
-  "steps require.",
- "n-dMwINLBsY":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the minimum maintenance hearing on 10 New Whale Street, a pergola addition at 23 "
-  "Ocean Avenue, and a new dwelling at 7A Clifford Street. New Whale Street took more than an "
-  "hour. The chair ran it to a clock, three minutes a speaker, with the owner&rsquo;s attorney, "
-  "an engineer and the fire department presenting in turn. The attorney argued that the brick is "
-  "splitting where an earlier window was filled in, and that the waterfront has been rebuilt "
-  "again and again: the Steamship Authority buildings, the shipyard where Great Harbor now "
-  "stands and the old fuel tanks were all approved for removal, and most of downtown was rebuilt "
-  "after the fire of 1846. The commission voted to require a further report before deciding. The "
-  "chair observed that the building has stood behind fences for the better part of four decades "
-  "and that its owner is a large company. Members said that if it has to come down brick by "
-  "brick, it might be rebuilt elsewhere on the lot at a later date. Ocean Avenue was approved "
-  "four to one, after a reminder to speak only to matters within the commission&rsquo;s purview. "
-  "Clifford Street was approved on an exhibit cutting the internal turnaround to the minimum "
-  "needed, to leave room for planting between the driveway and the property line.",
- "pAZccLQrGqs":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the garage apartments at 2A and 2B Forrest Avenue, alterations at 4 Easy Street, and "
-  "14 Silver Street. Forrest Avenue took the longest, about half an hour across the two lots. "
-  "The chair cut the clock to two minutes for the applicant&rsquo;s agent and one minute each "
-  "for the first two abutters, since four elevations to a building leaves little new to add "
-  "after that. Both were held for revisions. The motion leaves the building closest to the "
-  "street as already approved and asks for the one behind it to come back as a smaller "
-  "structure, closer to what was first approved than to a two-bay garage apartment. The "
-  "commission then repeated the vote for the second lot, with two different members sitting. "
-  "Easy Street began as a train barn and became retail space. Its owner asked to clean it up and "
-  "make changes that help pedestrians pass while keeping the historic character. The red clouds "
-  "marking her revisions had failed to display on some copies of the drawings. It was held for "
-  "revisions. Silver Street, seen several times already, passed four to one on an exhibit. The "
-  "fence at 62 Wanoma Way came back as well, with the as-built fee paid and an exhibit drawn up "
-  "for moving it.",
- "pZ9RNzm9i_E":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: revised parking at 126 Main Street, modifications at 10 and 8 Cato Lane, and the "
-  "addition at 8 Federal Street. Main Street ran about seventeen minutes and returned from the "
-  "previous meeting with the approved site plan laid over the house plan, the drive moved "
-  "eighteen inches, and the reinforced membrane marked. A representative of the neighbors read a "
-  "long objection. Shared driveways are common on Main Street, he said, a car parked on a lawn "
-  "is not, the lot is overburdened, and the proposal would amend two earlier decisions reached "
-  "after extensive deliberation. Every member who spoke remained against parking on the lawn, on "
-  "the grounds that a space which can be used will be. One would accept it only with cobblestone "
-  "sprinkled through the grass. Cato Lane came as modifications to prior approvals, the two "
-  "houses staggered because the property line runs at an angle. Members had no objection to the "
-  "bubbled changes, but one said the application is incomplete without a site plan showing the "
-  "driveway, since approving the building approves where it sits. The lots carry an unusual "
-  "setback, ten feet at the front and five at the rear. Federal Street returned with the cupola "
-  "and the Greek ornamentation removed and the roof pitch back to the original, though the "
-  "streetscape drawing was not finished and a three-dimensional model was filed instead.",
- "qQR0-qd4utg":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the demolition application for 10 New Whale Street, hardscape at 89 Easton Street, "
-  "and an as-built deer fence at 18 Gladlands Avenue. New Whale Street took about half an hour, "
-  "its first hearing since March. The chair warned at the outset that contentious applications "
-  "need strict time management. The owner&rsquo;s attorney said the report the commission had "
-  "asked for was now in hand, and argued that the building would hold no historical significance "
-  "after the work a rehabilitation would require. A commissioner pressed the engineer on the two "
-  "shades of pink in the condition drawings and what the lighter one means for the rebuild. A "
-  "motion to deny the demolition then drew two in favor, two against and one abstention. The "
-  "commission could not agree what a tie produces and left the question for the start of the "
-  "following Tuesday, rather than ask the applicant&rsquo;s attorney to settle it. Easton Street "
-  "was held over from the previous week. The discussion turned on an outdoor shower painted "
-  "white, a pergola screening the hotel property behind the patio, and the material of the "
-  "drive-down garage. Gladlands Avenue is an as-built landscape fence and cattle grate, "
-  "presented on a color-coded plan: the grate in orange, the perimeter fence in red, cedar posts "
-  "in green and Belgian block in blue, the block still sitting on the street rather than where "
-  "it is proposed.",
- "rCAzDKxxfA0":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: two applications from the public schools at 24 Surfside Road, rooftop solar at 3 "
-  "Evergreen Way, and gates at 8 and 16 Stone Post Way. Surfside Road took the longest, close to "
-  "twenty minutes. The school department asked for an office building and the hardscape around "
-  "it, with gravel parking, concrete that ties into the school, a cedar fence separating the "
-  "housing, and a new curb cut off First Way. The commissioner who kept it off consent said she "
-  "passes the site every day and wants every tree taken down to be replaced, the trees being an "
-  "integral part of the approach to the school. On the building itself, members said it does not "
-  "read as one story because of its width, and that a hip roof over that much mass does not look "
+  "house on an empty site. Commissioners thought one column capital too slender to look as though "
+  "it carries the beam, asked where tapered posts would be visible, and spent some time on "
+  "chimney pots, wanting more character than plain three-foot terracotta. Dukes Road is a barn "
+  "beside a house of 1920 that has stood on cribbing for months while a demolition was sought. "
+  "The proposal keeps the box shape of the existing structure and extends its roof upward into a "
+  "new addition, with new openings cut for doors. One commissioner noted how little of the old "
+  "building survives once the plan opens into the addition. A member of the commission presented "
+  "it as the applicant&rsquo;s agent, a capacity the agenda records. Madequecham Valley moves an "
+  "existing house back from an eroding shoreline, as close to the road as the lot allows, with "
+  "two additions. A variance will be sought, as others in that area have been granted because of "
+  "the erosion and an adjacent paper road. The commission also heard 20 Cliff Road, where "
+  "shutters would be added to two elevations of a house of 1747, their earlier presence "
+  "documented from several sources."),
+ "gxGYQD2HfxQ": HDC_SUMMARY_PREFIX + (
+  "the five applications at 115 Cliff Road, an as-built retaining wall at 42 Chuck Hollow, and "
+  "rooftop solar at 41 Macy&rsquo;s Lane. Cliff Road ran longest, about twenty minutes across the "
+  "dwelling, the garage and guest house, the pool house, the pool and a re-sited shed. The agent "
+  "had simplified the trim throughout, removed the pilasters and replaced them with shingle, "
+  "reduced the frieze boards, added double hung windows to the kitchen bay and taken the double "
+  "columns off the side portico. Members called the central gambrel well proportioned but "
+  "questioned the flanking gambrels, which face in several directions at once, and asked that a "
+  "dormer stop where it meets the main roof rather than cut into the plane. Two said the design "
+  "is handsome but out of place on the last property leaving town, and the garage doors drew "
+  "objections for being too tall for their width. Chuck Hollow is a wall already built, presented "
+  "by the owner, who offered to lower the stone columns about a foot and to let rhododendron and "
+  "viburnum cover the wall rather than screen it with lattice. Macy&rsquo;s Lane sits close to "
+  "the street, and the panels face the front of the main structure, which the guidelines "
+  "discourage. The agent said the lot leaves nowhere to plant, and the chair asked whether island "
+  "organizations might lend at low interest for ground arrays instead."),
+ "jHsNIxQlPlA": HDC_SUMMARY_PREFIX + (
+  "garage apartments at 2A and 2B Forrest Avenue, alterations at 4 Spruce Street, and a new "
+  "dwelling at 68 Shawkemo Road. The Forrest Avenue pair took the longest, about eighteen "
+  "minutes. Each is a three-bay garage with a two-bedroom apartment above, a cedar roof and cedar "
+  "garage doors, and the designer described them as being as simple as possible. The commissioner "
+  "who kept them off consent asked to see them in the context of every other structure planned "
+  "for the lot. One on its own might be approvable as it stands, she said, but a row of identical "
+  "buildings would need variation. The second was taken as a repeat of the first. Spruce Street "
+  "was approved on an exhibit that changed fifteen-light French doors to six-light. Shawkemo Road "
+  "is a new house on a site of just over five acres, where an existing dwelling remains and a "
+  "garage had already been approved on consent. Earlier the commission heard four applications at "
+  "4 Van Fleet, to demolish a main house and a guest house and build their replacements. The new "
+  "house would sit more than four hundred feet back on a densely vegetated lot that falls about "
+  "seven feet, with no change of grade asked for beyond what steps require."),
+ "n-dMwINLBsY": HDC_SUMMARY_PREFIX + (
+  "the minimum maintenance hearing on 10 New Whale Street, a pergola addition at 23 Ocean Avenue, "
+  "and a new dwelling at 7A Clifford Street. New Whale Street took more than an hour. The chair "
+  "ran it to a clock, three minutes a speaker, with the owner&rsquo;s attorney, an engineer and "
+  "the fire department presenting in turn. The attorney argued that the brick is splitting where "
+  "an earlier window was filled in, and that the waterfront has been rebuilt again and again: the "
+  "Steamship Authority buildings, the shipyard where Great Harbor now stands and the old fuel "
+  "tanks were all approved for removal, and most of downtown was rebuilt after the fire of 1846. "
+  "The commission voted to require a further report before deciding. The chair observed that the "
+  "building has stood behind fences for the better part of four decades and that its owner is a "
+  "large company. Members said that if it has to come down brick by brick, it might be rebuilt "
+  "elsewhere on the lot at a later date. Ocean Avenue was approved four to one, after a reminder "
+  "to speak only to matters within the commission&rsquo;s purview. Clifford Street was approved "
+  "on an exhibit cutting the internal turnaround to the minimum needed, to leave room for "
+  "planting between the driveway and the property line."),
+ "pAZccLQrGqs": HDC_SUMMARY_PREFIX + (
+  "the garage apartments at 2A and 2B Forrest Avenue, alterations at 4 Easy Street, and 14 Silver "
+  "Street. Forrest Avenue took the longest, about half an hour across the two lots. The chair cut "
+  "the clock to two minutes for the applicant&rsquo;s agent and one minute each for the first two "
+  "abutters, since four elevations to a building leaves little new to add after that. Both were "
+  "held for revisions. The motion leaves the building closest to the street as already approved "
+  "and asks for the one behind it to come back as a smaller structure, closer to what was first "
+  "approved than to a two-bay garage apartment. The commission then repeated the vote for the "
+  "second lot, with two different members sitting. Easy Street began as a train barn and became "
+  "retail space. Its owner asked to clean it up and make changes that help pedestrians pass while "
+  "keeping the historic character. The red clouds marking her revisions had failed to display on "
+  "some copies of the drawings. It was held for revisions. Silver Street, seen several times "
+  "already, passed four to one on an exhibit. The fence at 62 Wanoma Way came back as well, with "
+  "the as-built fee paid and an exhibit drawn up for moving it."),
+ "pZ9RNzm9i_E": HDC_SUMMARY_PREFIX + (
+  "revised parking at 126 Main Street, modifications at 10 and 8 Cato Lane, and the addition at 8 "
+  "Federal Street. Main Street ran about seventeen minutes and returned from the previous meeting "
+  "with the approved site plan laid over the house plan, the drive moved eighteen inches, and the "
+  "reinforced membrane marked. A representative of the neighbors read a long objection. Shared "
+  "driveways are common on Main Street, he said, a car parked on a lawn is not, the lot is "
+  "overburdened, and the proposal would amend two earlier decisions reached after extensive "
+  "deliberation. Every member who spoke remained against parking on the lawn, on the grounds that "
+  "a space which can be used will be. One would accept it only with cobblestone sprinkled through "
+  "the grass. Cato Lane came as modifications to prior approvals, the two houses staggered "
+  "because the property line runs at an angle. Members had no objection to the bubbled changes, "
+  "but one said the application is incomplete without a site plan showing the driveway, since "
+  "approving the building approves where it sits. The lots carry an unusual setback, ten feet at "
+  "the front and five at the rear. Federal Street returned with the cupola and the Greek "
+  "ornamentation removed and the roof pitch back to the original, though the streetscape drawing "
+  "was not finished and a three-dimensional model was filed instead."),
+ "qQR0-qd4utg": HDC_SUMMARY_PREFIX + (
+  "the demolition application for 10 New Whale Street, hardscape at 89 Easton Street, and an "
+  "as-built deer fence at 18 Gladlands Avenue. New Whale Street took about half an hour, its "
+  "first hearing since March. The chair warned at the outset that contentious applications need "
+  "strict time management. The owner&rsquo;s attorney said the report the commission had asked "
+  "for was now in hand, and argued that the building would hold no historical significance after "
+  "the work a rehabilitation would require. A commissioner pressed the engineer on the two shades "
+  "of pink in the condition drawings and what the lighter one means for the rebuild. A motion to "
+  "deny the demolition then drew two in favor, two against and one abstention. The commission "
+  "could not agree what a tie produces and left the question for the start of the following "
+  "Tuesday, rather than ask the applicant&rsquo;s attorney to settle it. Easton Street was held "
+  "over from the previous week. The discussion turned on an outdoor shower painted white, a "
+  "pergola screening the hotel property behind the patio, and the material of the drive-down "
+  "garage. Gladlands Avenue is an as-built landscape fence and cattle grate, presented on a "
+  "color-coded plan: the grate in orange, the perimeter fence in red, cedar posts in green and "
+  "Belgian block in blue, the block still sitting on the street rather than where it is "
+  "proposed."),
+ "rCAzDKxxfA0": HDC_SUMMARY_PREFIX + (
+  "two applications from the public schools at 24 Surfside Road, rooftop solar at 3 Evergreen "
+  "Way, and gates at 8 and 16 Stone Post Way. Surfside Road took the longest, close to twenty "
+  "minutes. The school department asked for an office building and the hardscape around it, with "
+  "gravel parking, concrete that ties into the school, a cedar fence separating the housing, and "
+  "a new curb cut off First Way. The commissioner who kept it off consent said she passes the "
+  "site every day and wants every tree taken down to be replaced, the trees being an integral "
+  "part of the approach to the school. On the building itself, members said it does not read as "
+  "one story because of its width, and that a hip roof over that much mass does not look "
   "residential. Evergreen Way is a modular house with a flat black roof. The owner proposed "
-  "rooftop panels and offered screening beyond the Leyland cypress already planned. "
-  "Commissioners regretted that the panels have to run in two directions. The Stone Post Way "
-  "applications replace a winter deer fence with a gate set between two existing granite posts. "
-  "One commissioner had kept them off consent because the only comparable gate on the street "
-  "sits well back at the corner of a building.",
- "rd3NVlzGfvw":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a retaining wall at 12 Angola Street, the front door and windows at 34 Liberty "
-  "Street, and a pool at 20 Main Street. Angola Street took the longest. Its landscape designer "
-  "had moved the secondary dwelling back to match approved structural plans, and reworked the "
-  "wall so it reads as more natural and ties into the back foundation of the house, which the "
-  "contractor had asked for. Liberty Street came back with the detailed window survey the "
-  "commission asked for at the previous meeting: close-up photographs of every window and of the "
-  "front door, with the condition of each recorded. The agent reported that two more windows had "
-  "been damaged in the storm since. Main Street is a pool pushed further over, with a fence "
-  "added to screen it, set about a hundred feet off Main Street behind the house. The commercial "
-  "hardscape at 18 to 26 Sparks Avenue, held over from the previous week, came back and was "
-  "approved with conditions: materials signed off by the chair or vice chair before "
-  "installation, five-inch caliber trees anchoring the Sparks Avenue side, and alternating "
-  "sections of board fence. The commission also took up a deer gate at 14 Dukes Road, where the "
-  "applicant offered two designs, and a door replacement at 31 India Street that the health "
-  "department had asked for.",
- "tVl3fUZLVxg":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the cattle grate and Belgian block at 18 Gladlands Avenue, revisions at 11 Davis "
-  "Lane, and 34 Tennessee Avenue. This was a short meeting, under fifty minutes, and the chair "
-  "ran it as a lightning round. Gladlands Avenue took the longest. The commission had told the "
-  "applicant at an earlier hearing that it did not want the cattle grate and was cool on the "
-  "Belgian block. The agent returned with precedent photographs showing Belgian block at nearly "
-  "every driveway on the street, including both sides of the one with the bike path, and with a "
-  "pedestrian gate of the kind members had suggested. The grate comes out. The motion approves "
-  "the gate as photographed, with a Belgian block apron about ten feet deep from the road, "
-  "vegetation carried back around to the gate, and an exhibit drawn so there is no confusion "
-  "later. Davis Lane came back with an altered second-floor deck detail. Tennessee Avenue "
-  "follows from the new dwelling approved across the street at number 36: the main body of the "
-  "structure that stood there, a gambrel, was approved to move onto lots 49 and 50. The "
-  "commission also took questions for the preservation planner, who had nothing new on Certified "
-  "Local Government business but expects minutes for coming meetings.",
- "tcoNs24fe58":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the town&rsquo;s new DPW facility at 1 Shadbush Road, a platform lift at 4 East "
-  "Chestnut Street, and a garage at 7 Brewster Road. Shadbush Road took the longest, close to "
-  "forty minutes over three applications: the facility, a salt shed and hardscape. The public "
-  "works director presented with his architect and the town&rsquo;s engineers. One commissioner "
-  "asked to view the site once he understood the scale of it. Most of the discussion was "
-  "exterior materials and screening, the site being ringed by conservation land that is open to "
-  "the public, with views from the beach, the moors and the creeks. Approval carried a condition "
-  "that a wall of about four and a half feet be planted with marsh grasses, subject to what the "
+  "rooftop panels and offered screening beyond the Leyland cypress already planned. Commissioners "
+  "regretted that the panels have to run in two directions. The Stone Post Way applications "
+  "replace a winter deer fence with a gate set between two existing granite posts. One "
+  "commissioner had kept them off consent because the only comparable gate on the street sits "
+  "well back at the corner of a building."),
+ "rd3NVlzGfvw": HDC_SUMMARY_PREFIX + (
+  "a retaining wall at 12 Angola Street, the front door and windows at 34 Liberty Street, and a "
+  "pool at 20 Main Street. Angola Street took the longest. Its landscape designer had moved the "
+  "secondary dwelling back to match approved structural plans, and reworked the wall so it reads "
+  "as more natural and ties into the back foundation of the house, which the contractor had asked "
+  "for. Liberty Street came back with the detailed window survey the commission asked for at the "
+  "previous meeting: close-up photographs of every window and of the front door, with the "
+  "condition of each recorded. The agent reported that two more windows had been damaged in the "
+  "storm since. Main Street is a pool pushed further over, with a fence added to screen it, set "
+  "about a hundred feet off Main Street behind the house. The commercial hardscape at 18 to 26 "
+  "Sparks Avenue, held over from the previous week, came back and was approved with conditions: "
+  "materials signed off by the chair or vice chair before installation, five-inch caliber trees "
+  "anchoring the Sparks Avenue side, and alternating sections of board fence. The commission also "
+  "took up a deer gate at 14 Dukes Road, where the applicant offered two designs, and a door "
+  "replacement at 31 India Street that the health department had asked for."),
+ "tVl3fUZLVxg": HDC_SUMMARY_PREFIX + (
+  "the cattle grate and Belgian block at 18 Gladlands Avenue, revisions at 11 Davis Lane, and 34 "
+  "Tennessee Avenue. This was a short meeting, under fifty minutes, and the chair ran it as a "
+  "lightning round. Gladlands Avenue took the longest. The commission had told the applicant at "
+  "an earlier hearing that it did not want the cattle grate and was cool on the Belgian block. "
+  "The agent returned with precedent photographs showing Belgian block at nearly every driveway "
+  "on the street, including both sides of the one with the bike path, and with a pedestrian gate "
+  "of the kind members had suggested. The grate comes out. The motion approves the gate as "
+  "photographed, with a Belgian block apron about ten feet deep from the road, vegetation carried "
+  "back around to the gate, and an exhibit drawn so there is no confusion later. Davis Lane came "
+  "back with an altered second-floor deck detail. Tennessee Avenue follows from the new dwelling "
+  "approved across the street at number 36: the main body of the structure that stood there, a "
+  "gambrel, was approved to move onto lots 49 and 50. The commission also took questions for the "
+  "preservation planner, who had nothing new on Certified Local Government business but expects "
+  "minutes for coming meetings."),
+ "tcoNs24fe58": HDC_SUMMARY_PREFIX + (
+  "the town&rsquo;s new DPW facility at 1 Shadbush Road, a platform lift at 4 East Chestnut "
+  "Street, and a garage at 7 Brewster Road. Shadbush Road took the longest, close to forty "
+  "minutes over three applications: the facility, a salt shed and hardscape. The public works "
+  "director presented with his architect and the town&rsquo;s engineers. One commissioner asked "
+  "to view the site once he understood the scale of it. Most of the discussion was exterior "
+  "materials and screening, the site being ringed by conservation land that is open to the "
+  "public, with views from the beach, the moors and the creeks. Approval carried a condition that "
+  "a wall of about four and a half feet be planted with marsh grasses, subject to what the "
   "Conservation Commission allows. East Chestnut Street has a platform elevator at the back of "
   "the property that fails within weeks of every service call. Replacing it would mean an "
   "enclosed glass case of the kind at the rear of the Pearl, which the applicant said would be "
   "visible from the Dreamland and the park opposite. It was held for more information and a "
-  "mockup. The Brewster Road garage is a gambrel matching a main house the commission has "
-  "already approved. Both sit well back from Brewster Road, behind the houses that front it, "
-  "reached by a private easement rather than a road.",
- "umtVcL7cZFU":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the guest house, garage and pool at 3 Pops Lane, a relocation at 12 Madequecham "
-  "Valley Road, and four applications at 4 Wood Hollow Road. Pops Lane took the longest, about "
-  "twenty minutes. The guest house is an existing structure of about 1980 standing on the east "
-  "side of the lot, and the architect said the discussion a week earlier had turned on where it "
-  "goes rather than how it looks. Ridge poles had been set for the commission to view, and the "
-  "owners&rsquo; counsel had filed a letter answering abutters&rsquo; concerns. Madequecham "
-  "Valley Road moves a house back on its lot and adds to it. One member observed that it is not "
-  "the only big box out there and moved to approve it as submitted; it passed with one opposed. "
-  "The applicant&rsquo;s own remark that the house will be in the ocean in ten years drew the "
-  "reply that his clients will take it down first. Wood Hollow Road is a move-off and "
-  "demolition, a new dwelling, a cabana and a pool. The commission held the cabana and pool so "
-  "they can be seen together with the house, the layout being likely to telescope back, and set "
-  "the applications to track one another. Walsh Street followed, and 43 Orange Street returned "
-  "on an as-built color change after the colors painted there were not favorably received last "
-  "fall.",
- "v85oWlC89fQ":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: 3 Pops Lane, a garage addition at 20 Liberty Street, and the main house addition at "
-  "85 Orange Street. Pops Lane took the longest, about thirty-five minutes. Its architect said "
-  "the ridge heights had been flipped since the last meeting, raising the eave-forward mass with "
-  "the chimney and dropping the flanking gable, after members questioned which was meant to read "
-  "as the primary mass. It was held again for revisions, with the other applications tracking. "
-  "One commissioner said he would move at the next meeting to act if the height, the "
-  "fenestration and the ridge are not materially changed to meet the concerns already raised. "
-  "Liberty Street is a garage with a half story above it, eighty-one feet back from the street. "
-  "Its designer argued the addition stays subordinate: the ridge on the existing house is "
-  "thirty-five feet and the addition twenty-six, with a small gable dormer whose trim and pitch "
-  "follow the steep roof already there. It was held for revisions at the end of the night. "
-  "Orange Street returned with a board along the base of the siding, the long stoop replaced by "
-  "a mirror of the other door, and the roofwalk cut twelve inches, all from corrections against "
-  "a historic photograph. Earlier the commission heard the sign advisory committee chair on "
-  "Article 71, a Town Meeting amendment covering LED traffic control devices.",
- "wXxhAADBkSg":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: an as-built fence, gate and cattle grate at 11 and 21 Nonantum Avenue, a change of "
-  "use at 54R Union Street, and a new dwelling at 5 Gray Avenue. Nonantum Avenue came to the "
-  "commission as a violation. The landscape designer, brought in after the work was done, "
-  "described a long cattle grate with a large apron that blends in for now, and a perimeter "
-  "fence set about eight feet inside the property line except for a few stretches along Nonantum "
-  "where it juts out just beyond the existing split rail. Vines and other planting are going in "
-  "to hide those sections. Union Street would turn a garage into a dwelling on a lot subdivided "
-  "off a bungalow at the front that is falling down. The designer said the state had refused to "
-  "treat it as an accessory unit. The existing hip roof line is kept, with a dormer added in the "
-  "manner of the house in front, and the commission was invited to view it. Gray Avenue is lot "
-  "one of a three-lot subdivision sharing a driveway, with the front door and porch on the south "
-  "elevation facing the road and little visibility from the other three sides. The sign portion "
-  "of the agenda was dropped because the Sign Advisory Council had no quorum that day. The "
-  "preservation planner recommended the National Alliance of Preservation Commissions summer "
-  "course, which the commission attends at a discount and which carries continuing education "
-  "credit.",
- "www-PoW6N9k":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the five applications at 10 Marble Way, a new dwelling at 16 Squam Road, and a new "
-  "hotel building at 30 North Beach Street. Marble Way came back at the commission&rsquo;s "
-  "request and took about half an hour, covering a garage apartment and a duplex on one lot and "
-  "a dwelling, a garage and a cottage on the other. The garage stands twenty-five feet eight "
-  "inches, with natural to weather trim and black windows and roof. One member opened by noting "
-  "that this side of the street is zoned for mixed commercial and residential use while the "
-  "other side is residential only, that the area was created for businesses and homes together, "
-  "and that the garages with apartments above on the street behind are far larger. Squam Road is "
-  "one parcel, with a main house set furthest from the road, a guest house of a story and a half "
-  "nearer to it, and a garage with a studio above to come. A member who had walked the site "
-  "warned that the ground climbs quickly, and did not want a thirty foot house reading like "
-  "crenellations on the hilltop, as happened on Eel Point Road. North Beach Street drew praise "
-  "as a handsome building that does not sit well with the old hotel beside it. The cupola was "
-  "rejected, and one member suggested breaking the plan into an L so that it presses less on the "
-  "street.",
- "zF_W2_ifEEM":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: a new house at 5 Weetamo Road, a shed at 16 Deer Run Road, and a fence at 62 Wanoma "
-  "Way. Weetamo Road took the longest, about eighteen minutes. The architect placed the house in "
-  "a Polpis subdivision whose zoning overlay caps ridge height at twenty-five feet and allows "
-  "one primary structure to a lot. The site sits at the end of a cul-de-sac, well back from the "
+  "mockup. The Brewster Road garage is a gambrel matching a main house the commission has already "
+  "approved. Both sit well back from Brewster Road, behind the houses that front it, reached by a "
+  "private easement rather than a road."),
+ "umtVcL7cZFU": HDC_SUMMARY_PREFIX + (
+  "the guest house, garage and pool at 3 Pops Lane, a relocation at 12 Madequecham Valley Road, "
+  "and four applications at 4 Wood Hollow Road. Pops Lane took the longest, about twenty minutes. "
+  "The guest house is an existing structure of about 1980 standing on the east side of the lot, "
+  "and the architect said the discussion a week earlier had turned on where it goes rather than "
+  "how it looks. Ridge poles had been set for the commission to view, and the owners&rsquo; "
+  "counsel had filed a letter answering abutters&rsquo; concerns. Madequecham Valley Road moves a "
+  "house back on its lot and adds to it. One member observed that it is not the only big box out "
+  "there and moved to approve it as submitted; it passed with one opposed. The applicant&rsquo;s "
+  "own remark that the house will be in the ocean in ten years drew the reply that his clients "
+  "will take it down first. Wood Hollow Road is a move-off and demolition, a new dwelling, a "
+  "cabana and a pool. The commission held the cabana and pool so they can be seen together with "
+  "the house, the layout being likely to telescope back, and set the applications to track one "
+  "another. Walsh Street followed, and 43 Orange Street returned on an as-built color change "
+  "after the colors painted there were not favorably received last fall."),
+ "v85oWlC89fQ": HDC_SUMMARY_PREFIX + (
+  "3 Pops Lane, a garage addition at 20 Liberty Street, and the main house addition at 85 Orange "
+  "Street. Pops Lane took the longest, about thirty-five minutes. Its architect said the ridge "
+  "heights had been flipped since the last meeting, raising the eave-forward mass with the "
+  "chimney and dropping the flanking gable, after members questioned which was meant to read as "
+  "the primary mass. It was held again for revisions, with the other applications tracking. One "
+  "commissioner said he would move at the next meeting to act if the height, the fenestration and "
+  "the ridge are not materially changed to meet the concerns already raised. Liberty Street is a "
+  "garage with a half story above it, eighty-one feet back from the street. Its designer argued "
+  "the addition stays subordinate: the ridge on the existing house is thirty-five feet and the "
+  "addition twenty-six, with a small gable dormer whose trim and pitch follow the steep roof "
+  "already there. It was held for revisions at the end of the night. Orange Street returned with "
+  "a board along the base of the siding, the long stoop replaced by a mirror of the other door, "
+  "and the roofwalk cut twelve inches, all from corrections against a historic photograph. "
+  "Earlier the commission heard the sign advisory committee chair on Article 71, a Town Meeting "
+  "amendment covering LED traffic control devices."),
+ "wXxhAADBkSg": HDC_SUMMARY_PREFIX + (
+  "an as-built fence, gate and cattle grate at 11 and 21 Nonantum Avenue, a change of use at 54R "
+  "Union Street, and a new dwelling at 5 Gray Avenue. Nonantum Avenue came to the commission as a "
+  "violation. The landscape designer, brought in after the work was done, described a long cattle "
+  "grate with a large apron that blends in for now, and a perimeter fence set about eight feet "
+  "inside the property line except for a few stretches along Nonantum where it juts out just "
+  "beyond the existing split rail. Vines and other planting are going in to hide those sections. "
+  "Union Street would turn a garage into a dwelling on a lot subdivided off a bungalow at the "
+  "front that is falling down. The designer said the state had refused to treat it as an "
+  "accessory unit. The existing hip roof line is kept, with a dormer added in the manner of the "
+  "house in front, and the commission was invited to view it. Gray Avenue is lot one of a "
+  "three-lot subdivision sharing a driveway, with the front door and porch on the south elevation "
+  "facing the road and little visibility from the other three sides. The sign portion of the "
+  "agenda was dropped because the Sign Advisory Council had no quorum that day. The preservation "
+  "planner recommended the National Alliance of Preservation Commissions summer course, which the "
+  "commission attends at a discount and which carries continuing education credit."),
+ "www-PoW6N9k": HDC_SUMMARY_PREFIX + (
+  "the five applications at 10 Marble Way, a new dwelling at 16 Squam Road, and a new hotel "
+  "building at 30 North Beach Street. Marble Way came back at the commission&rsquo;s request and "
+  "took about half an hour, covering a garage apartment and a duplex on one lot and a dwelling, a "
+  "garage and a cottage on the other. The garage stands twenty-five feet eight inches, with "
+  "natural to weather trim and black windows and roof. One member opened by noting that this side "
+  "of the street is zoned for mixed commercial and residential use while the other side is "
+  "residential only, that the area was created for businesses and homes together, and that the "
+  "garages with apartments above on the street behind are far larger. Squam Road is one parcel, "
+  "with a main house set furthest from the road, a guest house of a story and a half nearer to "
+  "it, and a garage with a studio above to come. A member who had walked the site warned that the "
+  "ground climbs quickly, and did not want a thirty foot house reading like crenellations on the "
+  "hilltop, as happened on Eel Point Road. North Beach Street drew praise as a handsome building "
+  "that does not sit well with the old hotel beside it. The cupola was rejected, and one member "
+  "suggested breaking the plan into an L so that it presses less on the street."),
+ "zF_W2_ifEEM": HDC_SUMMARY_PREFIX + (
+  "a new house at 5 Weetamo Road, a shed at 16 Deer Run Road, and a fence at 62 Wanoma Way. "
+  "Weetamo Road took the longest, about eighteen minutes. The architect placed the house in a "
+  "Polpis subdivision whose zoning overlay caps ridge height at twenty-five feet and allows one "
+  "primary structure to a lot. The site sits at the end of a cul-de-sac, well back from the "
   "entrance to Polpis Harbor, visible from the water only at a distance or from a kayak, and the "
   "building dips about three feet below the high point of the lot. Letters of support from every "
   "abutter were in the file. It passed with one member opposed, the motion treating it as a test "
-  "case for how that area reads from the harbor. A shed there went through as submitted. The "
-  "Deer Run shed was held for revisions, members asking for a deeper roof pitch and a sharp "
-  "reduction in size rather than set a precedent. Wanoma Way is a fence already built. The owner "
-  "said she learned only afterward that the commission&rsquo;s approval was needed, and that the "
+  "case for how that area reads from the harbor. A shed there went through as submitted. The Deer "
+  "Run shed was held for revisions, members asking for a deeper roof pitch and a sharp reduction "
+  "in size rather than set a precedent. Wanoma Way is a fence already built. The owner said she "
+  "learned only afterward that the commission&rsquo;s approval was needed, and that the "
   "Conservation Commission cannot act on her application until the fence is approved here. It "
-  "runs along the edge of a public path at the back of the property and a short way up one side.",
- "zKatDsO1M5c":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: the paired dwellings at 8 and 10 Cato Lane, a renovation at 17 Eat Fire Spring, and "
-  "hardscaping at 14 Silver Street. Cato Lane ran about twenty minutes. The architect said he "
-  "had followed the last direction given, to mirror number 10 and move both houses back five "
-  "feet, which leaves number 8 about fifteen feet in front of its neighbor. He listed the "
-  "differences between them: two over two sash and three dormers at number 10 against six over "
-  "six and two dormers at number 8, gray trim with natural cedar at one and all natural cedar at "
-  "the other, black windows against Quaker gray. A member said the drawings were hard to follow "
-  "because nothing was clouded. Eat Fire Spring is an older house in a rural setting, presented "
-  "by the architect in place of the agent. The windows are to be replaced, the dark storms "
-  "removed, the siding and roof renewed, and the porch roof rebuilt so that it sheds rain rather "
-  "than passing it through open slats. Members called the work a net gain but pressed against "
-  "the white trim, several preferring the existing red as a character defining feature or a gray "
-  "that works with the landscape, and against double columns with capitals and bases that belong "
-  "to another aesthetic. Silver Street is a casual plan of brick apron, grass strip, stepping "
-  "stones and a low hedge toward the town parking lot.",
+  "runs along the edge of a public path at the back of the property and a short way up one side."),
+ "zKatDsO1M5c": HDC_SUMMARY_PREFIX + (
+  "the paired dwellings at 8 and 10 Cato Lane, a renovation at 17 Eat Fire Spring, and "
+  "hardscaping at 14 Silver Street. Cato Lane ran about twenty minutes. The architect said he had "
+  "followed the last direction given, to mirror number 10 and move both houses back five feet, "
+  "which leaves number 8 about fifteen feet in front of its neighbor. He listed the differences "
+  "between them: two over two sash and three dormers at number 10 against six over six and two "
+  "dormers at number 8, gray trim with natural cedar at one and all natural cedar at the other, "
+  "black windows against Quaker gray. A member said the drawings were hard to follow because "
+  "nothing was clouded. Eat Fire Spring is an older house in a rural setting, presented by the "
+  "architect in place of the agent. The windows are to be replaced, the dark storms removed, the "
+  "siding and roof renewed, and the porch roof rebuilt so that it sheds rain rather than passing "
+  "it through open slats. Members called the work a net gain but pressed against the white trim, "
+  "several preferring the existing red as a character defining feature or a gray that works with "
+  "the landscape, and against double columns with capitals and bases that belong to another "
+  "aesthetic. Silver Street is a casual plan of brick apron, grass strip, stepping stones and a "
+  "low hedge toward the town parking lot."),
  "5Yxg9cqZeuk":
   "Two public hearings open and are left open another month, on the Hummock Pond watershed and "
   "wellhead protection amendments. A former board member warns that the wellhead zone takes in a "
@@ -31408,21 +31434,20 @@ CIVIC_DESCRIPTIONS = {
   "facility. A closing unanimous vote lets staff draft a fertilizer section for the same review. "
   "Four changes are now with counsel, wanted back in four or five weeks, with a public hearing "
   "and three weeks of advertising still to follow.",
- "lD_hiVvZU1s":
-  "This summary skips many topics because of the quantity discussed; some principal topics "
-  "include: Section 106 of the National Historic Preservation Act, 10 Maxey Pond Road and 100 "
-  "Baxter Road. The commission opens with twenty minutes on proposed amendments to Section 106, "
-  "watching a short film on the act and hearing that the changes would exempt federal projects, "
-  "narrow consultation with tribal nations and allow harm to be acknowledged without action. It "
-  "agrees to write to Congress, one member stressing that this defends a procedure for finding "
-  "solutions early rather than making a statement about wind turbines. The as-built fence at 10 "
-  "Maxey Pond Road takes about as long. Staff note the lot abuts Land Bank land and that a form "
-  "has gone to the historical commission, and the argument turns on screening: how tall planting "
-  "must be against how far the fence sits back, and whether a straight run reads as unnatural. An "
-  "option is drawn of a 15-foot setback with radiused corners and a 10-foot undulation every 50 "
-  "feet, a long drawn-out S to be planted. The addition at 100 Baxter Road runs about a quarter "
-  "of an hour, members finding it reads larger than the house itself and suggesting a hip roof "
-  "and clipped gables.",
+ "lD_hiVvZU1s": HDC_SUMMARY_PREFIX + (
+  "Section 106 of the National Historic Preservation Act, 10 Maxey Pond Road and 100 Baxter Road. "
+  "The commission opens with twenty minutes on proposed amendments to Section 106, watching a "
+  "short film on the act and hearing that the changes would exempt federal projects, narrow "
+  "consultation with tribal nations and allow harm to be acknowledged without action. It agrees "
+  "to write to Congress, one member stressing that this defends a procedure for finding solutions "
+  "early rather than making a statement about wind turbines. The as-built fence at 10 Maxey Pond "
+  "Road takes about as long. Staff note the lot abuts Land Bank land and that a form has gone to "
+  "the historical commission, and the argument turns on screening: how tall planting must be "
+  "against how far the fence sits back, and whether a straight run reads as unnatural. An option "
+  "is drawn of a 15-foot setback with radiused corners and a 10-foot undulation every 50 feet, a "
+  "long drawn-out S to be planted. The addition at 100 Baxter Road runs about a quarter of an "
+  "hour, members finding it reads larger than the house itself and suggesting a hip roof and "
+  "clipped gables."),
  "WKo4F_u1jXw":
   "The recording covers two meetings. The County Commissioners meet first and grant an easement "
   "to National Grid for the underground electric distribution system serving the Ticcoma Green "
@@ -31472,9 +31497,26 @@ CIVIC_DESCRIPTIONS = {
   "minutes; commissioners object to the gaps left by combining months, and it passes with a "
   "meeting added on Monday, August 24. The next meeting is December 7, jointly with the Select "
   "Board.",
- "ZRsz4cxcoTQ":
-  "Video description coming soon.",
+ "ZRsz4cxcoTQ": HDC_SUMMARY_PREFIX + (
+  "118 Eel Point Road, 100 Main Street and 5 Bank Street. The cabana and the hardscape "
+  "alterations at 118 Eel Point Road are heard together and take more than half an hour, almost "
+  "all of it on screening. Members weigh whether the pool and cabana would be minimally visible, "
+  "what an average of the three lots to either side implies, and whether the answer is a "
+  "wholesale reduction in planting or a three-dimensional review that builds natural pockets of "
+  "vegetation; one warns of a trend along Eel Point Road toward a living alley. A condition of "
+  "minimal visibility in perpetuity is floated, the columnar boxwoods are said to draw attention "
+  "to what they are meant to hide, and the discussion closes on dropping the fence from five feet "
+  "four inches to five feet, level with the top of the chiller, and removing the caps. Revisions "
+  "to the guest house at 100 Main Street run about twenty minutes, over a gable with cut-off "
+  "ends, a dormer two feet off the end wall, the balusters and what would be visible from the "
+  "surrounding streets; the commission votes to hold for revisions rather than deny. 5 Bank "
+  "Street, a circa 1910 Codfish Park cottage, takes nearly as long, a window held to read as "
+  "modern and the front porch asked back lower and standing on its own."),
  "eh76nuJyXCY":
+  "Video description coming soon.",
+ "90lq9haY6CU":
+  "Video description coming soon.",
+ "MzSFEXeDykE":
   "Video description coming soon.",
 }
 
