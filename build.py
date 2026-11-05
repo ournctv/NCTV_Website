@@ -15,7 +15,7 @@ BANNER_VIDEO = "1241589049:76cd5a88fc"  # home hero; Vimeo id:hash
 FEATURED_ID = "9BnRkR2W9Zc"  # home "Featured Video" section
 # Bump this whenever styles.css or site.js changes — it forces browsers to
 # fetch the fresh files instead of serving a cached (stale) copy.
-ASSET_VER = "416"
+ASSET_VER = "418"
 
 # The address the finished site will answer to. Everything absolute on the
 # site comes from this one string: the canonical link in every <head>, the
@@ -834,183 +834,127 @@ SPORT_SEASONS = [
 SPORTS_VIDEOS = {
  "Football": {
   "School Yr 22-23": [
-   ("6FJ-rTezgnc", "Whalers Football vs. Mashpee - September 17, 2022",
-    "Nantucket Sports Connection brings you high school football with the Nantucket Whalers vs. the "
-    "Mashpee Falcons, from Vito Capizzo Stadium on 9/17/22 at 3:30pm, with the pregame show "
-    "starting at 3pm."
-    , False),
-   ("j_9ehXXwXkQ", "Nantucket Whalers Varsity Football vs. Sandwich Blue Knights - October 7, 2022",
+   ("T1RbsdvJWcY", "Nantucket Whalers  vs. Holbrook Bulldogs- November 5, 2022",
     "Nantucket Sports Connection brings you varsity high school football with the Nantucket Whalers "
-    "vs. the Sandwich Blue Knights, from Vito Capizzo Stadium on 10/7/22 at 5:00pm, with the "
-    "pregame show starting at 4:30pm."
+    "vs. the Holbrook Bulldogs from Vito Capizzo Stadium at 12:00pm, with the pregame show starting "
+    "at 11:45am."
     , False),
    ("_OiOA4V4Sfo", "Nantucket Whalers Varsity Football vs. Falmouth Clippers- October 22, 2022",
     "Nantucket Sports Connection brings you varsity high school football with the Nantucket Whalers "
     "vs. the Falmouth Clippers from Vito Capizzo Stadium on 10/22/22 at 3:00pm, with the pregame "
     "show starting at 3:45pm."
     , False),
-   ("T1RbsdvJWcY", "Nantucket Whalers  vs. Holbrook Bulldogs- November 5, 2022",
+   ("j_9ehXXwXkQ", "Nantucket Whalers Varsity Football vs. Sandwich Blue Knights - October 7, 2022",
     "Nantucket Sports Connection brings you varsity high school football with the Nantucket Whalers "
-    "vs. the Holbrook Bulldogs from Vito Capizzo Stadium at 12:00pm, with the pregame show starting "
-    "at 11:45am."
+    "vs. the Sandwich Blue Knights, from Vito Capizzo Stadium on 10/7/22 at 5:00pm, with the "
+    "pregame show starting at 4:30pm."
+    , False),
+   ("6FJ-rTezgnc", "Whalers Football vs. Mashpee - September 17, 2022",
+    "Nantucket Sports Connection brings you high school football with the Nantucket Whalers vs. the "
+    "Mashpee Falcons, from Vito Capizzo Stadium on 9/17/22 at 3:30pm, with the pregame show "
+    "starting at 3pm."
     , False),
   ],
   "School Yr 23-24": [
-   ("mR2T-5Z7LEk", "Nantucket Whalers Football vs. Carver Crusaders - September 9, 2023",
-    "Nantucket Sports Connection brings you Varsity High School Football with the Nantucket Whalers "
-    "vs. the Falmouth Clippers from Vito Capizzo Stadium on September 9 at 5:00pm, with the pregame "
-    "show starting at 4:45pm."
+   ("fBYJYjq5djc", "Nantucket Whalers Football vs. Joseph Case Cardinals - November 9, 2023",
+    "Nantucket Sports Connection brings you Varsity High School Football as the Nantucket Whalers "
+    "host the Joseph Case Cardinals from Vito Capizzo Stadium with a kickoff slated for 5:00pm."
     , False),
-   ("sLhID9iGtCw", "Nantucket Whalers Football vs. Tech Boston Bears - September 30, 2023",
-    "Nantucket Sports Connection brings you Varsity High School Football with the Nantucket Whalers "
-    "vs. Tech Boston Bears from Vito Capizzo Stadium"
+   ("jthWbKobYVI", "The Island Cup - Nantucket Whalers Football vs. Martha&rsquo;s Vineyard - October 28, 2023",
+    "The Nantucket Sports Connection and NCTV are proud to bring you the 43rd Annual Island Cup"
     , False),
    ("qVyMzKRRjBs", "Nantucket Whalers Football vs. Monomoy Sharks- October 19, 2023",
     "Nantucket Sports Connection brings you Varsity High School Football as the Nantucket Whalers "
     "host the Monomoy Sharks from Vito Capizzo Stadium with a kickoff slated for 5:30pm"
     , False),
-   ("jthWbKobYVI", "The Island Cup - Nantucket Whalers Football vs. Martha&rsquo;s Vineyard - October 28, 2023",
-    "The Nantucket Sports Connection and NCTV are proud to bring you the 43rd Annual Island Cup"
+   ("sLhID9iGtCw", "Nantucket Whalers Football vs. Tech Boston Bears - September 30, 2023",
+    "Nantucket Sports Connection brings you Varsity High School Football with the Nantucket Whalers "
+    "vs. Tech Boston Bears from Vito Capizzo Stadium"
     , False),
-   ("fBYJYjq5djc", "Nantucket Whalers Football vs. Joseph Case Cardinals - November 9, 2023",
-    "Nantucket Sports Connection brings you Varsity High School Football as the Nantucket Whalers "
-    "host the Joseph Case Cardinals from Vito Capizzo Stadium with a kickoff slated for 5:00pm."
+   ("mR2T-5Z7LEk", "Nantucket Whalers Football vs. Carver Crusaders - September 9, 2023",
+    "Nantucket Sports Connection brings you Varsity High School Football with the Nantucket Whalers "
+    "vs. the Falmouth Clippers from Vito Capizzo Stadium on September 9 at 5:00pm, with the pregame "
+    "show starting at 4:45pm."
     , False),
   ],
   "School Yr 24-25": [
-   ("9mjaulRAZtk", "Nantucket Whalers Football vs. Cardinal Spellman - September 7, 2024",
-    "Nantucket Sports Connection brings you the kickoff of the Whalers Varsity High School Football "
-    "regular season as Nantucket welcomes Cardinal Spellman to the island."
-    , False),
-   ("1eKdJfH3Qa0", "Nantucket Whalers Football vs. Mashpee Falcons - September 22, 2024",
-    "Nantucket Sports Connection brings you Whalers Varsity High School Football with Nantucket "
-    "welcoming Mashpee from across the sound."
-    , False),
-   ("mfI-fvKTkQQ", "Nantucket Whalers Football vs. Sandwich Blue Knights - September 28, 2024",
-    "Nantucket Sports Connection brings you Whalers Varsity High School Football as they host the "
-    "Sandwich Blue Knights."
-    , False),
-   ("dEQ_VEEbjm8", "Nantucket Whalers Junior Varsity Football vs. Nauset Warriors - October 7, 2024",
-    "Nantucket Sports Connection brings you Junior Varsity Football for the first time! Our "
-    "Nantucket Whalers are playing their first home game of the season as they welcome the Warriors "
-    "from Nauset Regional High School."
-    , False),
-   ("OtR1-g65hnI", "Nantucket Whalers Football vs. Dennis-Yarmouth Dolphins - October 10, 2024",
-    "Nantucket Sports Connection brings you Varsity High School Football as the Whalers (1-4, #15 "
-    "in Div. 7) host the Dolphins (3-2, #10 in Div. 6)."
-    , False),
-   ("4A1W32RdjTg", "Nantucket Whalers Football vs. St. John Paul II Lions - October 18, 2024",
-    "Nantucket Sports Connection brings you Varsity High School Football as the Whalers (1-5, #14 "
-    "in Div. 7) host the St. John Paul II Lions (3-2, #26 in Div. 8) from across the sound."
+   ("1P3DZywTnR4", "The Island Cup - Nantucket Whalers Football vs. Martha&rsquo;s Vineyard AT FENWAY PARK - November 26, 2024",
+    "Nantucket Sports Connection brings you Varsity High School Football as the Whalers travel to "
+    "Fenway Park for the first time to play the Vineyarders for The 44th Annual Island Cup!"
     , False),
    ("4NLLIDIjK4w", "Nantucket Whalers Football vs. Falmouth Clippers - November 8, 2024",
     "Nantucket Sports Connection brings you Varsity High School Football as the Whalers (2-7, #18 "
     "in Div. 7) host a postseason consolation game against the Falmouth Clippers (1-7, #27 in Div. "
     "5) from across the sound."
     , False),
-   ("1P3DZywTnR4", "The Island Cup - Nantucket Whalers Football vs. Martha&rsquo;s Vineyard AT FENWAY PARK - November 26, 2024",
-    "Nantucket Sports Connection brings you Varsity High School Football as the Whalers travel to "
-    "Fenway Park for the first time to play the Vineyarders for The 44th Annual Island Cup!"
+   ("4A1W32RdjTg", "Nantucket Whalers Football vs. St. John Paul II Lions - October 18, 2024",
+    "Nantucket Sports Connection brings you Varsity High School Football as the Whalers (1-5, #14 "
+    "in Div. 7) host the St. John Paul II Lions (3-2, #26 in Div. 8) from across the sound."
+    , False),
+   ("OtR1-g65hnI", "Nantucket Whalers Football vs. Dennis-Yarmouth Dolphins - October 10, 2024",
+    "Nantucket Sports Connection brings you Varsity High School Football as the Whalers (1-4, #15 "
+    "in Div. 7) host the Dolphins (3-2, #10 in Div. 6)."
+    , False),
+   ("dEQ_VEEbjm8", "Nantucket Whalers Junior Varsity Football vs. Nauset Warriors - October 7, 2024",
+    "Nantucket Sports Connection brings you Junior Varsity Football for the first time! Our "
+    "Nantucket Whalers are playing their first home game of the season as they welcome the Warriors "
+    "from Nauset Regional High School."
+    , False),
+   ("mfI-fvKTkQQ", "Nantucket Whalers Football vs. Sandwich Blue Knights - September 28, 2024",
+    "Nantucket Sports Connection brings you Whalers Varsity High School Football as they host the "
+    "Sandwich Blue Knights."
+    , False),
+   ("1eKdJfH3Qa0", "Nantucket Whalers Football vs. Mashpee Falcons - September 22, 2024",
+    "Nantucket Sports Connection brings you Whalers Varsity High School Football with Nantucket "
+    "welcoming Mashpee from across the sound."
+    , False),
+   ("9mjaulRAZtk", "Nantucket Whalers Football vs. Cardinal Spellman - September 7, 2024",
+    "Nantucket Sports Connection brings you the kickoff of the Whalers Varsity High School Football "
+    "regular season as Nantucket welcomes Cardinal Spellman to the island."
     , False),
   ],
   "School Yr 25-26": [
-   ("IdQCOGfWkhs", "Nantucket Whalers Football AT Cardinal Spellman - September 6, 2025",
-    "Nantucket Sports Connection brings you the kickoff of the Whalers Varsity High School Football "
-    "regular season as your Sports Connection team hits the road to Brockton, MA to feature "
-    "Nantucket&rsquo;s rematch against Cardinal Spellman."
+   ("2rigc2R4RgQ", "Nantucket Whalers Football vs. Medway Mustangs - November 14, 2025",
+    "Nantucket Sports Connection brings you a postseason consolation game between the Nantucket "
+    "Whalers (8-1, #9 in Division 6) and the Medway Mustangs (5-4, #10)."
     , False),
-   ("46wcE4blMvA", "Nantucket Whalers Football vs. Carver Crusaders - September 13, 2025",
-    "Nantucket Sports Connection brings you Varsity High School Football as the Whalers hold their "
-    "home opener of the year with a rematch against the Carver Crusaders."
-    , False),
-   ("tQRwAyUQcj4", "Nantucket Whalers Football vs. Blackstone Valley Beavers - September 20, 2025",
-    "Nantucket Sports Connection brings you the Whalers Varsity High School Football team as they "
-    "welcome the Beavers from Blackstone Valley Regional Vocational Tech to the island for their "
-    "first visit."
-    , False),
-   ("pukx1PC8Bqs", "Nantucket Whalers Football AT Falmouth Clippers - October 3, 2025",
-    "Nantucket Sports Connection brings you Varsity High School Football as the Whalers travel "
-    "across the sound to take on the Falmouth Clippers."
-    , False),
-   ("BzebtQoqmHI", "Nantucket Whalers Football vs. Nauset Warriors - October 10, 2025",
-    "Nantucket Sports Connection brings you Varsity High School Football as the Whalers welcome the "
-    "Warriors from over on the Lower Cape."
-    , False),
-   ("5eRL0va_L2U", "Nantucket Whalers Football AT Dennis-Yarmouth Dolphins - October 17, 2025",
-    "Nantucket Sports Connection brings you Varsity High School Football as the Whalers (5-0, #9 in "
-    "Division 6) travel across the sound to take on the Dolphins (0-5, #22 Div. 6)."
+   ("QaqUWjtKADo", "MIAA D6 Round of 16: Nantucket Whalers Football vs. Pentucket Panthers - November 7, 2025",
+    "Nantucket Sports Connection brings you the MIAA Division 6 Round of 16 game between the "
+    "Nantucket Whalers (8-0, #9 in Division 6) and the Pentucket Panthers (5-3, #8)."
     , False),
    ("jBrK96Ay2zA", "Nantucket Whalers Football vs. Sandwich Blue Knights - October 25, 2025",
     "Nantucket Sports Connection brings you Varsity High School Football as the Whalers (6-0, #8 in "
     "Division 6) host the Blue Knights (4-2, #19) from the Upper Cape in a game which will almost "
     "certainly determine the Cape &amp; Islands League title!"
     , False),
-   ("QaqUWjtKADo", "MIAA D6 Round of 16: Nantucket Whalers Football vs. Pentucket Panthers - November 7, 2025",
-    "Nantucket Sports Connection brings you the MIAA Division 6 Round of 16 game between the "
-    "Nantucket Whalers (8-0, #9 in Division 6) and the Pentucket Panthers (5-3, #8)."
+   ("5eRL0va_L2U", "Nantucket Whalers Football AT Dennis-Yarmouth Dolphins - October 17, 2025",
+    "Nantucket Sports Connection brings you Varsity High School Football as the Whalers (5-0, #9 in "
+    "Division 6) travel across the sound to take on the Dolphins (0-5, #22 Div. 6)."
     , False),
-   ("2rigc2R4RgQ", "Nantucket Whalers Football vs. Medway Mustangs - November 14, 2025",
-    "Nantucket Sports Connection brings you a postseason consolation game between the Nantucket "
-    "Whalers (8-1, #9 in Division 6) and the Medway Mustangs (5-4, #10)."
+   ("BzebtQoqmHI", "Nantucket Whalers Football vs. Nauset Warriors - October 10, 2025",
+    "Nantucket Sports Connection brings you Varsity High School Football as the Whalers welcome the "
+    "Warriors from over on the Lower Cape."
+    , False),
+   ("pukx1PC8Bqs", "Nantucket Whalers Football AT Falmouth Clippers - October 3, 2025",
+    "Nantucket Sports Connection brings you Varsity High School Football as the Whalers travel "
+    "across the sound to take on the Falmouth Clippers."
+    , False),
+   ("tQRwAyUQcj4", "Nantucket Whalers Football vs. Blackstone Valley Beavers - September 20, 2025",
+    "Nantucket Sports Connection brings you the Whalers Varsity High School Football team as they "
+    "welcome the Beavers from Blackstone Valley Regional Vocational Tech to the island for their "
+    "first visit."
+    , False),
+   ("46wcE4blMvA", "Nantucket Whalers Football vs. Carver Crusaders - September 13, 2025",
+    "Nantucket Sports Connection brings you Varsity High School Football as the Whalers hold their "
+    "home opener of the year with a rematch against the Carver Crusaders."
+    , False),
+   ("IdQCOGfWkhs", "Nantucket Whalers Football AT Cardinal Spellman - September 6, 2025",
+    "Nantucket Sports Connection brings you the kickoff of the Whalers Varsity High School Football "
+    "regular season as your Sports Connection team hits the road to Brockton, MA to feature "
+    "Nantucket&rsquo;s rematch against Cardinal Spellman."
     , False),
   ],
   "School Yr 26-27": [
-   ("WZguwNNBppU", "Nantucket Whalers Football vs. East Bridgewater Vikings - September 12, 2026",
-    "Nantucket Sports Connection brings you the kickoff of the Whalers Varsity High School Football "
-    "regular season as Nantucket invites the Vikings from East Bridgewater back to the island for "
-    "the first time in decades."
-    , False),
-   ("1tj0ubuuJ9s", "Nantucket Whalers Football AT Blackstone Valley Beavers - September 19, 2026",
-    "Nantucket Sports Connection brings you the Whalers Varsity High School Football team as they "
-    "take their show on the road to Upton, Massachusetts for the first time to play against the "
-    "Beavers from Blackstone Valley Tech."
-    , False),
-   ("ZCDsKvWv7Cw", "Nantucket Whalers Football vs. Falmouth Clippers - October 2, 2026",
-    "Nantucket Sports Connection brings you Varsity High School Football as the Whalers look to "
-    "defend their Cape &amp; Islands League title as they enter October to take on the Clippers "
-    "from across the sound."
-    , False),
-   ("JH8kmyqcsZA", "Nantucket Whalers Football AT Nauset Warriors - October 9, 2026",
-    "Nantucket Sports Connection brings you Varsity High School Football as the Whalers cross over "
-    "to the Lower Cape to face the Warriors."
-    , False),
-   ("W4OUx85JdNE", "Nantucket Whalers Football vs. Dennis-Yarmouth Dolphins - October 16, 2026",
-    "Nantucket Sports Connection brings you Varsity High School Football as the Whalers welcome "
-    "the Dolphins from the Lower Cape.<br><br>These two teams have flipped their respective "
-    "scripts this season, as a rejuvenated lineup has seen the Dolphins (4-1, #8 in Division 6) on "
-    "an unbeaten tear with three league wins so far with three to go. They are coming off a 23-14 "
-    "road win over Sandwich last Friday.<br><br>A win today will all but secure a Cape &amp; "
-    "Islands League title for D-Y, taking it away from the Whalers, who&rsquo;ve gone from an "
-    "unbeaten regular season in 2025 to a 1-3 record and a #24 ranking in the same division this "
-    "year. Only a string of lopsided wins today, next week on the road at Sandwich and back home "
-    "for the Island Cup on Halloween would give Nantucket any mathematical chance at qualifying "
-    "for the MIAA tournament.<br><br>In the highest scoring affair of last season, the Whalers "
-    "prevailed 49-22 over Dennis-Yarmouth 364 days ago in a sloppy game for both squads. The "
-    "Dolphins still hold a 3-2 advantage in head-to-head competition with a combined score of "
-    "129-83.<br><br>The Dolphins finished 3-8 last year, a far cry from their 8-3 season in 2024 "
-    "that saw them enter the Div. 6 tourney as the #11 seed.<br><br>Our live coverage begins at "
-    "4:45 with kickoff set for 5:15pm from Vito Capizzo Stadium, coming to you live both on the "
-    "NSC YouTube channel as well as on NCTV HD Channel 1072.<br><br>[This game was originally "
-    "scheduled for October 16, but was moved due to weather.]"
-    , False),
-   ("Ads77gh567Y", "Nantucket Whalers Football AT Sandwich Blue Knights - October 23, 2026",
-    "Nantucket Sports Connection hits the road with the Whalers varsity football squad as they "
-    "play their final road game of the regular season against the Blue Knights from the Upper "
-    "Cape.<br><br>From the heights of the Cape &amp; Islands League last year &mdash; when "
-    "Nantucket clinched the title on Homecoming night 363 days ago against Sandwich, who they "
-    "mauled 34-14 in a turnover-drenched matchup &mdash; these two teams have lost 4 and 5 "
-    "straight games, respectively. They are both on the outside looking in for the upcoming MIAA "
-    "tournament, ranked #23 and #21 in Division 6.<br><br>The Whalers (1-4) are looking for "
-    "redemption and their first league win after consecutive losses to Falmouth, Nauset and "
-    "Dennis-Yarmouth; the Blue Knights (1-5) have likewise lost to the Dolphins and Clippers, as "
-    "well as the Crusaders from Cape Cod Tech this month.<br><br>Sandwich sat out the 2025 "
-    "playoffs with a #19 final power ranking, and wound up 5-5 on the season after a 12-6 "
-    "consolation game loss to Wareham and a 36-22 drubbing by Mashpee on Thanksgiving. Overall the "
-    "Blue Knights have a 5-3 advantage over the Whalers in the modern history of the two "
-    "programs.<br><br>Our live coverage begins at 3:15 with kickoff set for 3:45pm from Gerald F "
-    "DeConto Stadium, coming to you live both on the NSC YouTube channel as well as on NCTV HD "
-    "Channel 1072."
-    , False),
    ("7Y3sAP0an_U", "The Island Cup - Nantucket Whalers Football vs. Martha&rsquo;s Vineyard - October 31, 2026",
     "The Nantucket Sports Connection proudly presents the spookiest showdown yet between these "
     "cross-island foes, as the Whalers square off against the Vineyarders on a Halloween Day "
@@ -1041,27 +985,83 @@ SPORTS_VIDEOS = {
     "with kickoff set for 3pm from Vito Capizzo Stadium, coming to you live both on the NSC "
     "YouTube channel as well as on NCTV HD Channel 1072."
     , False),
+   ("Ads77gh567Y", "Nantucket Whalers Football AT Sandwich Blue Knights - October 23, 2026",
+    "Nantucket Sports Connection hits the road with the Whalers varsity football squad as they "
+    "play their final road game of the regular season against the Blue Knights from the Upper "
+    "Cape.<br><br>From the heights of the Cape &amp; Islands League last year &mdash; when "
+    "Nantucket clinched the title on Homecoming night 363 days ago against Sandwich, who they "
+    "mauled 34-14 in a turnover-drenched matchup &mdash; these two teams have lost 4 and 5 "
+    "straight games, respectively. They are both on the outside looking in for the upcoming MIAA "
+    "tournament, ranked #23 and #21 in Division 6.<br><br>The Whalers (1-4) are looking for "
+    "redemption and their first league win after consecutive losses to Falmouth, Nauset and "
+    "Dennis-Yarmouth; the Blue Knights (1-5) have likewise lost to the Dolphins and Clippers, as "
+    "well as the Crusaders from Cape Cod Tech this month.<br><br>Sandwich sat out the 2025 "
+    "playoffs with a #19 final power ranking, and wound up 5-5 on the season after a 12-6 "
+    "consolation game loss to Wareham and a 36-22 drubbing by Mashpee on Thanksgiving. Overall the "
+    "Blue Knights have a 5-3 advantage over the Whalers in the modern history of the two "
+    "programs.<br><br>Our live coverage begins at 3:15 with kickoff set for 3:45pm from Gerald F "
+    "DeConto Stadium, coming to you live both on the NSC YouTube channel as well as on NCTV HD "
+    "Channel 1072."
+    , False),
+   ("W4OUx85JdNE", "Nantucket Whalers Football vs. Dennis-Yarmouth Dolphins - October 16, 2026",
+    "Nantucket Sports Connection brings you Varsity High School Football as the Whalers welcome "
+    "the Dolphins from the Lower Cape.<br><br>These two teams have flipped their respective "
+    "scripts this season, as a rejuvenated lineup has seen the Dolphins (4-1, #8 in Division 6) on "
+    "an unbeaten tear with three league wins so far with three to go. They are coming off a 23-14 "
+    "road win over Sandwich last Friday.<br><br>A win today will all but secure a Cape &amp; "
+    "Islands League title for D-Y, taking it away from the Whalers, who&rsquo;ve gone from an "
+    "unbeaten regular season in 2025 to a 1-3 record and a #24 ranking in the same division this "
+    "year. Only a string of lopsided wins today, next week on the road at Sandwich and back home "
+    "for the Island Cup on Halloween would give Nantucket any mathematical chance at qualifying "
+    "for the MIAA tournament.<br><br>In the highest scoring affair of last season, the Whalers "
+    "prevailed 49-22 over Dennis-Yarmouth 364 days ago in a sloppy game for both squads. The "
+    "Dolphins still hold a 3-2 advantage in head-to-head competition with a combined score of "
+    "129-83.<br><br>The Dolphins finished 3-8 last year, a far cry from their 8-3 season in 2024 "
+    "that saw them enter the Div. 6 tourney as the #11 seed.<br><br>Our live coverage begins at "
+    "4:45 with kickoff set for 5:15pm from Vito Capizzo Stadium, coming to you live both on the "
+    "NSC YouTube channel as well as on NCTV HD Channel 1072.<br><br>[This game was originally "
+    "scheduled for October 16, but was moved due to weather.]"
+    , False),
+   ("JH8kmyqcsZA", "Nantucket Whalers Football AT Nauset Warriors - October 9, 2026",
+    "Nantucket Sports Connection brings you Varsity High School Football as the Whalers cross over "
+    "to the Lower Cape to face the Warriors."
+    , False),
+   ("ZCDsKvWv7Cw", "Nantucket Whalers Football vs. Falmouth Clippers - October 2, 2026",
+    "Nantucket Sports Connection brings you Varsity High School Football as the Whalers look to "
+    "defend their Cape &amp; Islands League title as they enter October to take on the Clippers "
+    "from across the sound."
+    , False),
+   ("1tj0ubuuJ9s", "Nantucket Whalers Football AT Blackstone Valley Beavers - September 19, 2026",
+    "Nantucket Sports Connection brings you the Whalers Varsity High School Football team as they "
+    "take their show on the road to Upton, Massachusetts for the first time to play against the "
+    "Beavers from Blackstone Valley Tech."
+    , False),
+   ("WZguwNNBppU", "Nantucket Whalers Football vs. East Bridgewater Vikings - September 12, 2026",
+    "Nantucket Sports Connection brings you the kickoff of the Whalers Varsity High School Football "
+    "regular season as Nantucket invites the Vikings from East Bridgewater back to the island for "
+    "the first time in decades."
+    , False),
   ],
  },
  "Volleyball": {
   "School Yr 22-23": [
-   ("xK-VfyZoLKE", "Nantucket Whalers Varsity Volleyball vs SJP II Lions - September 21, 2022",
-    "Nantucket Sports Connection presents Whalers Volleyball hosting SJPII Lions Whalers record 3-0 "
-    "Lions record 3-1"
+   ("6rv5KTgPADs", "MIAA Div. 4  Volleyball State Tournament Nantucket Whalers vs Lynnfield Pioneers - November 10, 2022",
+    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball MIAA Division "
+    "4 Round of 8 Tournament game live from Lynnfield High School Gymnasium"
     , False),
-   ("Ff82kJ8nNDI", "Nantucket Whalers Volleyball vs Sturgis West Navigators - September 28, 2022",
+   ("RLKSciCM5RE", "MIAA Div. 4 Volleyball State Tournament Nantucket - Whalers vs Blackstone Valley Beavers - 11/7/22",
+    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball MIAA Division "
+    "4 Round of 16 Tournament game live from John J. O&rsquo;Neill Gymnasium"
+    , False),
+   ("3nVBMhBZh7o", "MIAA Div. 4 Round of 32 Girls Volleyball Nantucket Whalers vs Assabet Valley Aztecs - Nov. 3, 2022",
+    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball MIAA Division "
+    "4 Tournament game live from John J. O&rsquo;Neill Gymnasium"
+    , False),
+   ("cXBXbkNIrVY", "Nantucket Whalers Varsity Girls Volleyball vs Falmouth Clippers- October 22, 2022",
     "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live from John "
-    "J. O&rsquo;Neill Gymnasium"
+    "J Oniel Gymnasium"
     , False),
-   ("dxXRrrEmjDM", "Nantucket Whalers Varsity Girls Volleyball vs Sturgis East Storm - October 5, 2022",
-    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live from John "
-    "J Oniel Gymansium"
-    , False),
-   ("7rbcQWJ9qak", "Nantucket Whalers Varsity Girls Volleyball vs Dennis Yarmouth Dolphins - October 11, 2022",
-    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live from John "
-    "J Oniel Gymansium"
-    , False),
-   ("eb25x1QVBJ0", "Nantucket Whalers Varsity Girls Volleyball vs Rising Tide Herons - October 13, 2022",
+   ("zRzcLy2FvlE", "Nantucket Whalers Varsity Girls Volleyball vs Sandwich Blue Knights October 19, 2022",
     "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live from John "
     "J Oneil Gymnasium"
     , False),
@@ -1069,37 +1069,43 @@ SPORTS_VIDEOS = {
     "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live from John "
     "J Oniel Gymansium"
     , False),
-   ("zRzcLy2FvlE", "Nantucket Whalers Varsity Girls Volleyball vs Sandwich Blue Knights October 19, 2022",
+   ("eb25x1QVBJ0", "Nantucket Whalers Varsity Girls Volleyball vs Rising Tide Herons - October 13, 2022",
     "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live from John "
     "J Oneil Gymnasium"
     , False),
-   ("cXBXbkNIrVY", "Nantucket Whalers Varsity Girls Volleyball vs Falmouth Clippers- October 22, 2022",
+   ("7rbcQWJ9qak", "Nantucket Whalers Varsity Girls Volleyball vs Dennis Yarmouth Dolphins - October 11, 2022",
     "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live from John "
-    "J Oniel Gymnasium"
+    "J Oniel Gymansium"
     , False),
-   ("3nVBMhBZh7o", "MIAA Div. 4 Round of 32 Girls Volleyball Nantucket Whalers vs Assabet Valley Aztecs - Nov. 3, 2022",
-    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball MIAA Division "
-    "4 Tournament game live from John J. O&rsquo;Neill Gymnasium"
+   ("dxXRrrEmjDM", "Nantucket Whalers Varsity Girls Volleyball vs Sturgis East Storm - October 5, 2022",
+    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live from John "
+    "J Oniel Gymansium"
     , False),
-   ("RLKSciCM5RE", "MIAA Div. 4 Volleyball State Tournament Nantucket - Whalers vs Blackstone Valley Beavers - 11/7/22",
-    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball MIAA Division "
-    "4 Round of 16 Tournament game live from John J. O&rsquo;Neill Gymnasium"
+   ("Ff82kJ8nNDI", "Nantucket Whalers Volleyball vs Sturgis West Navigators - September 28, 2022",
+    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live from John "
+    "J. O&rsquo;Neill Gymnasium"
     , False),
-   ("6rv5KTgPADs", "MIAA Div. 4  Volleyball State Tournament Nantucket Whalers vs Lynnfield Pioneers - November 10, 2022",
-    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball MIAA Division "
-    "4 Round of 8 Tournament game live from Lynnfield High School Gymnasium"
+   ("xK-VfyZoLKE", "Nantucket Whalers Varsity Volleyball vs SJP II Lions - September 21, 2022",
+    "Nantucket Sports Connection presents Whalers Volleyball hosting SJPII Lions Whalers record 3-0 "
+    "Lions record 3-1"
     , False),
   ],
   "School Yr 23-24": [
-   ("yGTEoem2sPM", "Nantucket Whalers Volleyball vs Bridgewater-Raynham Trojans - September 18, 2023",
+   ("kfiADIPFBes", "MIAA Div. 4 Rd. of 32 Playoffs: Nantucket Whalers Volleyball vs Sandwich Blue Knights - Nov. 1, 2023",
     "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live from John "
-    "J. O&rsquo;Neill Gymnasium. Tip off is set for 4pm."
+    "J. O&rsquo;Neill Gymnasium. The Whalers finished the regular season 12-7 earning an #9 seed in "
+    "the tournament. The Lady Blue Knights finished the regular season 5-10 earning a #24 seed int "
+    "he tournament"
     , False),
-   ("Ki2YkHjMmtE", "Nantucket Whalers Volleyball vs Nimpuc Warriors - October 7, 2023",
+   ("5riMou6yc28", "Nantucket Whalers Volleyball vs St. John Paul II Lions - October 27, 2023",
     "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live from John "
-    "J. O&rsquo;Neill Gymnasium. Tip off set for 11:30am with the pre-game show at 11:15."
+    "J. O&rsquo;Neill Gymnasium. Whalers ranked #9 in Division 4 Lions ranked #25 in Division 5"
     , False),
-   ("xIcUTJrDIpk", "Nantucket Whalers Volleyball vs Sturgis West Navigators - October 12, 2023",
+   ("BeSVi7cb4mY", "Nantucket Whalers Volleyball vs Barnstable RedHawks  - October 23, 2023",
+    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live from John "
+    "J. O&rsquo;Neill Gymnasium. ."
+    , False),
+   ("OuOL6MN_fdk", "Nantucket Whalers Volleyball vs Sturgis East Storm - October 19, 2023",
     "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live from John "
     "J. O&rsquo;Neill Gymnasium."
     , False),
@@ -1107,127 +1113,75 @@ SPORTS_VIDEOS = {
     "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live from John "
     "J. O&rsquo;Neill Gymnasium. Nantucket Whalers vs. Dennis Yarmouth Dolphins"
     , False),
-   ("OuOL6MN_fdk", "Nantucket Whalers Volleyball vs Sturgis East Storm - October 19, 2023",
+   ("xIcUTJrDIpk", "Nantucket Whalers Volleyball vs Sturgis West Navigators - October 12, 2023",
     "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live from John "
     "J. O&rsquo;Neill Gymnasium."
     , False),
-   ("BeSVi7cb4mY", "Nantucket Whalers Volleyball vs Barnstable RedHawks  - October 23, 2023",
+   ("Ki2YkHjMmtE", "Nantucket Whalers Volleyball vs Nimpuc Warriors - October 7, 2023",
     "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live from John "
-    "J. O&rsquo;Neill Gymnasium. ."
+    "J. O&rsquo;Neill Gymnasium. Tip off set for 11:30am with the pre-game show at 11:15."
     , False),
-   ("5riMou6yc28", "Nantucket Whalers Volleyball vs St. John Paul II Lions - October 27, 2023",
+   ("yGTEoem2sPM", "Nantucket Whalers Volleyball vs Bridgewater-Raynham Trojans - September 18, 2023",
     "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live from John "
-    "J. O&rsquo;Neill Gymnasium. Whalers ranked #9 in Division 4 Lions ranked #25 in Division 5"
-    , False),
-   ("kfiADIPFBes", "MIAA Div. 4 Rd. of 32 Playoffs: Nantucket Whalers Volleyball vs Sandwich Blue Knights - Nov. 1, 2023",
-    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live from John "
-    "J. O&rsquo;Neill Gymnasium. The Whalers finished the regular season 12-7 earning an #9 seed in "
-    "the tournament. The Lady Blue Knights finished the regular season 5-10 earning a #24 seed int "
-    "he tournament"
+    "J. O&rsquo;Neill Gymnasium. Tip off is set for 4pm."
     , False),
   ],
   "School Yr 24-25": [
-   ("WWyDiAKnNOc", "Nantucket Whalers Volleyball vs. St. John Paul II Lions - September 4, 2024",
-    "Nantucket Sports Connection presents the Whalers Varsity Girls Volleyball team kicking off "
-    "their 2024 season with a home matchup against the Lions who are hopping the boat over from "
-    "Hyannis."
-    , False),
-   ("uBJaE2uiaew", "Nantucket Whalers Volleyball vs. Bridgewater-Raynham Trojans - September 11, 2024",
-    "Nantucket Sports Connection presents the Whalers Varsity Girls Volleyball team in their second "
-    "home match of the 2024 season as they welcome the Trojans from Bridgewater-Raynham."
-    , False),
-   ("IzqJ0ueroc0", "Nantucket Whalers Volleyball vs Duxbury Dragons - September 14, 2024",
-    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball bright and "
-    "early on Saturday!"
-    , False),
-   ("9RlNYDnLFTc", "Nantucket Whalers Volleyball vs Falmouth Clippers - September 16, 2024",
-    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live on NCTV!"
-    , False),
-   ("KhJrPAlFb8E", "Nantucket Whalers Volleyball vs Barnstable Red Hawks  - September 18, 2024",
-    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live on NCTV!"
-    , False),
-   ("C6215YGvj3I", "Nantucket Whalers Volleyball vs Dennis-Yarmouth Dolphins - September 25, 2024",
-    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live on NCTV!"
-    , False),
-   ("QyxiJnqJciU", "Nantucket Whalers Volleyball vs Archbishop Williams Bishops - September 28, 2024",
-    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live on NCTV!"
-    , False),
-   ("2bDoM4ue8n8", "Nantucket Whalers Volleyball vs. Nauset Warriors - October 9, 2024",
+   ("Mp40p5ncS3o", "Nantucket Whalers Volleyball vs. Sturgis West Navigators - October 21, 2024",
     "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live on NCTV!"
     , False),
    ("wpYmluaGgqE", "Nantucket Whalers Volleyball vs. Cape Cod Academy Seahawks - October 10, 2024",
     "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live on NCTV!"
     , False),
-   ("Mp40p5ncS3o", "Nantucket Whalers Volleyball vs. Sturgis West Navigators - October 21, 2024",
+   ("2bDoM4ue8n8", "Nantucket Whalers Volleyball vs. Nauset Warriors - October 9, 2024",
     "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live on NCTV!"
+    , False),
+   ("QyxiJnqJciU", "Nantucket Whalers Volleyball vs Archbishop Williams Bishops - September 28, 2024",
+    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live on NCTV!"
+    , False),
+   ("C6215YGvj3I", "Nantucket Whalers Volleyball vs Dennis-Yarmouth Dolphins - September 25, 2024",
+    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live on NCTV!"
+    , False),
+   ("KhJrPAlFb8E", "Nantucket Whalers Volleyball vs Barnstable Red Hawks  - September 18, 2024",
+    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live on NCTV!"
+    , False),
+   ("9RlNYDnLFTc", "Nantucket Whalers Volleyball vs Falmouth Clippers - September 16, 2024",
+    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball live on NCTV!"
+    , False),
+   ("IzqJ0ueroc0", "Nantucket Whalers Volleyball vs Duxbury Dragons - September 14, 2024",
+    "Nantucket Sports Connection presents Nantucket Whalers Varsity Girls Volleyball bright and "
+    "early on Saturday!"
+    , False),
+   ("uBJaE2uiaew", "Nantucket Whalers Volleyball vs. Bridgewater-Raynham Trojans - September 11, 2024",
+    "Nantucket Sports Connection presents the Whalers Varsity Girls Volleyball team in their second "
+    "home match of the 2024 season as they welcome the Trojans from Bridgewater-Raynham."
+    , False),
+   ("WWyDiAKnNOc", "Nantucket Whalers Volleyball vs. St. John Paul II Lions - September 4, 2024",
+    "Nantucket Sports Connection presents the Whalers Varsity Girls Volleyball team kicking off "
+    "their 2024 season with a home matchup against the Lions who are hopping the boat over from "
+    "Hyannis."
     , False),
   ],
   "School Yr 25-26": [
-   ("IITMviMMcHU", "Nantucket Whalers Volleyball vs. Sandwich Blue Knights - September 3, 2025",
-    "Nantucket Sports Connection proudly presents Nantucket Whalers Varsity Girls Volleyball as "
-    "they open the 2025-26 NSC broadcast year on NCTV!"
-    , False),
-   ("nbC_S2pc6nM", "Nantucket Whalers Volleyball vs. Sturgis West Navigators - September 22, 2025",
+   ("ZHisvcZfoxw", "Nantucket Whalers Volleyball vs Mashpee Falcons - October 21, 2025",
     "Nantucket Sports Connection presents the Whalers Varsity Girls Volleyball team as they welcome "
-    "the Navigators of Sturgis West from across the sound in Hyannis."
+    "the Mashpee Falcons in their final match of the 2025 season."
     , False),
    ("lFVVlYevKH0", "Nantucket Whalers Volleyball vs Monomoy Sharks - September 29, 2025",
     "Nantucket Sports Connection presents the Whalers Varsity Girls Volleyball team as they welcome "
     "the Sharks of Monomoy in an important league matchup."
     , False),
-   ("ZHisvcZfoxw", "Nantucket Whalers Volleyball vs Mashpee Falcons - October 21, 2025",
+   ("nbC_S2pc6nM", "Nantucket Whalers Volleyball vs. Sturgis West Navigators - September 22, 2025",
     "Nantucket Sports Connection presents the Whalers Varsity Girls Volleyball team as they welcome "
-    "the Mashpee Falcons in their final match of the 2025 season."
+    "the Navigators of Sturgis West from across the sound in Hyannis."
+    , False),
+   ("IITMviMMcHU", "Nantucket Whalers Volleyball vs. Sandwich Blue Knights - September 3, 2025",
+    "Nantucket Sports Connection proudly presents Nantucket Whalers Varsity Girls Volleyball as "
+    "they open the 2025-26 NSC broadcast year on NCTV!"
     , False),
   ],
   "School Yr 26-27": [
-   ("9alJMv0oQeA", "Nantucket Whalers Volleyball vs. St. John Paul II Lions - September 14, 2026",
-    "Nantucket Sports Connection proudly presents Nantucket Whalers Varsity Girls Volleyball as "
-    "they hold their 2026 home opener with a matchup against the Lions from across the sound in "
-    "Hyannis."
-    , False),
-   ("3LzEC83TRWU", "Nantucket Whalers Volleyball vs Mu&ntilde;iz Academy Phoenix - September 18, 2026",
-    "Nantucket Sports Connection presents the Whalers Varsity Girls Volleyball team as they welcome "
-    "the Phoenix from Mu&ntilde;iz Academy in their first-ever trip to the island!"
-    , False),
-   ("BKbwwUC9bKw", "Nantucket Whalers Volleyball vs. Rising Tide Herons - September 21, 2026",
-    "Nantucket Sports Connection proudly presents Nantucket Whalers Varsity Girls Volleyball as "
-    "they welcome the Herons as they migrate down from Plymouth."
-    , False),
-   ("pDs-G3dP1R8", "Nantucket Whalers Volleyball vs. Sandwich Blue Knights - October 1, 2026",
-    "Nantucket Sports Connection presents the Whalers Varsity Volleyball team as they welcome the "
-    "Blue Knights from the Upper Cape."
-    , False),
-   ("P3J1bZS8S-E", "Nantucket Whalers Volleyball vs Sturgis East Storm - October 13, 2026",
-    "Nantucket Sports Connection presents the Whalers Varsity Girls Volleyball team as they "
-    "welcome the Storm from across the sound in Hyannis.<br><br>The Whalers (5-4, #49 in Division "
-    "3) were one for two on their road trips last week, besting Rising Tide 3-0 on Wednesday "
-    "before falling in similar straight sets to Mashpee on Friday. This is the first of three "
-    "consecutive games this week as Nantucket enters the second half of its season.<br><br>The "
-    "Storm (3-6, #36 in Division 4) have dropped two of their last three, falling to Monomoy and "
-    "Cape Cod Tech, their lone win also against Rising Tide in straight sets.<br><br>Sturgis East "
-    "broke a ten game losing streak in head-to-head play against the Whalers, winning three sets "
-    "to one on Sept. 17, 2025 &mdash; only their second-ever win on island, while Nantucket holds "
-    "an overall 11-8 advantage. Last season saw them sneak into the Division 4 tournament with a "
-    "9-7 record, quickly falling 3-1 to Mashpee in the preliminary round.<br><br>We are live from "
-    "John J. O&rsquo;Neill Gymnasium at 3:45 for the pregame show with tipoff set for 4pm, "
-    "presented on the Nantucket Sports Connection YouTube channel as well as on NCTV HD Channel "
-    "1072."
-    , False),
-   ("XplMJXN2hcM", "Nantucket Whalers Volleyball vs Sturgis West Navigators - October 14, 2026",
-    "Nantucket Sports Connection presents the Whalers Varsity Girls Volleyball team as they "
-    "welcome the Navigators from across the sound in Hyannis.<br><br>The Whalers (6-4, #49 in "
-    "Division 3) bested the *other* Sturgis team three sets to one yesterday. This is nonetheless "
-    "a crucial game for Nantucket to stay above .500 and secure a play-in game for the tournament "
-    "&mdash; which would be the first time in three seasons in general, and their debut in Div. 3 "
-    "overall.<br><br>The Navigators (1-8, #49 in Division 4) have been on the skids this whole "
-    "season, only managing their lone victory over Rising Tide; Sturgis West fell to Nantucket at "
-    "home 3-0 on Sept. 28. They did sweep the series against the Whalers last season, including a "
-    "straight-sets victory here on island on Oct. 8, 2025.<br><br>We are live from John J. "
-    "O&rsquo;Neill Gymnasium at 3:45 for the pregame show with tipoff set for 4pm, presented on "
-    "the Nantucket Sports Connection YouTube channel as well as on NCTV HD Channel "
-    "1072.<br><br>[This is a fixed copy of the original livestream, which had 133 views.]"
-    , False),
+   ("fEyIEkohlAo", "MIAA Preliminary Round: Nantucket Whalers Volleyball AT Dennis-Yarmouth Dolphins - November 5, 2026", "", True),
    ("SJEJ-n9dEzw", "Nantucket Whalers Volleyball vs Nauset Warriors - October 28, 2026",
     "The Nantucket Sports Connection presents the playoff-bound Whalers Varsity Girls Volleyball "
     "team! They host Nauset as the Warriors head south for this Cape and Islands "
@@ -1248,7 +1202,53 @@ SPORTS_VIDEOS = {
     "for 4:30pm, presented on the Nantucket Sports Connection YouTube channel as well as on NCTV "
     "HD Channel 1072."
     , False),
-   ("fEyIEkohlAo", "MIAA Preliminary Round: Nantucket Whalers Volleyball AT Dennis-Yarmouth Dolphins - November 5, 2026", "", True),
+   ("XplMJXN2hcM", "Nantucket Whalers Volleyball vs Sturgis West Navigators - October 14, 2026",
+    "Nantucket Sports Connection presents the Whalers Varsity Girls Volleyball team as they "
+    "welcome the Navigators from across the sound in Hyannis.<br><br>The Whalers (6-4, #49 in "
+    "Division 3) bested the *other* Sturgis team three sets to one yesterday. This is nonetheless "
+    "a crucial game for Nantucket to stay above .500 and secure a play-in game for the tournament "
+    "&mdash; which would be the first time in three seasons in general, and their debut in Div. 3 "
+    "overall.<br><br>The Navigators (1-8, #49 in Division 4) have been on the skids this whole "
+    "season, only managing their lone victory over Rising Tide; Sturgis West fell to Nantucket at "
+    "home 3-0 on Sept. 28. They did sweep the series against the Whalers last season, including a "
+    "straight-sets victory here on island on Oct. 8, 2025.<br><br>We are live from John J. "
+    "O&rsquo;Neill Gymnasium at 3:45 for the pregame show with tipoff set for 4pm, presented on "
+    "the Nantucket Sports Connection YouTube channel as well as on NCTV HD Channel "
+    "1072.<br><br>[This is a fixed copy of the original livestream, which had 133 views.]"
+    , False),
+   ("P3J1bZS8S-E", "Nantucket Whalers Volleyball vs Sturgis East Storm - October 13, 2026",
+    "Nantucket Sports Connection presents the Whalers Varsity Girls Volleyball team as they "
+    "welcome the Storm from across the sound in Hyannis.<br><br>The Whalers (5-4, #49 in Division "
+    "3) were one for two on their road trips last week, besting Rising Tide 3-0 on Wednesday "
+    "before falling in similar straight sets to Mashpee on Friday. This is the first of three "
+    "consecutive games this week as Nantucket enters the second half of its season.<br><br>The "
+    "Storm (3-6, #36 in Division 4) have dropped two of their last three, falling to Monomoy and "
+    "Cape Cod Tech, their lone win also against Rising Tide in straight sets.<br><br>Sturgis East "
+    "broke a ten game losing streak in head-to-head play against the Whalers, winning three sets "
+    "to one on Sept. 17, 2025 &mdash; only their second-ever win on island, while Nantucket holds "
+    "an overall 11-8 advantage. Last season saw them sneak into the Division 4 tournament with a "
+    "9-7 record, quickly falling 3-1 to Mashpee in the preliminary round.<br><br>We are live from "
+    "John J. O&rsquo;Neill Gymnasium at 3:45 for the pregame show with tipoff set for 4pm, "
+    "presented on the Nantucket Sports Connection YouTube channel as well as on NCTV HD Channel "
+    "1072."
+    , False),
+   ("pDs-G3dP1R8", "Nantucket Whalers Volleyball vs. Sandwich Blue Knights - October 1, 2026",
+    "Nantucket Sports Connection presents the Whalers Varsity Volleyball team as they welcome the "
+    "Blue Knights from the Upper Cape."
+    , False),
+   ("BKbwwUC9bKw", "Nantucket Whalers Volleyball vs. Rising Tide Herons - September 21, 2026",
+    "Nantucket Sports Connection proudly presents Nantucket Whalers Varsity Girls Volleyball as "
+    "they welcome the Herons as they migrate down from Plymouth."
+    , False),
+   ("3LzEC83TRWU", "Nantucket Whalers Volleyball vs Mu&ntilde;iz Academy Phoenix - September 18, 2026",
+    "Nantucket Sports Connection presents the Whalers Varsity Girls Volleyball team as they welcome "
+    "the Phoenix from Mu&ntilde;iz Academy in their first-ever trip to the island!"
+    , False),
+   ("9alJMv0oQeA", "Nantucket Whalers Volleyball vs. St. John Paul II Lions - September 14, 2026",
+    "Nantucket Sports Connection proudly presents Nantucket Whalers Varsity Girls Volleyball as "
+    "they hold their 2026 home opener with a matchup against the Lions from across the sound in "
+    "Hyannis."
+    , False),
   ],
  },
  "Field Hockey": {
@@ -1308,52 +1308,55 @@ SPORTS_VIDEOS = {
  },
  "Girls Soccer": {
   "School Yr 25-26": [
-   ("Shhs_OdSxIA", "Nantucket Whalers Girls Soccer vs. Nauset Warriors - September 10, 2025",
-    "For the first time ever, Nantucket Sports Connection brings you coverage of Nantucket Whalers "
-    "Girls Soccer as they welcome the Warriors from across the sound in Nauset."
+   ("duchLnUM-Mg", "Whalers Girls Soccer vs. Monomoy Sharks - October 29, 2025",
+    "The Nantucket Sports Connection brings you the Nantucket Whalers Varsity Girls Soccer squad as "
+    "they face off against the Monomoy Sharks in their final home game of the 2025 season."
     , False),
-   ("h54ktJSwXb4", "Nantucket Whalers Girls Soccer vs. St. John Paul II Lions - September 18, 2025",
-    "For the second time ever, Nantucket Sports Connection brings you live coverage of Nantucket "
-    "Whalers Girls Soccer (1-3-1) as they welcome the Lions from St. John Paul II (2-2-1) across "
-    "the sound in Hyannis."
-    , False),
-   ("K3OeIsYx9K8", "Nantucket Whalers Girls Soccer vs. St. Mary&rsquo;s Spartans - September 27, 2025",
-    "The Nantucket Sports Connection brings you live coverage of Nantucket Whalers Girls Soccer "
-    "(3-4-2, #42 Div. 3) as they welcome the Spartans from St. Mary&rsquo;s (4-1-2, #18 Div. 3) "
-    "traveling down from Lynn, MA."
-    , False),
-   ("HZ9X6yz9SJ4", "Equipo femenino de f&uacute;tbol de los Whalers contra los St. Mary&rsquo;s Spartans - 27 de septiembre de 2025",
-    "Nantucket Sports Connection te trae la cobertura en vivo del equipo femenino de f&uacute;tbol "
-    "Nantucket Whalers (3-4-2, n.° 42, Div. 3) que recibe a las Spartans de St. Mary&rsquo;s "
-    "(4-1-2, n.° 18, Div. 3), provenientes de Lynn, Massachusetts."
+   ("jBE3lzg7z6Q", "Nantucket Whalers Girls Soccer vs. Sandwich Blue Knights - October 22, 2025",
+    "The Nantucket Sports Connection brings you live coverage of Nantucket Whalers Girls Soccer as "
+    "they welcome the Blue Knights from Sandwich in a big rematch."
     , False),
    ("Xs_3Unco0Rc", "Nantucket Whalers Girls Soccer vs. Falmouth Clippers - September 30, 2025",
     "The Nantucket Sports Connection brings you live coverage of Nantucket Whalers Girls Soccer as "
     "they welcome the Clippers from Falmouth High School in a critical Cape &amp; Islands League "
     "matchup between this pair of Division 3 programs."
     , False),
-   ("jBE3lzg7z6Q", "Nantucket Whalers Girls Soccer vs. Sandwich Blue Knights - October 22, 2025",
-    "The Nantucket Sports Connection brings you live coverage of Nantucket Whalers Girls Soccer as "
-    "they welcome the Blue Knights from Sandwich in a big rematch."
+   ("HZ9X6yz9SJ4", "Equipo femenino de f&uacute;tbol de los Whalers contra los St. Mary&rsquo;s Spartans - 27 de septiembre de 2025",
+    "Nantucket Sports Connection te trae la cobertura en vivo del equipo femenino de f&uacute;tbol "
+    "Nantucket Whalers (3-4-2, n.° 42, Div. 3) que recibe a las Spartans de St. Mary&rsquo;s "
+    "(4-1-2, n.° 18, Div. 3), provenientes de Lynn, Massachusetts."
     , False),
-   ("duchLnUM-Mg", "Whalers Girls Soccer vs. Monomoy Sharks - October 29, 2025",
-    "The Nantucket Sports Connection brings you the Nantucket Whalers Varsity Girls Soccer squad as "
-    "they face off against the Monomoy Sharks in their final home game of the 2025 season."
+   ("K3OeIsYx9K8", "Nantucket Whalers Girls Soccer vs. St. Mary&rsquo;s Spartans - September 27, 2025",
+    "The Nantucket Sports Connection brings you live coverage of Nantucket Whalers Girls Soccer "
+    "(3-4-2, #42 Div. 3) as they welcome the Spartans from St. Mary&rsquo;s (4-1-2, #18 Div. 3) "
+    "traveling down from Lynn, MA."
+    , False),
+   ("h54ktJSwXb4", "Nantucket Whalers Girls Soccer vs. St. John Paul II Lions - September 18, 2025",
+    "For the second time ever, Nantucket Sports Connection brings you live coverage of Nantucket "
+    "Whalers Girls Soccer (1-3-1) as they welcome the Lions from St. John Paul II (2-2-1) across "
+    "the sound in Hyannis."
+    , False),
+   ("Shhs_OdSxIA", "Nantucket Whalers Girls Soccer vs. Nauset Warriors - September 10, 2025",
+    "For the first time ever, Nantucket Sports Connection brings you coverage of Nantucket Whalers "
+    "Girls Soccer as they welcome the Warriors from across the sound in Nauset."
     , False),
   ],
   "School Yr 26-27": [
-   ("hdTc4UkdMJM", "Nantucket Whalers Girls Soccer vs. Falmouth Clippers - September 10, 2026",
-    "Welcome back Whaler Nation! Nantucket Sports Connection opens the 2026-27 broadcast year as we "
-    "bring you live coverage of Nantucket Whalers Girls Soccer in their season opener against the "
-    "Clippers from across the sound in Falmouth."
-    , False),
-   ("CIuXdj6jwIw", "Nantucket Whalers Girls Soccer vs. Sandwich Blue Knights - October 2, 2026",
-    "The Nantucket Sports Connection brings you live coverage of Nantucket Whalers varsity girls "
-    "soccer as they welcome the Sandwich Blue Knights."
-    , False),
-   ("H9UeILwfBXU", "Nantucket Whalers Girls Soccer vs. Nauset Warriors - October 8, 2026",
-    "The Nantucket Sports Connection proudly presents the Nantucket Whalers varsity girls soccer "
-    "squad as they host the Nauset Warriors in a key league matchup with playoff implications."
+   ("txPt6UGEmeY", "Nantucket Whalers Girls Soccer vs. St. John Paul II Lions - November 2, 2026",
+    "Nantucket Sports Connection brings you live coverage of Nantucket Whalers varsity girls "
+    "soccer as they welcome the Lions from across the sound in Hyannis.<br><br>The Whalers (5-8) "
+    "are fighting for their postseason lives as they must win four of their final five games in "
+    "order to qualify for a play-in game in the MIAA tournament.<br><br>Nantucket comes into this "
+    "matchup looking for revenge after a narrow 4-3 road loss to St. John Paul II on Oct. 30, 2025 "
+    "shut them out of postseason competition for the first time in four years. The Whalers&rsquo; "
+    "last win here on island was likewise by a 4-3 score on Sept 15, 2022, only their third win in "
+    "a 4-8-4 overall head-to-head record.<br><br>The Lions (2-9-1) finished 10-7-4 in 2025, "
+    "entering as the #5 seed in Div 5 and advancing all the way to the quarterfinals, where they "
+    "fell 5-3 to Monson, the runner up in the state title game. They&rsquo;ve made the playoffs "
+    "every year since the MIAA converted to the statewide divisional system.<br><br>Our live "
+    "coverage begins at 1:45 with kickoff set for 2pm from Nobadeer Farm Field, coming to you live "
+    "both on the NSC YouTube channel as well as on NCTV HD Channel 1072.<br><br>[Game postponed "
+    "from earlier this season due to weather.]"
     , False),
    ("nvN0scKAiXw", "Nantucket Whalers Girls Soccer vs. Vineyard - October 31, 2026",
     "The Nantucket Sports Connection proudly presents the Nantucket Whalers varsity girls soccer "
@@ -1371,88 +1374,34 @@ SPORTS_VIDEOS = {
     "coverage begins at 11am with kickoff set for 11:15am from the Nobadeer Farm Field, coming to "
     "you live both on the NSC YouTube channel as well as on NCTV HD Channel 1072."
     , False),
-   ("txPt6UGEmeY", "Nantucket Whalers Girls Soccer vs. St. John Paul II Lions - November 2, 2026",
-    "Nantucket Sports Connection brings you live coverage of Nantucket Whalers varsity girls "
-    "soccer as they welcome the Lions from across the sound in Hyannis.<br><br>The Whalers (5-8) "
-    "are fighting for their postseason lives as they must win four of their final five games in "
-    "order to qualify for a play-in game in the MIAA tournament.<br><br>Nantucket comes into this "
-    "matchup looking for revenge after a narrow 4-3 road loss to St. John Paul II on Oct. 30, 2025 "
-    "shut them out of postseason competition for the first time in four years. The Whalers&rsquo; "
-    "last win here on island was likewise by a 4-3 score on Sept 15, 2022, only their third win in "
-    "a 4-8-4 overall head-to-head record.<br><br>The Lions (2-9-1) finished 10-7-4 in 2025, "
-    "entering as the #5 seed in Div 5 and advancing all the way to the quarterfinals, where they "
-    "fell 5-3 to Monson, the runner up in the state title game. They&rsquo;ve made the playoffs "
-    "every year since the MIAA converted to the statewide divisional system.<br><br>Our live "
-    "coverage begins at 1:45 with kickoff set for 2pm from Nobadeer Farm Field, coming to you live "
-    "both on the NSC YouTube channel as well as on NCTV HD Channel 1072.<br><br>[Game postponed "
-    "from earlier this season due to weather.]"
+   ("H9UeILwfBXU", "Nantucket Whalers Girls Soccer vs. Nauset Warriors - October 8, 2026",
+    "The Nantucket Sports Connection proudly presents the Nantucket Whalers varsity girls soccer "
+    "squad as they host the Nauset Warriors in a key league matchup with playoff implications."
+    , False),
+   ("CIuXdj6jwIw", "Nantucket Whalers Girls Soccer vs. Sandwich Blue Knights - October 2, 2026",
+    "The Nantucket Sports Connection brings you live coverage of Nantucket Whalers varsity girls "
+    "soccer as they welcome the Sandwich Blue Knights."
+    , False),
+   ("hdTc4UkdMJM", "Nantucket Whalers Girls Soccer vs. Falmouth Clippers - September 10, 2026",
+    "Welcome back Whaler Nation! Nantucket Sports Connection opens the 2026-27 broadcast year as we "
+    "bring you live coverage of Nantucket Whalers Girls Soccer in their season opener against the "
+    "Clippers from across the sound in Falmouth."
     , False),
   ],
  },
  "Boys Soccer": {
   "School Yr 25-26": [
+   ("KFnSlRz0imo", "Nantucket Whalers Boys Soccer vs. Nauset Warriors - October 28, 2025",
+    "The Nantucket Sports Connection brings you our second-ever boys soccer broadcast as your "
+    "Nantucket Whalers host the Nauset Warriors in a key league matchup with playoff implications."
+    , False),
    ("XhAuc-kITU4", "Nantucket Whalers Boys Soccer vs. Dennis-Yarmouth - October 27, 2025",
     "The Nantucket Sports Connection brings you our first-ever boys soccer broadcast as your "
     "Nantucket Whalers host the Dennis-Yarmouth Dolphins in a key league matchup with playoff "
     "implications."
     , False),
-   ("KFnSlRz0imo", "Nantucket Whalers Boys Soccer vs. Nauset Warriors - October 28, 2025",
-    "The Nantucket Sports Connection brings you our second-ever boys soccer broadcast as your "
-    "Nantucket Whalers host the Nauset Warriors in a key league matchup with playoff implications."
-    , False),
   ],
   "School Yr 26-27": [
-   ("Y3DFqDS0LEk", "Nantucket Whalers Boys Soccer vs. Nauset Warriors - September 16, 2026",
-    "The Nantucket Sports Connection brings you the Nantucket Whalers varsity boys soccer squad in "
-    "their 2026 home opener as they welcome league rival Nauset over from the Lower "
-    "Cape.<br><br>Nantucket is off to a strong 2-1 start, kicking off their season with a "
-    "three-game road trip that saw wins against strong Falmouth and Vineyard teams before falling "
-    "just 2-1 on Monday against Norwell, the defending Division 3 state champions who went "
-    "undefeated last season.<br><br>For their part this 1-0-1 Nauset squad defeated "
-    "Dennis-Yarmouth in league play to open their season last Thursday, followed by a scoreless "
-    "tie against Scituate, a team that made it to the Div. 3 semifinals a year ago.<br><br>The "
-    "Whalers went 11-5-2 last year, entering the Division 3 tournament for the first time, "
-    "continuing their streak of postseason competition since the MIAA reformed the old sectional "
-    "system. Despite their record besting several Top 32 teams, Nantucket was seeded #34 and fell "
-    "to Assabet Valley 2-1 in the preliminary round. They tied the Warriors with no score in their "
-    "last trip to the island on Oct. 28.<br><br>The Warriors posted a 6-8-4 record in 2025, "
-    "leaving them at #38 in Div. 3 and on the the outside looking in for the playoffs for the "
-    "first time since 2012. Their program has seen its share of successes, including two state "
-    "titles in 2016 &amp; 2018, and Nauset holds an 8-1-1 advantage over Nantucket.<br><br>Our "
-    "live coverage begins at 3:45pm from the Surfside Soccer Field, coming to you live both on the "
-    "NSC YouTube channel as well as on NCTV HD Channel 1072.<br><br>[This is a fixed copy of the "
-    "original livestream, which had 657 views.]"
-    , False),
-   ("fTQIC3TrBOM", "Nantucket Whalers Boys Soccer vs. Cape Cod Regional Tech Crusaders - September 30, 2026",
-    "The Nantucket Sports Connection brings you the Nantucket Whalers varsity boys soccer squad as "
-    "they play a non-league match against the Crusaders from Cape Cod Regional Tech over in "
-    "Harwich."
-    , False),
-   ("ZP1Sdhn1t5w", "Nantucket Whalers Boys Soccer vs. Falmouth Clippers - October 6, 2026",
-    "The Nantucket Sports Connection brings you the Whalers varsity boys soccer squad welcoming the "
-    "Clippers from Falmouth in a key league matchup with playoff implications."
-    , False),
-   ("w3DadyWbbGg", "Nantucket Whalers Boys Soccer vs. Abington Green Wave - October 10, 2026",
-    "The Nantucket Sports Connection brings you the Whalers varsity boys soccer squad playing a "
-    "non-league matchup against Abington."
-    , False),
-   ("hL2-nn46b2I", "Nantucket Whalers Boys Soccer vs. Monomoy Sharks - October 14, 2026",
-    "The Nantucket Sports Connection brings you the Nantucket Whalers varsity boys soccers squad "
-    "as they host the Sharks from the Lower Cape.<br><br>The Whalers (8-2-1, #4 in Division 3) "
-    "finally had their seven-game undefeated streak snapped in a tough 4-3 loss to St. "
-    "Mary&rsquo;s way up in Lynn. This match is a must-win for them to stay atop the Cape &amp; "
-    "Islands League as they enter the final seven games of the season.<br><br>The Sharks (5-4-2, "
-    "#12 in Div. 4) have managed to recover from an 0-4 start to the season, including a 6-1 "
-    "drubbing by Nantucket at home on Sept. 18. On the first of their four-game travel campaign, "
-    "they bested Falmouth 1-0 last Thursday.<br><br>Monomoy swept last year&rsquo;s series against "
-    "Nantucket, winning both games 3-1. The Whalers hold an 8-3-2 overall advantage in "
-    "head-to-head competition.<br><br>The Sharks entered the Div. 4 tournament in 2025 as the #22 "
-    "seed, crushing Springfield International 6-1 before Monument Mountain shut them out 5-0 in "
-    "the Round of 32. Monomoy has enjoyed tournament play for five consecutive seasons, including "
-    "as runner-up in the 2023 state championship match.<br><br>Our live coverage begins at 3:45pm "
-    "from the NES Soccer Field, coming to you live both on the NSC YouTube channel as well as on "
-    "NCTV HD Channel 1072."
-    , False),
    ("ib5YEeJYyp4", "Nantucket Whalers Boys Soccer vs. Sandwich Blue Knights - October 28, 2026",
     "The Nantucket Sports Connection brings you the Whalers varsity boys soccer squad as they take "
     "on the Blue Knights from the Upper Cape in the penultimate home match of the regular "
@@ -1480,6 +1429,57 @@ SPORTS_VIDEOS = {
     "North 2-1 in the preliminary round before falling 6-1 to Ashland in the Round of "
     "32.<br><br>Our live coverage begins at 3:45pm from the Surfside Soccer Field, coming to you "
     "live both on the NSC YouTube channel as well as on NCTV HD Channel 1072."
+    , False),
+   ("hL2-nn46b2I", "Nantucket Whalers Boys Soccer vs. Monomoy Sharks - October 14, 2026",
+    "The Nantucket Sports Connection brings you the Nantucket Whalers varsity boys soccers squad "
+    "as they host the Sharks from the Lower Cape.<br><br>The Whalers (8-2-1, #4 in Division 3) "
+    "finally had their seven-game undefeated streak snapped in a tough 4-3 loss to St. "
+    "Mary&rsquo;s way up in Lynn. This match is a must-win for them to stay atop the Cape &amp; "
+    "Islands League as they enter the final seven games of the season.<br><br>The Sharks (5-4-2, "
+    "#12 in Div. 4) have managed to recover from an 0-4 start to the season, including a 6-1 "
+    "drubbing by Nantucket at home on Sept. 18. On the first of their four-game travel campaign, "
+    "they bested Falmouth 1-0 last Thursday.<br><br>Monomoy swept last year&rsquo;s series against "
+    "Nantucket, winning both games 3-1. The Whalers hold an 8-3-2 overall advantage in "
+    "head-to-head competition.<br><br>The Sharks entered the Div. 4 tournament in 2025 as the #22 "
+    "seed, crushing Springfield International 6-1 before Monument Mountain shut them out 5-0 in "
+    "the Round of 32. Monomoy has enjoyed tournament play for five consecutive seasons, including "
+    "as runner-up in the 2023 state championship match.<br><br>Our live coverage begins at 3:45pm "
+    "from the NES Soccer Field, coming to you live both on the NSC YouTube channel as well as on "
+    "NCTV HD Channel 1072."
+    , False),
+   ("w3DadyWbbGg", "Nantucket Whalers Boys Soccer vs. Abington Green Wave - October 10, 2026",
+    "The Nantucket Sports Connection brings you the Whalers varsity boys soccer squad playing a "
+    "non-league matchup against Abington."
+    , False),
+   ("ZP1Sdhn1t5w", "Nantucket Whalers Boys Soccer vs. Falmouth Clippers - October 6, 2026",
+    "The Nantucket Sports Connection brings you the Whalers varsity boys soccer squad welcoming the "
+    "Clippers from Falmouth in a key league matchup with playoff implications."
+    , False),
+   ("fTQIC3TrBOM", "Nantucket Whalers Boys Soccer vs. Cape Cod Regional Tech Crusaders - September 30, 2026",
+    "The Nantucket Sports Connection brings you the Nantucket Whalers varsity boys soccer squad as "
+    "they play a non-league match against the Crusaders from Cape Cod Regional Tech over in "
+    "Harwich."
+    , False),
+   ("Y3DFqDS0LEk", "Nantucket Whalers Boys Soccer vs. Nauset Warriors - September 16, 2026",
+    "The Nantucket Sports Connection brings you the Nantucket Whalers varsity boys soccer squad in "
+    "their 2026 home opener as they welcome league rival Nauset over from the Lower "
+    "Cape.<br><br>Nantucket is off to a strong 2-1 start, kicking off their season with a "
+    "three-game road trip that saw wins against strong Falmouth and Vineyard teams before falling "
+    "just 2-1 on Monday against Norwell, the defending Division 3 state champions who went "
+    "undefeated last season.<br><br>For their part this 1-0-1 Nauset squad defeated "
+    "Dennis-Yarmouth in league play to open their season last Thursday, followed by a scoreless "
+    "tie against Scituate, a team that made it to the Div. 3 semifinals a year ago.<br><br>The "
+    "Whalers went 11-5-2 last year, entering the Division 3 tournament for the first time, "
+    "continuing their streak of postseason competition since the MIAA reformed the old sectional "
+    "system. Despite their record besting several Top 32 teams, Nantucket was seeded #34 and fell "
+    "to Assabet Valley 2-1 in the preliminary round. They tied the Warriors with no score in their "
+    "last trip to the island on Oct. 28.<br><br>The Warriors posted a 6-8-4 record in 2025, "
+    "leaving them at #38 in Div. 3 and on the the outside looking in for the playoffs for the "
+    "first time since 2012. Their program has seen its share of successes, including two state "
+    "titles in 2016 &amp; 2018, and Nauset holds an 8-1-1 advantage over Nantucket.<br><br>Our "
+    "live coverage begins at 3:45pm from the Surfside Soccer Field, coming to you live both on the "
+    "NSC YouTube channel as well as on NCTV HD Channel 1072.<br><br>[This is a fixed copy of the "
+    "original livestream, which had 657 views.]"
     , False),
   ],
  },
@@ -1509,261 +1509,238 @@ SPORTS_VIDEOS = {
  },
  "Girls Basketball": {
   "School Yr 21-22": [
-   ("6sbhSwbZ2qU", "Whalers Girls Basketball vs. Dennis-Yarmouth Dolphins - January 4, 2022",
-    "Dennis-Yarmouth Dolphins @ Nantucket Whalers- Girls Varsity Basketball on 1/4/2022."
-    , False),
-   ("95_3Cd-crjk", "Whalers Girls Basketball vs. Monomoy Sharks - January 21, 2022",
-    "Monomoy Sharks @ Nantucket Whalers- Girls Varsity Basketball on 1/21/2022, 5:00 pm."
-    , False),
-   ("gK_5Dku1yZI", "Whalers Girls Basketball vs. Cape Cod Academy Seahawks - January 25, 2022",
-    "Cape Cod Academy Seahawks @ Nantucket Whalers- Girls Varsity Basketball on 1/25/2022, 5:00 pm."
-    , False),
    ("-mvbMcd7BXA", "Whalers Girls Basketball vs. St. John Paul II Lions - February 19, 2022",
     "The Nantucket Varsity Girls Basketball team takes on St. John Paul II on 2/19/2022, when we "
     "also celebrate Senior Recognition."
     , False),
+   ("gK_5Dku1yZI", "Whalers Girls Basketball vs. Cape Cod Academy Seahawks - January 25, 2022",
+    "Cape Cod Academy Seahawks @ Nantucket Whalers- Girls Varsity Basketball on 1/25/2022, 5:00 pm."
+    , False),
+   ("95_3Cd-crjk", "Whalers Girls Basketball vs. Monomoy Sharks - January 21, 2022",
+    "Monomoy Sharks @ Nantucket Whalers- Girls Varsity Basketball on 1/21/2022, 5:00 pm."
+    , False),
+   ("6sbhSwbZ2qU", "Whalers Girls Basketball vs. Dennis-Yarmouth Dolphins - January 4, 2022",
+    "Dennis-Yarmouth Dolphins @ Nantucket Whalers- Girls Varsity Basketball on 1/4/2022."
+    , False),
   ],
   "School Yr 22-23": [
-   ("1M__Y3Q1NqE", "Nantucket Whalers Girls Basketball vs. Nauset Warriors - December 13, 2022",
-    "The Whalers Varsity Girls open the 2022-23 season with a league matchup against the Warriors."
-    , False),
-   ("FbrnwM27TEs", "Nantucket Whalers Girls Basketball vs. Barnstable Red Raiders - December 27, 2022",
-    "The Whalers Varsity Girls (1-1) host the Red Raiders (1-2) looking to win their second game in "
-    "a row."
-    , False),
-   ("LKjhXwlpy1I", "Nantucket Whalers Girls Basketball vs. SJP II Lions - January 6, 2023",
-    "The Whalers Varsity Girls (1-2) host the Lions (2-1) looking to get back column after losing "
-    "to Barnstable in their last game. Head Coach Raphael Osano has seen CC Barnett and Maddie "
-    "Lombardi lead the offensive attack for Nantucket."
-    , False),
-   ("Y0XI4FqiKJE", "Nantucket Whalers Girls Basketball vs. Falmouth Clippers - January 10, 2023",
-    "Whalers Varsity Girls Basketball (1-6) hosts the Clippers (4-2) hoping to stop a five game "
-    "losing streak. Coach Raphael Osano faces a tall task as the Clippers under coach Bob Buscher "
-    "are one of the best in the Cape and Islands League."
-    , False),
-   ("9nMiinOFI88", "Nantucket Whalers Girls Basketball vs. Martha&rsquo;s Vineyard - January 21, 2023",
-    "The Whalers Varsity Girls Basketball team (2-7) host the Vineyarders (1-8) in a Cape and "
-    "Islands League mathcup."
-    , False),
-   ("4gMfEwXpSWg", "Nantucket Whalers Girls Basketball vs. Mashpee Falcons - January 27, 2023",
-    "The Whalers (2-9) host the Falcons (8-3) The Whalers Varsity Girls are on the outside looking "
-    "in on the MIAA tournament. Mashpee has two elite scorers and are #8 in the rankings playing "
-    "out of the tough South Shore League."
-    , False),
-   ("PT0hLZVl7LU", "Nantucket Whalers Girls Basketball vs. Cape Cod Academy - February 7, 2023",
-    "The Whalers (2-12) host the Seahawks (4-10) The Whalers are on the outside looking in on the "
-    "MIAA tournament."
-    , False),
    ("UM1RXQt3gxE", "Nantucket Whalers Girls Basketball vs. Diman Regional - February 16, 2023",
     "The Whalers (2-12) host the Bengals (12-4) The Whalers Varsity Girls team are on the outside "
     "looking in on the MIAA tournament. Tonight&rsquo;s game will be the Whalers Senior recognition "
     "game with a brief ceremony at halftime. The Bengals are ranked #33 in D3 and play out of the "
     "Mayflower Large"
     , False),
+   ("PT0hLZVl7LU", "Nantucket Whalers Girls Basketball vs. Cape Cod Academy - February 7, 2023",
+    "The Whalers (2-12) host the Seahawks (4-10) The Whalers are on the outside looking in on the "
+    "MIAA tournament."
+    , False),
+   ("4gMfEwXpSWg", "Nantucket Whalers Girls Basketball vs. Mashpee Falcons - January 27, 2023",
+    "The Whalers (2-9) host the Falcons (8-3) The Whalers Varsity Girls are on the outside looking "
+    "in on the MIAA tournament. Mashpee has two elite scorers and are #8 in the rankings playing "
+    "out of the tough South Shore League."
+    , False),
+   ("9nMiinOFI88", "Nantucket Whalers Girls Basketball vs. Martha&rsquo;s Vineyard - January 21, 2023",
+    "The Whalers Varsity Girls Basketball team (2-7) host the Vineyarders (1-8) in a Cape and "
+    "Islands League mathcup."
+    , False),
+   ("Y0XI4FqiKJE", "Nantucket Whalers Girls Basketball vs. Falmouth Clippers - January 10, 2023",
+    "Whalers Varsity Girls Basketball (1-6) hosts the Clippers (4-2) hoping to stop a five game "
+    "losing streak. Coach Raphael Osano faces a tall task as the Clippers under coach Bob Buscher "
+    "are one of the best in the Cape and Islands League."
+    , False),
+   ("LKjhXwlpy1I", "Nantucket Whalers Girls Basketball vs. SJP II Lions - January 6, 2023",
+    "The Whalers Varsity Girls (1-2) host the Lions (2-1) looking to get back column after losing "
+    "to Barnstable in their last game. Head Coach Raphael Osano has seen CC Barnett and Maddie "
+    "Lombardi lead the offensive attack for Nantucket."
+    , False),
+   ("FbrnwM27TEs", "Nantucket Whalers Girls Basketball vs. Barnstable Red Raiders - December 27, 2022",
+    "The Whalers Varsity Girls (1-1) host the Red Raiders (1-2) looking to win their second game in "
+    "a row."
+    , False),
+   ("1M__Y3Q1NqE", "Nantucket Whalers Girls Basketball vs. Nauset Warriors - December 13, 2022",
+    "The Whalers Varsity Girls open the 2022-23 season with a league matchup against the Warriors."
+    , False),
   ],
   "School Yr 23-24": [
-   ("oHRd8--KAug", "Nantucket Whalers Girls Basketball vs. Martha&rsquo;s Vineyard - December 9, 2023",
-    "The Whalers Varsity Girls open the 2023-24 home season with a league matchup against their "
-    "cross-water rivals, the Vineyarders."
+   ("O2k7o-h9q6E", "Nantucket Whalers Girls Basketball vs. Bristol-Plymouth Regional Tech Craftsmen  - February 20, 2024",
+    "The Lady Whalers (10-8) take the court for their final home game of the regular season, "
+    "hosting Bristol-Plymouth (3-16) for the first time in program history!"
     , False),
-   ("4hWyv2s-ps0", "Nantucket Whalers Girls Basketball vs. Monomoy Sharks - December 15, 2023",
-    "The Nantucket Varsity Girls (0-3) play their second home game with a league matchup against "
-    "Monomoy (0-1)."
-    , False),
-   ("WqYcXcG2E80", "Nantucket Whalers Girls Basketball vs. Rising Tide Herons - January 8, 2024",
-    "The Nantucket Whalers (1-6) face Rising Tide (0-5) at home before seeing them on the road on "
-    "January 30."
-    , False),
-   ("XFg3H43tQW0", "Nantucket Whalers Girls Basketball vs. Cape Cod Academy Seahawks - January 11, 2024",
-    "The Whalers (2-6) will look to keep their winning ways going after a dominant win over Rising "
-    "Tide 38-15. The Seahawks (1-3) have lost three in a row after opening the season with a 20 "
-    "point victory over the Whalers 38-18."
-    , False),
-   ("6AHi8lLN5ys", "Nantucket Whalers Girls Basketball vs. Sturgis East Storm - January 16, 2024",
-    "Nantucket (3-6) is riding a two-game winning streak as they defeated Rising Tide and CCA in "
-    "consecutive games."
-    , False),
-   ("HnnBiFHE_0Y", "Nantucket Whalers Girls Basketball vs. Sturgis West Navigators - January 26, 2024",
-    "The Nantucket Varsity Girls (5-6) take on their league rival, Sturgis West (3-6-1) in an "
-    "important matchup. The Whalers are on a four game win streak while the Navigators are on their "
-    "own two-game streak after wins over Rising Tide and Sturgis East."
-    , False),
-   ("rDumtGyba_M", "Nantucket Whalers Girls Basketball vs. St. John Paul II Lions - February 5, 2024",
-    "The Whalers Varsity Girls (9-6) play against St. John Paul II Lions (12-4)"
+   ("UvaVQPOHfyw", "Nantucket Whalers Girls Basketball vs. Mashpee Falcons - February 15, 2024",
+    "Nantucket (10-7) has surged back into postseason contention after a rocky start to the season."
     , False),
    ("getbBqrI5zI", "Nantucket Whalers Girls Basketball vs. Falmouth Academy Mariners - February 9, 2024",
     "Nantucket (9-7) had their eight game winning streak snapped by playoff-bound (in Div. 5) St. "
     "John Paul II on Monday, but nevertheless are set up to clinch not only a postseason berth, but "
     "a Cape &amp; Islands Lighthouse Division championship!"
     , False),
-   ("UvaVQPOHfyw", "Nantucket Whalers Girls Basketball vs. Mashpee Falcons - February 15, 2024",
-    "Nantucket (10-7) has surged back into postseason contention after a rocky start to the season."
+   ("rDumtGyba_M", "Nantucket Whalers Girls Basketball vs. St. John Paul II Lions - February 5, 2024",
+    "The Whalers Varsity Girls (9-6) play against St. John Paul II Lions (12-4)"
     , False),
-   ("O2k7o-h9q6E", "Nantucket Whalers Girls Basketball vs. Bristol-Plymouth Regional Tech Craftsmen  - February 20, 2024",
-    "The Lady Whalers (10-8) take the court for their final home game of the regular season, "
-    "hosting Bristol-Plymouth (3-16) for the first time in program history!"
+   ("HnnBiFHE_0Y", "Nantucket Whalers Girls Basketball vs. Sturgis West Navigators - January 26, 2024",
+    "The Nantucket Varsity Girls (5-6) take on their league rival, Sturgis West (3-6-1) in an "
+    "important matchup. The Whalers are on a four game win streak while the Navigators are on their "
+    "own two-game streak after wins over Rising Tide and Sturgis East."
+    , False),
+   ("6AHi8lLN5ys", "Nantucket Whalers Girls Basketball vs. Sturgis East Storm - January 16, 2024",
+    "Nantucket (3-6) is riding a two-game winning streak as they defeated Rising Tide and CCA in "
+    "consecutive games."
+    , False),
+   ("XFg3H43tQW0", "Nantucket Whalers Girls Basketball vs. Cape Cod Academy Seahawks - January 11, 2024",
+    "The Whalers (2-6) will look to keep their winning ways going after a dominant win over Rising "
+    "Tide 38-15. The Seahawks (1-3) have lost three in a row after opening the season with a 20 "
+    "point victory over the Whalers 38-18."
+    , False),
+   ("WqYcXcG2E80", "Nantucket Whalers Girls Basketball vs. Rising Tide Herons - January 8, 2024",
+    "The Nantucket Whalers (1-6) face Rising Tide (0-5) at home before seeing them on the road on "
+    "January 30."
+    , False),
+   ("4hWyv2s-ps0", "Nantucket Whalers Girls Basketball vs. Monomoy Sharks - December 15, 2023",
+    "The Nantucket Varsity Girls (0-3) play their second home game with a league matchup against "
+    "Monomoy (0-1)."
+    , False),
+   ("oHRd8--KAug", "Nantucket Whalers Girls Basketball vs. Martha&rsquo;s Vineyard - December 9, 2023",
+    "The Whalers Varsity Girls open the 2023-24 home season with a league matchup against their "
+    "cross-water rivals, the Vineyarders."
     , False),
   ],
   "School Yr 24-25": [
-   ("EyfBPPn0Pl4", "Nantucket Whalers Girls Basketball vs. St. John Paul II Lions - December 17, 2024",
-    "Nantucket Sports Connection presents the Whalers Varsity Girls Basketball squad as they open "
-    "their home season against the St. John Paul II Lions."
+   ("vzzACjQ2Qq4", "Nantucket Whalers Girls Basketball vs. Mashpee Falcons - February 20, 2025",
+    "Nantucket Sports Connection presents the Whalers Varsity Girls Basketball squad as they play "
+    "an important Division 4 matchup against the Falcons to wrap their regular season."
     , False),
-   ("bFiy-3nXBI4", "Nantucket Whalers Girls Basketball vs. Falmouth Academy Mariners - January 21, 2025",
+   ("RaTtKCaMMlY", "Nantucket Whalers Girls Basketball vs. Sturgis West Navigators - February 11, 2025",
+    "Nantucket Sports Connection brings you Whalers Varsity Girls Basketball as play an important "
+    "league matchup against Sturgis West from across the sound."
+    , False),
+   ("Tjx6IO3Xo1U", "Nantucket Whalers Girls Basketball vs. Monomoy Sharks - February 6, 2025",
+    "Nantucket Sports Connection presents the Nantucket Varsity Girls Basketball squad as they play "
+    "a league matchup against Monomoy."
+    , False),
+   ("kC_VzNnLLjc", "Nantucket Whalers Girls Basketball vs. Sturgis East Storm - January 31, 2025",
+    "Nantucket Sports Connection brings you the Whalers Varsity Girls Basketball squad as they "
+    "welcome the Storm for an important League matchup."
+    , False),
+   ("xU4rnPXQofI", "Nantucket Whalers Girls Basketball vs. Rising Tide Herons - January 28, 2025",
     "Nantucket Sports Connection brings you the Whalers Varsity Girls Basketball squad as they play "
-    "a league matchup against the Mariners."
-    , False),
-   ("E2keNMuaDhQ", "Nantucket Whalers Girls Basketball vs. Hull Pirates - January 25, 2025",
-    "The Whalers Varsity Girls Basketball squad welcome the Pirates from Hull High School."
+    "a league matchup against the Herons."
     , False),
    ("Sb_iSHWv5XQ", "Nantucket Whalers Girls Basketball vs. Cape Cod Academy Seahawks - January 27, 2025",
     "Nantucket Sports Connection presents the Whalers Varsity Girls Basketball squad (0-2) as they "
     "play their second home game of the season, and the first of 2025, with a league matchup "
     "against the Seahawks (1-2) from Cape Cod Academy."
     , False),
-   ("xU4rnPXQofI", "Nantucket Whalers Girls Basketball vs. Rising Tide Herons - January 28, 2025",
+   ("E2keNMuaDhQ", "Nantucket Whalers Girls Basketball vs. Hull Pirates - January 25, 2025",
+    "The Whalers Varsity Girls Basketball squad welcome the Pirates from Hull High School."
+    , False),
+   ("bFiy-3nXBI4", "Nantucket Whalers Girls Basketball vs. Falmouth Academy Mariners - January 21, 2025",
     "Nantucket Sports Connection brings you the Whalers Varsity Girls Basketball squad as they play "
-    "a league matchup against the Herons."
+    "a league matchup against the Mariners."
     , False),
-   ("kC_VzNnLLjc", "Nantucket Whalers Girls Basketball vs. Sturgis East Storm - January 31, 2025",
-    "Nantucket Sports Connection brings you the Whalers Varsity Girls Basketball squad as they "
-    "welcome the Storm for an important League matchup."
-    , False),
-   ("Tjx6IO3Xo1U", "Nantucket Whalers Girls Basketball vs. Monomoy Sharks - February 6, 2025",
-    "Nantucket Sports Connection presents the Nantucket Varsity Girls Basketball squad as they play "
-    "a league matchup against Monomoy."
-    , False),
-   ("RaTtKCaMMlY", "Nantucket Whalers Girls Basketball vs. Sturgis West Navigators - February 11, 2025",
-    "Nantucket Sports Connection brings you Whalers Varsity Girls Basketball as play an important "
-    "league matchup against Sturgis West from across the sound."
-    , False),
-   ("vzzACjQ2Qq4", "Nantucket Whalers Girls Basketball vs. Mashpee Falcons - February 20, 2025",
-    "Nantucket Sports Connection presents the Whalers Varsity Girls Basketball squad as they play "
-    "an important Division 4 matchup against the Falcons to wrap their regular season."
+   ("EyfBPPn0Pl4", "Nantucket Whalers Girls Basketball vs. St. John Paul II Lions - December 17, 2024",
+    "Nantucket Sports Connection presents the Whalers Varsity Girls Basketball squad as they open "
+    "their home season against the St. John Paul II Lions."
     , False),
   ],
   "School Yr 25-26": [
-   ("aWlijl6n53s", "Nantucket Whalers Girls Basketball vs. Falmouth Academy Mariners - December 16, 2025",
-    "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
-    "they they hit the ground running in this season&rsquo;s home opener with a league matchup "
-    "against the Mariners from across the sound at Falmouth Academy."
-    , False),
-   ("gg7eMmIwp08", "Nantucket Whalers Girls Basketball vs. Monomoy Sharks - December 23, 2025",
-    "Nantucket Sports Connection presents the *defending Lighthouse Division Champion* Nantucket "
-    "Varsity Girls Basketball squad as they play a Winter Break league match against Monomoy."
-    , False),
-   ("5Aet4DwMidA", "Nantucket Whalers Girls Basketball vs. Vineyard - January 3, 2026",
-    "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
-    "they play an important league matchup against their cross-water rivals, the Vineyarders."
-    , False),
-   ("_ncB_bcOBgU", "Nantucket Whalers Girls Basketball vs. Rising Tide Herons - January 9, 2026",
-    "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
-    "they face the Herons traveling down from Rising Tide in Plymouth."
-    , False),
-   ("SLmtl7BtBkw", "Nantucket Whalers Girls Basketball vs. Cape Cod Academy Seahawks - January 13, 2026",
-    "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
-    "play an important league game against Cape Cod Academy from over in Barnstable."
-    , False),
-   ("GLWHdcencak", "Nantucket Whalers Girls Basketball vs. St. John Paul II Lions - January 15, 2026",
-    "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
-    "they host the St. John Paul II Lions."
-    , False),
-   ("vvMGP2IS-qQ", "Nantucket Whalers Girls Basketball vs. Barnstable Red Hawks - January 24, 2026",
-    "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
-    "host the Red Hawks from across the sound in Barnstable for the first time in over three years."
-    , False),
-   ("-X_dyVwciHQ", "Nantucket Whalers Girls Basketball vs. Sturgis West Navigators - January 29, 2026",
-    "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
-    "play an important league matchup against Sturgis West from across the sound."
-    , False),
-   ("UXjG-UsOAqM", "Nantucket Whalers Girls Basketball vs. Sturgis East Storm - January 30, 2026",
-    "Nantucket Sports Connection brings you the Whalers Varsity Girls Basketball squad as they "
-    "welcome the Storm from across the sound for an important League matchup."
-    , False),
    ("M7xGnkFeqvc", "Nantucket Whalers Girls Basketball vs. Nauset Warriors - February 13, 2026",
     "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
     "they wrap up their 2025-26 home season with an important league matchup against the Warriors "
     "hailing from Nauset on the Lower Cape."
     , False),
+   ("UXjG-UsOAqM", "Nantucket Whalers Girls Basketball vs. Sturgis East Storm - January 30, 2026",
+    "Nantucket Sports Connection brings you the Whalers Varsity Girls Basketball squad as they "
+    "welcome the Storm from across the sound for an important League matchup."
+    , False),
+   ("-X_dyVwciHQ", "Nantucket Whalers Girls Basketball vs. Sturgis West Navigators - January 29, 2026",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
+    "play an important league matchup against Sturgis West from across the sound."
+    , False),
+   ("vvMGP2IS-qQ", "Nantucket Whalers Girls Basketball vs. Barnstable Red Hawks - January 24, 2026",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
+    "host the Red Hawks from across the sound in Barnstable for the first time in over three years."
+    , False),
+   ("GLWHdcencak", "Nantucket Whalers Girls Basketball vs. St. John Paul II Lions - January 15, 2026",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
+    "they host the St. John Paul II Lions."
+    , False),
+   ("SLmtl7BtBkw", "Nantucket Whalers Girls Basketball vs. Cape Cod Academy Seahawks - January 13, 2026",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
+    "play an important league game against Cape Cod Academy from over in Barnstable."
+    , False),
+   ("_ncB_bcOBgU", "Nantucket Whalers Girls Basketball vs. Rising Tide Herons - January 9, 2026",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
+    "they face the Herons traveling down from Rising Tide in Plymouth."
+    , False),
+   ("5Aet4DwMidA", "Nantucket Whalers Girls Basketball vs. Vineyard - January 3, 2026",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
+    "they play an important league matchup against their cross-water rivals, the Vineyarders."
+    , False),
+   ("gg7eMmIwp08", "Nantucket Whalers Girls Basketball vs. Monomoy Sharks - December 23, 2025",
+    "Nantucket Sports Connection presents the *defending Lighthouse Division Champion* Nantucket "
+    "Varsity Girls Basketball squad as they play a Winter Break league match against Monomoy."
+    , False),
+   ("aWlijl6n53s", "Nantucket Whalers Girls Basketball vs. Falmouth Academy Mariners - December 16, 2025",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
+    "they they hit the ground running in this season&rsquo;s home opener with a league matchup "
+    "against the Mariners from across the sound at Falmouth Academy."
+    , False),
   ],
   "School Yr 26-27": [
-   ("LtoH0yIhvtM", "Nantucket Whalers Girls Basketball vs. Falmouth Academy Mariners - December 15, 2026", "", True),
-   ("BdmztE88dCQ", "Nantucket Whalers Girls Basketball vs. Sturgis East Storm - January 5, 2027", "", True),
-   ("emfmJW9S_e8", "Nantucket Whalers Girls Basketball vs. Vineyard - January 9, 2027", "", True),
-   ("-K5csCClxWg", "Nantucket Whalers Girls Basketball vs. Dennis-Yarmouth Dolphins - January 21, 2027", "", True),
-   ("S8m0B_vnJnE", "Nantucket Whalers Girls Basketball vs. Sturgis West Navigators - January 26, 2027", "", True),
-   ("fbY7ewIZvkw", "Nantucket Whalers Girls Basketball vs. Rising Tide Herons - February 2, 2027", "", True),
    ("ZuaJyzF5kIo", "Nantucket Whalers Girls Basketball vs. Cape Cod Academy Seahawks - February 5, 2027", "", True),
+   ("fbY7ewIZvkw", "Nantucket Whalers Girls Basketball vs. Rising Tide Herons - February 2, 2027", "", True),
+   ("S8m0B_vnJnE", "Nantucket Whalers Girls Basketball vs. Sturgis West Navigators - January 26, 2027", "", True),
+   ("-K5csCClxWg", "Nantucket Whalers Girls Basketball vs. Dennis-Yarmouth Dolphins - January 21, 2027", "", True),
+   ("emfmJW9S_e8", "Nantucket Whalers Girls Basketball vs. Vineyard - January 9, 2027", "", True),
+   ("BdmztE88dCQ", "Nantucket Whalers Girls Basketball vs. Sturgis East Storm - January 5, 2027", "", True),
+   ("LtoH0yIhvtM", "Nantucket Whalers Girls Basketball vs. Falmouth Academy Mariners - December 15, 2026", "", True),
   ],
  },
  "Boys Basketball": {
   "School Yr 21-22": [
-   ("vIj6fdTOQ4E", "Whalers Basketball 12/28/2021",
-    "Barnstable Redhawks @ Nantucket Whalers on 12/28/2021. Tip off at 1 PM. Brought to you by "
-    "Nantucket Sports Connection &amp; NCTV."
+   ("ygTwqzdO0jQ", "Whalers Basketball 2/24/2022",
+    "Nauset Regional Warriors @ Nantucket Whalers- Boys Varsity Basketball on 2/24/2022, 5:00 pm."
     , False),
-   ("6fks0H7JeIk", "Whalers Basketball 1/11/2022",
-    "Falmouth Clippers @ Nantucket Whalers- Boys Varsity Basketball on 1/11/2022, 5:00 pm."
+   ("3TD0rkOi2YA", "Whalers Basketball 2/18/2022",
+    "Mashpee Falcons @ Nantucket Whalers- Boys Varsity Basketball on 2/18/2022, 5:00 pm."
     , False),
-   ("90HF6sjgXOI", "Whalers Basketball 1/13/2022",
-    "Sturgis West @ Nantucket Whalers- Boys Varsity Basketball on 1/13/2022, 5:00 pm."
-    , False),
-   ("hKMvWblgcMQ", "Whalers Basketball 1/20/2022",
-    "Sturgis West @ Nantucket Whalers- Boys Varsity Basketball on 1/20/2022, 5:00 pm."
-    , False),
-   ("88_vDQzmuM8", "Whalers Basketball 2/1/2022",
-    "Monomoy Sharks @ Nantucket Whalers- Boys Varsity Basketball on 2/1/2022, 5:00 pm."
-    , False),
-   ("xwoN-B4zst8", "Whalers Basketball 2/3/2022",
-    "Dennis-Yarmouth Dolphins @ Nantucket Whalers- Boys Varsity Basketball on 2/3/2022, 3:30 pm."
+   ("m8cK0bIUZgI", "Whalers Boys Basketball vs. Cape Cod Academy Seahawks - February 8, 2022",
+    "Cape Cod Academy Seahawks @ Nantucket Whalers Boys Varsity Basketball on 2/8/2022, 5:00 pm."
     , False),
    ("Qw2fU0236bA", "Nantucket Whalers Boys Basketball vs. Martha&rsquo;s Vineyard - February 6, 2022",
     "Martha&rsquo;s Vineyard Vineyarders @ Nantucket Whalers- Boys Varsity Basketball on 2/6/2022, "
     "12:00 pm."
     , False),
-   ("m8cK0bIUZgI", "Whalers Boys Basketball vs. Cape Cod Academy Seahawks - February 8, 2022",
-    "Cape Cod Academy Seahawks @ Nantucket Whalers Boys Varsity Basketball on 2/8/2022, 5:00 pm."
+   ("xwoN-B4zst8", "Whalers Basketball 2/3/2022",
+    "Dennis-Yarmouth Dolphins @ Nantucket Whalers- Boys Varsity Basketball on 2/3/2022, 3:30 pm."
     , False),
-   ("3TD0rkOi2YA", "Whalers Basketball 2/18/2022",
-    "Mashpee Falcons @ Nantucket Whalers- Boys Varsity Basketball on 2/18/2022, 5:00 pm."
+   ("88_vDQzmuM8", "Whalers Basketball 2/1/2022",
+    "Monomoy Sharks @ Nantucket Whalers- Boys Varsity Basketball on 2/1/2022, 5:00 pm."
     , False),
-   ("ygTwqzdO0jQ", "Whalers Basketball 2/24/2022",
-    "Nauset Regional Warriors @ Nantucket Whalers- Boys Varsity Basketball on 2/24/2022, 5:00 pm."
+   ("hKMvWblgcMQ", "Whalers Basketball 1/20/2022",
+    "Sturgis West @ Nantucket Whalers- Boys Varsity Basketball on 1/20/2022, 5:00 pm."
+    , False),
+   ("90HF6sjgXOI", "Whalers Basketball 1/13/2022",
+    "Sturgis West @ Nantucket Whalers- Boys Varsity Basketball on 1/13/2022, 5:00 pm."
+    , False),
+   ("6fks0H7JeIk", "Whalers Basketball 1/11/2022",
+    "Falmouth Clippers @ Nantucket Whalers- Boys Varsity Basketball on 1/11/2022, 5:00 pm."
+    , False),
+   ("vIj6fdTOQ4E", "Whalers Basketball 12/28/2021",
+    "Barnstable Redhawks @ Nantucket Whalers on 12/28/2021. Tip off at 1 PM. Brought to you by "
+    "Nantucket Sports Connection &amp; NCTV."
     , False),
   ],
   "School Yr 22-23": [
-   ("itT4qOSBBzc", "Nantucket Whalers Basketball vs Nauset Warriors 12/22/22",
-    "The Whalers (0-1) take on the Nauset Warriors (1-1) in a rematch of a 51-50 comeback win for "
-    "Nauset in the first meeting this season. Nantucket was led by Jaquan Francis who netted 21 "
-    "points and Carlos Aguilar and Karson Wellington each had 10 points."
+   ("WAp6eAz9-wg", "Nantucket Whalers Boys Basketball vs Mashpee Falcons - February 22, 2023",
+    "The Whalers (11-8) take on the Falcons (7-14) in a non league matchup. This will be the "
+    "Whalers final regular season game and senior recognition game with a ceremony at halftime."
     , False),
-   ("rJuMPLVB0UQ", "Nantucket Whalers Boys Varsity Basketball vs Dennis Yarmouth Regional Dolphins",
-    "The Whalers (1-2) take on the DY Dolphins (1-4) looking for their second win in a row. They "
-    "put up 75 points in a win against Barnstable off island as Karson Wellington led the attack "
-    "with 22 points."
-    , False),
-   ("xj3IVCVe1bI", "Nantucket Whalers Boys Varsity Basketball vs Barnstable Red Hawks",
-    "The Whalers (3-4) take on the Barnstable Red Hawks (1-6) in a Cape and ISlands League matchup. "
-    "They put up 75 points in a win against Barnstable off island earlier in the season as Karson "
-    "Wellington led the attack with 22 points."
-    , False),
-   ("elDQtjMRXH8", "Nantucket Whalers Boys Varsity Basketball vs Sandwich Blue Knights",
-    "The Whalers (3-5) take on the Sandwich Blue Knights (1-7) in a Cape and Islands League "
-    "matchup. Nantucket will look to end a two game skid in the first of two meetings with "
-    "Sandwich. Jaquan Francis leads the team in scoring, putting up over 12 points per game. Jack "
-    "Halik is coming off a 20 point performance in the loss to Barnstable."
-    , False),
-   ("azy0N03oiw8", "Nantucket Whalers Boys Varsity Basketball vs Monomoy Sharks",
-    "The Whalers (4-5) host the Monomoy Sharks (4-6) in a Cape and Islands League matchup. The "
-    "Whalers are coming off another good offensive game in the 73-44 win over Sandwich Tuesday "
-    "night. Jack Halik had his best game of the season and 3 Whalers went for double figures."
-    , False),
-   ("M1JNdHmm8l4", "Nantucket Whalers Boys Varsity Basketball vs Cape Cod Academy Seahawks",
-    "The Whalers (5-6) host the CCA Seahawks (6-6) in a Cape and Islands League matchup. The "
-    "Whalers and Seahawks have played some very competitive games in the past few years and this "
-    "one will be no different as both teams are in the mix for an MIAA tourney berth. Whalers Coach "
-    "Willis Ferreira is approaching 400 wins as a Whaler coach. With a win he would notch his 398th "
-    "win in his 30th year as a coach at Nantucket High School."
+   ("rS6K5NA0Tb0", "Nantucket Whalers Boys Varsity Basketball vs Sturgis East Storm - February 10, 2023",
+    "The Whalers (8-8) take on the Storm (1-12) in a Cape and Islands League matchup. The Whalers "
+    "are vying for positioning in the MIAA tournament and at halftime there will be a commemeration "
+    "of Head Coach Willis Ferreria&rsquo;s 400th win, which he picked up when the Whalers defeated "
+    "DY off island Tuesday"
     , False),
    ("a69DKD_y6HI", "Nantucket Whalers Boys Varsity Basketball vs Martha&rsquo;s Vineyard Vineyarders",
     "The Whalers (6-6) take on the Vineyard hoopsters (11-1) in a huge Cape and Islands League "
@@ -1772,255 +1749,278 @@ SPORTS_VIDEOS = {
     "riding a ten game winning streak and have already clinched the league title. Whalers coach "
     "Willis Ferreria is 2 wins away from 400 career coaching victories."
     , False),
-   ("rS6K5NA0Tb0", "Nantucket Whalers Boys Varsity Basketball vs Sturgis East Storm - February 10, 2023",
-    "The Whalers (8-8) take on the Storm (1-12) in a Cape and Islands League matchup. The Whalers "
-    "are vying for positioning in the MIAA tournament and at halftime there will be a commemeration "
-    "of Head Coach Willis Ferreria&rsquo;s 400th win, which he picked up when the Whalers defeated "
-    "DY off island Tuesday"
+   ("M1JNdHmm8l4", "Nantucket Whalers Boys Varsity Basketball vs Cape Cod Academy Seahawks",
+    "The Whalers (5-6) host the CCA Seahawks (6-6) in a Cape and Islands League matchup. The "
+    "Whalers and Seahawks have played some very competitive games in the past few years and this "
+    "one will be no different as both teams are in the mix for an MIAA tourney berth. Whalers Coach "
+    "Willis Ferreira is approaching 400 wins as a Whaler coach. With a win he would notch his 398th "
+    "win in his 30th year as a coach at Nantucket High School."
     , False),
-   ("WAp6eAz9-wg", "Nantucket Whalers Boys Basketball vs Mashpee Falcons - February 22, 2023",
-    "The Whalers (11-8) take on the Falcons (7-14) in a non league matchup. This will be the "
-    "Whalers final regular season game and senior recognition game with a ceremony at halftime."
+   ("azy0N03oiw8", "Nantucket Whalers Boys Varsity Basketball vs Monomoy Sharks",
+    "The Whalers (4-5) host the Monomoy Sharks (4-6) in a Cape and Islands League matchup. The "
+    "Whalers are coming off another good offensive game in the 73-44 win over Sandwich Tuesday "
+    "night. Jack Halik had his best game of the season and 3 Whalers went for double figures."
+    , False),
+   ("elDQtjMRXH8", "Nantucket Whalers Boys Varsity Basketball vs Sandwich Blue Knights",
+    "The Whalers (3-5) take on the Sandwich Blue Knights (1-7) in a Cape and Islands League "
+    "matchup. Nantucket will look to end a two game skid in the first of two meetings with "
+    "Sandwich. Jaquan Francis leads the team in scoring, putting up over 12 points per game. Jack "
+    "Halik is coming off a 20 point performance in the loss to Barnstable."
+    , False),
+   ("xj3IVCVe1bI", "Nantucket Whalers Boys Varsity Basketball vs Barnstable Red Hawks",
+    "The Whalers (3-4) take on the Barnstable Red Hawks (1-6) in a Cape and ISlands League matchup. "
+    "They put up 75 points in a win against Barnstable off island earlier in the season as Karson "
+    "Wellington led the attack with 22 points."
+    , False),
+   ("rJuMPLVB0UQ", "Nantucket Whalers Boys Varsity Basketball vs Dennis Yarmouth Regional Dolphins",
+    "The Whalers (1-2) take on the DY Dolphins (1-4) looking for their second win in a row. They "
+    "put up 75 points in a win against Barnstable off island as Karson Wellington led the attack "
+    "with 22 points."
+    , False),
+   ("itT4qOSBBzc", "Nantucket Whalers Basketball vs Nauset Warriors 12/22/22",
+    "The Whalers (0-1) take on the Nauset Warriors (1-1) in a rematch of a 51-50 comeback win for "
+    "Nauset in the first meeting this season. Nantucket was led by Jaquan Francis who netted 21 "
+    "points and Carlos Aguilar and Karson Wellington each had 10 points."
     , False),
   ],
   "School Yr 23-24": [
-   ("u94exC4avfs", "Nantucket Whalers Boys Basketball vs. Bourne Canalmen - December 12, 2023",
-    "Nantucket&rsquo;s Varsity Boys Basketball team opens the 2023-24 season with a non-league "
-    "matchup against Bourne."
-    , False),
-   ("mdAWNBFLZfY", "Nantucket Whalers Boys Basketball vs. Dennis-Yarmouth Dolphins - December 14, 2023",
-    "The Whalers Varsity Boys (0-1) take on the DY Dolphins (1-0) in their second home game of the "
-    "season. The Whalers won their last matchup by the slimmest of margins, with a 49-48 victory on "
-    "February 7."
-    , False),
-   ("eq5C5sX6aqs", "Nantucket Whalers Boys Basketball vs. Barnstable Red Hawks - December 19, 2023",
-    "The Whalers (1-2) take on the Red Hawks (3-0) in their third home game of the season. "
-    "Nantucket looks to get back in the win column after an 11 point loss to the Vineyard Saturday. "
-    "Barnstable has begun the season winning its first three games all non league opponents"
-    , False),
-   ("B6MgAteP_SA", "Nantucket Whalers Boys Basketball vs. Falmouth Clippers - January 6, 2024",
-    "The Whalers (4-3) are coming off a Scarlett Hawk Tournament Championship and have won three of "
-    "their last four games."
-    , False),
-   ("WI5WlcyUYgM", "Nantucket Whalers Boys Basketball vs. Nauset Warriors - January 18, 2024",
-    "The Whalers (6-4) are looking to keep their winning ways going after a big win over the "
-    "Vineyard at TD Garden Sunday in the Andrew Lawson Invitational behind a 20 point game from "
-    "senior Carlos Aguilar."
-    , False),
-   ("m6MSjCWLLEg", "Nantucket Whalers Boys Basketball vs. New Heights Charter-Brockton - January 20, 2024",
-    "The Whalers (7-4, ranked #9 in MIAA Division 4) have won two in a row and look to continue "
-    "their good play winning two in a row with wins over the Vineyard at TD Garden and Nauset "
-    "Thursday."
-    , False),
-   ("noCfjboN71I", "Nantucket Whalers Boys Basketball vs. Cape Cod Academy Seahawks - January 23, 2024",
-    "The Whalers (8-4) are ranked #9 in the MIAA D4 rankings. They are riding a three game winning "
-    "streak after a gritty 74-68 win over Hew Heights Brockton Saturday. Jack Halik led the way "
-    "with 27 points and the defense forced over 25 turnovers."
-    , False),
-   ("-QmlHAkAe60", "Nantucket Whalers Boys Basketball vs Monomoy Sharks - January 30, 2024",
-    "The Whalers (9-6) are looking to get back to their winning ways after a couple tough road "
-    "losses."
-    , False),
-   ("4XPcQzHIoxM", "Nantucket Whalers Boys Junior Varsity Basketball vs. Vineyard - February 3, 2024",
-    "BONUS COVERAGE! Due to a late boat this morning from the Vineyard, we are bringing you "
-    "Nantucket Whalers Junior Varsity Boys Baskeball vs. Martha&rsquo;s Vineyard!"
+   ("4xHEp1zWTZw", "MIAA Division 4 Round of 32 - Nantucket Whalers Boys Basketball vs. Carver Crusaders - March 2, 2024",
+    "The Whalers Varsity Boys Basketball team enters the MIAA State Tournament as they host a Round "
+    "of 32 matchup against the Crusaders in the first meeting between the two programs in history!"
     , False),
    ("HBekPvYBqU0", "Nantucket Whalers Boys Varsity Basketball vs. Vineyard - February 3, 2024",
     "Our own Nantucket Whalers Varsity High School Basketball team (10-6, #11 in MIAA Division 4) "
     "takes on their longtime rivals, the Vineyarders from Martha&rsquo;s Vineyard (11-3, #8 in "
     "Division 3) at John J. O&rsquo;Neill Gymnasium."
     , False),
-   ("4xHEp1zWTZw", "MIAA Division 4 Round of 32 - Nantucket Whalers Boys Basketball vs. Carver Crusaders - March 2, 2024",
-    "The Whalers Varsity Boys Basketball team enters the MIAA State Tournament as they host a Round "
-    "of 32 matchup against the Crusaders in the first meeting between the two programs in history!"
+   ("4XPcQzHIoxM", "Nantucket Whalers Boys Junior Varsity Basketball vs. Vineyard - February 3, 2024",
+    "BONUS COVERAGE! Due to a late boat this morning from the Vineyard, we are bringing you "
+    "Nantucket Whalers Junior Varsity Boys Baskeball vs. Martha&rsquo;s Vineyard!"
+    , False),
+   ("-QmlHAkAe60", "Nantucket Whalers Boys Basketball vs Monomoy Sharks - January 30, 2024",
+    "The Whalers (9-6) are looking to get back to their winning ways after a couple tough road "
+    "losses."
+    , False),
+   ("noCfjboN71I", "Nantucket Whalers Boys Basketball vs. Cape Cod Academy Seahawks - January 23, 2024",
+    "The Whalers (8-4) are ranked #9 in the MIAA D4 rankings. They are riding a three game winning "
+    "streak after a gritty 74-68 win over Hew Heights Brockton Saturday. Jack Halik led the way "
+    "with 27 points and the defense forced over 25 turnovers."
+    , False),
+   ("m6MSjCWLLEg", "Nantucket Whalers Boys Basketball vs. New Heights Charter-Brockton - January 20, 2024",
+    "The Whalers (7-4, ranked #9 in MIAA Division 4) have won two in a row and look to continue "
+    "their good play winning two in a row with wins over the Vineyard at TD Garden and Nauset "
+    "Thursday."
+    , False),
+   ("WI5WlcyUYgM", "Nantucket Whalers Boys Basketball vs. Nauset Warriors - January 18, 2024",
+    "The Whalers (6-4) are looking to keep their winning ways going after a big win over the "
+    "Vineyard at TD Garden Sunday in the Andrew Lawson Invitational behind a 20 point game from "
+    "senior Carlos Aguilar."
+    , False),
+   ("B6MgAteP_SA", "Nantucket Whalers Boys Basketball vs. Falmouth Clippers - January 6, 2024",
+    "The Whalers (4-3) are coming off a Scarlett Hawk Tournament Championship and have won three of "
+    "their last four games."
+    , False),
+   ("eq5C5sX6aqs", "Nantucket Whalers Boys Basketball vs. Barnstable Red Hawks - December 19, 2023",
+    "The Whalers (1-2) take on the Red Hawks (3-0) in their third home game of the season. "
+    "Nantucket looks to get back in the win column after an 11 point loss to the Vineyard Saturday. "
+    "Barnstable has begun the season winning its first three games all non league opponents"
+    , False),
+   ("mdAWNBFLZfY", "Nantucket Whalers Boys Basketball vs. Dennis-Yarmouth Dolphins - December 14, 2023",
+    "The Whalers Varsity Boys (0-1) take on the DY Dolphins (1-0) in their second home game of the "
+    "season. The Whalers won their last matchup by the slimmest of margins, with a 49-48 victory on "
+    "February 7."
+    , False),
+   ("u94exC4avfs", "Nantucket Whalers Boys Basketball vs. Bourne Canalmen - December 12, 2023",
+    "Nantucket&rsquo;s Varsity Boys Basketball team opens the 2023-24 season with a non-league "
+    "matchup against Bourne."
     , False),
   ],
   "School Yr 24-25": [
-   ("IleI-8H3Izg", "Nantucket Whalers Boys Basketball vs. Vineyard - December 21, 2024",
-    "Nantucket Sports Connection brings you the Whalers Varsity High School Basketball team as they "
-    "open their home season with a Cape &amp; Islands League matchup against their longtime rivals, "
-    "the Vineyarders from Martha&rsquo;s Vineyard."
-    , False),
-   ("yrL7_BUbUhk", "Nantucket Whalers Boys Basketball vs. Bourne Canalmen - December 23, 2024",
-    "The Nantucket Sports Connection presents the Whalers Varsity Boys Basketball team (1-1) in a "
-    "non-league matchup against the Bourne Canalmen (2-0)."
-    , False),
-   ("M_-apgm9eDE", "Nantucket Whalers Boys Basketball vs. Boston English Eagles - January 11, 2025",
-    "Nantucket Sports Connection presents the Nantucket Whalers Varsity Boys Basketball squad as "
-    "they welcome English High School Eagles from Boston in their first trip to the island!"
-    , False),
-   ("ofGknBKfB9o", "Nantucket Whalers Boys Basketball vs. Dennis-Yarmouth Dolphins - January 16, 2025",
-    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they play an "
-    "important league matchup against the Dolphins."
-    , False),
-   ("kqfimc-YUj8", "Nantucket Whalers Boys Basketball vs. Nauset Warriors - February 4, 2025",
-    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad in an important "
-    "league matchup against the Warriors."
-    , False),
-   ("WgGArs4TRRU", "Nantucket Whalers Boys Basketball vs. Cape Cod Academy Seahawks - February 7, 2025",
-    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they play a "
-    "league game against the Seahawks."
-    , False),
-   ("7j0gR_WVfDU", "Nantucket Whalers Boys Varsity Basketball vs. Ayer Shirley Panthers - February 8, 2025",
-    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they welcome "
-    "the Panthers from Ayer Shirley in their first trip to the island!"
+   ("YhtFGHbvbTQ", "Nantucket Whalers Boys Basketball vs. Mashpee Falcons - February 20, 2025",
+    "The Nantucket Sports Connection presents the Whalers Varsity Boys Basketball team in a "
+    "non-league Division 4 matchup against the Mashpee Falcons to conclude the respective regular "
+    "seasons of both teams."
     , False),
    ("CkiJsgRfB4w", "Nantucket Whalers Boys Basketball vs. Monomoy Sharks - February 19, 2025",
     "Nantucket Sports Connection brings you the Whalers Varsity Boys Basketball squad as they "
     "welcome the Sharks in a matchup that will determine the title for the Cape &amp; Islands "
     "League&rsquo;s Maritime Division."
     , False),
-   ("YhtFGHbvbTQ", "Nantucket Whalers Boys Basketball vs. Mashpee Falcons - February 20, 2025",
-    "The Nantucket Sports Connection presents the Whalers Varsity Boys Basketball team in a "
-    "non-league Division 4 matchup against the Mashpee Falcons to conclude the respective regular "
-    "seasons of both teams."
+   ("7j0gR_WVfDU", "Nantucket Whalers Boys Varsity Basketball vs. Ayer Shirley Panthers - February 8, 2025",
+    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they welcome "
+    "the Panthers from Ayer Shirley in their first trip to the island!"
     , False),
-  ],
-  "School Yr 25-26": [
-   ("7zctAl0YuqQ", "Nantucket Whalers Boys Basketball vs. Vineyard - December 14, 2025",
+   ("WgGArs4TRRU", "Nantucket Whalers Boys Basketball vs. Cape Cod Academy Seahawks - February 7, 2025",
+    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they play a "
+    "league game against the Seahawks."
+    , False),
+   ("kqfimc-YUj8", "Nantucket Whalers Boys Basketball vs. Nauset Warriors - February 4, 2025",
+    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad in an important "
+    "league matchup against the Warriors."
+    , False),
+   ("ofGknBKfB9o", "Nantucket Whalers Boys Basketball vs. Dennis-Yarmouth Dolphins - January 16, 2025",
+    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they play an "
+    "important league matchup against the Dolphins."
+    , False),
+   ("M_-apgm9eDE", "Nantucket Whalers Boys Basketball vs. Boston English Eagles - January 11, 2025",
+    "Nantucket Sports Connection presents the Nantucket Whalers Varsity Boys Basketball squad as "
+    "they welcome English High School Eagles from Boston in their first trip to the island!"
+    , False),
+   ("yrL7_BUbUhk", "Nantucket Whalers Boys Basketball vs. Bourne Canalmen - December 23, 2024",
+    "The Nantucket Sports Connection presents the Whalers Varsity Boys Basketball team (1-1) in a "
+    "non-league matchup against the Bourne Canalmen (2-0)."
+    , False),
+   ("IleI-8H3Izg", "Nantucket Whalers Boys Basketball vs. Vineyard - December 21, 2024",
     "Nantucket Sports Connection brings you the Whalers Varsity High School Basketball team as they "
     "open their home season with a Cape &amp; Islands League matchup against their longtime rivals, "
     "the Vineyarders from Martha&rsquo;s Vineyard."
     , False),
-   ("GTc6MUspT8k", "Nantucket Whalers Boys Basketball vs. Monomoy Sharks - January 6, 2026",
-    "Nantucket Sports Connection brings you the Whalers Varsity Boys Basketball squad as they "
-    "welcome the Sharks from Monomoy in an important Cape &amp; Islands League matchup."
-    , False),
-   ("yvhNSnYJKrw", "Nantucket Whalers Boys Basketball vs. Cape Cod Academy Seahawks - January 8, 2026",
-    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball team as they play a "
-    "league game against the Seahawks."
-    , False),
-   ("sO7atgvFyes", "Nantucket Whalers Boys Basketball vs. Gardner Wildcats - January 10, 2026",
-    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they welcome "
-    "the Wildcats to the island all the way from Gardner in rural northern Massachusetts as they "
-    "make their first-ever trip to the island!"
-    , False),
-   ("v_nWPDt7Ek0", "Nantucket Whalers Boys Basketball vs. Dennis-Yarmouth Dolphins - February 4, 2026",
-    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they play an "
-    "important league matchup against the Dolphins."
-    , False),
-   ("MQYZkzW05VY", "Nantucket Whalers Boys Basketball vs. Nauset Warriors - February 6, 2026",
-    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they welcome "
-    "the Warriors over from Nauset on the Lower Cape in a crucial Cape &amp; Islands League "
-    "matchup."
-    , False),
-   ("6NKpN8vMqwE", "Nantucket Whalers Boys Basketball vs. Bourne Canalmen - February 10, 2026",
-    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they host "
-    "the Canalmen from Bourne."
-    , False),
-   ("hFS5_XqgAHM", "Nantucket Whalers Boys Basketball vs. Falmouth Clippers - February 11, 2026",
-    "Nantucket Sports Connection proudly presents the Nantucket Whalers Varsity Boys Basketball "
-    "squad as they welcome the Clippers from across the sound in Falmouth for their first island "
-    "visit in two years."
-    , False),
-   ("PTOS_9gB--s", "Nantucket Whalers Boys Basketball vs. Cape Cod Tech Crusaders - February 14, 2026",
-    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they welcome "
-    "the Crusaders from Cape Cod Regional Tech."
-    , False),
-   ("iKQTCkP5qwY", "Nantucket Whalers Boys Basketball vs. East Boston Jets - February 15, 2026",
-    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they welcome "
-    "the Jets from East Boston High on their first trip to the island!"
-    , False),
-   ("v2q9g_ndEFU", "Nantucket Whalers Boys Basketball vs. Sandwich Blue Knights - February 16, 2026",
-    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they welcome "
-    "the Blue Knights from Sandwich in an important league matchup."
+  ],
+  "School Yr 25-26": [
+   ("nzwLao6ZN1o", "MIAA Div. 3 Round of 32 - Nantucket Whalers Boys Basketball AT Swampscott Big Blue - Feb. 28, 2026",
+    "The Whalers Varsity Boys Basketball team continues their run in the MIAA State Tournament as "
+    "they travel to Swampscott for a Round of 32 matchup against the Big Blue in the first meeting "
+    "between the two programs in modern history!"
     , False),
    ("2NLJlrVpFTA", "MIAA Div. 3 Prelim. Round - Nantucket Whalers Boys Basketball vs. Oakmont Spartans - Feb. 26, 2026",
     "The Whalers Varsity Boys Basketball team enters the MIAA State Tournament as they host a "
     "Preliminary Round matchup against the Oakmont Spartans in the first meeting between the two "
     "programs in history!"
     , False),
-   ("nzwLao6ZN1o", "MIAA Div. 3 Round of 32 - Nantucket Whalers Boys Basketball AT Swampscott Big Blue - Feb. 28, 2026",
-    "The Whalers Varsity Boys Basketball team continues their run in the MIAA State Tournament as "
-    "they travel to Swampscott for a Round of 32 matchup against the Big Blue in the first meeting "
-    "between the two programs in modern history!"
+   ("v2q9g_ndEFU", "Nantucket Whalers Boys Basketball vs. Sandwich Blue Knights - February 16, 2026",
+    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they welcome "
+    "the Blue Knights from Sandwich in an important league matchup."
+    , False),
+   ("iKQTCkP5qwY", "Nantucket Whalers Boys Basketball vs. East Boston Jets - February 15, 2026",
+    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they welcome "
+    "the Jets from East Boston High on their first trip to the island!"
+    , False),
+   ("PTOS_9gB--s", "Nantucket Whalers Boys Basketball vs. Cape Cod Tech Crusaders - February 14, 2026",
+    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they welcome "
+    "the Crusaders from Cape Cod Regional Tech."
+    , False),
+   ("hFS5_XqgAHM", "Nantucket Whalers Boys Basketball vs. Falmouth Clippers - February 11, 2026",
+    "Nantucket Sports Connection proudly presents the Nantucket Whalers Varsity Boys Basketball "
+    "squad as they welcome the Clippers from across the sound in Falmouth for their first island "
+    "visit in two years."
+    , False),
+   ("6NKpN8vMqwE", "Nantucket Whalers Boys Basketball vs. Bourne Canalmen - February 10, 2026",
+    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they host "
+    "the Canalmen from Bourne."
+    , False),
+   ("MQYZkzW05VY", "Nantucket Whalers Boys Basketball vs. Nauset Warriors - February 6, 2026",
+    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they welcome "
+    "the Warriors over from Nauset on the Lower Cape in a crucial Cape &amp; Islands League "
+    "matchup."
+    , False),
+   ("v_nWPDt7Ek0", "Nantucket Whalers Boys Basketball vs. Dennis-Yarmouth Dolphins - February 4, 2026",
+    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they play an "
+    "important league matchup against the Dolphins."
+    , False),
+   ("sO7atgvFyes", "Nantucket Whalers Boys Basketball vs. Gardner Wildcats - January 10, 2026",
+    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they welcome "
+    "the Wildcats to the island all the way from Gardner in rural northern Massachusetts as they "
+    "make their first-ever trip to the island!"
+    , False),
+   ("yvhNSnYJKrw", "Nantucket Whalers Boys Basketball vs. Cape Cod Academy Seahawks - January 8, 2026",
+    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball team as they play a "
+    "league game against the Seahawks."
+    , False),
+   ("GTc6MUspT8k", "Nantucket Whalers Boys Basketball vs. Monomoy Sharks - January 6, 2026",
+    "Nantucket Sports Connection brings you the Whalers Varsity Boys Basketball squad as they "
+    "welcome the Sharks from Monomoy in an important Cape &amp; Islands League matchup."
+    , False),
+   ("7zctAl0YuqQ", "Nantucket Whalers Boys Basketball vs. Vineyard - December 14, 2025",
+    "Nantucket Sports Connection brings you the Whalers Varsity High School Basketball team as they "
+    "open their home season with a Cape &amp; Islands League matchup against their longtime rivals, "
+    "the Vineyarders from Martha&rsquo;s Vineyard."
     , False),
   ],
   "School Yr 26-27": [
-   ("LVuEY91AhWQ", "Nantucket Whalers Boys Basketball vs. Dennis-Yarmouth Dolphins - December 18, 2026", "", True),
-   ("dn2KRkGhbaI", "Nantucket Whalers Boys Basketball vs. Cape Cod Academy Seahawks - December 21, 2026", "", True),
-   ("pDC6r8Ypn0Q", "Nantucket Whalers Boys Basketball vs. Mashpee Falcons - January 6, 2027", "", True),
-   ("FhdCDpJBpyk", "Nantucket Whalers Boys Basketball vs. Nauset Warriors - January 12, 2027", "", True),
-   ("bEjXQipdEPo", "Nantucket Whalers Boys Basketball vs. Falmouth Clippers - January 22, 2027", "", True),
    ("syAcPNxBD_Q", "Nantucket Whalers Boys Basketball vs. Monomoy Sharks - January 29, 2027", "", True),
+   ("bEjXQipdEPo", "Nantucket Whalers Boys Basketball vs. Falmouth Clippers - January 22, 2027", "", True),
+   ("FhdCDpJBpyk", "Nantucket Whalers Boys Basketball vs. Nauset Warriors - January 12, 2027", "", True),
+   ("pDC6r8Ypn0Q", "Nantucket Whalers Boys Basketball vs. Mashpee Falcons - January 6, 2027", "", True),
+   ("dn2KRkGhbaI", "Nantucket Whalers Boys Basketball vs. Cape Cod Academy Seahawks - December 21, 2026", "", True),
+   ("LVuEY91AhWQ", "Nantucket Whalers Boys Basketball vs. Dennis-Yarmouth Dolphins - December 18, 2026", "", True),
   ],
  },
  "Girls Hockey": {
   "School Yr 21-22": [
-   ("egzi8OI68fM", "Lady Whalers Ice Hockey 12/22/2021",
-    "East Bridgewater Vikings @ Nantucket Whalers on Wednesday December 22, 2021. Brought to you by "
-    "the Nantucket Sports Connection &amp; NCTV."
-    , False),
-   ("omA5h4WinU8", "Whalers Girls Ice Hockey vs. Old Rochester Bulldogs 1/5/2022",
-    "Old Rochester Regional Bulldogs @ Nantucket Whalers- Girls Varsity Ice Hockey on 1/5/2022, "
-    "5:15pm."
-    , False),
-   ("Cwf3xuJ1gb0", "Whalers Girls Ice Hockey vs. Falmouth Clippers 1/8/2022",
-    "Falmouth Clippers @ Nantucket Whalers- Girls Varsity Ice Hockey on 1/8/2022, 5:15pm."
-    , False),
-   ("nJKJCgdhgEc", "Whalers Girls Ice Hockey 1/12/2022",
-    "Cape Cod Furies @ Nantucket Whalers- Girls Varsity Ice Hockey on 1/12/2022, 5:15pm."
-    , False),
-   ("netgywi2Ax8", "Whalers Girls Ice Hockey 1/22/2022",
-    "Dennis-Yarmouth Dolphins @ Nantucket Whalers- Girls Varsity Ice Hockey on 1/22/2022, 5:15pm."
-    , False),
-   ("VtQM0J2MIQc", "Whalers Girls Varsity Hockey 2/12/2022",
-    "Sandwich Blue Knights @ Nantucket Whalers- Girls Varsity Hockey on 2/12/2022, 5:15 pm."
+   ("Bfy0XUmi6VU", "Whalers Girls Varsity Hockey 2/16/2022",
+    "Barnstable Red Raiders @ Nantucket Whalers- Girls Varsity Hockey on 2/16/2022, 5 pm."
     , False),
    ("8faUcaz7BW8", "Whalers Girls Varsity Hockey 2/13/2022",
     "Martha&rsquo;s Vineyard Vineyarders @ Nantucket Whalers- Girls Varsity Hockey on 2/13/2022, "
     "2:00 pm."
     , False),
-   ("Bfy0XUmi6VU", "Whalers Girls Varsity Hockey 2/16/2022",
-    "Barnstable Red Raiders @ Nantucket Whalers- Girls Varsity Hockey on 2/16/2022, 5 pm."
+   ("VtQM0J2MIQc", "Whalers Girls Varsity Hockey 2/12/2022",
+    "Sandwich Blue Knights @ Nantucket Whalers- Girls Varsity Hockey on 2/12/2022, 5:15 pm."
+    , False),
+   ("netgywi2Ax8", "Whalers Girls Ice Hockey 1/22/2022",
+    "Dennis-Yarmouth Dolphins @ Nantucket Whalers- Girls Varsity Ice Hockey on 1/22/2022, 5:15pm."
+    , False),
+   ("nJKJCgdhgEc", "Whalers Girls Ice Hockey 1/12/2022",
+    "Cape Cod Furies @ Nantucket Whalers- Girls Varsity Ice Hockey on 1/12/2022, 5:15pm."
+    , False),
+   ("Cwf3xuJ1gb0", "Whalers Girls Ice Hockey vs. Falmouth Clippers 1/8/2022",
+    "Falmouth Clippers @ Nantucket Whalers- Girls Varsity Ice Hockey on 1/8/2022, 5:15pm."
+    , False),
+   ("omA5h4WinU8", "Whalers Girls Ice Hockey vs. Old Rochester Bulldogs 1/5/2022",
+    "Old Rochester Regional Bulldogs @ Nantucket Whalers- Girls Varsity Ice Hockey on 1/5/2022, "
+    "5:15pm."
+    , False),
+   ("egzi8OI68fM", "Lady Whalers Ice Hockey 12/22/2021",
+    "East Bridgewater Vikings @ Nantucket Whalers on Wednesday December 22, 2021. Brought to you by "
+    "the Nantucket Sports Connection &amp; NCTV."
     , False),
   ],
   "School Yr 22-23": [
-   ("78qhRUeauVg", "Nantucket Whalers Girls Varsity Hockey vs. Sandwich - January 7, 2023",
-    "The Whalers Girls Varsity Hockey (0-4) vs. Sandwich Blue Knights (3-3) from the Nantucket "
-    "Community Ice Rink. The Whalers face off against the Blue Knights in a Cape and Islands league "
-    "matchup."
-    , False),
-   ("UsWWkq1QiWQ", "Nantucket Whalers Girls Varsity Ice Hockey vs Martha&rsquo;s Vineyard Vineyarders - January 8, 2023",
-    "The Whalers (0-5) host the Vineyarders (3-2-2) for the first time this season from the BOG at "
-    "the Nantucket Community Ice Rink."
-    , False),
-   ("o3nGX4WldcM", "Nantucket Whalers Girls Varsity Ice Hockey vs Falmouth Clippers",
-    "The Whalers (0-11) host the Clippers (9-1-3) The Whalers look to play spoilers against a "
-    "playoff bound Clipper team."
-    , False),
    ("W8F2yXtX0kM", "Nantucket Whalers Girls Varsity Ice Hockey vs East Bridgewater Wild Vikings",
     "The Whalers (0-15) host the Vikings (4-9-2) The Whalers look to play spoilers against a "
     "playoff bound Vikings team. This is the Whalers senior recognition game. These two teams will "
     "play again tomorrow off island."
     , False),
+   ("o3nGX4WldcM", "Nantucket Whalers Girls Varsity Ice Hockey vs Falmouth Clippers",
+    "The Whalers (0-11) host the Clippers (9-1-3) The Whalers look to play spoilers against a "
+    "playoff bound Clipper team."
+    , False),
+   ("UsWWkq1QiWQ", "Nantucket Whalers Girls Varsity Ice Hockey vs Martha&rsquo;s Vineyard Vineyarders - January 8, 2023",
+    "The Whalers (0-5) host the Vineyarders (3-2-2) for the first time this season from the BOG at "
+    "the Nantucket Community Ice Rink."
+    , False),
+   ("78qhRUeauVg", "Nantucket Whalers Girls Varsity Hockey vs. Sandwich - January 7, 2023",
+    "The Whalers Girls Varsity Hockey (0-4) vs. Sandwich Blue Knights (3-3) from the Nantucket "
+    "Community Ice Rink. The Whalers face off against the Blue Knights in a Cape and Islands league "
+    "matchup."
+    , False),
   ],
   "School Yr 23-24": [
-   ("x8X8zqTMOzE", "Nantucket Whalers Girls Ice Hockey vs Falmouth Clippers - December 16, 2023",
-    "The Whalers Girls Varsity Ice Hockey team (0-1) makes their second home stand of the season "
-    "against the Clippers (1-0) from across Nantucket Sound."
-    , False),
-   ("0YO3IGsGli0", "Nantucket Whalers Girls Ice Hockey vs Nauset-Monomoy Warriors - January 3, 2024",
-    "The Whalers Girls Varsity Ice Hockey team (0-3) opens 2024 with a matchup against the "
-    "Nauset-Monomoy Warriors (4-1), a joint team from Nauset and Monomoy."
-    , False),
-   ("eeOS881uDIs", "Nantucket Whalers Girls Ice Hockey vs Boston Latin Academy Dragons - January 6, 2024",
-    "The Whalers Girls Varsity Ice Hockey (0-4) will look to right the ship against the visiting "
-    "Dragons (3-4-1)."
-    , False),
-   ("M-0g4Oea4uw", "Nantucket Whalers Girls Ice Hockey vs. Dennis-Yarmouth Dolphins - February 7, 2024",
-    "The Whalers Girls Varsity Ice Hockey team hosts Dennis-Yarmouth for its Senior Recognition "
-    "Game."
-    , False),
-   ("r4e6718FbRc", "Nantucket Whalers Girls Ice Hockey vs Barnstable - February 10, 2024",
-    "The Whalers host the Hawks."
+   ("_lSvo532GlY", "Nantucket Whalers Girls Ice Hockey vs Brookline Warriors - February 17, 2024",
+    "The Whalers (0-14) host Brookline (6-12) for their final regular season home game."
     , False),
    ("s7y04YuMzIk", "Whalers Girls Ice Hockey vs. Sandwich Blue Knights - February 12, 2024",
     "The Whalers Girls Varsity Ice Hockey team hosts the Sandwich girls for the first time this "
     "season."
     , False),
-   ("_lSvo532GlY", "Nantucket Whalers Girls Ice Hockey vs Brookline Warriors - February 17, 2024",
-    "The Whalers (0-14) host Brookline (6-12) for their final regular season home game."
+   ("r4e6718FbRc", "Nantucket Whalers Girls Ice Hockey vs Barnstable - February 10, 2024",
+    "The Whalers host the Hawks."
+    , False),
+   ("M-0g4Oea4uw", "Nantucket Whalers Girls Ice Hockey vs. Dennis-Yarmouth Dolphins - February 7, 2024",
+    "The Whalers Girls Varsity Ice Hockey team hosts Dennis-Yarmouth for its Senior Recognition "
+    "Game."
+    , False),
+   ("eeOS881uDIs", "Nantucket Whalers Girls Ice Hockey vs Boston Latin Academy Dragons - January 6, 2024",
+    "The Whalers Girls Varsity Ice Hockey (0-4) will look to right the ship against the visiting "
+    "Dragons (3-4-1)."
+    , False),
+   ("0YO3IGsGli0", "Nantucket Whalers Girls Ice Hockey vs Nauset-Monomoy Warriors - January 3, 2024",
+    "The Whalers Girls Varsity Ice Hockey team (0-3) opens 2024 with a matchup against the "
+    "Nauset-Monomoy Warriors (4-1), a joint team from Nauset and Monomoy."
+    , False),
+   ("x8X8zqTMOzE", "Nantucket Whalers Girls Ice Hockey vs Falmouth Clippers - December 16, 2023",
+    "The Whalers Girls Varsity Ice Hockey team (0-1) makes their second home stand of the season "
+    "against the Clippers (1-0) from across Nantucket Sound."
     , False),
   ],
   "School Yr 24-25": [
@@ -2029,110 +2029,70 @@ SPORTS_VIDEOS = {
     , False),
   ],
   "School Yr 25-26": [
-   ("FyEH5jPfhV4", "Nantucket Whalers Girls Ice Hockey vs Barnstable Red Hawks - January 7, 2026",
-    "The Nantucket Sports Connection proudly presents the Whalers Varsity Girls Ice Hockey squad as "
-    "they host their 2025-26 season home opener versus the Red Hawks."
+   ("ZwLoAk895dg", "Nantucket Whalers Girls Ice Hockey vs Plymouth South Panthers - February 18, 2026",
+    "The Nantucket Sports Connection proudly presents the Whalers Varsity Girls Ice Hockey team "
+    "taking on the visiting Panthers from Plymouth South in their first visit to the island!"
     , False),
    ("FNtyTqxmmP4", "Nantucket Whalers Girls Ice Hockey vs Boston Latin Academy Dragons - February 14, 2026",
     "The Nantucket Sports Connection proudly presents the Whalers Varsity Girls Ice Hockey squad as "
     "they take on the Dragons from Boston Latin Academy."
     , False),
-   ("ZwLoAk895dg", "Nantucket Whalers Girls Ice Hockey vs Plymouth South Panthers - February 18, 2026",
-    "The Nantucket Sports Connection proudly presents the Whalers Varsity Girls Ice Hockey team "
-    "taking on the visiting Panthers from Plymouth South in their first visit to the island!"
+   ("FyEH5jPfhV4", "Nantucket Whalers Girls Ice Hockey vs Barnstable Red Hawks - January 7, 2026",
+    "The Nantucket Sports Connection proudly presents the Whalers Varsity Girls Ice Hockey squad as "
+    "they host their 2025-26 season home opener versus the Red Hawks."
     , False),
   ],
   "School Yr 26-27": [
-   ("yjXjnjXBzE0", "Nantucket Whalers Girls Ice Hockey vs Dennis-Yarmouth Dolphins - December 12, 2026", "", True),
-   ("rlb0lAXOLZc", "Nantucket Whalers Girls Ice Hockey vs Martha&rsquo;s Vineyard - January 9, 2027", "", True),
-   ("YpypUFNf5UA", "Nantucket Whalers Girls Ice Hockey vs Barnstable Red Hawks - January 13, 2027", "", True),
-   ("bqJcQdvq9VI", "Nantucket Whalers Girls Ice Hockey vs Whitman-Hanson Panthers - January 20, 2027", "", True),
-   ("soQ7DxLyqXc", "Nantucket Whalers Girls Ice Hockey vs Plymouth South Panthers - January 27, 2027", "", True),
-   ("4OMM0V_J6fo", "Nantucket Whalers Girls Ice Hockey vs Boston Latin Academy Dragons - January 30, 2027", "", True),
    ("aGOqHYxYcXw", "Nantucket Whalers Girls Ice Hockey vs Marblehead Magicians - February 6, 2027", "", True),
+   ("4OMM0V_J6fo", "Nantucket Whalers Girls Ice Hockey vs Boston Latin Academy Dragons - January 30, 2027", "", True),
+   ("soQ7DxLyqXc", "Nantucket Whalers Girls Ice Hockey vs Plymouth South Panthers - January 27, 2027", "", True),
+   ("bqJcQdvq9VI", "Nantucket Whalers Girls Ice Hockey vs Whitman-Hanson Panthers - January 20, 2027", "", True),
+   ("YpypUFNf5UA", "Nantucket Whalers Girls Ice Hockey vs Barnstable Red Hawks - January 13, 2027", "", True),
+   ("rlb0lAXOLZc", "Nantucket Whalers Girls Ice Hockey vs Martha&rsquo;s Vineyard - January 9, 2027", "", True),
+   ("yjXjnjXBzE0", "Nantucket Whalers Girls Ice Hockey vs Dennis-Yarmouth Dolphins - December 12, 2026", "", True),
   ],
  },
  "Boys Hockey": {
   "School Yr 21-22": [
-   ("dYnLSgZYtHE", "Whalers Ice Hockey 12/23/2021",
-    "Sandwich Blue Knights @ Nantucket Whalers on Thursday December 23, 2021. Brought to you by the "
-    "Nantucket Sports Connection &amp; NCTV."
+   ("pl-XHEM-t6c", "MIAA Quarterfinal Tournament Game - Whalers Boys Ice Hockey AT Stoneham Spartans - March 11, 2022",
+    "Nantucket Whalers @ Stoneham Spartans- Boys Ice Hockey on 3/11/2022, 3:00 pm"
     , False),
-   ("Pbkijx33STw", "Whalers Ice Hockey 12/29/2021",
-    "Nauset Warriors @ Nantucket Whalers on 12/29/2021."
-    , False),
-   ("abs80d-kzsk", "Whalers Ice Hockey 1/19/2022",
-    "St. John Paul II Lions @ Nantucket Whalers- Boys Varsity Ice Hockey on 1/19/2022, 5:15pm."
-    , False),
-   ("FZQj_EcMKf4", "Whalers Ice Hockey 1/23/2022",
-    "Norwell Clippers @ Nantucket Whalers- Boys Varsity Ice Hockey on 1/23/2022, 2:00pm."
-    , False),
-   ("hisYTY6j5Q8", "Whalers Ice Hockey 2/2/2022",
-    "Mashpee-Monomoy Monarchs @ Nantucket Whalers- Boys Varsity Ice Hockey on 2/2/2022, 5:15pm."
-    , False),
-   ("KAoskQMwD4Q", "Whalers Boys Varsity Hockey 2/12/2022",
-    "Bishop Stang Spartans @ Nantucket Whalers- Boys Varsity Hockey on 2/12/2022, 2:00 pm."
+   ("P1iNC8DcNW0", "Whalers Ice Hockey MIAA Opening Round State Tournament  3/2/2022",
+    "Rockland Bulldogs @ Nantucket Whalers- Boys Ice Hockey on 3/2/2022, 2:00 pm"
     , False),
    ("VqnH03Pr30o", "Nantucket Whalers Boys Ice Hockey vs. Martha&rsquo;s Vineyard - February 16, 2022",
     "Martha&rsquo;s Vineyard Vineyarders @ Nantucket Whalers- Boys Varsity Ice Hockey on 2/16/2022, "
     "2:00pm."
     , False),
-   ("P1iNC8DcNW0", "Whalers Ice Hockey MIAA Opening Round State Tournament  3/2/2022",
-    "Rockland Bulldogs @ Nantucket Whalers- Boys Ice Hockey on 3/2/2022, 2:00 pm"
+   ("KAoskQMwD4Q", "Whalers Boys Varsity Hockey 2/12/2022",
+    "Bishop Stang Spartans @ Nantucket Whalers- Boys Varsity Hockey on 2/12/2022, 2:00 pm."
     , False),
-   ("pl-XHEM-t6c", "MIAA Quarterfinal Tournament Game - Whalers Boys Ice Hockey AT Stoneham Spartans - March 11, 2022",
-    "Nantucket Whalers @ Stoneham Spartans- Boys Ice Hockey on 3/11/2022, 3:00 pm"
+   ("hisYTY6j5Q8", "Whalers Ice Hockey 2/2/2022",
+    "Mashpee-Monomoy Monarchs @ Nantucket Whalers- Boys Varsity Ice Hockey on 2/2/2022, 5:15pm."
+    , False),
+   ("FZQj_EcMKf4", "Whalers Ice Hockey 1/23/2022",
+    "Norwell Clippers @ Nantucket Whalers- Boys Varsity Ice Hockey on 1/23/2022, 2:00pm."
+    , False),
+   ("abs80d-kzsk", "Whalers Ice Hockey 1/19/2022",
+    "St. John Paul II Lions @ Nantucket Whalers- Boys Varsity Ice Hockey on 1/19/2022, 5:15pm."
+    , False),
+   ("Pbkijx33STw", "Whalers Ice Hockey 12/29/2021",
+    "Nauset Warriors @ Nantucket Whalers on 12/29/2021."
+    , False),
+   ("dYnLSgZYtHE", "Whalers Ice Hockey 12/23/2021",
+    "Sandwich Blue Knights @ Nantucket Whalers on Thursday December 23, 2021. Brought to you by the "
+    "Nantucket Sports Connection &amp; NCTV."
     , False),
   ],
   "School Yr 22-23": [
-   ("K4yZPL0xCTI", "Nantucket Whalers Ice Hockey 12/21/2022",
-    "Nantucket Whalers (0-2) host the Sandwich Blue Knights (2-1)"
+   ("tC1TxgBFfZw", "MIAA Division 4 Quarterfinals - Nantucket Whalers Boys Hockey vs Amesbury Red Hawks - March 9, 2023",
+    "Nantucket Whalers (14-6) #6 vs Amesbury/Whittier Red Hawks (11-10) #19"
     , False),
-   ("2o2jC_B8NYw", "Nantucket Whalers Boys Varsity Ice Hockey",
-    "Nantucket Whalers (0-3) vs Barnstable Red Hawks (3-1-1). The Whalers looking for their first "
-    "win of the season despite skating very well against the defending D4 State champions in their "
-    "last two games- 3-1 and 2-1 losses to Sandwich."
+   ("9DAa0KY-Oi8", "MIAA Division 4 Round of 16 - Nantucket Whalers Boys Hockey vs Abington Green Wave - March 6, 2023",
+    "Nantucket Whalers (14-6) vs Abington Green Wave (11-10)"
     , False),
-   ("D4r43COeB7w", "Nantucket Whalers Boys Varsity Ice Hockey",
-    "Nantucket Whalers (1-3) vs Old Rochester Bulldogs (2-3). The Whalers looking for their second "
-    "win in a row after 3-2 win over D1 Barnstable on New Years Eve. Ryan Davis, Jeremy Jenkinson, "
-    "and Jack Billings all scored goals and Head Coach Jack Moran and his coaching staff picked up "
-    "their first win after losing closely contested games to Sandwich (twice) and Nauset. "
-    "Goaltender Griffin Starr was excellent in net with 25 saves, including over 2 minutes of extra "
-    "attacker by Barnstable to cement the win for Nantucket."
-    , False),
-   ("p6CoS4IBGyg", "Nantucket Whalers Boys Varsity Ice Hockey",
-    "Nantucket Whalers (2-3) vs Martha&rsquo;s Vineyard Vineyarders (4-3). Nantucket faces off "
-    "against the Vineyard for the first time this season. Last year the Whalers and Vineyarders "
-    "played three times with each team winning on each others home ice-Nantucket won the final "
-    "meeting in the MIAA tournament to advance to the quarterfinals."
-    , False),
-   ("CqAQ7nnbwZY", "Nantucket Whalers Boys Varsity Ice Hockey vs Monomoy/ Mashpee Monarchs",
-    "Nantucket Whalers (4-4) vs Monomoy/ MashpeeMonarchs(1-8-1). The Whalers have navigated one of "
-    "the toughest schedules in D4 and look to stay in the top 5 in the MIAA power rankings with a "
-    "win against the Monarchs. Ryan Davis leads the Whalers in scoring and Griffin Starr has been "
-    "stellar in net all season!"
-    , False),
-   ("PQE8ZDRtS5g", "Nantucket Whalers Boys Varsity Ice Hockey vs SJPII Lions",
-    "Nantucket Whalers (5-4) vs Saint John Paul II Lions (1-9-1). The Whalers have navigated one of "
-    "the toughest schedules in D4 and look to stay in the top 5 in the MIAA power rankings with a "
-    "win against the Lions. The Whalers are riding high after an 11-3 win over Monomoy/Mashpee "
-    "Monarchs that saw Colby O&rsquo;Keefe and Canton Jenkinson notch hat tricks in the best "
-    "offensive game for the Whalers this season."
-    , False),
-   ("kLrnDxsXf6k", "Nantucket Whalers Boys Varsity Ice Hockey vs Dennis Yarmouth Dolphins",
-    "Nantucket Whalers (9-4) vs Dennis Yarmouth/CCT/CCA (9-6-1). The Whalers are peaking at the "
-    "right time and are riding a seven game winning streak into tonight&rsquo;s Cape and Islands "
-    "League tilt. After an 0-3 start, they are now in the drivers seat for a league title and are "
-    "ranked #5 in the MIAA State Power Rankings. DY had a great start to the season, but are 2-6 in "
-    "their last 8 games. The Whalers won the first meeting 3-1 at Tony Kent Arena as Ryan Davis led "
-    "the attack with 2 goals and an assist."
-    , False),
-   ("rRbuiMMaYk8", "Nantucket Whalers Boys Varsity Ice Hockey vs Bishop Stang Spartans",
-    "Nantucket Whalers (10-4) vs Bishop Stang Spartans (4-7-1). The Whalers have navigated one of "
-    "the toughest schedules in D4 and look to stay in the top 5 in the MIAA power rankings having "
-    "won 8 in a row. There will be a senior recognition before the game to recognize the Whalers "
-    "two seniors. These two teams met up in January off island a 3-2 comeback win for the Whalers."
+   ("N8I3_tQDwiQ", "MIAA Div. 4 Rd. of 32 - Nantucket Whalers Boys Hockey vs NE Metro Reg. Tech Knights - Mar. 2, 2023",
+    "Nantucket Whalers (13-6) vs Northeast Metro Regional Tech Knights (8-12)"
     , False),
    ("YDSlIWGV85M", "Nantucket Whalers Boys Varsity Ice Hockey vs Nauset Warriors",
     "Nantucket Whalers (11-4) vs Nauset Warriors (11-5). A huge tilt between two of the best in the "
@@ -2143,261 +2103,272 @@ SPORTS_VIDEOS = {
     "the latest MIAA power rankings. Cape and Islands League title implications...State Tournament "
     "ranking implications...Should be a great matchup!!"
     , False),
-   ("N8I3_tQDwiQ", "MIAA Div. 4 Rd. of 32 - Nantucket Whalers Boys Hockey vs NE Metro Reg. Tech Knights - Mar. 2, 2023",
-    "Nantucket Whalers (13-6) vs Northeast Metro Regional Tech Knights (8-12)"
+   ("rRbuiMMaYk8", "Nantucket Whalers Boys Varsity Ice Hockey vs Bishop Stang Spartans",
+    "Nantucket Whalers (10-4) vs Bishop Stang Spartans (4-7-1). The Whalers have navigated one of "
+    "the toughest schedules in D4 and look to stay in the top 5 in the MIAA power rankings having "
+    "won 8 in a row. There will be a senior recognition before the game to recognize the Whalers "
+    "two seniors. These two teams met up in January off island a 3-2 comeback win for the Whalers."
     , False),
-   ("9DAa0KY-Oi8", "MIAA Division 4 Round of 16 - Nantucket Whalers Boys Hockey vs Abington Green Wave - March 6, 2023",
-    "Nantucket Whalers (14-6) vs Abington Green Wave (11-10)"
+   ("kLrnDxsXf6k", "Nantucket Whalers Boys Varsity Ice Hockey vs Dennis Yarmouth Dolphins",
+    "Nantucket Whalers (9-4) vs Dennis Yarmouth/CCT/CCA (9-6-1). The Whalers are peaking at the "
+    "right time and are riding a seven game winning streak into tonight&rsquo;s Cape and Islands "
+    "League tilt. After an 0-3 start, they are now in the drivers seat for a league title and are "
+    "ranked #5 in the MIAA State Power Rankings. DY had a great start to the season, but are 2-6 in "
+    "their last 8 games. The Whalers won the first meeting 3-1 at Tony Kent Arena as Ryan Davis led "
+    "the attack with 2 goals and an assist."
     , False),
-   ("tC1TxgBFfZw", "MIAA Division 4 Quarterfinals - Nantucket Whalers Boys Hockey vs Amesbury Red Hawks - March 9, 2023",
-    "Nantucket Whalers (14-6) #6 vs Amesbury/Whittier Red Hawks (11-10) #19"
+   ("PQE8ZDRtS5g", "Nantucket Whalers Boys Varsity Ice Hockey vs SJPII Lions",
+    "Nantucket Whalers (5-4) vs Saint John Paul II Lions (1-9-1). The Whalers have navigated one of "
+    "the toughest schedules in D4 and look to stay in the top 5 in the MIAA power rankings with a "
+    "win against the Lions. The Whalers are riding high after an 11-3 win over Monomoy/Mashpee "
+    "Monarchs that saw Colby O&rsquo;Keefe and Canton Jenkinson notch hat tricks in the best "
+    "offensive game for the Whalers this season."
+    , False),
+   ("CqAQ7nnbwZY", "Nantucket Whalers Boys Varsity Ice Hockey vs Monomoy/ Mashpee Monarchs",
+    "Nantucket Whalers (4-4) vs Monomoy/ MashpeeMonarchs(1-8-1). The Whalers have navigated one of "
+    "the toughest schedules in D4 and look to stay in the top 5 in the MIAA power rankings with a "
+    "win against the Monarchs. Ryan Davis leads the Whalers in scoring and Griffin Starr has been "
+    "stellar in net all season!"
+    , False),
+   ("p6CoS4IBGyg", "Nantucket Whalers Boys Varsity Ice Hockey",
+    "Nantucket Whalers (2-3) vs Martha&rsquo;s Vineyard Vineyarders (4-3). Nantucket faces off "
+    "against the Vineyard for the first time this season. Last year the Whalers and Vineyarders "
+    "played three times with each team winning on each others home ice-Nantucket won the final "
+    "meeting in the MIAA tournament to advance to the quarterfinals."
+    , False),
+   ("D4r43COeB7w", "Nantucket Whalers Boys Varsity Ice Hockey",
+    "Nantucket Whalers (1-3) vs Old Rochester Bulldogs (2-3). The Whalers looking for their second "
+    "win in a row after 3-2 win over D1 Barnstable on New Years Eve. Ryan Davis, Jeremy Jenkinson, "
+    "and Jack Billings all scored goals and Head Coach Jack Moran and his coaching staff picked up "
+    "their first win after losing closely contested games to Sandwich (twice) and Nauset. "
+    "Goaltender Griffin Starr was excellent in net with 25 saves, including over 2 minutes of extra "
+    "attacker by Barnstable to cement the win for Nantucket."
+    , False),
+   ("2o2jC_B8NYw", "Nantucket Whalers Boys Varsity Ice Hockey",
+    "Nantucket Whalers (0-3) vs Barnstable Red Hawks (3-1-1). The Whalers looking for their first "
+    "win of the season despite skating very well against the defending D4 State champions in their "
+    "last two games- 3-1 and 2-1 losses to Sandwich."
+    , False),
+   ("K4yZPL0xCTI", "Nantucket Whalers Ice Hockey 12/21/2022",
+    "Nantucket Whalers (0-2) host the Sandwich Blue Knights (2-1)"
     , False),
   ],
   "School Yr 23-24": [
-   ("U46AdPjxTIg", "Nantucket Whalers Boys Ice Hockey vs Norwell Clippers - December 10, 2023",
-    "The Whalers Varsity Boys Ice Hockey team makes their home opener against the visiting Clippers "
-    "to kick off their 2023-24 season."
+   ("Knh3LqIileY", "Whalers Hockey Tournament Highlight Reel",
+    "Nantucket Boys Hockey 2021-22 MIAA State Tournament Highlights."
     , False),
-   ("EDoSoy9IzbA", "Nantucket Whalers Boys Ice Hockey vs Nauset Warriors - December 13, 2023",
-    "The Whalers Varsity Boys Ice Hockey host the Warriors in a game that has both teams with State "
-    "Title aspirations."
+   ("cv4-PzRcorE", "MIAA Division 4 Quarterfinals - Nantucket Whalers Boys Hockey vs Stoneham Spartans - March 6, 2024",
+    "The Whalers Varsity Boys Ice Hockey team continues their MIAA State Tournament run with a "
+    "Quarterfinals showdown against the Spartans."
     , False),
-   ("fnjKysDECRg", "Nantucket Whalers Boys Ice Hockey vs. Framingham Flyers - December 30, 2023",
-    "The Whalers host the Flyers in the first ever meeting between the two teams hockey programs!"
+   ("itlUZXOqP9A", "MIAA Division 4 Round of 16 - Nantucket Whalers Boys Hockey vs Bourne Canalmen - March 3, 2024",
+    "The Whalers Varsity Boys Ice Hockey team continues their MIAA State Tournament run as they "
+    "host a Round of 16 matchup against the Canalmen."
     , False),
-   ("ahEl4NcLhxc", "Nantucket Whalers Boys Ice Hockey vs St. John Paul II Lions - January 8, 2024",
-    "Today&rsquo;s simulcast continues as the Whalers Varsity Boys Ice Hockey team (5-1) opens 2024 "
-    "at home against the visiting Lions from St. John Paul II (3-5-1)."
+   ("36NWS52n8_k", "MIAA Division 4 Round of 32 - Nantucket Whalers Boys Varsity Ice Hockey vs SJP Lions - March 1, 2024",
+    "The Whalers Varsity Boys Ice Hockey team enters the MIAA State Tournament as they host a Round "
+    "of 32 matchup against the Lions."
     , False),
-   ("9AjlUYPYIho", "Nantucket Whalers Boys Ice Hockey vs. Bishop Stang Spartans - January 20, 2024",
-    "The Whalers (8-1) are one of the top ranked teams in Division 4 and will look to keep their 8 "
-    "game winning streak going after defeating SJPII and Monomoy/Mashpee earlier this week. "
-    "Nantucket is ranked #2 in the D.4 MIAA power rankings."
+   ("KZF-cXz-Knk", "Nantucket Whalers Boys Varsity Ice Hockey AT Sandwich Blue Knights - February 22, 2024",
+    "The NSC and NCTV are taking the show on the road!! The Whalers will face the Sandwich Blue "
+    "Knights at the Gallo Arena."
     , False),
-   ("TUDtQjUEZwg", "Nantucket Whalers Boys Ice Hockey vs. Dennis-Yarmouth Dolphins - January 24, 2024",
-    "The Whalers (9-1) won three more games last week to run their winning streak to nine games. "
-    "The 5-0 shutout win over Bishop Stang was the 2nd shutout for Whalers Captain-Goalie Griffin "
-    "Starr. Braden Knapp and Jeremy Jenkinson each netted two goals to pace the #2 ranked Whalers."
+   ("qz6I2McN3zA", "Nantucket Whalers Boys Ice Hockey vs Monomoy Sharks - February 11, 2024",
+    "The Whalers Varsity Boys Ice Hockey team (14-1) wrap their regular season home appearances "
+    "with a matchup against the Sharks (3-10-1)."
+    , False),
+   ("NBv85yDQSgs", "Nantucket Whalers Boys Ice Hockey vs. Martha&rsquo;s Vineyard - February 3, 2024",
+    "The Whalers Varsity Boys Ice Hockey team finally hosts their cross-island rivals, the "
+    "Vineyarders!"
     , False),
    ("oFaPLe6G6x8", "Nantucket Whalers Boys Hockey vs. Old Rochester Bulldogs - January 27, 2024",
     "The Whalers (10-1, #2 in MIAA Division 4) are looking to continue their TEN game win streak "
     "(including two consecutive shutouts) as they take on the Old Rochester Bulldogs (8-4-1, #10 in "
     "D4) in their final home game of the month."
     , False),
-   ("NBv85yDQSgs", "Nantucket Whalers Boys Ice Hockey vs. Martha&rsquo;s Vineyard - February 3, 2024",
-    "The Whalers Varsity Boys Ice Hockey team finally hosts their cross-island rivals, the "
-    "Vineyarders!"
+   ("TUDtQjUEZwg", "Nantucket Whalers Boys Ice Hockey vs. Dennis-Yarmouth Dolphins - January 24, 2024",
+    "The Whalers (9-1) won three more games last week to run their winning streak to nine games. "
+    "The 5-0 shutout win over Bishop Stang was the 2nd shutout for Whalers Captain-Goalie Griffin "
+    "Starr. Braden Knapp and Jeremy Jenkinson each netted two goals to pace the #2 ranked Whalers."
     , False),
-   ("qz6I2McN3zA", "Nantucket Whalers Boys Ice Hockey vs Monomoy Sharks - February 11, 2024",
-    "The Whalers Varsity Boys Ice Hockey team (14-1) wrap their regular season home appearances "
-    "with a matchup against the Sharks (3-10-1)."
+   ("9AjlUYPYIho", "Nantucket Whalers Boys Ice Hockey vs. Bishop Stang Spartans - January 20, 2024",
+    "The Whalers (8-1) are one of the top ranked teams in Division 4 and will look to keep their 8 "
+    "game winning streak going after defeating SJPII and Monomoy/Mashpee earlier this week. "
+    "Nantucket is ranked #2 in the D.4 MIAA power rankings."
     , False),
-   ("KZF-cXz-Knk", "Nantucket Whalers Boys Varsity Ice Hockey AT Sandwich Blue Knights - February 22, 2024",
-    "The NSC and NCTV are taking the show on the road!! The Whalers will face the Sandwich Blue "
-    "Knights at the Gallo Arena."
+   ("ahEl4NcLhxc", "Nantucket Whalers Boys Ice Hockey vs St. John Paul II Lions - January 8, 2024",
+    "Today&rsquo;s simulcast continues as the Whalers Varsity Boys Ice Hockey team (5-1) opens 2024 "
+    "at home against the visiting Lions from St. John Paul II (3-5-1)."
     , False),
-   ("36NWS52n8_k", "MIAA Division 4 Round of 32 - Nantucket Whalers Boys Varsity Ice Hockey vs SJP Lions - March 1, 2024",
-    "The Whalers Varsity Boys Ice Hockey team enters the MIAA State Tournament as they host a Round "
-    "of 32 matchup against the Lions."
+   ("fnjKysDECRg", "Nantucket Whalers Boys Ice Hockey vs. Framingham Flyers - December 30, 2023",
+    "The Whalers host the Flyers in the first ever meeting between the two teams hockey programs!"
     , False),
-   ("itlUZXOqP9A", "MIAA Division 4 Round of 16 - Nantucket Whalers Boys Hockey vs Bourne Canalmen - March 3, 2024",
-    "The Whalers Varsity Boys Ice Hockey team continues their MIAA State Tournament run as they "
-    "host a Round of 16 matchup against the Canalmen."
+   ("EDoSoy9IzbA", "Nantucket Whalers Boys Ice Hockey vs Nauset Warriors - December 13, 2023",
+    "The Whalers Varsity Boys Ice Hockey host the Warriors in a game that has both teams with State "
+    "Title aspirations."
     , False),
-   ("cv4-PzRcorE", "MIAA Division 4 Quarterfinals - Nantucket Whalers Boys Hockey vs Stoneham Spartans - March 6, 2024",
-    "The Whalers Varsity Boys Ice Hockey team continues their MIAA State Tournament run with a "
-    "Quarterfinals showdown against the Spartans."
-    , False),
-   ("Knh3LqIileY", "Whalers Hockey Tournament Highlight Reel",
-    "Nantucket Boys Hockey 2021-22 MIAA State Tournament Highlights."
+   ("U46AdPjxTIg", "Nantucket Whalers Boys Ice Hockey vs Norwell Clippers - December 10, 2023",
+    "The Whalers Varsity Boys Ice Hockey team makes their home opener against the visiting Clippers "
+    "to kick off their 2023-24 season."
     , False),
   ],
   "School Yr 24-25": [
-   ("Euo6HqDcIlk", "Nantucket Whalers Boys Ice Hockey vs. Martha&rsquo;s Vineyard - December 14, 2024",
-    "The Whalers Varsity Boys Ice Hockey opens the 2024-25 season hosting their cross-island "
-    "rivals, the Vineyarders in a Cape and Islands league matchup."
-    , False),
-   ("egT2rfbEdL0", "Nantucket Nor&rsquo;Easters Boys Youth Ice Hockey vs Greater Providence Junior Bears - December 14, 2024",
-    "For the first time, Nantucket Sports Connection brings you Nantucket Youth Hockey as the "
-    "Nor&rsquo;Easters welcome the Junior Bears of Greater Providence."
-    , False),
-   ("pYcK4qTuOsc", "Nantucket Whalers Boys Ice Hockey vs. Monomoy/Mashpee Sharks - December 18, 2024",
-    "The Whalers Varsity Boys Ice Hockey continue their 2024-25 season hosting a co-op Sharks team "
-    "from Monomoy &amp; Mashpee as they travel across Nantucket Sound."
-    , False),
-   ("ZD5sPxJhCKU", "Nantucket Whalers Boys Ice Hockey vs. Bourne Canalmen - January 25, 2025",
-    "Nantucket Sports Connection presents the Whalers Varsity Boys Ice Hockey squad as they host "
-    "the Bourne Canalmen in a non-league matchup."
+   ("LHq-ts1qVLE", "Nantucket Whalers Boys Ice Hockey vs. Foxborough Warriors - February 15, 2025",
+    "Nantucket Sports Connection brings you our final Boys Varsity Ice Hockey match of the regular "
+    "season as your Whalers host the Foxborough Warriors in their first visit to the island!"
     , False),
    ("R7aTq2FN3YE", "Nantucket Whalers Boys Ice Hockey vs St. John Paul II Lions - February 5, 2025",
     "In our final Wednesday Night broadcast of the regular season, Nantucket Sports Connection "
     "presents the Whalers Varsity Boys Ice Hockey team taking on the visiting Lions from St. John "
     "Paul II in a Cape &amp; Islands League matchup."
     , False),
-   ("LHq-ts1qVLE", "Nantucket Whalers Boys Ice Hockey vs. Foxborough Warriors - February 15, 2025",
-    "Nantucket Sports Connection brings you our final Boys Varsity Ice Hockey match of the regular "
-    "season as your Whalers host the Foxborough Warriors in their first visit to the island!"
+   ("ZD5sPxJhCKU", "Nantucket Whalers Boys Ice Hockey vs. Bourne Canalmen - January 25, 2025",
+    "Nantucket Sports Connection presents the Whalers Varsity Boys Ice Hockey squad as they host "
+    "the Bourne Canalmen in a non-league matchup."
+    , False),
+   ("pYcK4qTuOsc", "Nantucket Whalers Boys Ice Hockey vs. Monomoy/Mashpee Sharks - December 18, 2024",
+    "The Whalers Varsity Boys Ice Hockey continue their 2024-25 season hosting a co-op Sharks team "
+    "from Monomoy &amp; Mashpee as they travel across Nantucket Sound."
+    , False),
+   ("egT2rfbEdL0", "Nantucket Nor&rsquo;Easters Boys Youth Ice Hockey vs Greater Providence Junior Bears - December 14, 2024",
+    "For the first time, Nantucket Sports Connection brings you Nantucket Youth Hockey as the "
+    "Nor&rsquo;Easters welcome the Junior Bears of Greater Providence."
+    , False),
+   ("Euo6HqDcIlk", "Nantucket Whalers Boys Ice Hockey vs. Martha&rsquo;s Vineyard - December 14, 2024",
+    "The Whalers Varsity Boys Ice Hockey opens the 2024-25 season hosting their cross-island "
+    "rivals, the Vineyarders in a Cape and Islands league matchup."
     , False),
   ],
   "School Yr 25-26": [
-   ("Xd8lRg_MoCw", "Nantucket Whalers Boys Ice Hockey vs. Martha&rsquo;s Vineyard - December 14, 2025",
-    "The Nantucket Sports Connection proudly presents the Whalers Varsity Boys Ice Hockey squad as "
-    "they open the 2025-26 season hosting their cross-island rivals, the Vineyarders from "
-    "Martha&rsquo;s Vineyard, in a Cape and Islands league matchup."
-    , False),
-   ("SYFfbDOT0pU", "Nantucket Whalers Boys Ice Hockey vs. Bourne Canalmen - December 17, 2025",
-    "Nantucket Sports Connection proudly presents the Whalers Varsity Boys Ice Hockey squad as they "
-    "host the Bourne Canalmen in a non-league matchup."
-    , False),
-   ("pJzGPH-61SU", "Nantucket Whalers Boys Ice Hockey vs Dennis-Yarmouth Dolphins - January 14, 2026",
-    "The Nantucket Sports Connection proudly presents the Whalers Varsity Boys Ice Hockey squad as "
-    "they host an important league matchup against the Dolphins from Dennis-Yarmouth over on the "
-    "Cape."
-    , False),
-   ("J2twRR5q4zo", "Nantucket Whalers Boys Ice Hockey vs St. John Paul II Lions - January 28, 2026",
+   ("Qj-XRFrvC6o", "Nantucket Whalers Boys Ice Hockey vs. North Quincy Raiders - February 19, 2026",
     "The Nantucket Sports Connection proudly presents the Whalers Varsity Boys Ice Hockey team "
-    "taking on the visiting Lions from St. John Paul II in a critical Cape &amp; Islands League "
-    "matchup."
+    "taking on the Raiders from North Quincy in their first visit to the island in the modern "
+    "history of the two programs."
     , False),
-   ("MN1tLeu9RIQ", "Nantucket Whalers Boys Ice Hockey vs. Monomoy Sharks - February 11, 2026",
-    "The Whalers Varsity Boys Ice Hockey take on the Sharks from Monomoy in their final league "
-    "matchup of the season."
-    , False),
-   ("9tMHjb8FxFw", "Nantucket Whalers Boys Ice Hockey vs. Plymouth North Eagles - February 13, 2026",
+   ("haDgyeWuRNI", "Nantucket Whalers Boys Ice Hockey vs. Abington Green Wave - February 16, 2026",
     "Nantucket Sports Connection presents the Whalers Varsity Boys Ice Hockey squad as they host "
-    "the Eagles from Plymouth North on their first trip to the island!"
+    "the Green Wave from Abington in a non-league matchup."
     , False),
    ("8m4QgmbAEoo", "Nantucket Whalers Boys Ice Hockey vs. Pembroke Titans - February 15, 2026",
     "The Nantucket Sports Connection proudly presents the Whalers Varsity Boys Ice Hockey squad as "
     "they host the Titans from Pembroke as they travel down from Easton on their first ever trip to "
     "the island!"
     , False),
-   ("haDgyeWuRNI", "Nantucket Whalers Boys Ice Hockey vs. Abington Green Wave - February 16, 2026",
+   ("9tMHjb8FxFw", "Nantucket Whalers Boys Ice Hockey vs. Plymouth North Eagles - February 13, 2026",
     "Nantucket Sports Connection presents the Whalers Varsity Boys Ice Hockey squad as they host "
-    "the Green Wave from Abington in a non-league matchup."
+    "the Eagles from Plymouth North on their first trip to the island!"
     , False),
-   ("Qj-XRFrvC6o", "Nantucket Whalers Boys Ice Hockey vs. North Quincy Raiders - February 19, 2026",
+   ("MN1tLeu9RIQ", "Nantucket Whalers Boys Ice Hockey vs. Monomoy Sharks - February 11, 2026",
+    "The Whalers Varsity Boys Ice Hockey take on the Sharks from Monomoy in their final league "
+    "matchup of the season."
+    , False),
+   ("J2twRR5q4zo", "Nantucket Whalers Boys Ice Hockey vs St. John Paul II Lions - January 28, 2026",
     "The Nantucket Sports Connection proudly presents the Whalers Varsity Boys Ice Hockey team "
-    "taking on the Raiders from North Quincy in their first visit to the island in the modern "
-    "history of the two programs."
+    "taking on the visiting Lions from St. John Paul II in a critical Cape &amp; Islands League "
+    "matchup."
+    , False),
+   ("pJzGPH-61SU", "Nantucket Whalers Boys Ice Hockey vs Dennis-Yarmouth Dolphins - January 14, 2026",
+    "The Nantucket Sports Connection proudly presents the Whalers Varsity Boys Ice Hockey squad as "
+    "they host an important league matchup against the Dolphins from Dennis-Yarmouth over on the "
+    "Cape."
+    , False),
+   ("SYFfbDOT0pU", "Nantucket Whalers Boys Ice Hockey vs. Bourne Canalmen - December 17, 2025",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Boys Ice Hockey squad as they "
+    "host the Bourne Canalmen in a non-league matchup."
+    , False),
+   ("Xd8lRg_MoCw", "Nantucket Whalers Boys Ice Hockey vs. Martha&rsquo;s Vineyard - December 14, 2025",
+    "The Nantucket Sports Connection proudly presents the Whalers Varsity Boys Ice Hockey squad as "
+    "they open the 2025-26 season hosting their cross-island rivals, the Vineyarders from "
+    "Martha&rsquo;s Vineyard, in a Cape and Islands league matchup."
     , False),
   ],
   "School Yr 26-27": [
-   ("iLzBk7X_WjU", "Nantucket Whalers Boys Ice Hockey vs. North Quincy Raiders - December 12, 2026", "", True),
-   ("yB2ALlvworI", "Nantucket Whalers Boys Ice Hockey vs. Plymouth North Eagles - January 2, 2027", "", True),
-   ("x9yPeXxKzZs", "Nantucket Whalers Boys Ice Hockey vs. St. John Paul II Lions - January 6, 2027", "", True),
-   ("wT_ORFMFucE", "Nantucket Whalers Boys Ice Hockey vs. Foxborough Warriors - January 23, 2027", "", True),
-   ("sBzupvwZfgA", "Nantucket Whalers Boys Ice Hockey vs. Bourne Canalmen - January 30, 2027", "", True),
    ("0-Y6rK3sw30", "Nantucket Whalers Boys Ice Hockey vs Dennis-Yarmouth Dolphins - February 3, 2027", "", True),
+   ("sBzupvwZfgA", "Nantucket Whalers Boys Ice Hockey vs. Bourne Canalmen - January 30, 2027", "", True),
+   ("wT_ORFMFucE", "Nantucket Whalers Boys Ice Hockey vs. Foxborough Warriors - January 23, 2027", "", True),
+   ("x9yPeXxKzZs", "Nantucket Whalers Boys Ice Hockey vs. St. John Paul II Lions - January 6, 2027", "", True),
+   ("yB2ALlvworI", "Nantucket Whalers Boys Ice Hockey vs. Plymouth North Eagles - January 2, 2027", "", True),
+   ("iLzBk7X_WjU", "Nantucket Whalers Boys Ice Hockey vs. North Quincy Raiders - December 12, 2026", "", True),
   ],
  },
  "Girls Lacrosse": {
   "School Yr 21-22": [
-   ("QPkFEfmmGxQ", "Whalers Girls Varsity Lacrosse 4/30/2022",
-    "Martha&rsquo;s Vineyard Vineyarders @ Nantucket Whalers."
+   ("d4_LBu4WBRY", "MIAA State Tournament Round of 8 - Whalers Girls Lacrosse vs. Ipswich Tigers - June 13, 2022",
+    "Whalers Girls Varsity Lacrosse vs. Ipswich Tigers."
     , False),
-   ("Kllv3lf3i6E", "Nantucket Whalers Girls Lacrosse vs. Monomoy Sharks - May 1, 2022",
-    "Nantucket Varsity Girls Lacrosse vs. Monomoy Sharks."
-    , False),
-   ("3yIThWJcjm8", "Nantucket Whalers Girls Lacrosse vs. Falmouth Clippers - May 14, 2022",
-    "Whalers Girls Varsity Lacrosse vs. Falmouth Clippers. The Whalers rank #4 in MIAA Div. 4 "
-    "Overall Record 7-2. Clippers rank #24 in Div. 2 Overall Record 5-4."
-    , False),
-   ("AjWqEIYUp_g", "Nantucket Whalers Girls Lacrosse vs. Dennis Yarmouth Dolphins - May 17, 2022",
-    "Nantucket Whalers Girls Varsity Lacrosse vs. Dennis Yarmouth Dolphins. The Whalers ranked #4 "
-    "in MIAA Div. 4 Overall Record 8-2. DY ranked #24 in MIAA Div 3 Overall Record 4-8."
-    , False),
-   ("a4pdII8UzbQ", "Nantucket Whalers Girls Lacrosse vs. Sandwich Blue Knights - May 21, 2022",
-    "Whalers Girls Varsity Lacrosse vs. Sandwich Blue Knights Vito Capizzo Stadium"
-    , False),
-   ("UxTg_RKHwyY", "Whalers Girls Lacrosse vs. Barnstable Red Hawks - May 24, 2022",
-    "Varsity Lacrosse Whalers rank #2 in MIAA Div. 4 Overall Record 10-3. RedHawks rank #46 in Div. "
-    "1 Overall Record 5-9."
-    , False),
-   ("SAzsLji2yTg", "Whalers Girls Varsity Lacrosse vs. Sturgis West Navigators - June 1, 2022 (Senior Recognition Game)",
-    "Nantucket Whalers vs. Sturgis West Navigators. Whalers rank #4 in MIAA Div. 4 Overall Record "
-    "14-3. Navigators rank #29 in Div. 4 Overall Record 4-9."
+   ("Yhb7P8SJ5cc", "MIAA State Tournament Round of 16 - Whalers Girls Lacrosse vs. South Hadley Tigers - June 10, 2022",
+    "Whalers Girls Varsity Lacrosses vs. South Hadley Tigers."
     , False),
    ("UwWiz8POsgc", "MIAA St. Tournament Rnd of 32 - Nantucket Whalers Girls Lacrosse vs. Winthrop Vikings - June 8, 2022",
     "Whalers Girls Varsity Lacrosse vs. Winthrop Vikings. Whalers rank #4 in MIAA Div. 4 Overall "
     "Record 14-4. Vikings rank #29 in Div. 4 Overall Record 4-13."
     , False),
-   ("Yhb7P8SJ5cc", "MIAA State Tournament Round of 16 - Whalers Girls Lacrosse vs. South Hadley Tigers - June 10, 2022",
-    "Whalers Girls Varsity Lacrosses vs. South Hadley Tigers."
+   ("SAzsLji2yTg", "Whalers Girls Varsity Lacrosse vs. Sturgis West Navigators - June 1, 2022 (Senior Recognition Game)",
+    "Nantucket Whalers vs. Sturgis West Navigators. Whalers rank #4 in MIAA Div. 4 Overall Record "
+    "14-3. Navigators rank #29 in Div. 4 Overall Record 4-9."
     , False),
-   ("d4_LBu4WBRY", "MIAA State Tournament Round of 8 - Whalers Girls Lacrosse vs. Ipswich Tigers - June 13, 2022",
-    "Whalers Girls Varsity Lacrosse vs. Ipswich Tigers."
+   ("UxTg_RKHwyY", "Whalers Girls Lacrosse vs. Barnstable Red Hawks - May 24, 2022",
+    "Varsity Lacrosse Whalers rank #2 in MIAA Div. 4 Overall Record 10-3. RedHawks rank #46 in Div. "
+    "1 Overall Record 5-9."
+    , False),
+   ("a4pdII8UzbQ", "Nantucket Whalers Girls Lacrosse vs. Sandwich Blue Knights - May 21, 2022",
+    "Whalers Girls Varsity Lacrosse vs. Sandwich Blue Knights Vito Capizzo Stadium"
+    , False),
+   ("AjWqEIYUp_g", "Nantucket Whalers Girls Lacrosse vs. Dennis Yarmouth Dolphins - May 17, 2022",
+    "Nantucket Whalers Girls Varsity Lacrosse vs. Dennis Yarmouth Dolphins. The Whalers ranked #4 "
+    "in MIAA Div. 4 Overall Record 8-2. DY ranked #24 in MIAA Div 3 Overall Record 4-8."
+    , False),
+   ("3yIThWJcjm8", "Nantucket Whalers Girls Lacrosse vs. Falmouth Clippers - May 14, 2022",
+    "Whalers Girls Varsity Lacrosse vs. Falmouth Clippers. The Whalers rank #4 in MIAA Div. 4 "
+    "Overall Record 7-2. Clippers rank #24 in Div. 2 Overall Record 5-4."
+    , False),
+   ("Kllv3lf3i6E", "Nantucket Whalers Girls Lacrosse vs. Monomoy Sharks - May 1, 2022",
+    "Nantucket Varsity Girls Lacrosse vs. Monomoy Sharks."
+    , False),
+   ("QPkFEfmmGxQ", "Whalers Girls Varsity Lacrosse 4/30/2022",
+    "Martha&rsquo;s Vineyard Vineyarders @ Nantucket Whalers."
     , False),
   ],
   "School Yr 22-23": [
-   ("OyfPIZ2S1T4", "Whalers Girls Varsity Lacrosse vs. Nauset Warriors - May 2, 2023",
-    "Whalers rank #4 in MIAA Div. 4 Overall Record 5-2. Warriors rank #i26 in MIAA Div. 2 Overall "
-    "Record 6-2."
-    , False),
-   ("dLv8rVeF8YM", "Whalers Girls Varsity Lacrosse vs. Barnstable Red Hawks - May 13, 2023",
-    "Nantucket Whalers vs. Barnstable Red Hawks Vito Capizzo Stadium"
-    , False),
-   ("U060ApDu5iA", "Whalers Girls Varsity Lacrosse vs. Sandwich Blue Knights - May 14, 2023",
-    "Nantucket Whalers vs. Sandwich Blue Knights Vito Capizzo Stadium"
-    , False),
-   ("YqD6FU5Vpr8", "Whalers Girls Varsity Lacrosse vs. Falmouth Clippers - May 16, 2023",
-    "Nantucket Whalers vs. Falmouth Clippers Vito Capizzo Stadium"
-    , False),
-   ("WuuoIwSCasw", "Whalers Girls Varsity Lacrosse vs. St. John Paul II Lions - May 22, 2023",
-    "Nantucket Whalers vs. SJPII Lions Vito Capizzo Stadium"
-    , False),
-   ("XXQRwDziERc", "Whalers Girls Varsity Lacrosse vs. Dennis-Yarmouth Dolphins - May 23, 2023",
-    "Nantucket Whalers vs. Dennis Yarmouth Dolphins Vito Capizzo Stadium"
-    , False),
-   ("OOk1mzlzOjQ", "Whalers Girls Varsity Lacrosse vs. Cape Cod Academy Seahawks - May 25, 2023",
-    "Nantucket Whalers vs. Cape Cod Academy Seahawks Vito Capizzo Stadium"
-    , False),
-   ("Huf5e3NWInM", "Whalers Girls Varsity Lacrosse vs. Vineyard - May 27, 2023",
-    "Nantucket Whalers vs. Martha&rsquo;s Vineyard Vineyarders Vito Capizzo Stadium"
-    , False),
-   ("GgIzsseIUME", "Whalers Girls Varsity Lacrosse MIAA D4 State Tournament Round of 32",
-    "Nantucket Whalers vs. South Hadley Tigers Vito Capizzo Stadium"
+   ("qXV0Cz4QyUE", "Whalers Girls Varsity Lacrosse MIAA D4 State Tournament Round of 8",
+    "Nantucket Whalers vs. Watertown Raiders Vito Capizzo Stadium"
     , False),
    ("Y19-3vxnxqc", "Whalers Girls Varsity Lacrosse MIAA D4 State Tournament Round of 16",
     "Nantucket Whalers vs. Watertown Raiders Vito Capizzo Stadium"
     , False),
-   ("qXV0Cz4QyUE", "Whalers Girls Varsity Lacrosse MIAA D4 State Tournament Round of 8",
-    "Nantucket Whalers vs. Watertown Raiders Vito Capizzo Stadium"
+   ("GgIzsseIUME", "Whalers Girls Varsity Lacrosse MIAA D4 State Tournament Round of 32",
+    "Nantucket Whalers vs. South Hadley Tigers Vito Capizzo Stadium"
+    , False),
+   ("Huf5e3NWInM", "Whalers Girls Varsity Lacrosse vs. Vineyard - May 27, 2023",
+    "Nantucket Whalers vs. Martha&rsquo;s Vineyard Vineyarders Vito Capizzo Stadium"
+    , False),
+   ("OOk1mzlzOjQ", "Whalers Girls Varsity Lacrosse vs. Cape Cod Academy Seahawks - May 25, 2023",
+    "Nantucket Whalers vs. Cape Cod Academy Seahawks Vito Capizzo Stadium"
+    , False),
+   ("XXQRwDziERc", "Whalers Girls Varsity Lacrosse vs. Dennis-Yarmouth Dolphins - May 23, 2023",
+    "Nantucket Whalers vs. Dennis Yarmouth Dolphins Vito Capizzo Stadium"
+    , False),
+   ("WuuoIwSCasw", "Whalers Girls Varsity Lacrosse vs. St. John Paul II Lions - May 22, 2023",
+    "Nantucket Whalers vs. SJPII Lions Vito Capizzo Stadium"
+    , False),
+   ("YqD6FU5Vpr8", "Whalers Girls Varsity Lacrosse vs. Falmouth Clippers - May 16, 2023",
+    "Nantucket Whalers vs. Falmouth Clippers Vito Capizzo Stadium"
+    , False),
+   ("U060ApDu5iA", "Whalers Girls Varsity Lacrosse vs. Sandwich Blue Knights - May 14, 2023",
+    "Nantucket Whalers vs. Sandwich Blue Knights Vito Capizzo Stadium"
+    , False),
+   ("dLv8rVeF8YM", "Whalers Girls Varsity Lacrosse vs. Barnstable Red Hawks - May 13, 2023",
+    "Nantucket Whalers vs. Barnstable Red Hawks Vito Capizzo Stadium"
+    , False),
+   ("OyfPIZ2S1T4", "Whalers Girls Varsity Lacrosse vs. Nauset Warriors - May 2, 2023",
+    "Whalers rank #4 in MIAA Div. 4 Overall Record 5-2. Warriors rank #i26 in MIAA Div. 2 Overall "
+    "Record 6-2."
     , False),
   ],
   "School Yr 23-24": [
-   ("wX4vwIMDnw0", "Nantucket Whalers Girls Lacrosse vs. Martha&rsquo;s Vineyard - March 30, 2024",
-    "Nantucket Sports Connection kicks off the Spring Season with a cross-island rivalry matchup!"
-    , False),
-   ("3pWa9XDO7lk", "Nantucket Whalers Girls Lacrosse vs. Nauset Warriors - April 22, 2024",
-    "The Whalers (5-0) face the Warriors (5-1) in a matchup of two of the best teams in the Cape "
-    "and Islands League."
-    , False),
-   ("kjqU46Oe8RY", "Nantucket Whalers Girls Lacrosse vs. Bridgewater-Raynham Trojans - April 30, 2024",
-    "The Whalers are ranked #2 in D4 (8-0) and will look to run their record to 9-0 to round out "
-    "April against another Division 1 squad."
-    , False),
-   ("DEm2VHsAN2A", "Nantucket Whalers Girls Lacrosse vs. Ashland Clockers - May 5, 2024",
-    "The Whalers (10-0) will look to continue their torrid start to the season and will play host "
-    "the Clockers (10-2) for the first time in Girls Lacrosse history! This is a clash of two of "
-    "the best teams in the State!!"
-    , False),
-   ("Yrbu-9aeTyc", "Nantucket Whalers Girls Lacrosse vs. Barnstable Red Hawks - May 7, 2024",
-    "The Whalers (11-0) face off against the Red Hawks in a Cape and Islands League tilt. Nantucket "
-    "defeated Barnstable off island 17-5 on April 11."
-    , False),
-   ("vVAYTktQSQo", "Nantucket Whalers Girls Lacrosse vs. North Reading Hornet - May 11, 2024",
-    "The Whalers (12-0, ranked #2 in Division 4) face off against the Hornet (4-8, #23) in a "
-    "first-time visit from the other side of the Commonwealth!"
-    , False),
-   ("wYhSoK184K4", "Nantucket Whalers Girls Lacrosse vs. Cape Cod Academy Seahawks - May 14, 2024",
-    "The Whalers Girls Varsity Lacrosse squad (14-0) welcomes the Seahawks (9-3) to the island "
-    "after defeating them 17-5 them across the water on April 25. A win today secures a third "
-    "straight Cape and Islands League title for Nantucket."
-    , False),
-   ("s8wMKaYHgbw", "Nantucket Whalers Girls Lacrosse vs. Dennis-Yarmouth Dolphins - May 17, 2024",
-    "The Whalers (15-0) look to extend their winning streak to 16 games against the Dolphins. "
-    "Nantucket defeated DY 17-3 across the water on April 27."
+   ("y6OP3LPLQuI", "MIAA Division 4 Quarterfinals - Whalers Girls Lacrosse vs. Norwell Clippers - June 8, 2024",
+    "The #2 Seeded Whalers (22-0) host the # 7 Seeded Clippers (11-10) for a chance to advance to "
+    "the Final Four."
     , False),
    ("2HZJMfc6s1A", "Nantucket Whalers Girls Lacrosse vs. Falmouth Clippers - May 21, 2024",
     "The Whalers Girls Varsity Lacrosse squad takes on the Clippers in a Cape and Islands League "
@@ -2407,58 +2378,41 @@ SPORTS_VIDEOS = {
     "close games, 14-10 &amp; 10-7, in 2023; Falmouth last bested Nantucket on May 31, 2022 on the "
     "road by a 12-11 margin."
     , False),
-   ("y6OP3LPLQuI", "MIAA Division 4 Quarterfinals - Whalers Girls Lacrosse vs. Norwell Clippers - June 8, 2024",
-    "The #2 Seeded Whalers (22-0) host the # 7 Seeded Clippers (11-10) for a chance to advance to "
-    "the Final Four."
+   ("s8wMKaYHgbw", "Nantucket Whalers Girls Lacrosse vs. Dennis-Yarmouth Dolphins - May 17, 2024",
+    "The Whalers (15-0) look to extend their winning streak to 16 games against the Dolphins. "
+    "Nantucket defeated DY 17-3 across the water on April 27."
+    , False),
+   ("wYhSoK184K4", "Nantucket Whalers Girls Lacrosse vs. Cape Cod Academy Seahawks - May 14, 2024",
+    "The Whalers Girls Varsity Lacrosse squad (14-0) welcomes the Seahawks (9-3) to the island "
+    "after defeating them 17-5 them across the water on April 25. A win today secures a third "
+    "straight Cape and Islands League title for Nantucket."
+    , False),
+   ("vVAYTktQSQo", "Nantucket Whalers Girls Lacrosse vs. North Reading Hornet - May 11, 2024",
+    "The Whalers (12-0, ranked #2 in Division 4) face off against the Hornet (4-8, #23) in a "
+    "first-time visit from the other side of the Commonwealth!"
+    , False),
+   ("Yrbu-9aeTyc", "Nantucket Whalers Girls Lacrosse vs. Barnstable Red Hawks - May 7, 2024",
+    "The Whalers (11-0) face off against the Red Hawks in a Cape and Islands League tilt. Nantucket "
+    "defeated Barnstable off island 17-5 on April 11."
+    , False),
+   ("DEm2VHsAN2A", "Nantucket Whalers Girls Lacrosse vs. Ashland Clockers - May 5, 2024",
+    "The Whalers (10-0) will look to continue their torrid start to the season and will play host "
+    "the Clockers (10-2) for the first time in Girls Lacrosse history! This is a clash of two of "
+    "the best teams in the State!!"
+    , False),
+   ("kjqU46Oe8RY", "Nantucket Whalers Girls Lacrosse vs. Bridgewater-Raynham Trojans - April 30, 2024",
+    "The Whalers are ranked #2 in D4 (8-0) and will look to run their record to 9-0 to round out "
+    "April against another Division 1 squad."
+    , False),
+   ("3pWa9XDO7lk", "Nantucket Whalers Girls Lacrosse vs. Nauset Warriors - April 22, 2024",
+    "The Whalers (5-0) face the Warriors (5-1) in a matchup of two of the best teams in the Cape "
+    "and Islands League."
+    , False),
+   ("wX4vwIMDnw0", "Nantucket Whalers Girls Lacrosse vs. Martha&rsquo;s Vineyard - March 30, 2024",
+    "Nantucket Sports Connection kicks off the Spring Season with a cross-island rivalry matchup!"
     , False),
   ],
   "School Yr 24-25": [
-   ("5NpEq6R7jwc", "Nantucket Whalers Girls Lacrosse vs. Barnstable Red Hawks - April 10, 2025",
-    "Nantucket Sports Connection proudly presents the Whalers Girls Varsity Lacrosse squad as they "
-    "play their first home match of the season against the Red Hawks from Barnstable High School."
-    , False),
-   ("oiPN4lSquVk", "Nantucket Whalers Girls Lacrosse vs. Cape Cod Academy Seahawks - April 17, 2025",
-    "Nantucket Sports Connection proudly presents your defending league champion Whalers Girls "
-    "Varsity Lacrosse squad as they play their second home match of the season against the Seahawks "
-    "from Cape Cod Academy."
-    , False),
-   ("vPLzZgE006k", "Nantucket Whalers Girls Lacrosse vs. Dennis-Yarmouth Dolphins - April 28, 2025",
-    "Nantucket Sports Connection proudly presents your *defending league champion* Whalers Girls "
-    "Varsity Lacrosse squad as they play their third home match of the season, and first since "
-    "spring break, against the Dolphins from Dennis-Yarmouth."
-    , False),
-   ("_Nkmo4Txj60", "Nantucket Whalers Girls Lacrosse vs. Falmouth Clippers - May 1, 2025",
-    "Nantucket Sports Connection proudly presents your defending league champion Whalers Girls "
-    "Varsity Lacrosse squad as they play their fourth home match of the season against the Clippers "
-    "from across the sound."
-    , False),
-   ("YDD3qSgA6Rc", "Nantucket Whalers Girls Lacrosse vs. Nauset Warriors - May 8, 2025",
-    "Nantucket Sports Connection proudly presents your *defending league champion* Whalers Girls "
-    "Varsity Lacrosse squad as they play their fifth home game of the season against the Warriors "
-    "in an important Cape &amp; Islands League matchup."
-    , False),
-   ("oPl-UzhgRqQ", "Nantucket Whalers Girls Lacrosse vs. Bridgewater-Raynham Trojans - May 15, 2025",
-    "Nantucket Sports Connection proudly presents your *defending league champion* Whalers Girls "
-    "Varsity Lacrosse squad as they play their sixth home match of the season against the Trojans."
-    , False),
-   ("Vx2nYwy_O5I", "Nantucket Whalers Girls Lacrosse vs. Monomoy Sharks - May 19, 2025",
-    "Nantucket Sports Connection proudly presents your Nantucket Whalers Girls Varsity Lacrosse "
-    "squad. Nantucket 9-4 overall Ranked #5 in Division 4 Monomoy 11-4 overall Ranked #11 in "
-    "Division 4 These two teams met on Friday May 16th with the Whalers winning 8-4."
-    , False),
-   ("4dSaVdrUhN0", "Nantucket Whalers Girls Lacrosse vs. St. John Paul II Lions - May 23, 2025",
-    "Nantucket Sports Connection proudly presents your *defending league champion* Whalers Girls "
-    "Varsity Lacrosse squad as they play their penultimate regular season match against the Lions "
-    "from St. John Paul II."
-    , False),
-   ("5-FiHjYMhA4", "Nantucket Whalers Girls Lacrosse vs. Martha&rsquo;s Vineyard - May 24, 2025",
-    "Nantucket Sports Connection proudly presents your *defending league champion* Whalers Girls "
-    "Varsity Lacrosse squad as they close the 2025 regular season for lacrosse with a cross-island "
-    "rivalry matchup!"
-    , False),
-   ("MouZYCesPl8", "MIAA Div. 4 Round of 32: Nantucket Whalers Girls Lacrosse vs. Wahconah Warriors - June 2, 2025",
-    "Nantucket Sports Connection and NCTV presents the girls lacrosse MIAA Division 4 Round of 32"
-    , False),
    ("O0eYrBjfQ5U", "MIAA Division 4 Quarterfinals: Nantucket Whalers Girls Lacrosse AT Cohasset Skippers - June 6, 2025",
     "Nantucket Sports Connection and NCTV presents the MIAA Division 4 Girls Lacrosse "
     "Quarterfinals, and on the road!"
@@ -2466,236 +2420,263 @@ SPORTS_VIDEOS = {
    ("5etA0Gf4kn4", "MIAA Div. 4 Round of 16: Nantucket Whalers Girls Lacrosse vs. Manchester Essex Hornets - June 4 2025",
     "Nantucket Sports Connection and NCTV presents the MIAA Division 4 Girls Lacrosse Round of 16."
     , False),
+   ("MouZYCesPl8", "MIAA Div. 4 Round of 32: Nantucket Whalers Girls Lacrosse vs. Wahconah Warriors - June 2, 2025",
+    "Nantucket Sports Connection and NCTV presents the girls lacrosse MIAA Division 4 Round of 32"
+    , False),
+   ("5-FiHjYMhA4", "Nantucket Whalers Girls Lacrosse vs. Martha&rsquo;s Vineyard - May 24, 2025",
+    "Nantucket Sports Connection proudly presents your *defending league champion* Whalers Girls "
+    "Varsity Lacrosse squad as they close the 2025 regular season for lacrosse with a cross-island "
+    "rivalry matchup!"
+    , False),
+   ("4dSaVdrUhN0", "Nantucket Whalers Girls Lacrosse vs. St. John Paul II Lions - May 23, 2025",
+    "Nantucket Sports Connection proudly presents your *defending league champion* Whalers Girls "
+    "Varsity Lacrosse squad as they play their penultimate regular season match against the Lions "
+    "from St. John Paul II."
+    , False),
+   ("Vx2nYwy_O5I", "Nantucket Whalers Girls Lacrosse vs. Monomoy Sharks - May 19, 2025",
+    "Nantucket Sports Connection proudly presents your Nantucket Whalers Girls Varsity Lacrosse "
+    "squad. Nantucket 9-4 overall Ranked #5 in Division 4 Monomoy 11-4 overall Ranked #11 in "
+    "Division 4 These two teams met on Friday May 16th with the Whalers winning 8-4."
+    , False),
+   ("oPl-UzhgRqQ", "Nantucket Whalers Girls Lacrosse vs. Bridgewater-Raynham Trojans - May 15, 2025",
+    "Nantucket Sports Connection proudly presents your *defending league champion* Whalers Girls "
+    "Varsity Lacrosse squad as they play their sixth home match of the season against the Trojans."
+    , False),
+   ("YDD3qSgA6Rc", "Nantucket Whalers Girls Lacrosse vs. Nauset Warriors - May 8, 2025",
+    "Nantucket Sports Connection proudly presents your *defending league champion* Whalers Girls "
+    "Varsity Lacrosse squad as they play their fifth home game of the season against the Warriors "
+    "in an important Cape &amp; Islands League matchup."
+    , False),
+   ("_Nkmo4Txj60", "Nantucket Whalers Girls Lacrosse vs. Falmouth Clippers - May 1, 2025",
+    "Nantucket Sports Connection proudly presents your defending league champion Whalers Girls "
+    "Varsity Lacrosse squad as they play their fourth home match of the season against the Clippers "
+    "from across the sound."
+    , False),
+   ("vPLzZgE006k", "Nantucket Whalers Girls Lacrosse vs. Dennis-Yarmouth Dolphins - April 28, 2025",
+    "Nantucket Sports Connection proudly presents your *defending league champion* Whalers Girls "
+    "Varsity Lacrosse squad as they play their third home match of the season, and first since "
+    "spring break, against the Dolphins from Dennis-Yarmouth."
+    , False),
+   ("oiPN4lSquVk", "Nantucket Whalers Girls Lacrosse vs. Cape Cod Academy Seahawks - April 17, 2025",
+    "Nantucket Sports Connection proudly presents your defending league champion Whalers Girls "
+    "Varsity Lacrosse squad as they play their second home match of the season against the Seahawks "
+    "from Cape Cod Academy."
+    , False),
+   ("5NpEq6R7jwc", "Nantucket Whalers Girls Lacrosse vs. Barnstable Red Hawks - April 10, 2025",
+    "Nantucket Sports Connection proudly presents the Whalers Girls Varsity Lacrosse squad as they "
+    "play their first home match of the season against the Red Hawks from Barnstable High School."
+    , False),
   ],
   "School Yr 25-26": [
-   ("9SL_8jd7ozw", "Nantucket Whalers Girls Lacrosse vs. Monomoy Sharks - April 1, 2026",
-    "The Nantucket Sports Connection proudly presents your defending league champion Whalers Girls "
-    "Varsity Lacrosse squad as they turn up the heat on their 2026 season with a league matchup "
-    "against the Sharks from Monomoy."
-    , False),
-   ("wz6uzLgXy1s", "Nantucket Whalers Girls Lacrosse vs. Martha&rsquo;s Vineyard - April 4, 2026",
-    "Nantucket Sports Connection proudly presents your defending league champion Whalers Girls "
-    "Varsity Lacrosse squad as they play a huge cross-island rivalry matchup!"
-    , False),
-   ("fOQvC-6G-ZE", "Nantucket Whalers Girls Lacrosse vs. Barnstable Red Hawks - April 14, 2026",
-    "Nantucket Sports Connection proudly presents your defending league champion Whalers Girls "
-    "Varsity Lacrosse squad as they welcome the Division 1 Red Hawks from Barnstable."
-    , False),
-   ("RmPwzNqBFPo", "Nantucket Whalers Girls Lacrosse vs. Falmouth Academy Mariners - April 17, 2026",
-    "Nantucket Sports Connection proudly presents your defending league champion Whalers Girls "
-    "Varsity Lacrosse squad as they play against the Mariners from Falmouth Academy."
-    , False),
-   ("612gxiobvTs", "Nantucket Whalers Girls Lacrosse vs. Nauset Warriors - April 29, 2026",
-    "Nantucket Sports Connection proudly presents your *defending league champion* Whalers Girls "
-    "Varsity Lacrosse squad as they face the Warriors in an important Cape &amp; Islands League "
-    "matchup."
-    , False),
-   ("oaWl8pwmWk4", "Nantucket Whalers Girls Lacrosse vs. Dennis-Yarmouth Dolphins - May 11, 2026",
-    "Nantucket Sports Connection proudly presents your defending league champion Whalers Girls "
-    "Varsity Lacrosse squad as they take on the Dolphins from Dennis-Yarmouth."
-    , False),
-   ("0a0QzL4w-0A", "Nantucket Whalers Girls Lacrosse vs. St. John Paul II Lions - May 14, 2026",
-    "Nantucket Sports Connection proudly presents your defending league champion Whalers Girls "
-    "Varsity Lacrosse squad as they play their final home match of the season against the Lions "
-    "from across the sound in Hyannis."
-    , False),
-   ("8lWumqBykl8", "MIAA Division 4 Round of 32: Nantucket Whalers Girls Lacrosse vs. Monomoy Sharks - May 26, 2026",
-    "The Nantucket Sports Connection proudly presents your *threepeat* league champion Whalers "
-    "Girls Varsity Lacrosse squad as they enter the 2026 postseason with a rematch against the "
-    "Sharks from Monomoy."
+   ("4-AaGxCVx8A", "MIAA Div. 4 Quarterfinal - Nantucket Whalers Girls Lacrosse AT Sandwich Blue Knights - June 4, 2026",
+    "Nantucket Sports Connection proudly presents your *three-peat* league champion Whalers Girls "
+    "Varsity Lacrosse squad as they cross the sound to take on the #1 seed Sandwich Blue Knights in "
+    "the MIAA Division 4 Quarterfinals!"
     , False),
    ("EyoXYMVyqnM", "MIAA Division 4 Round of 16: Nantucket Whalers Girls Lacrosse vs. Bromfield Trojans - June 1, 2026",
     "Continuing our Monday MIAA Tournament doubleheader, the Nantucket Sports Connection proudly "
     "presents your threepeat league champion Whalers Girls Varsity Lacrosse squad as they play "
     "their final home game of 2026 with a first-time match against the Trojans from Bromfield."
     , False),
-   ("4-AaGxCVx8A", "MIAA Div. 4 Quarterfinal - Nantucket Whalers Girls Lacrosse AT Sandwich Blue Knights - June 4, 2026",
-    "Nantucket Sports Connection proudly presents your *three-peat* league champion Whalers Girls "
-    "Varsity Lacrosse squad as they cross the sound to take on the #1 seed Sandwich Blue Knights in "
-    "the MIAA Division 4 Quarterfinals!"
+   ("8lWumqBykl8", "MIAA Division 4 Round of 32: Nantucket Whalers Girls Lacrosse vs. Monomoy Sharks - May 26, 2026",
+    "The Nantucket Sports Connection proudly presents your *threepeat* league champion Whalers "
+    "Girls Varsity Lacrosse squad as they enter the 2026 postseason with a rematch against the "
+    "Sharks from Monomoy."
+    , False),
+   ("0a0QzL4w-0A", "Nantucket Whalers Girls Lacrosse vs. St. John Paul II Lions - May 14, 2026",
+    "Nantucket Sports Connection proudly presents your defending league champion Whalers Girls "
+    "Varsity Lacrosse squad as they play their final home match of the season against the Lions "
+    "from across the sound in Hyannis."
+    , False),
+   ("oaWl8pwmWk4", "Nantucket Whalers Girls Lacrosse vs. Dennis-Yarmouth Dolphins - May 11, 2026",
+    "Nantucket Sports Connection proudly presents your defending league champion Whalers Girls "
+    "Varsity Lacrosse squad as they take on the Dolphins from Dennis-Yarmouth."
+    , False),
+   ("612gxiobvTs", "Nantucket Whalers Girls Lacrosse vs. Nauset Warriors - April 29, 2026",
+    "Nantucket Sports Connection proudly presents your *defending league champion* Whalers Girls "
+    "Varsity Lacrosse squad as they face the Warriors in an important Cape &amp; Islands League "
+    "matchup."
+    , False),
+   ("RmPwzNqBFPo", "Nantucket Whalers Girls Lacrosse vs. Falmouth Academy Mariners - April 17, 2026",
+    "Nantucket Sports Connection proudly presents your defending league champion Whalers Girls "
+    "Varsity Lacrosse squad as they play against the Mariners from Falmouth Academy."
+    , False),
+   ("fOQvC-6G-ZE", "Nantucket Whalers Girls Lacrosse vs. Barnstable Red Hawks - April 14, 2026",
+    "Nantucket Sports Connection proudly presents your defending league champion Whalers Girls "
+    "Varsity Lacrosse squad as they welcome the Division 1 Red Hawks from Barnstable."
+    , False),
+   ("wz6uzLgXy1s", "Nantucket Whalers Girls Lacrosse vs. Martha&rsquo;s Vineyard - April 4, 2026",
+    "Nantucket Sports Connection proudly presents your defending league champion Whalers Girls "
+    "Varsity Lacrosse squad as they play a huge cross-island rivalry matchup!"
+    , False),
+   ("9SL_8jd7ozw", "Nantucket Whalers Girls Lacrosse vs. Monomoy Sharks - April 1, 2026",
+    "The Nantucket Sports Connection proudly presents your defending league champion Whalers Girls "
+    "Varsity Lacrosse squad as they turn up the heat on their 2026 season with a league matchup "
+    "against the Sharks from Monomoy."
     , False),
   ],
  },
  "Boys Lacrosse": {
   "School Yr 21-22": [
-   ("6ppmY0ns0JM", "Whalers Boys Lacrosse vs. Nauset Warriors - May 5, 2022",
-    "Nantucket Varsity Boys Lacrosse vs. Nauset Warriors."
+   ("G0Sv1An30j8", "MIAA State Tournament Round of 16 - Whalers Boys Lacrosse vs. Littleton Tigers - June 10, 2022",
+    "Whalers Boys Varsity Lacrosse vs. Littleton Tigers."
     , False),
-   ("0OpqnR8HCyo", "Nantucket Whalers Boys Lacrosse vs. Falmouth Clippers - May 12, 2022",
-    "Nantucket Varsity Boys Lacrosse vs. Falmouth Clippers."
-    , False),
-   ("oN8P99355_A", "Nantucket Whalers Boys Lacrosse vs. Pembroke Titans - May 14, 2022",
-    "Nantucket Varsity Boys Lacrosse vs. Pembroke Titans."
-    , False),
-   ("lGDwTA553mo", "Nantucket Whalers Boys Lacrosse vs. Sandwich Blue Knights - May 19, 2022",
-    "Nantucket Whalers Boys Varsity Lacrosse vs. Sandwich Blue Knights. Whalers ranked #14 in MIAA "
-    "Div 4 Overall Record 4-6. Blue Knights Ranked #1 in MIAA Div 4 Overall Record 11-2."
-    , False),
-   ("xPs5qVQx9wM", "Whalers Boys Lacrosse vs. Martha&rsquo;s Vineyard - May 30, 2022",
-    "Varsity Lacrosse Whalers Ranked #10 in MIAA Div 4 Overall Record 6-8. Vineyard Ranked #30 in "
-    "MIAA Div 4 Overall Record 7-6."
+   ("bdmut4C_3yM", "MIAA St. Tournament Round of 32 Whalers Boys Lacrosse vs. Bellingham Blackhawks - June 7, 2022",
+    "Varsity Lacrosse MIAA Round of 32 State Tournament."
     , False),
    ("jrp9-EoJMDc", "Whalers Boys Lacrosse vs. Dennis Yarmouth Dolphins - May 31, 2022 (Senior Recognition Game)",
     "Nantucket Whalers vs. Dennis Yarmouth Dolphins. Whalers Ranked #9 in MIAA Div 4 Overall Record "
     "7-9."
     , False),
-   ("bdmut4C_3yM", "MIAA St. Tournament Round of 32 Whalers Boys Lacrosse vs. Bellingham Blackhawks - June 7, 2022",
-    "Varsity Lacrosse MIAA Round of 32 State Tournament."
+   ("xPs5qVQx9wM", "Whalers Boys Lacrosse vs. Martha&rsquo;s Vineyard - May 30, 2022",
+    "Varsity Lacrosse Whalers Ranked #10 in MIAA Div 4 Overall Record 6-8. Vineyard Ranked #30 in "
+    "MIAA Div 4 Overall Record 7-6."
     , False),
-   ("G0Sv1An30j8", "MIAA State Tournament Round of 16 - Whalers Boys Lacrosse vs. Littleton Tigers - June 10, 2022",
-    "Whalers Boys Varsity Lacrosse vs. Littleton Tigers."
+   ("lGDwTA553mo", "Nantucket Whalers Boys Lacrosse vs. Sandwich Blue Knights - May 19, 2022",
+    "Nantucket Whalers Boys Varsity Lacrosse vs. Sandwich Blue Knights. Whalers ranked #14 in MIAA "
+    "Div 4 Overall Record 4-6. Blue Knights Ranked #1 in MIAA Div 4 Overall Record 11-2."
+    , False),
+   ("oN8P99355_A", "Nantucket Whalers Boys Lacrosse vs. Pembroke Titans - May 14, 2022",
+    "Nantucket Varsity Boys Lacrosse vs. Pembroke Titans."
+    , False),
+   ("0OpqnR8HCyo", "Nantucket Whalers Boys Lacrosse vs. Falmouth Clippers - May 12, 2022",
+    "Nantucket Varsity Boys Lacrosse vs. Falmouth Clippers."
+    , False),
+   ("6ppmY0ns0JM", "Whalers Boys Lacrosse vs. Nauset Warriors - May 5, 2022",
+    "Nantucket Varsity Boys Lacrosse vs. Nauset Warriors."
     , False),
   ],
   "School Yr 22-23": [
-   ("LUbx_JS-Juw", "Whalers Boys Varsity Lacrosse",
-    "Whalers look to rebound from an off island loss to Sandwich. The Clippers have lost 3 of their "
-    "last four games after winning its first five games in a row."
-    , False),
-   ("U2nx6XrtTxg", "Whalers Boys Varsity Lacrosse",
-    "Nantucket Whalers vs. Martha&rsquo;s Vineyard Vineyarders Vito Capizzo Stadium"
-    , False),
-   ("of8FvN2hdV8", "Whalers Boys Varsity Lacrosse",
-    "Nantucket Whalers vs. Whitman-Hanson Panthers Vito Capizzo Stadium"
-    , False),
-   ("gjR9k2eQ6Os", "Whalers Boys Varsity Lacrosse",
-    "Nantucket Whalers vs. Cardinal Spellman Cardinals Vito Capizzo Stadium"
-    , False),
-   ("-6iTF-jHmBA", "Whalers Boys Varsity Lacrosse",
-    "Nantucket Whalers vs. Nauset Warriors Vito Capizzo Stadium"
+   ("5fAGMaZbdQ4", "Whalers Boys Varsity Lacrosse MIAA State Tournament Round of 16 Game",
+    "Nantucket Whalers vs. Rockland Bulldogs Vito Capizzo Stadium"
     , False),
    ("wACgxj7TqE8", "Whalers Boys Varsity Lacrosse MIAA State Tournament Round of 32 Game",
     "Nantucket Whalers vs. Seekonk Warriors Vito Capizzo Stadium"
     , False),
-   ("5fAGMaZbdQ4", "Whalers Boys Varsity Lacrosse MIAA State Tournament Round of 16 Game",
-    "Nantucket Whalers vs. Rockland Bulldogs Vito Capizzo Stadium"
+   ("-6iTF-jHmBA", "Whalers Boys Varsity Lacrosse",
+    "Nantucket Whalers vs. Nauset Warriors Vito Capizzo Stadium"
+    , False),
+   ("gjR9k2eQ6Os", "Whalers Boys Varsity Lacrosse",
+    "Nantucket Whalers vs. Cardinal Spellman Cardinals Vito Capizzo Stadium"
+    , False),
+   ("of8FvN2hdV8", "Whalers Boys Varsity Lacrosse",
+    "Nantucket Whalers vs. Whitman-Hanson Panthers Vito Capizzo Stadium"
+    , False),
+   ("U2nx6XrtTxg", "Whalers Boys Varsity Lacrosse",
+    "Nantucket Whalers vs. Martha&rsquo;s Vineyard Vineyarders Vito Capizzo Stadium"
+    , False),
+   ("LUbx_JS-Juw", "Whalers Boys Varsity Lacrosse",
+    "Whalers look to rebound from an off island loss to Sandwich. The Clippers have lost 3 of their "
+    "last four games after winning its first five games in a row."
     , False),
   ],
   "School Yr 23-24": [
-   ("sPzHUXBTpes", "Nantucket Whalers Boys Lacrosse vs. Barnstable - April 11, 2024",
-    "Nantucket Sports Connection kicks off coverage of Spring Season for the Whalers Boys Varsity "
-    "Lacrosse squad as they look to repeat last year&rsquo;s strong performance that brought them "
-    "all the way to a Round of 8 appearance in the MIAA Division 4 Tournament."
+   ("aieaZVgOkgc", "[FULL VIDEO + BONUS] MIAA Division 4 Championship - Whalers Boys Lacrosse vs Sandwich - June 15 2024",
+    "For the first time ever, the #1 seeded Whalers (20-1) are playing for a Boys Lacrosse "
+    "Championship title!"
     , False),
-   ("tUayR3kdfWw", "Nantucket Whalers Boys Lacrosse vs. Archbishop Williams Bishops - May 1, 2024",
-    "The Whalers (5-1) host the Bishops (6-2), rekindling a rivalry from 2018!"
+   ("1VAoSXV0jNw", "MIAA Division 4 Semifinals - Whalers Boys Lacrosse vs. Swampscott - June 11, 2024",
+    "The #1 seeded Whalers (19-1) play the #13 seeded Swampscott Big Blue (20-1) in the "
+    "Massachusetts State Semifinal of Division 4 Lacrosse."
     , False),
-   ("7BNspb61q3Y", "Nantucket Whalers Boys Lacrosse vs. Falmouth Clippers - May 2, 2024",
-    "The Whalers have a huge Cape and Island League matchup with league title implications!"
+   ("bzM2ydg9km0", "MIAA Division 4 Quarterfinals - Whalers Boys Lacrosse vs. Manchester Essex - June 8, 2024",
+    "The #1 Seeded Whalers (18-1) host the # 8 Seeded Hornets (16-4) for a chance to advance to the "
+    "Final Four"
     , False),
-   ("_RZCtnmkxGA", "Nantucket Whalers Boys Lacrosse vs. Nauset Warriors - May 9, 2024",
-    "The Whalers face off against the Warriors in a game that could all but cement a Cape and "
-    "Islands League title for Nantucket."
+   ("WMaGxjoYqxE", "Nantucket Whalers Boys Lacrosse vs. Martha&rsquo;s Vineyard - May 25, 2024",
+    "The Whalers Boys Varsity Lacrosse squad celebrates its ten seniors with a clash against the "
+    "cross island rival Vineyarders"
     , False),
    ("KtSTpqLHlBs", "Nantucket Whalers Boys Lacrosse vs. Shrewsbury Colonials - May 18, 2024",
     "The Whalers Boys Varsity Lacrosse squad (14-1, #1 in MIAA Division 4) looks to keep up their "
     "momentum going into late season as they welcome the Shrewsbury Colonials (6-9, #26 in MIAA "
     "Division 1) to the island for the first time."
     , False),
-   ("WMaGxjoYqxE", "Nantucket Whalers Boys Lacrosse vs. Martha&rsquo;s Vineyard - May 25, 2024",
-    "The Whalers Boys Varsity Lacrosse squad celebrates its ten seniors with a clash against the "
-    "cross island rival Vineyarders"
+   ("_RZCtnmkxGA", "Nantucket Whalers Boys Lacrosse vs. Nauset Warriors - May 9, 2024",
+    "The Whalers face off against the Warriors in a game that could all but cement a Cape and "
+    "Islands League title for Nantucket."
     , False),
-   ("bzM2ydg9km0", "MIAA Division 4 Quarterfinals - Whalers Boys Lacrosse vs. Manchester Essex - June 8, 2024",
-    "The #1 Seeded Whalers (18-1) host the # 8 Seeded Hornets (16-4) for a chance to advance to the "
-    "Final Four"
+   ("7BNspb61q3Y", "Nantucket Whalers Boys Lacrosse vs. Falmouth Clippers - May 2, 2024",
+    "The Whalers have a huge Cape and Island League matchup with league title implications!"
     , False),
-   ("1VAoSXV0jNw", "MIAA Division 4 Semifinals - Whalers Boys Lacrosse vs. Swampscott - June 11, 2024",
-    "The #1 seeded Whalers (19-1) play the #13 seeded Swampscott Big Blue (20-1) in the "
-    "Massachusetts State Semifinal of Division 4 Lacrosse."
+   ("tUayR3kdfWw", "Nantucket Whalers Boys Lacrosse vs. Archbishop Williams Bishops - May 1, 2024",
+    "The Whalers (5-1) host the Bishops (6-2), rekindling a rivalry from 2018!"
     , False),
-   ("aieaZVgOkgc", "[FULL VIDEO + BONUS] MIAA Division 4 Championship - Whalers Boys Lacrosse vs Sandwich - June 15 2024",
-    "For the first time ever, the #1 seeded Whalers (20-1) are playing for a Boys Lacrosse "
-    "Championship title!"
+   ("sPzHUXBTpes", "Nantucket Whalers Boys Lacrosse vs. Barnstable - April 11, 2024",
+    "Nantucket Sports Connection kicks off coverage of Spring Season for the Whalers Boys Varsity "
+    "Lacrosse squad as they look to repeat last year&rsquo;s strong performance that brought them "
+    "all the way to a Round of 8 appearance in the MIAA Division 4 Tournament."
     , False),
   ],
   "School Yr 24-25": [
-   ("mSDB1NMLlx0", "Nantucket Whalers Boys Lacrosse vs. Martha&rsquo;s Vineyard - April 5, 2025",
-    "Nantucket Sports Connection proudly presents your *defending State Champion* Whalers Boys "
-    "Varsity Lacrosse squad as they open their spring season with a league matchup against their "
-    "cross island rivals from Martha&rsquo;s Vineyard."
+   ("OClGkwk3krg", "MIAA Division 4 Semifinals: Nantucket Whalers Boys Lacrosse vs. Cohasset Skippers - June 11, 2025",
+    "Nantucket Sports Connection and NCTV presents the MIAA Division 4 Boys Lacrosse Final Four "
+    "matchup for the ages!"
     , False),
-   ("LKRxGqS1tZU", "Nantucket Whalers Boys Lacrosse vs. Nauset Warriors - April 15, 2025",
-    "Nantucket Sports Connection proudly presents your defending State Champion Whalers as they "
-    "face off against the Warriors in a key Cape and Islands League match that could prove the "
-    "difference in who will win the league title."
+   ("VJokkOD1oYs", "MIAA Div. 4 Round of 8: Nantucket Whalers Boys Lacrosse vs. Ipswich Tigers - June 8, 2025",
+    "Nantucket Sports Connection and NCTV presents the MIAA Division 4 Boys Lacrosse Round of 8."
     , False),
-   ("WVlLYFkb-hI", "Nantucket Whalers Boys Lacrosse vs. Groton-Dunstable Crusaders - April 26, 2025",
+   ("X0quLT0faRA", "MIAA Div. 4 Round of 16: Nantucket Whalers Boys Lacrosse vs. Sandwich Blue Knights - June 5, 2025",
+    "Nantucket Sports Connection and NCTV presents the MIAA Division 4 Boys Lacrosse Round of 16."
+    , False),
+   ("1tjujbTNDuU", "MIAA Div. 4 Round of 32: Nantucket Whalers Boys Lacrosse vs. Lenox Millionaires - June 2, 2025",
+    "Nantucket Sports Connection and NCTV presents the opening round of the MIAA Division 4 "
+    "Tournament."
+    , False),
+   ("bWOVcuD4Nh0", "Nantucket Whalers Boys Lacrosse vs. Monomoy Sharks - May 21, 2025",
     "Nantucket Sports Connection proudly presents your defending State Champion Whalers as they "
-    "face off against the Crusaders for the first time in program history!"
+    "face off against the Sharks from across the sound."
+    , False),
+   ("B_CnACttPAM", "Nantucket Whalers Boys Lacrosse vs. Whitman-Hanson - May 17, 2025",
+    "Nantucket Sports Connection proudly presents your defending State Champion Whalers as they "
+    "face off against the Panthers."
+    , False),
+   ("hZOtI54mK1c", "Nantucket Whalers Boys Lacrosse vs. Falmouth - May 14, 2025",
+    "Your defending State Champion Whalers have a huge Cape and Island League matchup with league "
+    "title implications!"
     , False),
    ("boaSYDBfC6s", "Nantucket Whalers Boys Lacrosse vs. Barnstable - May 6, 2025",
     "Nantucket Sports Connection proudly presents your defending State Champion Nantucket Whalers "
     "as they face off against the Barnstable Red Hawks in a crucial Cape &amp; Islands League "
     "matchup."
     , False),
-   ("hZOtI54mK1c", "Nantucket Whalers Boys Lacrosse vs. Falmouth - May 14, 2025",
-    "Your defending State Champion Whalers have a huge Cape and Island League matchup with league "
-    "title implications!"
-    , False),
-   ("B_CnACttPAM", "Nantucket Whalers Boys Lacrosse vs. Whitman-Hanson - May 17, 2025",
+   ("WVlLYFkb-hI", "Nantucket Whalers Boys Lacrosse vs. Groton-Dunstable Crusaders - April 26, 2025",
     "Nantucket Sports Connection proudly presents your defending State Champion Whalers as they "
-    "face off against the Panthers."
+    "face off against the Crusaders for the first time in program history!"
     , False),
-   ("bWOVcuD4Nh0", "Nantucket Whalers Boys Lacrosse vs. Monomoy Sharks - May 21, 2025",
+   ("LKRxGqS1tZU", "Nantucket Whalers Boys Lacrosse vs. Nauset Warriors - April 15, 2025",
     "Nantucket Sports Connection proudly presents your defending State Champion Whalers as they "
-    "face off against the Sharks from across the sound."
+    "face off against the Warriors in a key Cape and Islands League match that could prove the "
+    "difference in who will win the league title."
     , False),
-   ("1tjujbTNDuU", "MIAA Div. 4 Round of 32: Nantucket Whalers Boys Lacrosse vs. Lenox Millionaires - June 2, 2025",
-    "Nantucket Sports Connection and NCTV presents the opening round of the MIAA Division 4 "
-    "Tournament."
-    , False),
-   ("X0quLT0faRA", "MIAA Div. 4 Round of 16: Nantucket Whalers Boys Lacrosse vs. Sandwich Blue Knights - June 5, 2025",
-    "Nantucket Sports Connection and NCTV presents the MIAA Division 4 Boys Lacrosse Round of 16."
-    , False),
-   ("VJokkOD1oYs", "MIAA Div. 4 Round of 8: Nantucket Whalers Boys Lacrosse vs. Ipswich Tigers - June 8, 2025",
-    "Nantucket Sports Connection and NCTV presents the MIAA Division 4 Boys Lacrosse Round of 8."
-    , False),
-   ("OClGkwk3krg", "MIAA Division 4 Semifinals: Nantucket Whalers Boys Lacrosse vs. Cohasset Skippers - June 11, 2025",
-    "Nantucket Sports Connection and NCTV presents the MIAA Division 4 Boys Lacrosse Final Four "
-    "matchup for the ages!"
+   ("mSDB1NMLlx0", "Nantucket Whalers Boys Lacrosse vs. Martha&rsquo;s Vineyard - April 5, 2025",
+    "Nantucket Sports Connection proudly presents your *defending State Champion* Whalers Boys "
+    "Varsity Lacrosse squad as they open their spring season with a league matchup against their "
+    "cross island rivals from Martha&rsquo;s Vineyard."
     , False),
   ],
   "School Yr 25-26": [
-   ("WryFMF9iATo", "Nantucket Whalers Boys Lacrosse vs. Monomoy Sharks - March 31, 2026",
-    "Kicking off our Spring Season of broadcasting, the Nantucket Sports Connection proudly "
-    "presents the Whalers Varsity Boys Lacrosse squad opening their 2026 campaign with a matchup "
-    "against the Sharks from across the sound in Harwich."
+   ("lWZtuHEr3I4", "[FULL VIDEO] MIAA Div. 4 Championship - Nantucket Whalers Boys Lacrosse vs. Cohasset - June 13, 2026",
+    "The #2 Seeded Whalers play for the MIAA Division 4 State Championship for the second time in "
+    "three years as they take on the #1 seeded Cohasset Skippers, who knocked them out of the "
+    "Semifinal last year and twice before in tournament competition in 2015 and 2019."
     , False),
-   ("pg6rYeFvZP0", "Nantucket Whalers Boys Lacrosse vs. Falmouth - April 9, 2026",
-    "Nantucket Sports Connection proudly presents the Whalers Varsity Boys Lacrosse squad facing a "
-    "huge challenge from across the sound as the Falmouth Clippers pay a visit."
+   ("hptPFswb74M", "MIAA Div. 4 Semifinal - Nantucket Whalers Boys Lacrosse vs. Manchester Essex Hornets - June 9, 2026",
+    "The #2 Seeded Whalers continue their quest to a second Division 4 title in three years. "
+    "Nantucket cruised through the first two rounds outscoring Monomoy and Rockland by a combined "
+    "score 32-1 to punch their ticket to the Elite 8. They then survived a strong showing from the "
+    "Pentucket Panthers in Nantucket&rsquo;s final lacrosse game on natural turf at Vito Capizzo, "
+    "prevailing 10-9 in a down-to-the-wire match on Saturday."
     , False),
-   ("IKs0cmUphMU", "Nantucket Whalers Boys Lacrosse vs. Nauset Warriors - April 16, 2026",
-    "Nantucket Sports Connection proudly presents the Whalers Varsity Boys Lacrosse squad in "
-    "another huge early season test, as the Warriors travel over from Nauset on the Lower Cape in a "
-    "match that could determine the league title."
+   ("Qer81WMKOlI", "MIAA Div. 4 Quarterfinal - Nantucket Whalers Boys Lacrosse vs. Pentucket Panthers - June 6, 2026",
+    "The #2 Seeded Whalers continue their quest to a second Division 4 title in three years. "
+    "Nantucket cruised through the first two rounds outscoring Monomoy and Rockland by a combined "
+    "score 32-1 to punch their ticket to the Elite 8."
     , False),
-   ("muKfcNPlVIA", "Nantucket Whalers Boys Lacrosse vs. Barnstable Red Hawks - April 28, 2026",
-    "Nantucket Sports Connection proudly presents the Whalers Varsity Boys Lacrosse squad as they "
-    "take on the Division 2 Red Hawks from across the sound in Barnstable."
-    , False),
-   ("ybJxPL5oXfw", "Nantucket Whalers Boys Lacrosse vs. Sandwich Blue Knights - May 7, 2026",
-    "Nantucket Sports Connection proudly presents the Whalers Varsity Boys Lacrosse squad in a "
-    "replay of the 2024 MIAA Division 4 State Championship against their bitter rivals, the Blue "
-    "Knights."
-    , False),
-   ("Qk5wsghCScY", "Nantucket Whalers Boys Lacrosse vs. Canton Bulldogs - May 9, 2026",
-    "Nantucket Sports Connection proudly presents the Whalers Varsity Boys Lacrosse squad as they "
-    "take on the Division 2 Bulldogs for the first time in history!"
-    , False),
-   ("Taee1eBxXNk", "Nantucket Whalers Boys Lacrosse vs. Shrewsbury Colonials - May 16, 2026",
-    "Nantucket Sports Connection proudly presents the Whalers Varsity Boys Lacrosse squad as they "
-    "take on the Division 1 Colonials from Shrewsbury."
-    , False),
-   ("ShFR5e90kY0", "Nantucket Whalers Boys Lacrosse vs. Pembroke Titans - May 21, 2026",
-    "Nantucket Sports Connection proudly presents the Whalers Varsity Boys Lacrosse squad as they "
-    "take on the Division 3 Titans from the South Shore in their penultimate game of the regular "
-    "season."
-    , False),
-   ("XZoZurLejeU", "Nantucket Whalers Boys Lacrosse vs. Martha&rsquo;s Vineyard - May 23, 2026",
-    "Nantucket Sports Connection proudly presents the Whalers Varsity Boys Lacrosse squad as they "
-    "wrap their 2026 regular season with the cross-island rivalry showdown against the dastardly "
-    "Vineyarders."
+   ("FKlZ8SfMKI0", "MIAA Division 4 Round of 16: Nantucket Whalers Boys Lacrosse vs. Rockland Bulldogs - June 3, 2026",
+    "The Nantucket Sports Connection proudly presents the Whalers Varsity Boys Lacrosse squad "
+    "continuing their march through the tournament towards their third consecutive Final Four "
+    "appearance, but first they must overcome the Bulldogs from Rockland."
     , False),
    ("f_s9wYlMnM8", "MIAA Division 4 Round of 32: Nantucket Whalers Boys Lacrosse vs. Monomoy Sharks - June 1, 2026",
     "To begin our Monday MIAA Tournament doubleheader, the Nantucket Sports Connection proudly "
@@ -2722,130 +2703,203 @@ SPORTS_VIDEOS = {
     "Capizzo Stadium, coming to you live both on the NSC YouTube channel as well as on NCTV HD "
     "Channel 1072.<br><br>[This is a fixed copy of the original livestream, which had 476 views.]"
     , False),
-   ("FKlZ8SfMKI0", "MIAA Division 4 Round of 16: Nantucket Whalers Boys Lacrosse vs. Rockland Bulldogs - June 3, 2026",
-    "The Nantucket Sports Connection proudly presents the Whalers Varsity Boys Lacrosse squad "
-    "continuing their march through the tournament towards their third consecutive Final Four "
-    "appearance, but first they must overcome the Bulldogs from Rockland."
+   ("XZoZurLejeU", "Nantucket Whalers Boys Lacrosse vs. Martha&rsquo;s Vineyard - May 23, 2026",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Boys Lacrosse squad as they "
+    "wrap their 2026 regular season with the cross-island rivalry showdown against the dastardly "
+    "Vineyarders."
     , False),
-   ("Qer81WMKOlI", "MIAA Div. 4 Quarterfinal - Nantucket Whalers Boys Lacrosse vs. Pentucket Panthers - June 6, 2026",
-    "The #2 Seeded Whalers continue their quest to a second Division 4 title in three years. "
-    "Nantucket cruised through the first two rounds outscoring Monomoy and Rockland by a combined "
-    "score 32-1 to punch their ticket to the Elite 8."
+   ("ShFR5e90kY0", "Nantucket Whalers Boys Lacrosse vs. Pembroke Titans - May 21, 2026",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Boys Lacrosse squad as they "
+    "take on the Division 3 Titans from the South Shore in their penultimate game of the regular "
+    "season."
     , False),
-   ("hptPFswb74M", "MIAA Div. 4 Semifinal - Nantucket Whalers Boys Lacrosse vs. Manchester Essex Hornets - June 9, 2026",
-    "The #2 Seeded Whalers continue their quest to a second Division 4 title in three years. "
-    "Nantucket cruised through the first two rounds outscoring Monomoy and Rockland by a combined "
-    "score 32-1 to punch their ticket to the Elite 8. They then survived a strong showing from the "
-    "Pentucket Panthers in Nantucket&rsquo;s final lacrosse game on natural turf at Vito Capizzo, "
-    "prevailing 10-9 in a down-to-the-wire match on Saturday."
+   ("Taee1eBxXNk", "Nantucket Whalers Boys Lacrosse vs. Shrewsbury Colonials - May 16, 2026",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Boys Lacrosse squad as they "
+    "take on the Division 1 Colonials from Shrewsbury."
     , False),
-   ("lWZtuHEr3I4", "[FULL VIDEO] MIAA Div. 4 Championship - Nantucket Whalers Boys Lacrosse vs. Cohasset - June 13, 2026",
-    "The #2 Seeded Whalers play for the MIAA Division 4 State Championship for the second time in "
-    "three years as they take on the #1 seeded Cohasset Skippers, who knocked them out of the "
-    "Semifinal last year and twice before in tournament competition in 2015 and 2019."
+   ("Qk5wsghCScY", "Nantucket Whalers Boys Lacrosse vs. Canton Bulldogs - May 9, 2026",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Boys Lacrosse squad as they "
+    "take on the Division 2 Bulldogs for the first time in history!"
+    , False),
+   ("ybJxPL5oXfw", "Nantucket Whalers Boys Lacrosse vs. Sandwich Blue Knights - May 7, 2026",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Boys Lacrosse squad in a "
+    "replay of the 2024 MIAA Division 4 State Championship against their bitter rivals, the Blue "
+    "Knights."
+    , False),
+   ("muKfcNPlVIA", "Nantucket Whalers Boys Lacrosse vs. Barnstable Red Hawks - April 28, 2026",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Boys Lacrosse squad as they "
+    "take on the Division 2 Red Hawks from across the sound in Barnstable."
+    , False),
+   ("IKs0cmUphMU", "Nantucket Whalers Boys Lacrosse vs. Nauset Warriors - April 16, 2026",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Boys Lacrosse squad in "
+    "another huge early season test, as the Warriors travel over from Nauset on the Lower Cape in a "
+    "match that could determine the league title."
+    , False),
+   ("pg6rYeFvZP0", "Nantucket Whalers Boys Lacrosse vs. Falmouth - April 9, 2026",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Boys Lacrosse squad facing a "
+    "huge challenge from across the sound as the Falmouth Clippers pay a visit."
+    , False),
+   ("WryFMF9iATo", "Nantucket Whalers Boys Lacrosse vs. Monomoy Sharks - March 31, 2026",
+    "Kicking off our Spring Season of broadcasting, the Nantucket Sports Connection proudly "
+    "presents the Whalers Varsity Boys Lacrosse squad opening their 2026 campaign with a matchup "
+    "against the Sharks from across the sound in Harwich."
     , False),
   ],
  },
  "Softball": {
   "School Yr 24-25": [
-   ("3HFQbxla4Jg", "Nantucket Whalers Softball vs. Nauset Warriors - April 4, 2025",
+   ("XL8Y09ARwbo", "Nantucket Whalers Softball vs. Monomoy Sharks - May 12, 2025",
     "Nantucket Sports Connection presents your Whalers Varsity Softball squad taking the field for "
-    "the first time!"
+    "the third time ever on live TV!"
     , False),
    ("e5zbrC6F-G0", "Nantucket Whalers Softball vs. Sturgis East Storm - April 11, 2025",
     "Nantucket Sports Connection presents your Whalers Varsity Softball squad taking the field for "
     "the second time ever on live TV!"
     , False),
-   ("XL8Y09ARwbo", "Nantucket Whalers Softball vs. Monomoy Sharks - May 12, 2025",
+   ("3HFQbxla4Jg", "Nantucket Whalers Softball vs. Nauset Warriors - April 4, 2025",
     "Nantucket Sports Connection presents your Whalers Varsity Softball squad taking the field for "
-    "the third time ever on live TV!"
+    "the first time!"
     , False),
   ],
   "School Yr 25-26": [
-   ("jY3xGktUg9Q", "Nantucket Whalers Softball vs. Vineyard - April 4, 2026",
+   ("2iN7rrxCmLs", "Nantucket Whalers Softball vs. Barnstable Red Hawks - April 30, 2026",
     "The Nantucket Sports Connection proudly presents the Whalers Varsity Softball team as they "
-    "play their season opener against the cross-island rivals from Martha&rsquo;s Vineyard."
+    "take on the Red Hawks from Barnstable."
     , False),
    ("gfSJOFcWkhk", "Nantucket Whalers Softball vs. Rising Tide Herons - April 14, 2026",
     "Nantucket Sports Connection presents your Whalers Varsity Softball squad taking their home "
     "field for the second time this season as they welcome the Herons from Rising Tide in an "
     "important league matchup."
     , False),
-   ("2iN7rrxCmLs", "Nantucket Whalers Softball vs. Barnstable Red Hawks - April 30, 2026",
+   ("jY3xGktUg9Q", "Nantucket Whalers Softball vs. Vineyard - April 4, 2026",
     "The Nantucket Sports Connection proudly presents the Whalers Varsity Softball team as they "
-    "take on the Red Hawks from Barnstable."
+    "play their season opener against the cross-island rivals from Martha&rsquo;s Vineyard."
     , False),
   ],
  },
  "Baseball": {
   "School Yr 23-24": [
-   ("OwoMa15Xp9A", "Nantucket Whalers Baseball vs. Cape Cod Regional Tech. Crusaders - April 22, 2024",
-    "The Nantucket Sports Connection is proud to present the Whalers boys of summer for the first "
-    "time!"
-    , False),
-   ("QDCgzEW44JE", "Nantucket Whalers Baseball vs. Rising Tide Herons - May 1, 2024",
-    "Nantucket Sports Connection is proud to present the boys of summer for the second time!"
+   ("w1QeMVikSAs", "Nantucket Whalers Baseball vs. Monomoy Sharks - May 15, 2024",
+    "Baseball, on the NSC? Why not?"
     , False),
    ("syJGZ5QKE0g", "Nantucket Whalers Baseball vs. St. John Paul II Lions - May 3, 2024",
     "Nantucket Sports Connection is proud to present the boys of summer for the third time."
     , False),
-   ("w1QeMVikSAs", "Nantucket Whalers Baseball vs. Monomoy Sharks - May 15, 2024",
-    "Baseball, on the NSC? Why not?"
+   ("QDCgzEW44JE", "Nantucket Whalers Baseball vs. Rising Tide Herons - May 1, 2024",
+    "Nantucket Sports Connection is proud to present the boys of summer for the second time!"
+    , False),
+   ("OwoMa15Xp9A", "Nantucket Whalers Baseball vs. Cape Cod Regional Tech. Crusaders - April 22, 2024",
+    "The Nantucket Sports Connection is proud to present the Whalers boys of summer for the first "
+    "time!"
     , False),
   ],
   "School Yr 24-25": [
-   ("dt1E8ZdpLoY", "Nantucket Whalers Baseball vs. St. John Paul II Lions - April 9, 2025",
+   ("nM5G05Dzpyk", "Nantucket Whalers Baseball vs. Martha&rsquo;s Vineyard - May 26, 2025",
     "Nantucket Sports Connection is proud to present your Whalers Varsity Baseball squad in their "
-    "home opener vs. the SJPII Lions. Nantucket is 1-1 on the young season and SJPII has played "
-    "just 1 game defeating the Vineyard 5-0. The Lions defeated the Whalers in their two meetings "
-    "last year enroute to a Lighthouse Division Crown and MIAA D4 tourney berth."
+    "final home game of the regular season as they take on their cross-island rivals, the "
+    "Vineyarders."
+    , False),
+   ("J74mLygsyps", "Nantucket Whalers Baseball vs. Cape Cod Tech Crusaders - May 21, 2025",
+    "The NSC is proud to present your Whalers Varsity Baseball squad as they take on the Crusaders "
+    "in what will be Nantucket&rsquo;s penultimate home game of the regular season."
     , False),
    ("9S74fYN378Y", "Nantucket Whalers Baseball vs. Monomoy Sharks - April 18, 2025",
     "Nantucket Sports Connection is proud to present your Whalers Varsity Baseball squad in their "
     "second home game of the season as they take on the Monomoy Sharks in an important league "
     "matchup."
     , False),
-   ("J74mLygsyps", "Nantucket Whalers Baseball vs. Cape Cod Tech Crusaders - May 21, 2025",
-    "The NSC is proud to present your Whalers Varsity Baseball squad as they take on the Crusaders "
-    "in what will be Nantucket&rsquo;s penultimate home game of the regular season."
-    , False),
-   ("nM5G05Dzpyk", "Nantucket Whalers Baseball vs. Martha&rsquo;s Vineyard - May 26, 2025",
+   ("dt1E8ZdpLoY", "Nantucket Whalers Baseball vs. St. John Paul II Lions - April 9, 2025",
     "Nantucket Sports Connection is proud to present your Whalers Varsity Baseball squad in their "
-    "final home game of the regular season as they take on their cross-island rivals, the "
-    "Vineyarders."
+    "home opener vs. the SJPII Lions. Nantucket is 1-1 on the young season and SJPII has played "
+    "just 1 game defeating the Vineyard 5-0. The Lions defeated the Whalers in their two meetings "
+    "last year enroute to a Lighthouse Division Crown and MIAA D4 tourney berth."
     , False),
   ],
   "School Yr 25-26": [
-   ("8jZc5F_Syfo", "Nantucket Whalers Baseball vs. Bourne Canalmen - March 31, 2026",
-    "The Nantucket Sports Connection proudly presents the Whalers Varsity Baseball team at their "
-    "home opener as they host the visiting Canalmen from Bourne."
-    , False),
-   ("BeYASa3bqqM", "Nantucket Whalers Baseball vs. Cape Cod Tech Crusaders - April 1, 2026",
-    "The Nantucket Sports Connection proudly presents the Whalers Varsity Baseball squad as they "
-    "take on the Crusaders travelling over from Harwich in a key early season league matchup for "
-    "both teams."
-    , False),
-   ("9gt_Ga3nWPI", "Nantucket Whalers Baseball vs. Monomoy Sharks - April 8, 2026",
+   ("9bl6HCPb1rM", "Nantucket Whalers Baseball vs. Martha&rsquo;s Vineyard - May 23, 2026",
     "Nantucket Sports Connection is proud to present your Whalers Varsity Baseball squad in their "
-    "third home game of the season as they take on the Monomoy Sharks in an important league "
-    "matchup."
-    , False),
-   ("-VQteIFmQeM", "Nantucket Whalers Baseball vs. Sturgis West Navigators - April 17, 2026",
-    "Nantucket Sports Connection is proud to present your Whalers Varsity Baseball squad in their "
-    "fourth home game of 2026 as they take on the Navigators from just across the sound in Hyannis."
+    "final game of the regular season as they take on their cross-island rivals, those dastardly "
+    "Vineyarders."
     , False),
    ("jgAHDV0F6B4", "Nantucket Whalers Baseball vs. O&rsquo;Bryant Tigers - April 25, 2026",
     "Nantucket Sports Connection is proud to present your Whalers Varsity Baseball squad in their "
     "fifth home game of the season as they take on the Tigers travelling down from the Roxbury "
     "neighborhood of Boston."
     , False),
-   ("9bl6HCPb1rM", "Nantucket Whalers Baseball vs. Martha&rsquo;s Vineyard - May 23, 2026",
+   ("-VQteIFmQeM", "Nantucket Whalers Baseball vs. Sturgis West Navigators - April 17, 2026",
     "Nantucket Sports Connection is proud to present your Whalers Varsity Baseball squad in their "
-    "final game of the regular season as they take on their cross-island rivals, those dastardly "
-    "Vineyarders."
+    "fourth home game of 2026 as they take on the Navigators from just across the sound in Hyannis."
+    , False),
+   ("9gt_Ga3nWPI", "Nantucket Whalers Baseball vs. Monomoy Sharks - April 8, 2026",
+    "Nantucket Sports Connection is proud to present your Whalers Varsity Baseball squad in their "
+    "third home game of the season as they take on the Monomoy Sharks in an important league "
+    "matchup."
+    , False),
+   ("BeYASa3bqqM", "Nantucket Whalers Baseball vs. Cape Cod Tech Crusaders - April 1, 2026",
+    "The Nantucket Sports Connection proudly presents the Whalers Varsity Baseball squad as they "
+    "take on the Crusaders travelling over from Harwich in a key early season league matchup for "
+    "both teams."
+    , False),
+   ("8jZc5F_Syfo", "Nantucket Whalers Baseball vs. Bourne Canalmen - March 31, 2026",
+    "The Nantucket Sports Connection proudly presents the Whalers Varsity Baseball team at their "
+    "home opener as they host the visiting Canalmen from Bourne."
     , False),
   ],
  },
+}
+
+# Fallback dates for the sports cards whose TITLE carries no date.
+#
+# Every Sports Connection list is newest-first by the date printed in the card
+# title (see CLAUDE.md). 27 cards -- the 22-23 Basketball, Hockey and Lacrosse
+# runs, plus one 23-24 highlight reel -- were posted with no date in the title
+# at all, so the rule could not place them and they simply kept the position
+# they happened to have. Frank closed that on 2026-11-05: an undated card is
+# dated by its STREAMING date, or by its posting date when it was never a
+# stream.
+#
+# These are yt-dlp's `release_date`, falling back to `upload_date` for the one
+# card that was a plain upload. Do not substitute `upload_date` for the other
+# 26: every one of those streams began in the evening Eastern and so carries a
+# next-day UTC upload_date, which would date each game a day late.
+#
+# Nothing renders this. verify.py reads it so that sports-dates-descending can
+# check the undated cards too, and it FAILS on an undated card missing here --
+# which is the point. Add the card's date when Update_SC adds such a card.
+SPORT_CARD_DATES = {
+    # Boys Basketball 22-23
+    "a69DKD_y6HI": "2023-01-28",   # vs Martha's Vineyard Vineyarders
+    "M1JNdHmm8l4": "2023-01-24",   # vs Cape Cod Academy Seahawks
+    "azy0N03oiw8": "2023-01-20",   # vs Monomoy Sharks
+    "elDQtjMRXH8": "2023-01-17",   # vs Sandwich Blue Knights
+    "xj3IVCVe1bI": "2023-01-13",   # vs Barnstable Red Hawks
+    "rJuMPLVB0UQ": "2023-01-03",   # vs Dennis Yarmouth Regional Dolphins
+    # Girls Hockey 22-23
+    "W8F2yXtX0kM": "2023-02-18",   # vs East Bridgewater Wild Vikings
+    "o3nGX4WldcM": "2023-02-04",   # vs Falmouth Clippers
+    # Boys Hockey 22-23
+    "YDSlIWGV85M": "2023-02-13",   # vs Nauset Warriors
+    "rRbuiMMaYk8": "2023-02-11",   # vs Bishop Stang Spartans
+    "kLrnDxsXf6k": "2023-02-08",   # vs Dennis Yarmouth Dolphins
+    "PQE8ZDRtS5g": "2023-01-30",   # vs SJPII Lions
+    "CqAQ7nnbwZY": "2023-01-25",   # vs Monomoy/ Mashpee Monarchs
+    "p6CoS4IBGyg": "2023-01-07",   # opponent not in the title
+    "D4r43COeB7w": "2023-01-04",   # opponent not in the title
+    "2o2jC_B8NYw": "2022-12-31",   # opponent not in the title
+    # Boys Hockey 23-24
+    "Knh3LqIileY": "2024-06-15",   # Tournament Highlight Reel -- upload_date, never streamed
+    # Girls Lacrosse 22-23
+    "qXV0Cz4QyUE": "2023-06-11",   # MIAA D4 State Tournament Round of 8
+    "Y19-3vxnxqc": "2023-06-08",   # MIAA D4 State Tournament Round of 16
+    "GgIzsseIUME": "2023-06-06",   # MIAA D4 State Tournament Round of 32
+    # Boys Lacrosse 22-23
+    "5fAGMaZbdQ4": "2023-06-07",   # MIAA State Tournament Round of 16
+    "wACgxj7TqE8": "2023-06-05",   # MIAA State Tournament Round of 32
+    "-6iTF-jHmBA": "2023-05-18",   # opponent not in the title
+    "gjR9k2eQ6Os": "2023-05-15",   # opponent not in the title
+    "of8FvN2hdV8": "2023-05-08",   # opponent not in the title
+    "U2nx6XrtTxg": "2023-04-29",   # opponent not in the title
+    "LUbx_JS-Juw": "2023-04-27",   # opponent not in the title
 }
 
 SPORT_UPCOMING = "This game is upcoming."
@@ -3517,7 +3571,18 @@ NEWS_SIGNUP_URL = "https://lp.constantcontactpages.com/su/J1R7rh8/NCTV"
 NMF_SUBMIT_URL_LITERAL = "https://filmfreeway.com/NEWMoonFest"
 
 NEWS = [
- dict(img="news-free-podcast-studio.webp", date="11/7/26",
+ dict(img="news-volleyball-off-island.webp", date="11/5/26",
+      alt="Live Volleyball From Off-Island in brush lettering over a stadium "
+          "at night, with the St. John Paul II Lions and Nantucket Whalers "
+          "logos either side of a volleyball. Caption: The broadcast starts "
+          "at 4:45pm on 11/5",
+      body='For the first time, Nantucket Sports Connection (NSC) is '
+           'broadcasting a volleyball game from off-island! To watch the live '
+           'and archival version, '
+           '<a href="https://youtube.com/live/fEyIEkohlAo?feature=share" '
+           'target="_blank" rel="noopener">click here</a>.'),
+
+ dict(img="news-free-podcast-studio.webp", date="11/1/26",
       alt="A woman in glasses and a pink scarf speaking into a studio "
           "microphone in front of a curtain. Caption: Free podcast recording "
           "and editing for Nantucketers",
@@ -3728,7 +3793,7 @@ def news_section():
     # invitation stays, rather than leaving "Latest NCTV News" over nothing.
     if n == 0:
         return f"""  <!-- latest news: every card has aged out; the sign-up stays -->
-  <section class="section home-news">
+  <section class="section home-news home-news--bare">
     <div class="wrap">
 {signup}
     </div>
@@ -5253,11 +5318,11 @@ CIVIC_BOARDS = {
    ("i4ZbCSGHLJc", "Jan. 21st, 2021 Nantucket Historic District Commission", 1),
    ("y_CblKxvpd0", "Jan. 26th, 2021 Nantucket Historic District Commission", 1),
    ("mHCTy-9_zl8", "Jan. 28th, 2021 Nantucket Historic District Commission", 1),
-   ("Q8AHc5FGU1g", "Feb. 24th, 2021 Nantucket Historic District Commission - YT", 2),
    ("A-x0uSrnQcA", "Feb. 4th, 2021 Nantucket Historic District Commission", 2),
    ("OUW29OIE2Jg", "Feb. 12th, 2021 Nantucket Historic District Commission", 2),
    ("cMHaKVZlZ6c", "Feb. 16th, 2021 Nantucket Historic District Commission", 2),
    ("vuKQuVn7OE4", "Feb. 18th, 2021 Nantucket Historic District Commission", 2),
+   ("Q8AHc5FGU1g", "Feb. 24th, 2021 Nantucket Historic District Commission - YT", 2),
    ("GRNb4k4kfQM", "Feb. 25th, 2021 Nantucket Historic District Commission", 2),
    ("d1G7MENXR8c", "Feb. 26th, 2021 Nantucket Historic District Commission", 2),
    ("wOMuJ3jB34M", "Mar. 1st, 2021 Nantucket Historic District Commission", 3),
@@ -6552,8 +6617,6 @@ CIVIC_BOARDS = {
    ("5AGtNOTbFVE", "Jul. 22nd, 2020 Nantucket Select Board", 7),
    ("rxPW06iwJmw", "Aug. 5th, 2020 Nantucket Select Board", 8),
    ("GbOWFXEp5N4", "Aug. 6th, 2020 Select Board OPEN SESSION", 8),
-   ("7eYntOYzMTI",
-    "Sep. 24th, 2020 Nantucket Select Board Workshop - Solid Waste Long-Term Planning", 9),
    ("j-r76pBhfaQ", "Sep. 9th, 2020 Nantucket Select Board", 9),
    ("cFtPgoFOZVk", "Sep. 10th, 2020 Select Board Executive Session Open Meeting", 9),
    ("qg892-623P8", "Sep. 14th, 2020 Joint Nantucket Select Board &amp; Board of Health",
@@ -6561,6 +6624,8 @@ CIVIC_BOARDS = {
    ("WalZXbWDKOY", "Sep. 16th, 2020 Nantucket Select Board", 9),
    ("BafZCVjyrHI", "Sep. 17th, 2020 Select Board xs Open Session", 9),
    ("eFuGKQDr92Y", "Sep. 23rd, 2020 Nantucket Select Board", 9),
+   ("7eYntOYzMTI",
+    "Sep. 24th, 2020 Nantucket Select Board Workshop - Solid Waste Long-Term Planning", 9),
    ("LDrunrJ_ki4",
     "Oct. 7th, 2020 Nantucket Select Board Retreat (Read Description), Part 2", 10),
    ("p86epau3wiQ", "Oct. 7th, 2020 Nantucket Select Board", 10),
@@ -6812,10 +6877,10 @@ CIVIC_BOARDS = {
    ("sPLej1GFSLw", "Jun. 20th, 2024 Select Board Short Term Rental Subcommittee", 6),
    ("s1gFzH758zA", "Jun. 25th, 2024 Nantucket Select Board/Board of Health PFAS Summit", 6),
    ("347t6n24zPw", "Jun. 26th, 2024 Nantucket Select Board &amp; County Commissioners", 6),
-   ("BIHJIb8CW1I",
-    "Jul. 17th, 2024 Select Board Chair Brooke Mohr's Statement on Vineyard Wind Debris", 7),
    ("0ATTgADeVDE", "Jul. 8th, 2024 Nantucket Select Board (Licensing &amp; Petitions)", 7),
    ("Mi3rrZw7CGA", "Jul. 10th, 2024 Nantucket Select Board", 7),
+   ("BIHJIb8CW1I",
+    "Jul. 17th, 2024 Select Board Chair Brooke Mohr's Statement on Vineyard Wind Debris", 7),
    ("ke5wpB_tEZQ", "Jul. 17th, 2024 Nantucket Select Board", 7),
    ("iR67HhKElOs", "Jul. 24th, 2024 Nantucket Select Board &amp; NRTA Advisory Board", 7),
    ("mlHKBIIGfuA",
@@ -7283,6 +7348,41 @@ CIVIC_FORUMS = {
    "Info Session: Somerset Needs Area Sewer Extension &amp; Roadway Improvement Project - "
    "November 5, 2026"),
  ],
+}
+
+# Fallback dates for the civic cards whose TITLE carries no readable date.
+#
+# Civic lists read newest-first, by the date in the card title. Six cards have
+# no date the title reader can use, so until 2026-11-05 they were skipped and
+# kept whatever position they happened to have. Frank closed that gap the same
+# day he closed it for Sports: date the card by its STREAMING date, or by its
+# posting date when it was never a stream.
+#
+# A title that DOES carry a date still wins -- `ymII7Vgyx04` is cross-listed
+# under Select Board 2019 Q1 as "Feb. 2nd, 2019 Nantucket: 2030 & Beyond" and
+# is dated from that title there, while the undated Public Forums copy of the
+# same video is dated from here. One entry serves both.
+#
+# Nothing renders this. verify.py reads it so that civic-dates-descending can
+# check these cards too, and it FAILS on an undated card missing from it.
+# Add the card's date when Update_CTV adds such a card.
+CIVIC_CARD_DATES = {
+    # Public Forums
+    "rr8dnFrxNCY": "2018-07-18",   # Coastal Resilience Plan. The title prints
+                                   # this as "7 18 18", which the date reader
+                                   # cannot parse. NOT the upload date: that is
+                                   # 2018-07-25, a week after the meeting, and
+                                   # would file it above the Jul. 23rd forum.
+    "ymII7Vgyx04": "2019-02-02",   # Nantucket: 2030 & Beyond -- upload_date,
+                                   # never streamed. Agrees with the Select
+                                   # Board copy's own title.
+    "7yK7UwvhMwM": "2020-06-09",   # Pre-Annual Town Meeting Public Forum #1
+    "P01TaV7axO4": "2020-06-18",   # Pre-Annual Town Meeting Public Forum #2
+    "MtYeA_dt6Ds": "2020-09-18",   # Resilient Nantucket Public Forum (Evening);
+                                   # same day as the dated afternoon session
+    "Wcgd7v_Kvsk": "2026-04-30",   # Article 12 info session. release_date, not
+                                   # the 2026-05-01 upload: an evening stream
+                                   # carries a next-day UTC upload_date.
 }
 
 # The posted agenda for a recorded meeting, keyed by its video id, in the order
@@ -62785,6 +62885,7 @@ def school_page():
         programs_section([("Whaler Word",   WHALER_WORD),
                           ("Graduation",    NHS_GRADUATION),
                           ("Senior Awards", NHS_SENIOR_AWARDS)], heading=None,
+                         newest_first=True,
                          after=('For Sports, <a href="videos-sports-connection.html">Click '
                                 'Here</a> for Nantucket Sports Connection')),
 
@@ -62792,7 +62893,8 @@ def school_page():
                    "Cyrus Peirce Middle School"),
         mission_section(CPS_MISSION, "the school&rsquo;s", "https://cps.npsk.org/"),
         programs_section([("The CPS Pulse",        CPS_PULSE),
-                          ("8th Grade Promotion",  CPS_PROMOTION)], heading=None),
+                          ("8th Grade Promotion",  CPS_PROMOTION)], heading=None,
+                         newest_first=True),
     ])
     return shell("videos-school.html",
                  "NCTV School Videos — Nantucket Community Television", body)
