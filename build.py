@@ -15,7 +15,7 @@ BANNER_VIDEO = "1241589049:76cd5a88fc"  # home hero; Vimeo id:hash
 FEATURED_ID = "9BnRkR2W9Zc"  # home "Featured Video" section
 # Bump this whenever styles.css or site.js changes — it forces browsers to
 # fetch the fresh files instead of serving a cached (stale) copy.
-ASSET_VER = "418"
+ASSET_VER = "421"
 
 # The address the finished site will answer to. Everything absolute on the
 # site comes from this one string: the canonical link in every <head>, the
@@ -196,6 +196,13 @@ FOOTER_SOCIAL = (
   '<rect x="3" y="3" width="18" height="18" rx="5.2"/>'
   '<circle cx="12" cy="12" r="4.1"/>'
   '<circle cx="17.3" cy="6.7" r="1.2" fill="currentColor" stroke="none"/>'
+  '</svg></a>'
+  '<a href="https://x.com/OurNCTV" target="_blank" rel="noopener"'
+  ' aria-label="NCTV on X">'
+  '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">'
+  '<path d="M17.53 3h3.2l-6.99 7.99L22 21h-6.44l-5.04-6.59L4.75 21H1.54l7.48'
+  '-8.55L2 3h6.6l4.56 6.03L17.53 3Zm-1.12 16.07h1.77L7.68 4.84H5.78l10.63 '
+  '14.23Z"/>'
   '</svg></a>')
 
 # Most of the archive is NCTV's own work. Where a video was made by an outside
@@ -3573,7 +3580,7 @@ NMF_SUBMIT_URL_LITERAL = "https://filmfreeway.com/NEWMoonFest"
 NEWS = [
  dict(img="news-volleyball-off-island.webp", date="11/5/26",
       alt="Live Volleyball From Off-Island in brush lettering over a stadium "
-          "at night, with the St. John Paul II Lions and Nantucket Whalers "
+          "at night, with the Dennis-Yarmouth Dolphins and Nantucket Whalers "
           "logos either side of a volleyball. Caption: The broadcast starts "
           "at 4:45pm on 11/5",
       body='For the first time, Nantucket Sports Connection (NSC) is '

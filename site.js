@@ -226,38 +226,82 @@ function initQuarterPicker(){
   });
 }
 
-/* Re-select the remembered quarter inside a year panel that has just opened.
-   An empty quarter is rendered disabled and gets no panel at all, so a board
-   that simply has no meetings that quarter leaves the row unselected -- and
-   civicPick keeps the value, ready for the next board that does have it. */
-function restoreQuarter(yearPanel){
-  var qp = yearPanel.querySelector(".quarterpick");
-  if(!qp) return;
-  clearPicks(qp, ".quarter-btn", ".quarter-panel");
-  if(civicPick.quarter === null) return;
-  var btn   = qp.querySelector('.quarter-btn[data-quarter="' + civicPick.quarter + '"]');
-  var panel = qp.querySelector('.quarter-panel[data-quarter="' + civicPick.quarter + '"]');
-  if(!btn || btn.disabled || !panel) return;
+/* The newest usable option in one picker, as [button, panel].
+
+   "Usable" means not disabled and actually having a panel: an empty civic
+   quarter is rendered disabled with no panel at all. Candidates are tried
+   from the newest down, so a button without its panel falls through to the
+   next rather than leaving the row blank. data-year is four digits and
+   data-quarter one, so comparing them as text orders them correctly. */
+function newestPick(root, btnSel, panelSel, attr){
+  var btns = Array.prototype.filter.call(
+    root.querySelectorAll(btnSel), function(b){ return !b.disabled; });
+  btns.sort(function(a, b){
+    var x = a.getAttribute(attr), y = b.getAttribute(attr);
+    return x < y ? 1 : x > y ? -1 : 0;
+  });
+  for(var i = 0; i < btns.length; i++){
+    var v = btns[i].getAttribute(attr);
+    var panel = root.querySelector(panelSel + '[' + attr + '="' + v + '"]');
+    if(panel) return [btns[i], panel];
+  }
+  return null;
+}
+
+function showPick(btn, panel){
   btn.classList.add("is-active");
   btn.setAttribute("aria-pressed", "true");
   panel.hidden = false;
 }
 
+/* Re-select the remembered quarter inside a year panel that has just opened,
+   and fall back to the newest quarter the board actually has.
+
+   An empty quarter is rendered disabled and gets no panel at all. Before
+   2026-11-05 such a board simply left the row unselected, and so did the very
+   first board opened in a session, when nothing had been remembered yet --
+   Frank asked for the newest to open instead.
+
+   The fallback deliberately does NOT write to civicPick, and does not go
+   through .click(): a quarter nobody chose must not overwrite the one they
+   did. A reader who picked Q2 still gets Q2 back on the next board that has
+   it, even though the boards in between opened on their own newest. */
+function restoreQuarter(yearPanel){
+  var qp = yearPanel.querySelector(".quarterpick");
+  if(!qp) return;
+  clearPicks(qp, ".quarter-btn", ".quarter-panel");
+  var btn = null, panel = null;
+  if(civicPick.quarter !== null){
+    btn   = qp.querySelector('.quarter-btn[data-quarter="' + civicPick.quarter + '"]');
+    panel = qp.querySelector('.quarter-panel[data-quarter="' + civicPick.quarter + '"]');
+  }
+  if(!btn || btn.disabled || !panel){
+    var best = newestPick(qp, ".quarter-btn", ".quarter-panel", "data-quarter");
+    if(!best) return;
+    btn = best[0]; panel = best[1];
+  }
+  showPick(btn, panel);
+}
+
 /* The same, one level up, for a board panel that has just opened. A board whose
-   archive does not reach the remembered year has no button to press, so it
-   opens on no year, exactly as it did before. */
+   archive does not reach the remembered year now opens on its own newest year
+   instead of on nothing, and so does the first board opened in a session. */
 function restoreYear(boardPanel){
   var yp = boardPanel.querySelector(".yearpick");
   if(!yp) return;
   clearPicks(yp, ".year-btn", ".year-panel");
   clearPicks(yp, ".quarter-btn", ".quarter-panel");
-  if(civicPick.year === null) return;
-  var btn   = yp.querySelector('.year-btn[data-year="' + civicPick.year + '"]');
-  var panel = yp.querySelector('.year-panel[data-year="' + civicPick.year + '"]');
-  if(!btn || !panel) return;
-  btn.classList.add("is-active");
-  btn.setAttribute("aria-pressed", "true");
-  panel.hidden = false;
+  var btn = null, panel = null;
+  if(civicPick.year !== null){
+    btn   = yp.querySelector('.year-btn[data-year="' + civicPick.year + '"]');
+    panel = yp.querySelector('.year-panel[data-year="' + civicPick.year + '"]');
+  }
+  if(!btn || btn.disabled || !panel){
+    var best = newestPick(yp, ".year-btn", ".year-panel", "data-year");
+    if(!best) return;
+    btn = best[0]; panel = best[1];
+  }
+  showPick(btn, panel);
   restoreQuarter(panel);
 }
 

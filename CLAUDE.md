@@ -15,15 +15,23 @@ one line that corrects the footer's copyright year if a visitor reads the page
 in a later year than the one it was built in. Until 2026-10-28 `site.js` built
 both with `innerHTML` on every page load.
 
-The footer's two social marks (`FOOTER_SOCIAL`) carry the words **"Connect
+The footer's three social marks (`FOOTER_SOCIAL`) carry the words **"Connect
 with us:"** in front of them, added 2026-10-31 after Frank looked for the links
 and did not see them. The label is a `<span class="footer__social-label">` in
 the markup, not a CSS `::before`: generated content cannot be selected and some
 screen readers skip it. `.footer__social` needs `align-items:center` — flex
 items stretch by default, which leaves the words at the top of the 42px icons —
-and `flex-wrap:wrap`, because label plus icons is about 230px against a phone
+and `flex-wrap:wrap`, because label plus icons is about 290px against a phone
 column that can be narrower. The icons keep their own `aria-label`s; "Connect
 with us:" does not say which is which.
+
+**X was added 2026-11-05** (`x.com/OurNCTV`, the same handle as the Facebook
+and Instagram accounts), after Instagram. All three marks are inline 24x24
+SVGs written into `FOOTER_SOCIAL` — nothing in `assets/`, so adding one is a
+content change and `ASSET_VER` does not move. It needed no CSS: the row is a
+`gap:12px` flex of 42px circles, and at 375px the label and all three still
+share one line with no horizontal overflow. A fourth would be the one to
+measure, since that is where the row starts needing its `flex-wrap`.
 
 **Controls are unselectable, and the list of them is explicit.** Frank,
 2026-10-31: clicking the Book Festival logo on the home page sometimes turned
@@ -1232,6 +1240,22 @@ the meeting -- taking the upload date files it above the Jul. 23rd forum.
 `Wcgd7v_Kvsk` was an evening stream, so its UTC upload lands the next day and
 would date it May 1st instead of Apr. 30th. Both are enforced by the check,
 not just written here.
+
+**A board opens on its newest year and newest quarter.** Frank asked for this
+on 2026-11-05: clicking a board name used to open the board and stop there,
+leaving both rows unselected until he picked a year himself. `restoreYear()`
+and `restoreQuarter()` in site.js now fall back to `newestPick()` whenever the
+remembered choice cannot be honoured — on the first board of a session, when
+nothing is remembered, and on a board whose archive does not reach the
+remembered year or whose newest year lacks the remembered quarter.
+
+The remembering still comes first and is unchanged: pick 2019 Jul-Sep on one
+board and the next board that has it still opens there. The fallback never
+writes to `civicPick` and never goes through `.click()`, so a quarter nobody
+chose cannot overwrite the one they did — the boards in between open on their
+own newest and the reader's choice comes back afterwards. Annual/Special Town
+Meeting and Public Forums have no quarter row at all, so they stop after the
+year.
 
 The year and quarter buttons are not reversed — they stay oldest-left, by
 request. Nantucket Government 101 is not a meeting list and keeps its own
