@@ -1188,7 +1188,32 @@ SPORTS_VIDEOS = {
     , False),
   ],
   "School Yr 26-27": [
-   ("fEyIEkohlAo", "MIAA Preliminary Round: Nantucket Whalers Volleyball AT Dennis-Yarmouth Dolphins - November 5, 2026", "", True),
+   ("fEyIEkohlAo", "MIAA Preliminary Round: Nantucket Whalers Volleyball AT Dennis-Yarmouth Dolphins - November 5, 2026",
+    "The Nantucket Sports Connection presents the MIAA Division 3 preliminary playoff round "
+    "between No. 39 Nantucket and No. 26 Dennis-Yarmouth. The Dolphins host the Whalers, with the "
+    "winner headed to the Round of 32 to face No. 7 Eastlongmeadow.<br><br>The Whalers (11-6) have "
+    "secured a winning season for the first time during Coach Makaila Lyons tenure on-island, "
+    "picking up four of their last five with victories against Muniz Academy (7-11), St. John Paul "
+    "II (13-3), Nauset (6-9), and Monomoy (10-6).<br><br>The Dolphins (8-11) have lost their last "
+    "three matches a combined nine sets to none. These came against some steep competition in "
+    "Somerset Berkley Regional (13-7), Old Rochester Regional (17-2), and Westborough (12-4) "
+    "however.<br><br>The Whalers haven&rsquo;t faced the Dolphins since Oct. 2024, when they lost "
+    "in straight sets on the road. Nantucket has lost at least 15 straight matches to D-Y, dating "
+    "back to 2016, and have only won five sets in those 15 games. This is Dennis-Yarmouth&rsquo;s "
+    "first regular season finish below .500 since 2018.<br><br>In regard to common opponents "
+    "between the two, St. John Paul II (No. 4 seed in the Division 5 Tournament) is one of them. "
+    "Dennis-Yarmouth lost three sets to none against the Lions earlier this year on Sept. 21, then "
+    "bested them in 5 sets on Oct. 7 at home. Nantucket is also 1-1 versus SJP this season, losing "
+    "at home 3-1 on Sept. 14, then taming the lions in Hyannis 3-1 on Oct. 26.<br><br>Both teams "
+    "are also 2-0 against Nauset, with the Whalers beating them twice in five sets, while the "
+    "Dolphins only lost one set to them in the two meetings. They also both played Sandwich, with "
+    "the Whalers going 0-2 against the Blue Knights (losing one in a dramatic five sets), while "
+    "D-Y went 1-1 against them.<br><br>Nantucket tries to win a postseason match for the first "
+    "time since the 2023 MIAA Girls Volleyball State Tournament in Division 4, when the Whalers "
+    "went to Round of 16 after sweeping Sandwich.<br><br>We are live from Dennis-Yarmouth High "
+    "School at 4:45 for the pregame show with first serve set for 5:00pm, presented on the "
+    "Nantucket Sports Connection YouTube channel as well as on NCTV HD Channel 1072."
+    , False),
    ("SJEJ-n9dEzw", "Nantucket Whalers Volleyball vs Nauset Warriors - October 28, 2026",
     "The Nantucket Sports Connection presents the playoff-bound Whalers Varsity Girls Volleyball "
     "team! They host Nauset as the Warriors head south for this Cape and Islands "
@@ -31621,9 +31646,39 @@ CIVIC_DESCRIPTIONS = {
   "Street, a circa 1910 Codfish Park cottage, takes nearly as long, a window held to read as "
   "modern and the front porch asked back lower and standing on its own."),
  "eh76nuJyXCY":
-  "Video description coming soon.",
+  "The Affordable Housing Trust&rsquo;s quarterly update is the longest item, close to half an "
+  "hour. The housing production plan has been accepted and approved by the state housing office "
+  "that same day with no edits. Rooted Renters, a subsidy for tenants who already hold year-round "
+  "leases, drew more than 150 applications against funding for about 30 homes. The subsidized "
+  "housing inventory stands at 512 units, or 8.28 percent, with 17 more at 18-26 Sparks Avenue to "
+  "follow and safe harbor running through December 10, 2027. A zoning article is contemplated "
+  "that would trade a density bonus for a year-round occupancy restriction carrying no income "
+  "limit, aimed at wage earners who make too much for the covenant program. Continued review of "
+  "town-sponsored 2027 warrant articles establishes that the community housing bank, fertilizer "
+  "ban and pension home rule petitions need no resubmission, and a member asks that a petition "
+  "left unsigned on the governor&rsquo;s desk be refiled. The town manager reports the Sherburne "
+  "Commons memorandum executed October 20 for the new Our Island Home, a November 20 closing, and "
+  "a northern long-eared bat that pushes tree clearing to December 1. An added announcement "
+  "proposes a revolving fund to discount electric rates for income-eligible Nantucket Power "
+  "Choice customers. The board lets Natural Resources adjust the commercial scallop bushel limit, "
+  "four to zero with one recusal.",
  "90lq9haY6CU":
-  "Video description coming soon.",
+  "The hearing on 145 Wauwinet Road takes nearly half the meeting. A second-story addition would "
+  "be suspended between an existing house and garage with no new ground contact, and the "
+  "applicant asks the commission where its objections lie. Several commissioners remain "
+  "unconvinced that any added structure belongs in a coastal dune, and question whether the "
+  "proposed revegetation will take hold: 165 square feet of concrete would come out, roughly "
+  "3,000 square feet would be replanted, and 1,800 square feet of buried asphalt driveway would "
+  "be dug out and replaced with pervious material. The commission asks for modeling of how the "
+  "raised structure would affect windblown sand, for elevation drawings and for the state rare "
+  "species line, sets a site visit for November 17 and continues the matter to November 19. At "
+  "41A Cliff Road two decks on a historic dwelling are expanded with invasive species removal on "
+  "the bank, and that order passes with monitoring conditions. The town&rsquo;s second phase of "
+  "solid waste removal at 130 Tom Nevers Road, carrying on from an emergency certification in "
+  "March, would take pavement and buried debris from further inland; it is continued. Orders "
+  "issue on four filings, including Land Bank vegetation management at Consue Springs, three "
+  "Stone Barn Way permits are invalidated as unbuilt, and a special meeting on the Baxter Road "
+  "geotubes is set for January 28.",
  "MzSFEXeDykE":
   "Video description coming soon.",
 }
