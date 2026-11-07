@@ -1059,12 +1059,13 @@ th[aria-sort="descending"] .shows__sort::after{opacity:1}
    It carries NO max-width, on purpose: Frank asked on 2026-10-29 that it
    span the page, so it runs the full width of .wrap like a section heading
    rather than being held to a reading measure the way body copy is. */
-.shorts-notice__text,.newsreel__signup{margin:0;font-family:var(--mono);
+.shorts-notice__text,.newsreel__signup,.nmf-submit-notice{margin:0;font-family:var(--mono);
   font-size:20px;line-height:1.65;color:var(--green-deep)}
-.shorts-notice__text a,.newsreel__signup a{color:var(--green-deep);text-decoration:underline;
+.shorts-notice__text a,.newsreel__signup a,.nmf-submit-notice a{color:var(--green-deep);text-decoration:underline;
   text-underline-offset:2px}
 .shorts-notice__text a:hover,.shorts-notice__text a:focus-visible,
-.newsreel__signup a:hover,.newsreel__signup a:focus-visible{color:var(--ink)}
+.newsreel__signup a:hover,.newsreel__signup a:focus-visible,
+.nmf-submit-notice a:hover,.nmf-submit-notice a:focus-visible{color:var(--ink)}
 /* 37px is 4px plus one 33px line of the notice: Frank asked on 2026-10-29
    for a clear line of space between it and the intro paragraph above. */
 [data-page="events-shorts-fest.html"] .section.shorts-notice{padding-block:24px 10px}
@@ -1173,6 +1174,17 @@ body.is-docopen{overflow:hidden}
    overlay is the full screen and the warrant is 74 pages long. */
 .docmodal__body{flex:1 1 auto;min-height:0;overflow-y:auto;
   -webkit-overflow-scrolling:touch;padding:clamp(18px,3vw,36px)}
+/* A Luna Fest description reuses all of the above and changes only the size.
+   A 74-page warrant has to fill the screen; a paragraph does not, so the
+   panel is sized to its contents and only starts scrolling at the longest
+   descriptions. height:auto is what lets it, since the rule above pins the
+   warrant's panel to 92vh. */
+.docmodal--text .docmodal__panel{width:min(100%,660px);height:auto;
+  max-height:min(100%,84vh)}
+.docmodal__meta{margin:0 0 1.1em;font-family:var(--mono);font-size:.8rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.docmodal__meta[hidden]{display:none}
+.docmodal__text{margin:0;max-width:62ch;font-size:1.05rem;line-height:1.65;color:var(--ink)}
 
 /* The warrant itself. It is a legal document, so it is set smaller and
    tighter than the site's body copy and given a reading measure. */
@@ -1266,6 +1278,14 @@ body.is-docopen{overflow:hidden}
    in a <span> -- loose, the <sup> would become a flex item of its own, lose
    its baseline and take the 14px chevron gap as a word space. The note sits
    off the last paragraph, under the one rule .pastsel__year draws for it. */
+/* The header over everything inside the About New Moon Fest collapsible
+   (Frank, 2026-11-07). It is the only heading element inside a
+   .dl-group__body on the site, so it carries its own face and spacing rather
+   than inheriting a section head's. Its margin-bottom collapses against the
+   first title's larger margin-top, so the gap below it is that one; it is
+   stated anyway, for the day the header opens a block that has none. */
+.nmf-history__h{font-family:var(--serif);font-weight:700;letter-spacing:.02em;
+  line-height:1.25;color:var(--ink);margin:0 0 clamp(18px,2.4vw,26px)}
 .nmf-history__note{margin-top:clamp(10px,1.4vw,16px)}
 .nmf-history__note>summary{line-height:1.3}
 /* ---- New Moon Fest page ---- */
@@ -1317,6 +1337,14 @@ body.is-docopen{overflow:hidden}
    only while the intro band is. Put that band back and this comes with it. */
 .newmoon-intro+.section.newmoon-sponsors{padding-top:12px}
 .newmoon-sponsors__img,.shorts-sponsors__img{display:block;width:100%;height:auto;border-radius:12px}
+/* The 2027 submissions call, directly under the top sponsor graphic. It takes
+   its type from .newsreel__signup's rule above -- Frank asked on 2026-11-07
+   for the home page's mailing-list sentence's size, colour, format and font --
+   so all that belongs here is the gap between it and the graphic. The
+   FilmFreeway button inside it keeps a.ff-btn's own styling: that rule sits
+   further down the file at equal specificity, so its text-decoration:none
+   wins over the underline the sentence gives its links. */
+.nmf-submit-notice{margin-top:clamp(18px,2.4vw,28px)}
 /* Clickable logos laid over the sponsor banner, the same technique as the
    past-films maps. Each hotspot is square in the artwork's pixels, so the 50%
    radius traces the logo's disc rather than an ellipse. */
@@ -1392,6 +1420,38 @@ body.is-docopen{overflow:hidden}
 @media (max-width:680px){
   .auction-partners__row{grid-template-columns:1fr;gap:4px;padding:16px 0}
   .auction-partners__shop{justify-self:start;margin-top:6px}
+}
+/* The LUNAFEST archive, in the Official Film Selections picker. Frank asked
+   for the auction partner list's format (2026-11-07), so it is that layout
+   with a fourth column: season, title, director, and a button that opens the
+   description. It inherits the same paper panel, hairlines and radius, and it
+   collapses to a single column at the same width -- four columns of 178 rows
+   on a phone would be unreadable, and the season reads as a label above the
+   title once they stack.
+
+   The fourth cell is a <button>, not a link: it opens an overlay rather than
+   going anywhere. It is given the Shop link's look so the two tables agree,
+   which means undoing the button defaults -- background, border, padding --
+   by hand. */
+.lunafest-films{list-style:none;margin:0;background:var(--paper);
+  border:1px solid var(--sand);border-radius:16px;
+  padding:clamp(4px,1vw,10px) clamp(16px,2.4vw,28px)}
+.lunafest-films__row{display:grid;
+  grid-template-columns:minmax(0,6.5em) minmax(0,2fr) minmax(0,1.3fr) auto;
+  gap:6px 22px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--sand)}
+.lunafest-films__row:last-child{border-bottom:0}
+.lunafest-films__year{font-family:var(--mono);font-size:.86rem;letter-spacing:.06em;
+  white-space:nowrap;color:var(--ink-soft)}
+.lunafest-films__title{font-family:var(--serif);font-size:1.18rem;line-height:1.25;color:var(--ink)}
+.lunafest-films__director{font-size:1rem;line-height:1.5;color:var(--ink-soft)}
+.lunafest-films__desc{font-family:var(--mono);font-size:.82rem;letter-spacing:.14em;
+  text-transform:uppercase;white-space:nowrap;cursor:pointer;justify-self:end;
+  background:transparent;color:var(--green-deep);
+  border:0;border-bottom:1px solid var(--green);padding:0 0 2px}
+.lunafest-films__desc:hover,.lunafest-films__desc:focus-visible{color:var(--ink);border-color:var(--ink)}
+@media (max-width:680px){
+  .lunafest-films__row{grid-template-columns:1fr;gap:4px;padding:16px 0}
+  .lunafest-films__desc{justify-self:start;margin-top:6px}
 }
 /* a row that looks like an accordion but navigates instead of opening: no
    caret, since there is nothing to expand, and no border-top because the
@@ -1582,6 +1642,10 @@ a.ff-btn img{display:block;width:210px;height:auto}
 .svc-head>p:last-child{margin-bottom:0}
 .svc-list{max-width:78ch}
 .svc-list li{font-size:20px}
+/* The one bullet that runs to two paragraphs (the lead item, 2026-11-07).
+   A <p>'s trailing 1.1em would stack on top of the <li>'s own 12px and open
+   a gap twice the size of every other one in the list. */
+.nmf-rules__list li>p:last-child{margin-bottom:0}
 .nmf-rules__list ul{list-style:none;margin:12px 0 0;padding:0}
 .nmf-rules__list ul li::before{content:"\2013";font-weight:400}
 .nmf-rules__list a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
@@ -2281,8 +2345,9 @@ a.cfn-funds__mark:focus-visible img{transform:scale(1.09)}
 /* New Moon Fest's own blocks: the auction note and rules lead-in, the
    partner rows, and the film-card metadata under each title. */
 .auction-note,.nmf-rules__submit{font-size:clamp(1.29rem,1.71vw,1.48rem)}
-.auction-partners__name{font-size:1.39rem}
-.auction-partners__what{font-size:1.18rem}
+.auction-partners__name,.lunafest-films__title{font-size:1.39rem}
+.auction-partners__what,.lunafest-films__director{font-size:1.18rem}
+.docmodal__text{font-size:1.24rem}
 .movie-meta{font-size:1.01rem}
 .movie-award{font-size:1.08rem}
 .movie-credits{font-size:1.15rem}
@@ -2299,6 +2364,12 @@ a.cfn-funds__mark:focus-visible img{transform:scale(1.09)}
    2026-10-30. The two section lines inside them stay at prose size and are
    told apart by their weight, so the piece reads at three levels, not two. */
 .nmf-history__p--title{font-size:clamp(1.32rem,1.58vw,1.48rem)}
+/* And the header over all three of them is one step above again, which keeps
+   the page's ladder in order at every width: prose 1.18-1.32, titles
+   1.32-1.48, this 1.45-1.68, the section eyebrow 1.6-2.1. Compare the clamps
+   term by term before changing any of them -- at a middle width it is the vw
+   terms that decide, not the floors and ceilings. */
+.nmf-history__h{font-size:clamp(1.45rem,1.85vw,1.68rem)}
 /* The banner's title card. The standfirst is NOT given .hero__sub's clamp,
    whose 1rem floor would put this paragraph at 16px on a phone: it is the
    page's introduction, the same 54 words that sat at a flat 20px in the band
@@ -2364,7 +2435,7 @@ summary,
 .ff-btn, .hero-chip, .civic-links__btn, .filmmap__btn,
 .newsreel__link, .encore-img-link,
 .sponsor-map__box, .sponsor-map__btn, .sponsormap__btn,
-.auction-partners__shop, .video-credit__cta,
+.auction-partners__shop, .lunafest-films__desc, .video-credit__cta,
 .footer__social a{
   cursor:pointer;
   -webkit-user-select:none;
@@ -2384,3 +2455,129 @@ button:disabled{cursor:default}
    is never what the click meant. Applies to every linked image, including
    the ones not listed above. */
 a img, button img{-webkit-user-drag:none;user-drag:none}
+
+/* =====================================================================
+   NEW MOON FEST -- NIGHT SKY
+   Frank asked on 2026-11-07 for a starry night-sky background over the
+   whole page, infinitely scrollable, and said the text colour could change
+   to suit it. A new moon is the moonless phase, so the sky carries stars
+   and no moon.
+
+   Everything below is scoped to this one page by its body attribute. The
+   page's own components are not touched: they already read the tokens, so
+   re-pointing the tokens re-themes all of them at once.
+   ===================================================================== */
+body[data-page="events-new-moon-fest.html"]{
+  --fog:        #02162A;   /* the sky's own deep navy-blue               */
+  --paper:      rgba(9,34,60,.82);   /* panels, with the sky faint behind   */
+  --ink:        #E9EFFA;   /* primary text, was deep navy                */
+  --ink-soft:   #ADBDD5;   /* secondary text                             */
+  --green-deep: #E9C46A;   /* starlight gold: the accent on the sky      */
+  --green:      #E9C46A;   /* the eyebrow dots and list bullets with it  */
+  --sand:       #2A4164;   /* hairlines                                  */
+
+  background-color:#02162A;
+  /* Three seamless tiles at different sizes and offsets: two star layers
+     over a nebula. Each tile butts against itself with no seam, and the
+     three sizes only come back into step after a very long way, so the sky
+     does not read as wallpaper however far you scroll. All three repeat, so
+     the sky is as tall as the page is.
+
+     Frank asked on 2026-11-07 for the colours and style of a blue nebula
+     reference he sent. The palette is read off that image: its darkest
+     #02182E is the base, and the nebula climbs to its p80, #09467C. It stops
+     there deliberately -- the reference also reaches #0A5993 and #42668C,
+     but it carries no text, and gold over those is 4.4:1 and 3.6:1. At the
+     p80 ceiling gold is 5.8:1 and body text 8.4:1 even on the brightest
+     wisp. Raise the top stop in scratchpad/nmf/nebula.py and that is the
+     trade you are making. */
+  background-image:url("assets/nmf-stars-near.webp"),
+                   url("assets/nmf-stars-far.webp"),
+                   url("assets/nmf-nebula.webp");
+  background-repeat:repeat,repeat,repeat;
+  background-size:900px 900px,1400px 1400px,2200px 2200px;
+  background-position:0 0,220px 160px,0 0;
+}
+/* --green-deep does double duty: text colour on a light page, and the fill
+   behind white button text. The light green above is right for the first and
+   far too pale for the second, so those fills are restated in a green that
+   still carries white. */
+body[data-page="events-new-moon-fest.html"] .year-btn.is-active,
+body[data-page="events-new-moon-fest.html"] .movie-btn.is-active,
+body[data-page="events-new-moon-fest.html"] .watch-episode__link{
+  background:#E9C46A;border-color:#E9C46A;color:#0C1826}
+/* The header, the footer and the skip link are site chrome, not this page.
+   NCTV's green is the brand there and is the same on all 35 pages, so the
+   two green tokens are put back for them -- otherwise this page alone would
+   have a gold search button and a gold nav underline. Everything nav-related
+   lives inside .nav, so the one selector covers the lot. */
+body[data-page="events-new-moon-fest.html"] .nav,
+body[data-page="events-new-moon-fest.html"] .footer{
+  --green:#71C26D;--green-deep:#2C8A43}
+body[data-page="events-new-moon-fest.html"] .skip-link{
+  background:#2C8A43;border-color:#2C8A43;color:#fff}
+/* The overlay's title bar is painted with --ink, on the assumption that --ink
+   is the dark one -- white title and white Close button over it. On this page
+   --ink is #E9EFFA, so the Luna Fest description overlay came up white on
+   white at 1.17:1. The bar takes the sky's own deep navy back; the panel
+   under it keeps --paper and is right as it stands. */
+body[data-page="events-new-moon-fest.html"] .docmodal__bar{background:#0C1826}
+/* The three winners graphics are ~60% transparent with near-black ink: they
+   were drawn for a light page, and on the sky the script and the medallions
+   all but vanish. The artwork is Frank's and is left exactly as it is; it
+   gets a light card to sit on instead, which is what the page used to give
+   it. The card is on the image rather than on .awards-panel because
+   .awards-text is its sibling and stays out on the sky in light type.
+   box-sizing is border-box site-wide, so the padding comes out of the
+   width and nothing overflows. */
+body[data-page="events-new-moon-fest.html"] .awards-img{
+  background:#F6F8FB;padding:clamp(12px,2vw,26px);
+  box-shadow:0 22px 56px -22px rgba(0,0,0,.72)}
+/* The ornamental rule that marks the bottom edge of the banner video. Frank
+   asked for it on 2026-11-07: the banner's daylight footage stopped dead
+   against the stars, and the join read as a cut rather than as an edge.
+
+   It STRADDLES that edge, which is why it is an element of the page and not
+   a pseudo-element on the banner: .vhero sets overflow:hidden, so anything
+   drawn inside it is cut off at exactly the line this is meant to sit on.
+   Drawn as a sibling instead, it hangs half over the footage and half over
+   the sky. margin-top is minus half the height, so the line -- which the
+   background layers put at the element's vertical centre -- lands on the
+   banner's last pixel. Change the height and that -13px has to follow it.
+
+   position/z-index are load-bearing. .vhero is position:relative, so it
+   paints above a static sibling however late that sibling comes in the
+   markup, and the top half of the rule would disappear behind the footage.
+
+   Three background layers: a trio of four-point stars as an inline SVG in
+   the middle, and the rule in two halves that fade out towards the page
+   edges, so the line is drawn rather than ruled. Each half stops 76px short
+   of centre, measured off the element's own width with calc(), so the gap
+   around the stars is the same at 320px as at 1600px and they never end up
+   sitting on the line. The stars' outermost tips are 52px from centre,
+   which leaves 24px of clear space on each side.
+
+   The drop-shadow is not decoration. The upper half lies over live footage
+   whose brightness at the foot of the frame is whatever the video happens
+   to be showing; the scrim holds most of it down, but a hairline of gold
+   needs its own edge against a pale frame.
+
+   The SVG is inline rather than a file in assets/: it is 560 bytes, it costs
+   no request, and its colour is a find-and-replace here rather than a
+   re-export. Recolouring it means editing BOTH the %23E9C46A inside the
+   data URI and the two gradients -- they are the same starlight gold as
+   --green-deep above, but a token cannot reach inside a data URI.
+
+   Not scoped to the page, because the class is only ever written on it; the
+   markup in build.py explains why it is an element and not a pseudo. */
+.nmf-skyrule{
+  position:relative;z-index:1;
+  height:26px;margin:-13px 0 0;
+  filter:drop-shadow(0 1px 2px rgba(2,12,24,.75));
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='26' viewBox='0 0 160 26' fill='%23E9C46A'%3E%3Cpath d='M80 0C80.8 9.2 83.8 12.2 93 13C83.8 13.8 80.8 16.8 80 26C79.2 16.8 76.2 13.8 67 13C76.2 12.2 79.2 9.2 80 0Z'/%3E%3Cpath d='M34 7C34.4 11.2 35.8 12.6 40 13C35.8 13.4 34.4 14.8 34 19C33.6 14.8 32.2 13.4 28 13C32.2 12.6 33.6 11.2 34 7Z'/%3E%3Cpath d='M126 7C126.4 11.2 127.8 12.6 132 13C127.8 13.4 126.4 14.8 126 19C125.6 14.8 124.2 13.4 120 13C124.2 12.6 125.6 11.2 126 7Z'/%3E%3C/svg%3E")
+      no-repeat center / 160px 26px,
+    linear-gradient(90deg,rgba(233,196,106,0),rgba(233,196,106,.9))
+      no-repeat left center / calc(50% - 76px) 1.5px,
+    linear-gradient(90deg,rgba(233,196,106,.9),rgba(233,196,106,0))
+      no-repeat right center / calc(50% - 76px) 1.5px}

@@ -15,7 +15,7 @@ BANNER_VIDEO = "1241589049:76cd5a88fc"  # home hero; Vimeo id:hash
 FEATURED_ID = "9BnRkR2W9Zc"  # home "Featured Video" section
 # Bump this whenever styles.css or site.js changes — it forces browsers to
 # fetch the fresh files instead of serving a cached (stale) copy.
-ASSET_VER = "421"
+ASSET_VER = "426"
 
 # The address the finished site will answer to. Everything absolute on the
 # site comes from this one string: the canonical link in every <head>, the
@@ -969,7 +969,24 @@ SPORTS_VIDEOS = {
     , False),
   ],
   "School Yr 26-27": [
-   ("6mk3sdw-YQE", "Nantucket Whalers Football AT South Shore Vo-Tech Vikings - November 7, 2026", "", True),
+   ("6mk3sdw-YQE", "Nantucket Whalers Football AT South Shore Vo-Tech Vikings - November 7, 2026",
+    "The Nantucket Sports Connection proudly presents postseason football as the Nantucket Whalers "
+    "take on the South Shore Regional Vocational Technical Vikings in a non-playoff contest in "
+    "Hanover, Massachusetts.<br><br>South Shore RVTS is currently building a new school and, as a "
+    "result, does not have a football field on its campus. The game will therefore be played in "
+    "Hanover.<br><br>The Whalers lead the all-time series 11-4 but have not faced off against the "
+    "Vikings since September 2015, when Nantucket won 27-8.<br><br>The Whalers (2-5) are coming "
+    "off a 56-7 statement win against their archrival, Martha&rsquo;s Vineyard. A 42-point lead "
+    "after one quarter and five rushing touchdowns from senior captain David Guillen-Taveras led "
+    "both squads to agree to a running clock at the start of the second quarter. The season may be "
+    "nearing an end, but the blowout win is just the positive outcome this team needed for these "
+    "non-playoff matchups and heading into next season.<br><br>The Vikings (4-4) have won "
+    "back-to-back games for the first time this season, scoring 30 and 37 points while holding "
+    "Wareham and Upper Cape Cod Tech to just one touchdown each. With a victory, South Shore "
+    "Vo-Tech can finish above .500 for the first time this year.<br><br>Our live coverage begins "
+    "at 11:30 a.m., with kickoff set for Noon in Hanover. You can watch live on both the NSC "
+    "YouTube channel and NCTV HD Channel 1072."
+    , False),
    ("7Y3sAP0an_U", "The Island Cup - Nantucket Whalers Football vs. Martha&rsquo;s Vineyard - October 31, 2026",
     "The Nantucket Sports Connection proudly presents the spookiest showdown yet between these "
     "cross-island foes, as the Whalers square off against the Vineyarders on a Halloween Day "
@@ -1442,6 +1459,8 @@ SPORTS_VIDEOS = {
     , False),
   ],
   "School Yr 26-27": [
+   ("rwYI6DoyWRg", "MIAA Round of 32: Nantucket Whalers Boys Soccer vs. Pentucket Panthers - November 9, 2026",
+    "", True),
    ("ib5YEeJYyp4", "Nantucket Whalers Boys Soccer vs. Sandwich Blue Knights - October 28, 2026",
     "The Nantucket Sports Connection brings you the Whalers varsity boys soccer squad as they take "
     "on the Blue Knights from the Upper Cape in the penultimate home match of the regular "
@@ -43980,12 +43999,41 @@ def nmf_flyer_links():
     return box_sponsor_links(NMF_FLYER_ART, NMF_FLYER_LINKS)
 
 def newmoon_sponsors_section():
+    """The 2026 top-sponsor banner. NOT RENDERED any more.
+
+    Frank asked for it off the page on 2026-11-07. It is kept whole --
+    the artwork, the alt text and nmf_sponsor_links() with its six measured
+    disc hotspots -- the way the unused *_intro_section() functions are kept,
+    so putting it back is one line in newmoon_body and nothing has to be
+    re-measured. assets/2026-top-sponsors.webp stays in place for the same
+    reason; it is now referenced by this function only.
+
+    The 2026 Sponsors flyer at the FOOT of the page is a different thing and
+    is still live -- see nmf_sponsors2026_section()."""
     return f"""<section class="section newmoon-sponsors">
   <div class="wrap">
     <div class="sponsor-map" data-reveal>
       <img class="newmoon-sponsors__img" src="assets/2026-top-sponsors.webp?v={ASSET_VER}" alt="Thank you to all our sponsors, especially Lemon Press, SCA, The Inquirer and Mirror, White Elephant Nantucket, Cisco Brewers, N Magazine and Nantucket Current">
 {nmf_sponsor_links()}
     </div>
+  </div>
+</section>"""
+
+
+def nmf_submit_section():
+    """The 2027 submissions call Frank asked for on 2026-11-07.
+
+    It shared a section with the top sponsor banner until the banner came off
+    the page later the same day, so it has one of its own now. Set like the
+    home page's mailing-list sentence (.nmf-submit-notice shares that rule).
+    The button is this page's third FilmFreeway Gold button and uses
+    NMF_SUBMIT_URL like the other two: the festival's own page, rather than a
+    visitor's own FilmFreeway account page. (Do not name that account path
+    here -- verify.py scans the whole rendered page for it, comments included,
+    and that comment failed the check once.)"""
+    return f"""<section class="section nmf-submit">
+  <div class="wrap">
+    <p class="nmf-submit-notice" data-reveal>Submissions for New Moon 2027 are now open! The submission rules and conditions are on this webpage. To submit, please click this button: <a class="ff-btn" href="{NMF_SUBMIT_URL}" target="_blank" rel="noopener"><img src="assets/filmfreeway-gold.webp?v={ASSET_VER}" alt="Submit on FilmFreeway Gold" width="210" height="30" loading="lazy"></a></p>
   </div>
 </section>"""
 
@@ -44248,7 +44296,10 @@ def nmf_news_section():
       <summary>Learn More</summary>
       <div class="dl-group__body">
         <ul class="news-list">
+          <li><span class="news-list__date">11/7/26</span> &mdash; The date of New Moon 2027 has officially been chosen to be Saturday, May 29th at the Siasconset Casino. Doors open at 4pm &amp; the films start at 6pm.</li>
           <li><span class="news-list__date">11/1/26</span> &mdash; The 2027 New Moon Fest submissions are open! To read the submission rules and to submit, click this button: <a class="ff-btn" href="{NMF_SUBMIT_URL}" target="_blank" rel="noopener"><img src="assets/filmfreeway-gold.webp?v={ASSET_VER}" alt="Submit on FilmFreeway Gold" width="210" height="30" loading="lazy"></a></li>
+          <li><span class="news-list__date">9/16/26</span> &mdash; The New Moon Fest team is excited to announce that we are returning to the beauty and simplicity of our roots. The 2027 New Moon Fest will be a short film festival with a cocktail party, silent auction, a lower price, and the same welcoming community.</li>
+          <li><span class="news-list__date">6/2/26</span> &mdash; The 2026 New Moon Fest award winners have been announced. Congratulations to the filmmakers and everyone that worked on these great films! Visit the &ldquo;Awards&rdquo; section of this webpage to see which films won.</li>
         </ul>
       </div>
     </details>
@@ -44262,6 +44313,20 @@ def nmf_news_section():
 # since a lead-in paragraph is the shape this section may want again.
 # A tuple is (bullet, [sub-bullets]); a plain string is a bullet on its own.
 NMF_RULES = [
+ # Frank added this one on 2026-11-07, at the top. It is the only bullet that
+ # runs to two paragraphs, so it is written as two <p>s rather than a <br><br>:
+ # the gap between them is then the typographic one every other paragraph on
+ # the site gets, and the bullet marker still lines up with the first line,
+ # since .nmf-rules__list li::before is positioned against the <li>.
+ ('<p>More than a film festival, NEW Moon Fest is a celebration of women '
+  'supporting women through shared stories, meaningful connection, and '
+  'collective inspiration.</p>'
+  '<p>We invite filmmakers from around the world to submit short films by and '
+  'about women that illuminate, challenge, delight, and inspire. We welcome '
+  'dramas, comedies, documentaries, animations and experimental works that '
+  'reflect the richness and complexity of women&rsquo;s experiences. Stories '
+  'of resilience and vulnerability, belonging and transformation, courage and '
+  'creativity all have a place here.</p>'),
  ('In honor of the Wild Woman archetype, films that depict strong, intuitive and '
   'persevering women characters qualify for NEW Moon Fest.'),
  'Only short films can be submitted.',
@@ -44370,7 +44435,7 @@ def nmf_rules_section():
     return f"""<section class="section nmf-rules">
   <div class="wrap">
     <div class="section__head" data-reveal>
-      <span class="eyebrow"><span class="dot"></span>Submission Rules &amp; Conditions</span>
+      <span class="eyebrow"><span class="dot"></span>Film Submission Guidelines</span>
     </div>
     <details class="pastsel__year dl-group nmf-sub" data-reveal>
       <summary>Learn More</summary>
@@ -44403,12 +44468,16 @@ NMF_AWARDS_TEXT = (
 AUCTION_URL = ("https://app.betterunite.com/"
                "nctv-bidforthecausenewmoonfest2026/Offers?silentauction=1")
 
-# Auction partners: (business name, what they sell, their website).
+# Auction partners, one list per auction year: (business name, what they
+# sell, their website). The years are independent on purpose -- a partner can
+# come back with a different offer, and a business can change hands between
+# one auction and the next -- so a name in both years is written out twice
+# rather than shared. AUCTION_PARTNERS_BY_YEAR below is what the page reads.
 # Descriptions were written from each business's own homepage. A partner with
 # no URL is one whose website could not be confirmed -- it stays here so the
 # list is complete, but it is skipped when the page is built rather than
 # published with a guessed link.
-AUCTION_PARTNERS = [
+AUCTION_PARTNERS_2026 = [
     ("1111 Nantucket",
      "Yoga classes, teacher trainings, and retreats",
      "https://www.1111nantucket.com/"),
@@ -44637,7 +44706,7 @@ AUCTION_PARTNERS = [
     ("Pip &amp; Anchor",
      "Market and café cooking with local farm produce",
      "https://pipandanchor.com/"),
-    ("Pizza Gemelle",
+    ("Pizzeria Gemelle",
      "Pizza seven days a week, lunch Friday and Saturday",
      "https://pizzeriagemelle.com/"),
     ("Proprietors Bar &amp; Table",
@@ -44768,17 +44837,278 @@ AUCTION_PARTNERS = [
      "https://zulunyala.com/"),
 ]
 
+# The 2025 partners, supplied by Frank on 2026-11-07. Four of them are still
+# here with None for a URL -- Core, Kissing Viper, Melissa David Salon and
+# Pathways of the Soul -- because no website could be confirmed for any of
+# them: no domain probe resolved and the Nantucket Chamber directory has no
+# member under those names. They stay in the list so it is complete in source
+# and the builder skips them, which is the same way an unresolved 2026
+# partner is handled. Their descriptions are empty rather than guessed.
+AUCTION_PARTNERS_2025 = [
+    ("ACK Natural",
+     "Nantucket&rsquo;s only locally grown cannabis dispensary",
+     "https://acknat.com/"),
+    ("bar Yoshi",
+     "Sushi, a raw bar, and catering on Old South Wharf",
+     "https://www.bar-yoshi.com/"),
+    ("Barbara Clarke Photography",
+     "Portraits, weddings, and Nantucket seascape prints",
+     "https://www.barbaraclarkephotography.com/"),
+    ("Bill Hoenk Photography",
+     "Event and portrait photography and fine art prints",
+     "https://www.billhoenkphotography.com/"),
+    ("Blue Beetle",
+     "Monogram jewelry, Nantucket charms, and cashmere",
+     "https://bluebeetlenantucket.com/"),
+    ("Nantucket Bookworks",
+     "Books and gifts on Broad Street since 1972",
+     "https://www.nantucketbookworks.com/"),
+    ("Breeze",
+     "Breakfast, dinner, and cocktails at The Nantucket Hotel",
+     "https://breezenantucket.com/"),
+    ("The Chanticleer",
+     "Fine dining in a rose-covered &rsquo;Sconset cottage",
+     "https://chanticleernantucket.com/"),
+    ("Company of the Cauldron",
+     "Prix fixe farm-to-table dining on India Street",
+     "https://companyofthecauldron.com/"),
+    ("Core",
+     "",
+     None),
+    ("Create",
+     "Fine art, craft, and children&rsquo;s art supplies",
+     "https://www.nantucketcreate.com/"),
+    ("The Dance Space",
+     "Bounce, sculpt, yoga, and dance classes",
+     "https://www.thedancespacenantucket.com/"),
+    ("DÔEN",
+     "Women&rsquo;s clothing in timeless, California-inspired collections",
+     "https://shopdoen.com/"),
+    ("Donata Vita",
+     "Hand-painted Lithuanian paper cutting, one of a kind",
+     "https://www.nantucketarts.org/artists/donata-vita"),
+    ("Erica Wilson",
+     "Needlework and clothing on Main Street for over 50 years",
+     "https://ericawilson.com/"),
+    ("Four Winds Gifts",
+     "Nantucket home decor, apparel, and gifts",
+     "https://fourwindsgiftsnantucket.com/"),
+    ("Fusaro&rsquo;s",
+     "Homemade Italian dining and takeout on Old South Road",
+     "https://fusarosnantucket.com/"),
+    ("Galley Bay Resort &amp; Spa",
+     "Adults-only all-inclusive resort in Antigua",
+     "https://galleybayresort.com/"),
+    ("Glistn",
+     "Medspa and aesthetic treatments for the skin",
+     "https://glistnnantucket.com/"),
+    ("Hammock Cove",
+     "Five-star luxury resort in Antigua",
+     "https://hammockcoveantigua.com/"),
+    ("Holly Ruth Finigan",
+     "A book, a podcast, and heart-led retreats",
+     "https://hollyruthfinigan.com/"),
+    ("Hothaus Nantucket",
+     "Infrared heated yoga and Pilates on Main Street",
+     "https://hothausnantucket.com/"),
+    ("Hy-Line Cruises",
+     "Hyannis ferries, sightseeing cruises, and fishing trips",
+     "https://hylinecruises.com/"),
+    ("Island Acupuncture &amp; Associates",
+     "Acupuncture, dry needling, and integrative wellness",
+     "https://islandacupuncture.com/"),
+    ("Jurate Zilyte",
+     "Myofascial release and integrative massage therapy",
+     "https://www.facebook.com/p/Jurate-Zilyte-lmt-100063670826074/",
+     "Contact"),
+    ("Kissing Viper",
+     "",
+     None),
+    ("Kit Noble Photography",
+     "Fine art Nantucket prints, portraits, and photo workshops",
+     "https://www.kitnoble.com/"),
+    ("Laurel Greenfield Art",
+     "Food-inspired paintings, prints, and custom murals",
+     "https://laurelgreenfieldart.com/"),
+    ("Los Establos Boutique Resort",
+     "A boutique resort in the Boquete highlands of Panama",
+     "https://losestablospanama.com/"),
+    ("The Lynx",
+     "Sails aboard a replica 1812 privateer schooner",
+     "https://tallshiplynx.com/"),
+    ("Melissa David Salon",
+     "",
+     None),
+    ("Miacomet Studio",
+     "Nantucket paintings and prints by Arlene O&rsquo;Reilly",
+     "https://miacometstudio.com/"),
+    ("Mom&rsquo;s Hierarchy of Needs",
+     "Mental health support and resources for mothers",
+     "https://momshierarchyofneeds.com/"),
+    ("NanTukTuk",
+     "Eco-friendly pedicab rides through the Historic District",
+     "https://www.nantuktuk.org/"),
+    ("Nanpuppets",
+     "Handmade puppets and shows by Lizza Obremski",
+     "https://www.nanpuppets.com/"),
+    ("Nantucket Book Festival",
+     "Authors, readings, and literary events",
+     "https://nantucketbookfestival.org/"),
+    ("Nantucket Comedy Festival",
+     "Stand-up shows and comedy education programs",
+     "https://nantucketcomedyfestival.com/"),
+    ("Nantucket Cottage Hospital",
+     "The island&rsquo;s hospital, part of Mass General Brigham",
+     "https://nantuckethospital.org/",
+     "Info"),
+    ("Nantucket Flower Collective",
+     "A local market bringing island growers and buyers together",
+     "https://nantucketflowercollective.com/"),
+    ("Nantucket Garden Festival",
+     "A celebration of island gardening",
+     "https://nantucketgardenfestival.org/"),
+    ("Nantucket Reflexology",
+     "Reiki, reflexology, and craniosacral therapy with Kim LaRue",
+     "https://nantucketreflexology.com/"),
+    ("Nantucket Historical Association",
+     "Island history, museums, and the Whaling Museum",
+     "https://nha.org/"),
+    ("On the Isle",
+     "Plays, musicals, and children&rsquo;s theater in &rsquo;Sconset",
+     "https://ontheisle.org/"),
+    ("Pande Lecture Management",
+     "A speakers bureau booking authors and lecturers",
+     "https://pandelectures.com/"),
+    ("Pathways of the Soul",
+     "",
+     None),
+    ("Laurie Richards Pixel Perfect",
+     "Portrait and wedding photography, children a specialty",
+     "https://pixelperfectnantucket.zenfolio.com/"),
+    ("Pizzeria Gemelle",
+     "Pizza seven days a week, lunch Friday and Saturday",
+     "https://pizzeriagemelle.com/"),
+    ("Proprietors Bar &amp; Table",
+     "Shared plates and cocktails on India Street",
+     "https://proprietorsnantucket.com/"),
+    ("Pure Body Nantucket",
+     "Organic, plant-based skincare made on the island",
+     "https://purebodynantucket.com/"),
+    ("Rebel Girls",
+     "Books, podcasts, and products that empower girls",
+     "https://www.rebelgirls.com/"),
+    ("Ruby Wines",
+     "A family-owned New England wine and spirits wholesaler",
+     "https://rubywines.com/",
+     "Info"),
+    ("Sandbar at Jetties Beach",
+     "A raw bar, burgers, and cocktails on the sand",
+     "https://www.jettiessandbar.com/"),
+    ("Sandy Walsh Thai Massage",
+     "Traditional Thai massage and bodywork",
+     "https://thaimassagenantucket.com/"),
+    ("Sharon Woods Hussey",
+     "Island-inspired paintings and gold jewelry",
+     "https://www.nantucketlooms.com/collections/sharon-woods-hussey"),
+    ("Sheri Perelman",
+     "Yoga, Ayurveda, and somatic movement; knits and honey",
+     "https://sherisclasses.com/"),
+    ("Ships Inn",
+     "Historic boutique hotel and restaurant",
+     "https://shipsinnnantucket.com/"),
+    ("Sister Ship",
+     "Globally inspired shared plates at Faraway Nantucket",
+     "https://www.farawayhotels.com/restaurant/sistership"),
+    ("Skar Designs Jewelry",
+     "Handcrafted sun and Nantucket jewelry, made in small batches",
+     "https://skardesigns.com/"),
+    ("Sophie T&rsquo;s Pizza",
+     "Pizza, plus beer and wine to go",
+     "https://sophietspizza.com/"),
+    ("St. James&rsquo;s Club &amp; Villas",
+     "Family-friendly all-inclusive resort in Antigua",
+     "https://stjamesclubantigua.com/"),
+    ("The Summer House",
+     "&rsquo;Sconset cottages, restaurant, and beachside bistro",
+     "https://thesummerhouse.com/"),
+    ("Terre et Sang",
+     "A winery devoted to Grenache and Syrah",
+     "https://terreetsang.com/"),
+    ("The Verandah Antigua",
+     "Luxury all-inclusive resort in Antigua",
+     "https://verandahresortandspa.com/"),
+    ("The Club Barbados Resort &amp; Spa",
+     "Adults-only all-inclusive resort on the west coast of Barbados",
+     "https://theclubbarbados.com/"),
+    ("The Copper Rose",
+     "Tarot decks, ritual oils, herbs, and crystals",
+     "https://thecopperrosenantucket.com/"),
+    ("The Pearl",
+     "Dinner and cocktails on Federal Street",
+     "https://pearlnantucket.com/"),
+    ("Theatre Workshop of Nantucket",
+     "Professional island theatre since 1956",
+     "https://theatrenantucket.org/"),
+    ("Toscana Saporita Cooking School",
+     "Italian cooking courses in Tuscany",
+     "https://toscanasaporita.com/"),
+    ("Ventuno",
+     "Italian dining downtown, sister to Via Mare and Gemelle",
+     "https://ventunorestaurant.com/"),
+    ("Via Mare",
+     "Venetian small plates inside the Greydon House hotel",
+     "https://viamarenantucket.com/"),
+    ("Victoria Greenhood Designs",
+     "One-of-a-kind gemstone jewelry, handmade for 50 years",
+     "https://victoriagreenhood.com/"),
+    ("The Westmoor Club",
+     "Private island club: sports, dining, and family programs",
+     "https://thewestmoorclub.com/"),
+    ("White Elephant Hotel",
+     "A waterfront hotel on the edge of Nantucket Harbor",
+     "https://www.whiteelephantnantucket.com/"),
+    ("Young&rsquo;s Bicycle Shop",
+     "Bike, Jeep, and car rentals on the island since 1931",
+     "https://youngsbicycleshop.com/"),
+    ("Zulu Nyala Heritage Safari Lodge",
+     "Safari lodges and game drives in KwaZulu-Natal",
+     "https://zulunyala.com/"),
+]
+
+AUCTION_PARTNERS_BY_YEAR = {
+    "2025": AUCTION_PARTNERS_2025,
+    "2026": AUCTION_PARTNERS_2026,
+}
+# The year the section opens on. Newest, so the page still leads with the
+# auction a reader is most likely to be looking for.
+AUCTION_OPEN_YEAR = "2026"
+
+# The standfirst under the section's eyebrow, in Frank's words (2026-11-07).
+# It replaced a note per year: one paragraph now covers both, which is why it
+# speaks of selecting the year rather than naming one, and why it sits above
+# the buttons instead of inside a panel.
+#
+# It carries no link. The 2026 note used to point at that auction's BetterUnite
+# page -- AUCTION_URL above, which nothing renders any more -- and Frank's copy
+# does not. The constant is kept so the address is not lost if he wants the
+# link back.
+AUCTION_NOTE = (
+    "This auction is a curated collection of one-of-a-kind treasures from "
+    "Nantucket and beyond. When a year&rsquo;s auction closes, you can still "
+    "shop from the auction partners by clicking the appropriate auction year "
+    "button below &amp; visiting their websites.")
+
 # How each link label reads when a screen reader announces it with the
 # business name, since "Info at ..." would not.
 LINK_PREPOSITION = {"Shop": "at", "Info": "about", "Contact": ""}
 
-def auction_partner_rows():
+def auction_partner_rows(partners):
     """One row per partner: name, what they sell, and a link out to them.
 
     A partner may carry a fourth field to override the "Shop" link text, for
     one whose page is somewhere to read about them rather than to buy."""
     rows = []
-    for partner in AUCTION_PARTNERS:
+    for partner in partners:
         name, what, url = partner[:3]
         label = partner[3] if len(partner) > 3 else "Shop"
         if not url:
@@ -44794,11 +45124,45 @@ def auction_partner_rows():
     return "\n          ".join(rows)
 
 def nmf_auction_section():
-    """The auction note, collapsible, opening onto the partner list.
+    """One Learn More over the standfirst, the year buttons and the lists.
 
-    Uses the same nmf-sub collapsible as Recent News and The History of New
-    Moon Fest: the caret is the only cue, and the borders those accordion rows
-    normally carry are suppressed because this one stands alone."""
+    Frank asked on 2026-11-07 for the section to read like every other one on
+    this page: an eyebrow, then Learn More, with everything else behind it.
+    So the shape has been through three versions in a day -- lists behind the
+    collapsible with the buttons outside it, then the standfirst outside too,
+    and now the whole thing inside. Expanding it shows the standfirst, the
+    year buttons and the open year's partner list together, which is what the
+    standfirst now describes.
+
+    Uses the same nmf-sub collapsible as Recent News and About New Moon Fest:
+    the caret is the only cue, and the borders those accordion rows normally
+    carry are suppressed because this one stands alone.
+
+    The panels sit straight under the buttons now, so the picker needs no
+    yearpick--opens -- a year can no longer change something nobody can see,
+    because the buttons are only reachable once the section is open. That
+    class is now used nowhere; its branch in initYearPicker() is left in
+    place, since putting the buttons back outside a collapsible is the kind
+    of thing Frank has asked for twice already.
+
+    Years run oldest to newest, like the awards and past-selections pickers
+    further down the page."""
+    years = sorted(AUCTION_PARTNERS_BY_YEAR)
+    btns = "\n".join(
+        f'        <button type="button" class="year-btn'
+        f'{" is-active" if yr == AUCTION_OPEN_YEAR else ""}" data-year="{yr}" '
+        f'aria-pressed="{"true" if yr == AUCTION_OPEN_YEAR else "false"}">{yr}</button>'
+        for yr in years)
+
+    def panel(yr):
+        hidden = "" if yr == AUCTION_OPEN_YEAR else " hidden"
+        return (f'          <div class="year-panel" data-year="{yr}"{hidden}>\n'
+                f'            <ul class="auction-partners">\n'
+                f'              {auction_partner_rows(AUCTION_PARTNERS_BY_YEAR[yr])}\n'
+                f'            </ul>\n'
+                f'          </div>')
+
+    panels = "\n".join(panel(yr) for yr in years)
     return f"""<section class="section nmf-auction">
   <div class="wrap">
     <div class="section__head" data-reveal>
@@ -44807,10 +45171,15 @@ def nmf_auction_section():
     <details class="pastsel__year dl-group nmf-sub" data-reveal>
       <summary>Learn More</summary>
       <div class="dl-group__body">
-        <p class="auction-note">This auction is a curated collection of one-of-a-kind deals from all over Nantucket. The 2026 auction may be closed, but you can see the items that sold (<a href="{AUCTION_URL}" target="_blank" rel="noopener">click here</a>) or buy the same items by visiting the websites of the auction partners on the following list.</p>
-        <ul class="auction-partners">
-          {auction_partner_rows()}
-        </ul>
+        <p class="auction-note">{AUCTION_NOTE}</p>
+        <div class="yearpick">
+          <div class="yearpick__btns" role="group" aria-label="Auction partners by year">
+{btns}
+          </div>
+          <div class="yearpick__panels">
+{panels}
+          </div>
+        </div>
       </div>
     </details>
   </div>
@@ -44868,6 +45237,816 @@ def nmf_awards_section():
 
 NMF_SELECTIONS_OPEN = "2026"
 
+# The LUNAFEST short-film archive, from a CSV Frank supplied on 2026-11-07:
+# every film the festival selected across 22 seasons, 2001-02 to 2022-23.
+# (season, title, director, duration, description), in the CSV's own order,
+# which runs oldest season first.
+#
+# The fields are verbatim. The CSV carries its own inconsistencies -- the
+# 2005-06 and 2006-07 titles are in capitals where every other season is in
+# sentence case, "Rememberance" and "Breaking Boundries" are spelled that way,
+# and "Reluctant Bride, A" is inverted -- and those are left exactly as they
+# arrived, to be raised with Frank rather than quietly corrected.
+#
+# Duration is "" for the five films whose CSV cell read n/a. The overlay then
+# shows the director alone instead of printing "n/a" at a reader.
+LUNAFEST_FILMS = [
+    # 2001-02
+    ("2001-02", "Roadside Assistance",
+     "Jennifer Derwingson",
+     "20:00",
+     "The love of Lucy's life is marrying her best friend, and her bridesmaid dress is two sizes too small. When the bus she is on breaks down in the middle of nowhere, her fellow passengers-a Las Vegas magician and an former March of Dimes poster child-conspire to teach her about beauty, love, and when to take your clothes off and tango in the rain."),
+    ("2001-02", "This is for Betsy Hall",
+     "Hope Hall",
+     "6:00",
+     "An impressionistic montage of stills, projected video, underwater footage and an intimate phone conversation, this deeply personal film was crafted as a gift for the filmmakers's mother, who has struggled all her life with anorexia and bulimia."),
+    ("2001-02", "Voices of the Morning",
+     "Meena Nanji",
+     "15:00",
+     "Inspired by \"The Hidden Face of Eve\" by Nawaal El Sadaawi, Nanji uses layered images and text to examine familial and societal restrictions placed on South Asian women as defined by orthodox Islamic laws."),
+    ("2001-02", "Breaking The Glass: The American Basketball League",
+     "Marla Leech",
+     "19:00",
+     "\"Breaking the Glass\" is a documentary on the inception, existence and unfortunate collapse of the women's American Basketball League (ABL). This film takes a look at the players, the philosophy, the fans, and the passion that embodied the ABL before it filed for bankruptcy in 1999 due to direct competition from the current WNBA league."),
+    ("2001-02", "In Public Space",
+     "Kia Simon",
+     "5:00",
+     "This film showcases a dance that explores and transforms everyday locations by experimenting with human interaction, restricted motion, and movement that cannot work on stage."),
+    ("2001-02", "The Last Gunshot",
+     "Gabriela Tollman",
+     "24:00",
+     "Gabriela Tollman Award: By Women \"The Last Gunshot\" delves into the intertwined lives and memories of Helen, a white teenager, and Sophie, a black servant, brought together by a common memory of the tyranny of apartheid in South Africa during the 1980's."),
+    ("2001-02", "Meet the Pattersons",
+     "Michelle Wagner",
+     "12:00",
+     "Logline not located in consulted sources."),
+    # 2002-03
+    ("2002-03", "Grrlyshow",
+     "Kara Herold",
+     "19:00",
+     "Grrlyshow mixes interviews with creators of grrly zines, '50s-era footage, and lounge music to evoke the sense of fun and experimentation these women bring to their alternative publications. What results is an entertaining, empowering testament to the creativity and resourcefulness of third-wave feminists."),
+    ("2002-03", "Janey Van Winkle",
+     "Casey Suchan",
+     "20:00",
+     "In this modern-day version of Washington Irving's surreal fairy tale, heroine Janey awakens from a seven-year slumber only to be greeted by some remarkably strange goings-on. Janey Van Winkle's absurd characters and situations mix the apocalyptic with the ordinary to hilarious yet jarring effect."),
+    ("2002-03", "Personal Touch",
+     "Aminah Bakeer Abdul-Jabbaar",
+     "4:00",
+     "The discovery of a lump in her own breast inspired the director to make this film about her mother's experience with breast cancer. Personal Touch both articulates her heartbreaking lament and the contradictory feelings preventing the disease elicits in her."),
+    ("2002-03", "Psalm 51",
+     "Kris Barberg",
+     "3:00",
+     "Based on the Old Testament passage, Psalm 51 combines improvisational dance, stark images, and a percussive soundtrack to convey its themes of sin, despair, hope, and forgiveness. Its director has translated the darkness of the soul into meaningful representations on the screen."),
+    ("2002-03", "Dear Judge",
+     "Laleh Soomekh",
+     "27:00",
+     "In 1992 Dorothy Gaines was sentenced to 20 years in federal prison for a drug-related crime she did not commit. Set in Mobile, Alabama, Dear Judge documents her three children's efforts to get along without their mother and their fight for her freedom."),
+    ("2002-03", "Boobie Girl",
+     "Brooke Keesling",
+     "5:00",
+     "An animated cautionary tale about a young girl who longs for large breasts only to learn the painful meaning of the adage \"be careful what you wish for\"."),
+    # 2003-04
+    ("2003-04", "Barrier Device",
+     "Grace Lee",
+     "26:00",
+     "A researcher for a female condom study loses all objectivity when she realizes one of her subjects is dating her ex. As a young woman explores her sexual past with the researcher, together they uncover pieces of their lives that are unusually intertwined."),
+    ("2003-04", "Kissed by Angels",
+     "Daniela Zanzotto",
+     "10:00",
+     "A stylized and powerful documentary offers an intimate look at one woman's experience overcoming breast cancer. Caroline, an actor and psychotherapist at the age 46, confronts a mastectomy while trying to identify and capture her emotions about this drastic life change. Kissed by Angels shares Caroline's story and experiences with her from her home and the hospital, revealing how she copes with grief and its effect on her view as a woman."),
+    ("2003-04", "Judy's Time",
+     "Erin Flannery",
+     "40:00",
+     "Judy Flannery is honored by her daughter Erin in this award winning documentary about a mother of five who becomes a world champion triathelete in mid-life. In 1997, Judy was killed in an accident when a car swerved into her bicycle on a windy road. This film celebrates her dedication to her family coupled with her quiet determination to excel and pursue her passion for competition."),
+    ("2003-04", "Colorforms",
+     "Eva Saks",
+     "8:00",
+     "COLORFORMS is a Very Short Film about a Very Messy Little Girl. COLORFORMS is about empowering the Messy Little Girl in all of us, to find her creative potential. It celebrates New York City and its diversity, including the Indo-Caribbean culture."),
+    ("2003-04", "Life, Liberty and the Pursuit of Happiness",
+     "Tiffany Shlain",
+     "14:00",
+     "A political and social satire regarding the current state of reproductive rights spun into a fast paced spoonful. Found footage, animation and original images are interwoven in a collage containing the fictional stories of a conservative politician, a young couple and a fundamentalist activist along with the decline in the amphibian populations and the insidious creeping erosion of reproductive rights in the U.S. all linked together through a Chinese dry cleaner."),
+    ("2003-04", "Remembrance",
+     "Stephanie Morgenstern and Paula Fleck",
+     "19:00",
+     "Set during World War II, Alfred Graves, a man cursed with a perfect recollection of his every experience, leads a cautious life touring his one man memory show. One night while in Toronto, he becomes spellbound by an attractive stranger in the audience who has come with a serious proposition for him."),
+    # 2004-05
+    ("2004-05", "A Good Uplift",
+     "Faye Lederman, Cheryl Furjanic, and Eve Lederman",
+     "13:00",
+     "A light-hearted look at a famous lingerie shop on the Lower East Side of New York City. This documentary shares a day-in-the-life of a Jewish grandmother and her business partner as they do their best to embrace and enhance the shop's clientele."),
+    ("2004-05", "Shui Hen",
+     "Maximillian Jezo-Parovsky",
+     "23:00",
+     "A coming of age story about a Chinese girl in Hong Kong who was left behind by her parents and travels to Cuba after 15 years to be reunited with them. She quickly discovers that after all these years of not truly knowing her parents, she has become a stranger within her own family. Problems arise when her dreams about her future collide with plans for marriage set up by her own father. This film explores familial love, often not a given, but something that needs substantial effort to grow."),
+    ("2004-05", "Little Black Boot",
+     "Colette Burson",
+     "16:00",
+     "In this contemporary retelling of Cinderella, an awkward high school girl goes to the prom alone dressed as a boy and finds her true love."),
+    ("2004-05", "Wet Dreams and False Images",
+     "Jesse Epstein",
+     "11:00",
+     "Dee-Dee the barber is a self-proclaimed \"booty expert,\" who covers his wall with magazine cut-outs of women. When Dee-Dee is introduced to the art of media manipulation, he may never look at beauty the same way again."),
+    ("2004-05", "Velvet Tigress",
+     "Jen Sachs",
+     "11:00",
+     "This animated documentary of the 1931 Winnie Ruth Judd \"Trunk Murders\" trial presents Winnie's story through the eyes of the sensational press of the time."),
+    ("2004-05", "La Milpa / The Cornfield",
+     "Patricia Riggen",
+     "27:00",
+     "Angela reminisces about her youth during the Mexican Revolution, a time when myths, sensuality, war and pain were everyday occurrences."),
+    ("2004-05", "Dysenchanted",
+     "Terri Edda Miller",
+     "8:00",
+     "What do Cinderella, Sleeping Beauty, Snow White, Goldilocks, Alice, Dorothy and Red Riding Hood have in common, besides the fact that they are all storybook heroines? They are all in need of serious therapy. This film eavesdrops on a private session of this iconic \"group\"."),
+    # 2005-06
+    ("2005-06", "Backseat Bingo",
+     "Liz Blazer",
+     "5:25",
+     "Sexy Senior Seeks Same . Backseat Bingo is an animated documentary about the romantic lives of Senior Citizens."),
+    ("2005-06", "One Weekend a Month",
+     "Eric Escobar",
+     "11:30",
+     "Meg McDermott (Reneé O’Connor) is a busy single mom juggling time spent in the National Guard and time spent caring for her two young children. The film begins on a typical crazy Monday morning as Meg gets her children ready for school. She receives a phone call that changes her life. A friend informs her that her National Guard unit will be activated for duty in Iraq in two weeks. This begins the ride that is the film. We witness Meg unravel as she struggles through a series of phone calls to figure out who will take care of her children. She cannot turn to her friends, the fathers of her children or her mother. What will she do?"),
+    ("2005-06", "Tahara",
+     "Sara Rashad",
+     "17:30",
+     "TAHARA revolves around Amina who must decide if she will submit to family pressure to circumcise her daughter or abandon this age old tradition because of pressure she recieves from her mother when her husband's away on a business trip. Does Amina find courage to save Suha from the brutal physical and psychological effects of female genital mutilation?"),
+    ("2005-06", "Blessing",
+     "Suju Vijayan",
+     "14:00",
+     "Maya, home for her brother Nealís high school graduation, is forced to deal with their often overbearing, sometimes embarrassing mother, Asha. For as long as she can remember, Maya has been frustrated by what she sees as her mother's inability to listen to her or understand her. The free-spirited Asha, however, is seemingly oblivious to her daughter’s feelings, and instead forces unwanted and sometimes misguided advice on Maya, from the spiritual to the romantic. But Asha is not without surprises, forcing Maya to rethink her opinion of her mother..."),
+    ("2005-06", "Twilight",
+     "Victoria Gamburg",
+     "21:00",
+     "A story about loss, despair and the possibility of redemption, set in the mysterious Russian city of St. Petersburg during its strange White Nights, when darkness never falls. A woman, Masha (Maria Voronina) searches fruitlessly, through morgues and down alleys, for a daughter who disappeared three years previous. A bored policeman ignores her when she tries to file yet another missing person report. Doggedly scanning St. Petersburg's many discarded children, she focuses on her own task and ignores their cries for help."),
+    ("2005-06", "Perfection",
+     "Karen Lin",
+     "6:24",
+     "From infancy, an Asian American woman learns the game of perfection. But if your goal is perfection, will the game ever end? Milton Bradley’s game Perfection is “a race against time” where players must match shapes to a board in 60 seconds. The game mirrors an Asian American woman’s struggle to achieve success and gain her parent’s approval. Taught the game as an infant, she races into her teens winning competitions and getting straight A’s, only left to wonder whether or not her parents will love her even if she fails. Ultimately she must decide whether to end the game."),
+    ("2005-06", "Laying Down Arms",
+     "Carol Schreder",
+     "13:45",
+     "This is the story of two women who forge an unlikely friendship through a mistaken phone call. Janet, a troubled young woman, and Esther, and elderly holocaust survivor, engage in a conversation that transforms both of their lives."),
+    ("2005-06", "Mabel's Saga / Le Voyage de Mabelle",
+     "JoDee Samuelson",
+     "15:03",
+     "Mabel is juggling the demands of work, teenagers and an elderly mother. Now, she is confronted with a new challenge: hot flashes and chin hairs! Before you can say \"estrogen,\" purple-haired Mabel finds herself the unassuming heroine of her own adventure... the adventure of aging. MABEL'S SAGA is a touching, funny film without words that celebrates menopause as a natural transition, rather than a medical condition to be feared. The film blends animation with a lush musical landscape, offering a reassuring look at one of the most important passages in a woman's life."),
+    # 2006-07
+    ("2006-07", "Mann Ke Manjeeré",
+     "Sujit Sircar, Red Ice Films",
+     "5:15",
+     "Singer Shubha Mudgal vocals portray the journey of a courageous domestic violence survivor. The story of the music video was inspired greatly by the life of a young Muslim women, Shameem Paathan. Born into a well-to-do family and the daughter of 7 sons, Shameem fell in love, and much against the wishes of her family married the man of her choice. That she made the wrong choice soon became apparent. When her son was three and a half years old, Shameem finally decided to fend for herself. She went through a series of businesses and finally she learned how to drive, an unheard of occupation for a women in her society. She now drives her own van in Ahmedabad, ferrying passengers."),
+    ("2006-07", "Plum Flower",
+     "Serena Moy",
+     "",
+     "Plum Flower takes place in 1948 China. It was a time when female infanticide was a normal occurrence for poor rural communities. Females could not carry on the family name, so they were less desirable when too many were born to one family. Plum Flower is about a mother and father facing a staggering moral choice when they have a fifth daughter. It is based on the true story of the filmmaker’s family."),
+    ("2006-07", "Slip of the Tongue",
+     "Karen Lum",
+     "4:07",
+     "Be careful what you ask a stranger at a bus stop; a look at perceptions of beauty, ethnicity, and body image define \"ethnic makeup.\""),
+    ("2006-07", "Breached",
+     "Laura Richard",
+     "18:10",
+     "A Mexican women is nearing delivery and is determined to have her baby on American soil."),
+    ("2006-07", "City Paradise",
+     "Gaëlle Denis, Paradise Pictures",
+     "6:00",
+     "London is a big city, and for those new to it, it can sometimes seem quite scary. But Tomoko, who arrives from Japan to learn English, accidentally discovers a mysterious, secret city underground, inhabited by friendly little aliens and beautiful blossoms. After she finds it, everything changes."),
+    ("2006-07", "Top of the Circle",
+     "Shaz Bennett",
+     "5:00",
+     "Who is at the top of the food chain? This experimental performance piece explores the cycle of life and death--and bacon bits."),
+    ("2006-07", "Dear Talula",
+     "Lori Benson",
+     "34:30",
+     "Filmmaker Lori Benson is a quintessential downtown New Yorker who was diagnosed with breast cancer just 14 months after the birth of her daughter,Talula. With much grace and humor, Benson brings us along as her friends and husband document an emotionally charged year. We thus become part of Benson's inner circle and are privy to her most intimate thoughts, vulnerabilities, and discoveries. The profound experience makes the filmmaker confront her own mortality and ultimately strengthens her connection to her true self. Learn more about Dear Talula at www.deartalula.com ."),
+    ("2006-07", "Kylie Goldstein-All American",
+     "Eva Saks",
+     "3:00",
+     "A documentary about a Chinese adopted, All-American 6 year old."),
+    ("2006-07", "Agricultural Report",
+     "Melina Sydney Padua",
+     "2:30",
+     "A concerned cow discovers the bliss of ignorance."),
+    # 2007-08
+    ("2007-08", "My Other Mother",
+     "Diana Keam",
+     "",
+     "When her baby sister dies, Margo’s other mother shows her how to grieve."),
+    ("2007-08", "Make A Wish",
+     "Cherien Dabis",
+     "12:00",
+     "A young Palestinian girl will do whatever it takes to buy a birthday cake."),
+    ("2007-08", "Dona Ana / Mrs. Ana",
+     "Marlon Vasquez & David Sanchez",
+     "",
+     "A seller of medicinal plants shares the joys and hardships of her life along with her love of strawberries. Animated by: Laura Acevedo & Carolina Escobar"),
+    ("2007-08", "Happiness",
+     "Sophie Barthes",
+     "11:00",
+     "Iwona buys a box of happiness at a strange discount store and has to decide what to do with it."),
+    ("2007-08", "Godir Gestir / Family Reunion",
+     "Isold Uggadottir",
+     "19:00",
+     "Katrin leaves New York to visit her native Iceland, in this whimsical tale of family secrets."),
+    ("2007-08", "Daikon Ashi",
+     "Ru Kuwahata",
+     "",
+     "A young girl struggles with adolescent rebellion and the reality of family ties."),
+    ("2007-08", "Breaking Boundaries: The Sondra Van Ert Story",
+     "Jennifer Grace",
+     "18:00",
+     "A documentary reflection on one female Olympic athlete’s determination and success."),
+    ("2007-08", "The Guarantee",
+     "Jesse Erica Epstein",
+     "11:00",
+     "A dancer’s hilarious story about his prominent nose and the effect it has on his career."),
+    ("2007-08", "Pockets",
+     "Sophie Ohara",
+     "",
+     "A pocket becomes an abstract metaphor for the journey of motherhood."),
+    # 2008-09
+    ("2008-09", "Big Girl",
+     "Renuka Jeyapalan",
+     "16:00",
+     "Playfully competing with Mom’s new boyfriend, nine-year-old Josephine learns that letting people in can lead to wonderful things."),
+    ("2008-09", "Fim-de-Semana (Weekend)",
+     "Claudia Varejao",
+     "8:30",
+     "A country house. A weekend. A family. Time goes by. Silence prevails."),
+    ("2008-09", "Sarah in the Dark",
+     "Jennifer Halley",
+     "10:00",
+     "The little voice in Sarah's head has been let loose for too long."),
+    ("2008-09", "Red Wednesday",
+     "Nazanin Shirazi",
+     "11:00",
+     "Nine-year-old Sholeh attempts to revive her ailing mother with a Zoroastrian fire celebration."),
+    ("2008-09", "Grappling Girls",
+     "Lisa Blackstone",
+     "12:30",
+     "Ladies are making their way into one of the world’s oldest sports – and even taking on the guys."),
+    ("2008-09", "34x25x36",
+     "Jesse Erica Epstein",
+     "8:00",
+     "A tour of the Patina V Mannequin Factory in the City of Industry, outside of LA."),
+    ("2008-09", "Kaden",
+     "Harriet Storm",
+     "9:00",
+     "A transgender individual prepares for reconstructive surgery and reflects on what is left behind and what the future holds."),
+    ("2008-09", "My First Crush",
+     "Julia Pott",
+     "4:00",
+     "A playful animation about awkward moments and young romance."),
+    ("2008-09", "The Ladies",
+     "Christina Alexandra Voros",
+     "12:00",
+     "Sisters Vali and Mimi reflect on their craft, the importance of family and their creative spirits."),
+    ("2008-09", "Kuna Ni Nanang (My Mother Said)",
+     "Jessica Sison",
+     "5:00",
+     "Elena Bautista reflects on her 100 years of life."),
+    # 2009-10
+    ("2009-10", "A Summer Rain",
+     "Ela Thier",
+     "16:30",
+     "A young Israeli immigrant struggles with her transition to American life."),
+    ("2009-10", "Plastic",
+     "Sandy Widyanata",
+     "7:30",
+     "A young woman redefines her self-image moments before a first date."),
+    ("2009-10", "Roz (and Joshua)",
+     "Charlene Music",
+     "3:00",
+     "Separated from her son, Roz lives for the time when they will reunite permanently."),
+    ("2009-10", "Monday Before Thanksgiving",
+     "Courteney Cox",
+     "19:30",
+     "Through a chance encounter, a single woman learns that the life she lives is exactly what she wants."),
+    ("2009-10", "DIY: Emancipation 101",
+     "Lynn Robinson",
+     "1:00",
+     "A playful animation about women and bicycling."),
+    ("2009-10", "The Kinda Sutra",
+     "Jessica Yu",
+     "8:30",
+     "How are babies made?"),
+    ("2009-10", "A Vida Politica",
+     "Kat Mansoor",
+     "3:00",
+     "A Brazilian hairstylist explains how beauty can be a form of activism."),
+    ("2009-10", "Anjali",
+     "Maya Anand",
+     "14:30",
+     "When Anjali becomes witness to her father's betrayal, she must decide if she will share her secret and risk devastating her family."),
+    ("2009-10", "Omelette",
+     "Nadejda Koseva",
+     "5:00",
+     "A mother battles with the challenges of inflation."),
+    ("2009-10", "The McCombie Way",
+     "Kristina & Nick Higgins",
+     "6:30",
+     "Words of wisdom from a mystic in the middle of the Mojave Desert."),
+    # 2010-11
+    ("2010-11", "Getting a Grip",
+     "Rosa María Ruvalcaba",
+     "5:00",
+     "Meet Fannie Barnes who became the first woman cable car operator in January 1998 – at age 52."),
+    ("2010-11", "Irene",
+     "Lindsay Goodall",
+     "10:00",
+     "Ninety-two-year-old Irene suffers from Alzheimer’s, but struggles to keep her independence."),
+    ("2010-11", "Love on the Line",
+     "G. Melissa Graziano",
+     "5:00",
+     "Follow the dots and dashes when star-crossed lovers curbed their raging hormones via the quickest form of communication available: the telegraph."),
+    ("2010-11", "Miracle Lady",
+     "Moran Somer & Michal Abulafia",
+     "10:00",
+     "A tale of two old women who spend their days waiting."),
+    ("2010-11", "Mother of Many",
+     "Emma Lazenby",
+     "6:00",
+     "The most dangerous journey sometimes needs a helping hand -- a midwife."),
+    ("2010-11", "The Translator",
+     "Sonya Di Rienzo",
+     "8:00",
+     "A foreign film translator finds her story on a subway line."),
+    ("2010-11", "Thembi’s Diary",
+     "Jisoo Kim",
+     "6:00",
+     "Nineteen-year-old Thembi records an audio diary of her struggle to live with AIDS."),
+    ("2010-11", "Tightly Knit",
+     "Jenni Nelson",
+     "5:00",
+     "A new generation of yarn bombers and social knitters discover that the ties that bind are sometimes made of wool."),
+    ("2010-11", "Top Spin",
+     "Sara Newens",
+     "12:30",
+     "With hard work and family sacrifice, a young table tennis champion works towards becoming one of the top players in the world."),
+    ("2010-11", "Touch",
+     "Jen McGowan",
+     "11:00",
+     "Two women make an unusual connection while waiting for a train."),
+    # 2011-12
+    ("2011-12", "Every Mother Counts: Obstetric Fistula",
+     "Christy Turlington Burns",
+     "6:00",
+     "A look at one of the most common and painful injuries women suffer during childbirth."),
+    ("2011-12", "How To Be Alone",
+     "Andrea Dorfman",
+     "4:30",
+     "A poem and “how-to” manual about being alone."),
+    ("2011-12", "I am a Girl!",
+     "Susan Koenen",
+     "15:00",
+     "Joppe has always known that he’s a girl - and won’t let a little biology get in the way."),
+    ("2011-12", "Lady Razorbacks",
+     "Laura Green",
+     "5:00",
+     "When a group of Pacific Islander women start a rugby team in East Palo Alto, the field becomes a sanctuary."),
+    ("2011-12", "Life Model",
+     "Lori Petchers",
+     "6:00",
+     "A look inside the world of an aging nude figure model and the beautiful artwork she inspires."),
+    ("2011-12", "Missed Connections",
+     "Mary Robertson",
+     "8:00",
+     "On Craigslist’s “Missed Connections” forum, those who regret their timidity make appeals to the Ones Who Got Away."),
+    ("2011-12", "Reluctant Bride, A",
+     "Shideh Faramand",
+     "6:00",
+     "Stuck at her younger sister’s engagement party, an unmarried Persian woman dodges and weaves suitors and romantic setups like a pro."),
+    ("2011-12", "The Wind is Blowing on My Street",
+     "Saba Riazi",
+     "16:00",
+     "An accident that leaves a young girl on the street in Tehran without a headscarf leads to an unlikely connection."),
+    ("2011-12", "Worst Enemy",
+     "Lake Bell",
+     "13:00",
+     "Is our heroine way too neurotic to be a “normal” girl?"),
+    # 2012-13
+    ("2012-13", "Blank Canvas",
+     "Sarah Berkovich",
+     "3:30",
+     "Going through chemotherapy, a woman turns her baldness into a blank canvas for self-expression."),
+    ("2012-13", "Chalk",
+     "Martina Amati",
+     "19:00",
+     "A gymnast selected for an elite training camp makes new discoveries about bodies, boys and friendship."),
+    ("2012-13", "Flawed",
+     "Andrea Dorfman",
+     "12:30",
+     "An animated tale about accepting yourself, flaws and all."),
+    ("2012-13", "Georgena Terry",
+     "Amanda Zackem",
+     "6:00",
+     "How the founder of Terry Bicycles revolutionized cycling with bike frames designed for a women’s bodies."),
+    ("2012-13", "Lunch Date",
+     "Sasha Collington",
+     "14:00",
+     "Getting dumped hurts, especially for a woman whose boyfriend sends his fourteen-year-old brother to break the news."),
+    ("2012-13", "Self-Portrait with Cows Going Home and Other Works",
+     "Rebecca Dreyfus",
+     "10:30",
+     "A rare and soulful portrait of the ironically camera-shy Sylvia Plachy, a renowned contemporary photographer."),
+    ("2012-13", "The Bathhouse",
+     "Jisoo Kim",
+     "6:00",
+     "Escaping the streets of the modern city, a group of women are transformed by a bathhouse paradise."),
+    ("2012-13", "Whakatiki – A Spirit Rising",
+     "Louise Leitch",
+     "13:00",
+     "A day at the river awakens the spirit of a woman held captive by years of broken promises."),
+    ("2012-13", "When I Grow Up",
+     "Sharon Arteaga",
+     "9:00",
+     "A mother and daughter sell tacos and dream of a better life."),
+    # 2013-14
+    ("2013-14", "Date with Fate",
+     "Venetia Taylor",
+     "4:00",
+     "When it comes to blind dating, some things are meant to be—whether you like it or not."),
+    ("2013-14", "First Match",
+     "Olivia Newman",
+     "15:00",
+     "A determined female wrestler prepares for her first co-ed high school match."),
+    ("2013-14", "Flying Anne",
+     "Catherine van Campen",
+     "21:00",
+     "A young girl with Tourette’s syndrome takes “flight” to navigate life with her tics."),
+    ("2013-14", "Granny’s Got Game",
+     "Angela Gorsica Alford",
+     "11:00",
+     "Seven fiercely competitive women in their seventies bond and play winning basketball, proving you are never too old to do what you love."),
+    ("2013-14", "Maria of Many",
+     "Alexandra Liveris",
+     "4:00",
+     "Meet María—Mexican immigrant, domestic worker, committed mom and activist."),
+    ("2013-14", "Running Dry",
+     "Dimitra Nikolopoulou",
+     "10:00",
+     "A woman impacted by economic hardships journeys into contemporary Athens."),
+    ("2013-14", "Sidewalk",
+     "Celia Bullwinkel",
+     "4:00",
+     "A woman walks through life, confronts her changing body and learns to love herself."),
+    ("2013-14", "Sounds Shadows",
+     "Julie Engaas",
+     "8:00",
+     "Enter a world where sound gives shape to space."),
+    ("2013-14", "Tiny Miny Magic",
+     "Danielle Lurie",
+     "8:00",
+     "When Sam and her mailman exchange presents via her mailbox, an unexpected love connection blossoms."),
+    # 2014-15
+    ("2014-15", "A Good Match",
+     "Lyn Elliot",
+     "13:00",
+     "Ann and Alex have split up, but does that mean it's over with Alex's mom, too? Ann wants to give the relationship another try."),
+    ("2014-15", "Chicas Day",
+     "Susan Béjar",
+     "10:00",
+     "Today is a girls’ day out, everything is allowed... But don’t forget that this is just a game..."),
+    ("2014-15", "Flor de Toloache",
+     "Jenny Schweitzer",
+     "10:00",
+     "A group of women daringly challenge gender social norms as an all-female mariachi band."),
+    ("2014-15", "Lady Parts",
+     "Emily Fraser",
+     "6:00",
+     "In an industry dominated by men, Lady Parts Automotive brings a woman's touch."),
+    ("2014-15", "Miss Todd",
+     "Kristina Yee",
+     "13:00",
+     "In 1910 New York, Miss Todd works to understand the principles of flight, but she has more than gravity holding her down."),
+    ("2014-15", "Tits",
+     "Louisa Bertman",
+     "5:00",
+     "A story about feminine exploration."),
+    ("2014-15", "Tryouts",
+     "Susana Casares",
+     "14:00",
+     "Being a teenager isn't easy, especially for Nayla, a Muslim American girl who wants to join her new high school's cheerleading squad."),
+    ("2014-15", "Viva",
+     "Amanda Bluglass",
+     "8:00",
+     "A documentary portrait of Cornwall's grandmother of punk, or, how to be a rebel at 82."),
+    # 2015-16
+    ("2015-16", "Balsa Wood",
+     "Dominique Lecchi",
+     "10:00",
+     "A light-hearted slice of life about two mixed race siblings visiting their extended Filipino family for lunch."),
+    ("2015-16", "Beach Flags",
+     "Sarah Saidan",
+     "13:00",
+     "A young Iranian lifeguard, determined to participate in an international competition in Australia, experiences an unexpected obstacle when a…"),
+    ("2015-16", "Boxeadora",
+     "Meg Smaker",
+     "17:00",
+     "One woman defies Fidel Castro’s ban on female boxing to follow her dreams of Olympic glory and become Cuba’s first female boxer."),
+    ("2015-16", "Finding June",
+     "Anna Schumacher",
+     "21:00",
+     "Through the eyes of a deaf woman just diagnosed with breast cancer, communication's role in understanding one another is explored."),
+    ("2015-16", "First World Problems",
+     "Hanna Maylett",
+     "6:00",
+     "A tired housewife loses her car in a shopping mall - sometimes problems can open a door to a whole new world."),
+    ("2015-16", "Raising Ryland",
+     "Sarah Feeley",
+     "14:00",
+     "An intimate look at parenting with no strings attached - a journey inside the transgender experience as lived by a six year old boy and his two…"),
+    # 2016-17
+    ("2016-17", "Another Kind of Girl",
+     "Khaldiya Jibawi",
+     "10:00",
+     "A 17-year-old girl meditates on how her refugee camp has opened up new horizons and given her a sense of courage that she lacked in Syria."),
+    ("2016-17", "Family Tale",
+     "Dr. Patricia Beckmann-Wells",
+     "8:00",
+     "Through love, loss, and determination, the definition of family is rewritten."),
+    ("2016-17", "Free to Laugh",
+     "Lara Everly",
+     "8:00",
+     "A documentary that explores the power of comedy after prison."),
+    ("2016-17", "Join the Club",
+     "Eva Vives",
+     "5:00",
+     "A writer's dilemma of whether or not to join a networking club unfolds during one therapy session."),
+    ("2016-17", "Niñera",
+     "Diane Weipert",
+     "13:00",
+     "A story that looks at the bitter irony many nannies face: raising the children of strangers for a living while their own children are virtually…"),
+    ("2016-17", "Nkosi Coiffure",
+     "Frederike Migom",
+     "15:00",
+     "After a fight with her boyfriend in the street, a woman escapes into a hair salon in Brussels."),
+    ("2016-17", "Partners",
+     "Joey Ally",
+     "6:00",
+     "Professional and life partners must confront how intertwined their lives have become."),
+    ("2016-17", "The Honeys and the Bears",
+     "Veena Rao",
+     "4:00",
+     "Members of a synchronized swim team for seniors describe the freedom of the water."),
+    ("2016-17", "The Third Dad",
+     "Theresa Moerman Ib",
+     "10:00",
+     "Ten years after breaking all ties with her father, a daughter sets out to find his grave - and redemption."),
+    # 2017-18
+    ("2017-18", "Buttercup",
+     "Megan Brotherton",
+     "13:00",
+     "Maggie needs her best friend today more than ever, but never expected she'd actually show up."),
+    ("2017-18", "Girls Level Up",
+     "Anne Edgar",
+     "10:00",
+     "A young Pakistani women who grew up in a conservative Muslim neighborhood in the Middle East helps middle school girls in Silicon Valley realize their dream of designing their own video game."),
+    ("2017-18", "Toys",
+     "Amanda Quaid",
+     "2:00",
+     "In 1930s farm country, a father wants a son, but he gets a little girl. He tries to toughen her up by giving her toys intended for boys. His efforts backfire when she proves a little too capable for comfort."),
+    ("2017-18", "Fanny Pack",
+     "Uttera Singh",
+     "11:00",
+     "A comedy about a young Indian-American woman who wants to follow her dreams and a fanny pack-clad Indian father who chases his daughter through an airport hoping that she will follow his."),
+    ("2017-18", "Joy Joy Nails",
+     "Joey Ally",
+     "19:00",
+     "In an upmarket Connecticut strip mall, Korean Sarah manages a Korean-owned nail salon with an ever cheerful, K-pop pumping, manicured iron fist. When Chinese Mia starts training as a manicurist, and looks to be stealing the boss’s son’s affections, Sarah gets her claws out—only to discover the terrible truth under the varnish at JOY JOY NAILS."),
+    ("2017-18", "Yours Sincerely, Lois Weber",
+     "Svetlana Cvetko",
+     "6:00",
+     "A tribute to the highest-paid silent film director at Universal Studios in 1916"),
+    ("2017-18", "Jesszilla",
+     "Emily Sheskin",
+     "7:00",
+     "Jesselyn “Jesszilla” Silva is serious about boxing, and at 10 years old trains seriously with dreams of becoming a professional fighter. Her father, Pedro, finds himself caught in between supporting her dream and worrying about her future as she tries to master a combat sport."),
+    ("2017-18", "Waiting For Hassana",
+     "Ifunanya Maduka",
+     "11:00",
+     "In 2014, the extremist organization, Boko Haram, kidnapped 276 teenage girls from a town in northeastern Nigeria. WAITING FOR HASSANA is a harrowing first-person account of one girl’s escape from captivity and a heart-wrenching lament for her closest friend Hassana — one of the many girls still unaccounted for..."),
+    ("2017-18", "Last Summer, in the Garden",
+     "Bekky O'Neil",
+     "4:00",
+     "Last summer, in the garden recounts one woman’s journey through a joyful, fearful time of death and rebirth. Last summer, in the garden is featured in the touring program The 18th Annual Animation Show of Shows."),
+    # 2018-19
+    ("2018-19", "Flip the Record",
+     "Marie Jamora",
+     "15:00",
+     "In this 1980s coming-of-age story set to pulsing hip-hop music, a Filipino-American teen discovers her identity through a budding talent for turntablism."),
+    ("2018-19", "The Final Show",
+     "Dana Nachman",
+     "10:00",
+     "A woman who has lived a long life full of love and loss has to decide, based on all that she has learned, who to take along to eternity."),
+    ("2018-19", "My Immigrant Story",
+     "Yuriko Gamo Romer",
+     "3:00",
+     "The hot-button issue of immigration inspired the director to reflect on her own path to American citizenship."),
+    ("2018-19", "War Paint",
+     "Katrelle N. Kindred",
+     "17:00",
+     "A young black girl in South Los Angeles experiences a series of events that intersects racism and sexism during the 4th of July holiday."),
+    ("2018-19", "Drummer Girl",
+     "Sophie Hexter",
+     "7:00",
+     "A woman's life changed in the blink of an eye. Music set her free."),
+    ("2018-19", "Are We Good Parents?",
+     "Bola Ogun",
+     "9:00",
+     "When a couple's 14-year-old daughter says she’s going to her first dance with her classmate, they question their preconceived notions of her sexuality and their openness as parents."),
+    ("2018-19", "Today, Tomorrow, Yesterday",
+     "Jackie Files",
+     "6:00",
+     "A young woman finds her old diaries while moving out of her childhood bedroom and learns to make peace with herself."),
+    ("2018-19", "ur dead to me",
+     "Yonoko Li",
+     "10:00",
+     "A dried-flower delivery woman gets a glimpse into the cycles of love and loss."),
+    # 2019-20
+    ("2019-20", "Purl",
+     "Kristen Lester & Gillian Libbert-Duncan",
+     "9:00",
+     "An earnest ball of yarn gets a job at a fast-paced, high-energy, bro-tastic start-up."),
+    ("2019-20", "Ballet After Dark",
+     "B. Monét",
+     "16:00",
+     "A young woman finds strength after an attack by creating an organization to help survivors of sexual abuse and domestic violence through dance therapy."),
+    ("2019-20", "There You Are",
+     "Lisa Donato",
+     "16:00",
+     "A trans woman must dress like a man to say goodbye to her dying grandmother."),
+    ("2019-20", "Xmas Cake —This American Shelf-life",
+     "Petra Hanson & May Yam",
+     "10:00",
+     "This coming-of-middle-age story follows a pop singer’s journey from hot to not, and what ensues across cultures from New York to Tokyo."),
+    ("2019-20", "Game",
+     "Jeannie Donohoe",
+     "15:00",
+     "A new kid in town shows up at the high school boys’ basketball tryouts and instantly makes an impression. Will talent and drive be enough to make the team?"),
+    ("2019-20", "Lady Parts",
+     "Erin Rye & Jessica Sherif",
+     "10:00",
+     "A struggling actor finally gets her big break, only to realize the glass ceiling can also be a camera lens."),
+    ("2019-20", "How to Swim",
+     "Noa Gusakov",
+     "15:00",
+     "In the last days of her pregnancy, a terrified mother-to-be kidnaps a maternal stranger for an afternoon of hijinks."),
+    # 2020-21
+    ("2020-21", "overexposed: Filming an Arctic Odyssey",
+     "Holly Morris",
+     "12:00",
+     "A behind-the-scenes look at the film team that captured the daring story of the Women’s Euro-Arabian North Pole Expedition."),
+    ("2020-21", "Knocking Down The Fences",
+     "Meg Shutzer",
+     "12:00",
+     "AJ Andrews, the first woman to win a Rawlings Gold Glove Award, struggles to make it as one of the best professional softball players in the world."),
+    ("2020-21", "A Line Birds Cannot See",
+     "Amy Bench",
+     "9:00",
+     "Separated from her mother at the border, a 12 year old sets out on a harrowing journey to the United States to find her."),
+    ("2020-21", "The Scientists Versus Dartmouth",
+     "Sharon Shattuck",
+     "14:00",
+     "A young neuroscientist and her colleagues make a life-changing decision to speak up for women in science everywhere."),
+    ("2020-21", "Until She Is Free",
+     "Maria Finitzo",
+     "14:00",
+     "Mixed-media artist Sophia Wallace imagines a culturally cliterate world, where all people are equal and able to live with rich possibility and purpose."),
+    ("2020-21", "Connection",
+     "Tracy Nguyen-Chung & Ciara Lacy",
+     "8:00",
+     "A lifelong angler, Autumn Harry had never fished beyond the waters of her reservation—until she picked up a fly rod."),
+    ("2020-21", "Betye Saar: Taking Care of Business",
+     "Christine Turner",
+     "8:00",
+     "There’s no stopping this legendary artist, even at age 93."),
+    # 2021-22
+    ("2021-22", "How to Be at Home",
+     "Andrea Dorfman",
+     "5:00",
+     "An animated poem about coping with isolation during the COVID-19 pandemic."),
+    ("2021-22", "Close Ties to Home Country",
+     "Akanksha Cruczynski",
+     "15:00",
+     "An immigrant dog walker finds connection in the hearts of the wealthy pets she cares for."),
+    ("2021-22", "Generation Impact: The Coder",
+     "Samantha Knowles",
+     "7:00",
+     "A 13-year-old girl designs and builds a mobile app to help kids stay connected to their incarcerated parents by sending photos and letters."),
+    ("2021-22", "Proof of Loss",
+     "Katherine Fisher",
+     "14:00",
+     "When a fire takes their home, a father and daughter must find a way to salvage what remains: each other."),
+    ("2021-22", "When You Clean a Stranger's Home",
+     "Sharon Arteaga",
+     "7:00",
+     "A first-generation high school student describes what she and her mom learn about people when cleaning their homes."),
+    ("2021-22", "Between the Lines: Liz at Large",
+     "Abi Cole",
+     "5:00",
+     "Frustrated with the lack of character diversity in The New Yorker ’s cartoons, an artist submits her own illustrations, becoming the first Black woman cartoonist in the magazine’s near-century run."),
+    ("2021-22", "Wearable Tracy",
+     "Emily McAllister",
+     "12:00",
+     "A Bronx woman’s accidental social experiment connects her with fellow New Yorkers who might otherwise forever remain strangers."),
+    ("2021-22", "To the Future, with Love",
+     "Shaleece Haas",
+     "7:00",
+     "An animated self-portrait of a nonbinary trans teen caught between the expectations of his Guatemalan immigrant family and his dreams of living happily ever after with his long-distance boyfriend."),
+    # 2022-23
+    ("2022-23", "Reclaim Your Water: Natasha Smith",
+     "Faith E. Briggs",
+     "5:00",
+     "As a member of the Ebony Beach Club, Natasha Smith surfs, skates, and makes her own waves."),
+    ("2022-23", "Miss Chelove: From Java to the Streets of D.C.",
+     "Sara T. Gama",
+     "15:00",
+     "As she paints a mural, artist Cita Sadeli aka Miss Chelove opens up about her life, her cultural heritage, and how she fell in love with graffiti in the 1980s."),
+    ("2022-23", "Pete",
+     "Bret Parker",
+     "7:00",
+     "The true story of Pete Barma explores gender identity, Little League Baseball, the people who inspire change by being themselves, and the superheroes who champion that change."),
+    ("2022-23", "This is Beth",
+     "Jen Randall",
+     "17:15",
+     "As celebrated rock climber Beth Rodden grapples with her body image, she rediscovers the love of her sport...and herself."),
+    ("2022-23", "More Than I Want to Remember",
+     "Amy Bench",
+     "14:30",
+     "After her southeastern Congo village is bombed, 14-year-old Mugeni sets out on a remarkable solo journey across the globe, determined to reunite with her lost loved ones and lift up the Banyamulenge people."),
+    ("2022-23", "Syed Family Xmas Eve Game Night",
+     "Fawzia Mirza",
+     "11:00",
+     "All cards are on the table when Noor, a queer Pakistani Muslim woman, brings her Puerto Rican girlfriend, Luz, home for the first time on the family’s annual game night."),
+    ("2022-23", "Swimming Through",
+     "Samantha Sanders",
+     "15:30",
+     "Amid a brutal Chicago winter and the global pandemic, Deirdre, Helen, and Jennefer’s friendship grows as they commit to a daily sunrise plunge together in Lake Michigan."),
+]
+# Frank asked on 2026-11-07 to exclude any film from before 2009. The seasons
+# are written 2001-02 .. 2022-23, so the cut is made on the season's FIRST
+# year: the earliest season shown is 2009-10, and 2008-09 is out even though
+# it ran into 2009, because the column shows the season label and that label
+# reads 2008. Raised with him; setting this to 2008 instead brings that one
+# season and its ten films back.
+#
+# The excluded films STAY in LUNAFEST_FILMS and are filtered at render, the
+# way news_live() filters the home page's cards. The archive is then still
+# whole in source and a change of mind is this one number.
+LUNAFEST_FROM_YEAR = 2009
+
+def lunafest_films():
+    """The films the page shows: LUNAFEST_FILMS from LUNAFEST_FROM_YEAR on."""
+    return [f for f in LUNAFEST_FILMS if int(f[0][:4]) >= LUNAFEST_FROM_YEAR]
+
+# The label on the button, which is Frank's. The festival itself writes its
+# name LUNAFEST, the way NMF_FOOTNOTE does further down this file; this is the
+# one place on the site that says it as two words, at his request.
+LUNAFEST_LABEL = "Luna Fest"
+
+def lunafest_attr(s):
+    """Escape a CSV field so it survives inside an HTML attribute.
+
+    These strings come from a spreadsheet, not from hand-written literals, so
+    they carry straight quotes and ampersands that would end the attribute or
+    begin an entity. The overlay reads them back with textContent, so what
+    goes in has to be the plain text, escaped only enough to get there.
+    Ampersand first, or the escaping would escape itself."""
+    return (s.replace("&", "&amp;").replace("<", "&lt;")
+             .replace(">", "&gt;").replace('"', "&quot;"))
+
+def lunafest_rows():
+    """One row per film: season, title, director, and the button that opens
+    the description.
+
+    Laid out like the auction partner list, which is what Frank asked for --
+    the same panel, the same hairlines and type -- with a fourth column. The
+    button carries the description rather than pointing at a hidden element
+    beside it: 178 descriptions would otherwise be 178 more nodes in a page
+    that is already long, and none of them needs markup inside it.
+
+    The screen-reader span names the film, so 178 buttons do not all announce
+    themselves as the bare word "Description". Same device as the auction
+    list's Shop links."""
+    out = []
+    for season, title, director, duration, desc in lunafest_films():
+        data = (f'data-film="{lunafest_attr(title)}" '
+                f'data-director="{lunafest_attr(director)}" '
+                f'data-duration="{lunafest_attr(duration)}" '
+                f'data-desc="{lunafest_attr(desc)}"')
+        out.append(
+            f'<li class="lunafest-films__row">\n'
+            f'                <span class="lunafest-films__year">{season}</span>\n'
+            f'                <span class="lunafest-films__title">{title}</span>\n'
+            f'                <span class="lunafest-films__director">{director}</span>\n'
+            f'                <button type="button" class="lunafest-films__desc" {data}>'
+            f'Description<span class="sr-only"> of {title}</span></button>\n'
+            f'              </li>')
+    return "\n              ".join(out)
+
 def nmf_pastsel_section():
     """Official selections, one year at a time.
 
@@ -44877,7 +46056,20 @@ def nmf_pastsel_section():
 
     The newest year opens on load. That is also why this picker is not marked
     --toggle: with a year already showing, letting a click collapse it to
-    nothing would read as the section having lost its contents."""
+    nothing would read as the section having lost its contents.
+
+    A Luna Fest button leads the row, ahead of the years, and opens the
+    LUNAFEST archive instead of a year of New Moon films (Frank, 2026-11-07).
+    It is a panel of this same picker, so one button is lit at a time and the
+    years and the archive cannot be on screen together. Its data-year is a
+    slug rather than a year -- the picker never parses the value, it only
+    matches button to panel, which is what lets a non-year ride along.
+
+    It alone carries year-btn--toggle, so a second click closes the table and
+    leaves the section showing none of the four. The years around it are not
+    marked, for the reason above: a year collapsing to nothing would read as
+    the section having lost its contents, where an archive a reader has
+    deliberately opened is something they may well want shut again."""
     years = [("2024", NMF_2024), ("2025", NMF_2025), ("2026", NMF_2026)]
 
     btns = "\n".join(
@@ -44885,6 +46077,9 @@ def nmf_pastsel_section():
         f'{" is-active" if yr == NMF_SELECTIONS_OPEN else ""}" data-year="{yr}" '
         f'aria-pressed="{"true" if yr == NMF_SELECTIONS_OPEN else "false"}">{yr}</button>'
         for yr, _ in years)
+    btns = (f'        <button type="button" class="year-btn year-btn--toggle" '
+            f'data-year="lunafest" aria-pressed="false">{LUNAFEST_LABEL}</button>\n'
+            + btns)
 
     def panel(yr, movies):
         if not movies:
@@ -44906,6 +46101,17 @@ def nmf_pastsel_section():
                 f'        </div>')
 
     panels = "\n".join(panel(yr, m) for yr, m in years)
+    # The archive's own panel, written first so the markup runs in the same
+    # order as the buttons above it. It carries a note of its own because the
+    # section's heading above ("Click below to Learn about the Films") speaks
+    # for the New Moon years, and a reader arriving here needs telling what
+    # these 178 films are and that the fourth column opens.
+    panels = f'''        <div class="year-panel" data-year="lunafest" hidden>
+          <p class="auction-note">LUNAFEST was a travelling festival of short films by women, and New Moon Fest grew out of the years Nantucket hosted it. The films it selected from {lunafest_films()[0][0]} onward are below. Click Description beside a film to read it.</p>
+          <ul class="lunafest-films">
+              {lunafest_rows()}
+          </ul>
+        </div>''' + "\n" + panels
     return f"""<section class="section pastsel">
   <div class="wrap">
     <div class="section__head" data-reveal>
@@ -44913,7 +46119,7 @@ def nmf_pastsel_section():
       <h2>Click below to Learn about the Films</h2>
     </div>
     <div class="yearpick" data-reveal>
-      <div class="yearpick__btns" role="group" aria-label="Official selections by year">
+      <div class="yearpick__btns" role="group" aria-label="Official selections">
 {btns}
       </div>
       <div class="yearpick__panels">
@@ -45271,19 +46477,39 @@ def nmf_history_paras():
 
 
 def nmf_history_section():
-    """The festival's history, shut by default behind a Learn More summary.
+    """The festival's story, shut by default behind a Learn More summary.
 
     Frank supplied the copy on 2026-10-30; until then the section was live
     with a placeholder, so the gap stayed visible on the page rather than
-    sitting unwritten in a list somewhere."""
+    sitting unwritten in a list somewhere.
+
+    The heading reads "About New Moon Fest" as of 2026-11-07. It was "The
+    History of New Moon Fest", then "The Evolution of New Moon Fest" earlier
+    the same day -- Frank renamed it twice. The function and the
+    .nmf-history* classes keep the old word on purpose: renaming them would
+    touch a dozen rules in styles.css and the type scale for a change no
+    visitor can see. Search for either word to find this section."""
     return f"""<section class="section nmf-history">
   <div class="wrap">
     <div class="section__head" data-reveal>
-      <span class="eyebrow"><span class="dot"></span>The History of New Moon Fest</span>
+      <span class="eyebrow"><span class="dot"></span>About New Moon Fest</span>
     </div>
     <details class="pastsel__year dl-group nmf-sub" data-reveal>
-      <summary>Click here to learn more</summary>
+      <summary>Learn More</summary>
       <div class="dl-group__body">
+        <!-- A header over everything the collapsible holds (Frank,
+             2026-11-07). It is a real <h2>: the page's only <h1> is the
+             banner's title card and no section emits a heading element, so
+             this skips no level. The section's own label, "About New Moon
+             Fest", is a .eyebrow span in the head above, as every section
+             label on this page is.
+
+             It also displaces the first paragraph, which means
+             .nmf-history .dl-group__body>.nmf-history__p--head:first-child
+             in styles.css no longer matches anything. That rule is left
+             alone on purpose -- it is what kills the first title's top
+             margin if this header is ever taken out again. -->
+        <h2 class="nmf-history__h">The Evolution of New Moon Fest</h2>
 {nmf_history_paras()}
         <details class="pastsel__year dl-group dl-group--sub nmf-history__note">
           <summary><span><sup>1</sup> LUNAFEST Nationwide</span></summary>
@@ -45303,14 +46529,24 @@ newmoon_body = f"""{video_hero("1241568900:0350ef0ccc", "hero-fallback-newmoon.w
     alt="A shingled hall with a gabled roof and a round crest above its windows, "
         "framed by two large trees, with a brick walk leading to its white "
         "double doors")}
-{newmoon_sponsors_section()}
+<!-- The ornamental rule that marks the bottom edge of the banner video
+     (Frank, 2026-11-07). It sits here, between the two, because it straddles
+     that edge: .vhero clips its overflow, so a rule drawn inside the banner
+     would be cut off at exactly the line it is meant to mark. As a sibling it
+     hangs half over the footage and half over the sky; .nmf-skyrule pulls it
+     up by half its height and lifts it over the banner, and all of its
+     drawing is there. Purely decorative, so it is hidden from assistive
+     technology -- the break it marks is already obvious from the heading
+     that follows. -->
+<div class="nmf-skyrule" aria-hidden="true"></div>
+{nmf_submit_section()}
+{nmf_history_section()}
 {nmf_news_section()}
 {nmf_rules_section()}
-{nmf_auction_section()}
 {nmf_awards_section()}
 {nmf_pastsel_section()}
+{nmf_auction_section()}
 {nmf_photos_section()}
-{nmf_history_section()}
 {nmf_featured_videos_section()}
 {nmf_sponsors2026_section()}"""
 new_moon_fest = shell("events-new-moon-fest.html", "New Moon Fest — NCTV", newmoon_body)

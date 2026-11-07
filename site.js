@@ -636,8 +636,14 @@ function initYearPicker(){
         // Every other one keeps a year open once chosen, which is what the
         // lecture and meeting archives want: collapsing to nothing there would
         // just look like the page had lost its contents.
-        var shut = pick.classList.contains("yearpick--toggle") &&
-                   btn.classList.contains("is-active");
+        //
+        // A single BUTTON marked --toggle does the same on its own, inside a
+        // picker that does not. The Luna Fest archive is one of these: it sits
+        // among the New Moon years, which still hold open once chosen, but its
+        // own button closes the table a second click (Frank, 2026-11-07).
+        var shut = btn.classList.contains("is-active") &&
+                   (pick.classList.contains("yearpick--toggle") ||
+                    btn.classList.contains("year-btn--toggle"));
         if(civic) civicPick.year = yr;
         btns.forEach(function(b){
           var on = (b === btn) && !shut;
@@ -649,6 +655,15 @@ function initYearPicker(){
           if(p.hidden){ clearPicks(p, ".quarter-btn", ".quarter-panel"); stopReels(p); }
           else { startReels(p); if(civic) restoreQuarter(p); }
         });
+        // A picker marked --opens keeps its panels inside a collapsible: the
+        // New Moon auction, where the year buttons sit above a shut "Learn
+        // More". Without this a click would change what is behind the caret
+        // and look like it had done nothing. Only this picker's own <details>
+        // is opened, and only when a year is being shown.
+        if(!shut && pick.classList.contains("yearpick--opens")){
+          var det = pick.querySelector("details");
+          if(det) det.open = true;
+        }
       });
     });
   });
@@ -834,6 +849,82 @@ function initDocModal(){
   wireOverlayKeys(function(){ return box; }, closeBox);
 }
 
+/* ---------- Luna Fest film descriptions ----------
+   The LUNAFEST table's fourth column is a button per film, and this is what
+   it opens. It reuses .docmodal -- the warrant overlay's chrome, scrim, dark
+   bar and Close button -- because it is the same gesture: a control in a row
+   opening a panel of text over the page. Only the size differs, which is
+   .docmodal--text in the stylesheet.
+
+   Unlike initDocModal this moves nothing. The description is a paragraph of
+   plain text on the button's own data attributes, so it is read straight out
+   with textContent: no element to borrow and hand back, and nothing in the
+   string can be markup. */
+function initFilmModal(){
+  var box = null, lastFocus = null;
+
+  function build(){
+    box = document.createElement("div");
+    box.className = "docmodal docmodal--text";
+    box.hidden = true;
+    box.setAttribute("role", "dialog");
+    box.setAttribute("aria-modal", "true");
+    box.innerHTML =
+      '<div class="docmodal__panel">' +
+        '<div class="docmodal__bar">' +
+          '<h2 class="docmodal__title"></h2>' +
+          '<button type="button" class="docmodal__close">Close</button>' +
+        '</div>' +
+        '<div class="docmodal__body">' +
+          '<p class="docmodal__meta"></p>' +
+          '<p class="docmodal__text"></p>' +
+        '</div>' +
+      '</div>';
+    box.addEventListener("click", function(e){
+      if(!e.target.closest(".docmodal__panel") || e.target.closest(".docmodal__close"))
+        closeBox();
+    });
+    document.body.appendChild(box);
+  }
+
+  function openBox(btn){
+    if(!box) build();
+    lastFocus = document.activeElement;
+    var title = btn.getAttribute("data-film") || "";
+    box.querySelector(".docmodal__title").textContent = title;
+    box.setAttribute("aria-label", title);
+    // Director and running time on one line. A film whose CSV cell read n/a
+    // carries an empty data-duration, and filter() drops it rather than
+    // leaving a stray separator or the words "n/a" on the page.
+    var meta = [btn.getAttribute("data-director"), btn.getAttribute("data-duration")]
+      .filter(function(v){ return v; }).join("  ·  ");
+    var slot = box.querySelector(".docmodal__meta");
+    slot.textContent = meta;
+    slot.hidden = !meta;
+    box.querySelector(".docmodal__text").textContent = btn.getAttribute("data-desc") || "";
+    box.hidden = false;
+    document.body.classList.add("is-docopen");
+    box.querySelector(".docmodal__body").scrollTop = 0;
+    box.querySelector(".docmodal__close").focus();
+  }
+
+  function closeBox(){
+    if(!box || box.hidden) return;
+    box.hidden = true;
+    document.body.classList.remove("is-docopen");
+    if(lastFocus && document.contains(lastFocus)) lastFocus.focus();
+  }
+
+  document.addEventListener("click", function(e){
+    var btn = e.target.closest(".lunafest-films__desc");
+    if(!btn) return;
+    openBox(btn);
+  });
+
+  // One stop, the close button: a description carries no links.
+  wireOverlayKeys(function(){ return box; }, closeBox);
+}
+
 /* Live TV: two channels, one player frame.
    The frame is written out with the first channel's address already in it, so
    the page plays without this script -- all the buttons do is re-point it. A
@@ -878,6 +969,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   clampDescriptions();
   initAgendaToggles();
   initDocModal();
+  initFilmModal();
   // Measure again as sections and panels are revealed. The civic page nests
   // three pickers -- board, then year, then quarter -- and a card has no
   // measurable height until the innermost panel is showing, so every level
