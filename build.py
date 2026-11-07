@@ -3604,6 +3604,19 @@ NEWS_SIGNUP_URL = "https://lp.constantcontactpages.com/su/J1R7rh8/NCTV"
 NMF_SUBMIT_URL_LITERAL = "https://filmfreeway.com/NEWMoonFest"
 
 NEWS = [
+ dict(img="news-football-south-shore.webp", date="11/7/26",
+      alt="The Nantucket Sports Connection logo above the word Presents, over "
+          "a floodlit football field at night, with the Nantucket Whalers W "
+          "and the South Shore Vo-Tech Vikings logo either side of a football "
+          "marked VS. Caption: Whalers football takes on the Vikings. Live "
+          "from off-island at 11:30 on 11/7",
+      body='Fresh off their commanding victory against MV, the Whalers '
+           'football team plays the South Shore Vocational Tech Vikings '
+           'today. Live coverage starts at 11:30am. To watch live and for the '
+           'archival version, '
+           '<a href="https://www.youtube.com/watch?v=6mk3sdw-YQE" '
+           'target="_blank" rel="noopener">click here</a>.'),
+
  dict(img="news-volleyball-off-island.webp", date="11/5/26",
       alt="Live Volleyball From Off-Island in brush lettering over a stadium "
           "at night, with the Dennis-Yarmouth Dolphins and Nantucket Whalers "
