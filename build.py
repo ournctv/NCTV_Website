@@ -695,6 +695,13 @@ def shell(page_key, title, body, head_extra="", scripts=""):
 {footer_html()}
 
 <script src="site.js?v={ASSET_VER}"></script>{scripts}
+<!-- Cloudflare Web Analytics: cookieless, and it reports only from the pages
+     that carry this tag. The site is DNS-only on GitHub Pages rather than
+     proxied through Cloudflare, so this manual beacon is the whole of the
+     integration; nothing about how ournctv.org resolves is involved. -->
+<script type="module"
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{{"token": "d4e1ee6c6a844858bbeec0d18d20132e"}}'></script>
 </body>
 </html>"""
 
