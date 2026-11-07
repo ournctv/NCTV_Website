@@ -962,6 +962,7 @@ SPORTS_VIDEOS = {
     , False),
   ],
   "School Yr 26-27": [
+   ("6mk3sdw-YQE", "Nantucket Whalers Football AT South Shore Vo-Tech Vikings - November 7, 2026", "", True),
    ("7Y3sAP0an_U", "The Island Cup - Nantucket Whalers Football vs. Martha&rsquo;s Vineyard - October 31, 2026",
     "The Nantucket Sports Connection proudly presents the spookiest showdown yet between these "
     "cross-island foes, as the Whalers square off against the Vineyarders on a Halloween Day "
@@ -4029,7 +4030,9 @@ STAFF = [
    "Charles joined NCTV in mid-2022 in the newly created role of Government Services Manager to deliver first class civic media for the Town & County of Nantucket. He brings to this effort an extensive set of skills and experiences from a dozen years spent at five stations across the three West Coast states, where he personally produced over 3,500 hours of live government meetings at the city, county, and state level. He's done everything from engineering newly-equipped meeting rooms, to teaching video production & media literacy classes for everyone from kids to seniors, to producing/directing numerous live productions in studio and live streamed from remote locations. Charles won two WAVE awards in the space of a year for filming & editing special productions helping a community recover from a mass shooting as well as a spotlight on efforts to feed the less fortunate.",
    "Charles has a deep background prior to community media operations as a working journalist in the rural redwood coast of far northwestern California, where he covered local government, politics and criminal justice in print, on the radio and eventually as an early adopter of new media, launching his own Internet-based news platform in 2005. After spending most of the last decade in the Rogue Valley of Southern Oregon and the Lower Columbia region of Southwest Washington, he's delighted to be back on the beach given his upbringing in Manhattan Beach and summers spent sailing to Catalina Island."]},
  {"name":"Zac Visco","role":"Senior Producer","email":"zac@ournctv.org"},
- {"name":"Patrick Scanlon","role":"Sports Broadcast Host/Producer","email":"patrick@ournctv.org"},
+ {"name":"Patrick Scanlon","role":"Sports Broadcast Host/Producer","email":"patrick@ournctv.org","bio":[
+   "Patrick joined the NCTV crew in September 2026, looking to help continue expanding the Nantucket Sports Connection and its coverage of Whalers athletics.",
+   "Patrick graduated from Villanova University in 2024, where he was the student radio voice of Villanova basketball and football. He then earned his master's degree in Broadcast and Digital Journalism from Syracuse University's Newhouse School in 2025. He has experience reporting on and working with the New England Patriots, Boston Red Sox and NBC Sports. His passion for sports broadcasting and telling athletes' stories has him excited to continue bringing NCTV's audience engaging and informative coverage of everything Whalers athletics."]},
  {"name":"Dee White","role":"Creative Director & Editor","email":"dee@ournctv.org","bio":[
    "Dee White is a creative director and editor with more than 15 years of experience in post-production.",
    "Dee has worked across commercials, branded content, documentaries and narrative films. While editing remains at the heart of what she does, her work often extends beyond the edit: helping shape ideas and developing stories from concept through final delivery. Her work has earned four Telly Awards.",
@@ -31680,7 +31683,21 @@ CIVIC_DESCRIPTIONS = {
   "Stone Barn Way permits are invalidated as unbuilt, and a special meeting on the Baxter Road "
   "geotubes is set for January 28.",
  "MzSFEXeDykE":
-  "Video description coming soon.",
+  "The fuller project session promised in August, with final design nearing completion. The "
+  "engineers recap the drivers: the Somerset Needs Area sits within the Hummock Pond and Miacomet "
+  "Pond watersheds, its permeable sandy soils carry septic nitrogen into the groundwater, and the "
+  "2014 wastewater plan update recommended sewer here and in the two pond needs areas whose "
+  "future flows this infrastructure is sized to carry. One design change since August is that the "
+  "new water main, about 7,000 feet of it, will now run to the end of Highbrush Path rather than "
+  "stopping short of the cul-de-sac. The town filed a $35.6 million state revolving fund "
+  "application in September at 1.5 percent, after town meeting appropriated the money ahead of a "
+  "June 30 deadline. Contract documents go out to bid in February 2027, construction follows that "
+  "spring or summer and runs about two years to completion in spring 2029, with no roadway work "
+  "in the summer months. Owners have two years to connect once service reaches them: a $4,000 "
+  "permit per dwelling, a capacity fee from about $6,700 for three bedrooms or fewer, and the "
+  "private connection on top, with a voluntary lien spreading the fee over up to twenty years at "
+  "4.414 percent. Questions run long. One resident puts a single connection nearer $50,000; "
+  "another argues that only dredging will restore the pond.",
 }
 
 
