@@ -15,7 +15,7 @@ BANNER_VIDEO = "1241589049:76cd5a88fc"  # home hero; Vimeo id:hash
 FEATURED_ID = "9BnRkR2W9Zc"  # home "Featured Video" section
 # Bump this whenever styles.css or site.js changes — it forces browsers to
 # fetch the fresh files instead of serving a cached (stale) copy.
-ASSET_VER = "426"
+ASSET_VER = "436"
 
 # The address the finished site will answer to. Everything absolute on the
 # site comes from this one string: the canonical link in every <head>, the
@@ -44264,6 +44264,81 @@ def nmf_sponsors2026_section():
   </div>
 </section>"""
 
+
+# The festival's people, as Frank supplied them on 2026-11-08. A group is
+# (role or committee, [names]) and the order is his, which is not alphabetical
+# and is not sorted here -- the single-holder roles run from Festival Director
+# down to Editor, then the two committees. Same shape as SERVICES_PRO: his
+# order is his emphasis.
+#
+# Three names arrived differing from the Staff & Board page. Frank settled two
+# of them on 2026-11-08 -- "John Copenhaver" and "Dan Driscoll", matching that
+# page -- and did NOT answer on the third, so "Heather Ray" stands as he wrote
+# it against the page's "Heather Ring". Leave it until he says otherwise, and
+# do not "tidy" it to match: he was asked and chose not to change it.
+#
+# Nothing follows automatically either way. about-staff.html is built from
+# STAFF and BOARD, which are a separate list of dicts; these are plain strings
+# and no record joins the two. A name fixed here is not fixed there.
+#
+# A name appearing in several groups is written out in each one. Lisa Getter is
+# in four. There is no person record behind these -- they are plain strings, not
+# the dicts on the Staff & Board page -- so nothing links the two lists.
+NMF_TEAM = [
+ ("Festival Director", ["Lisa Getter"]),
+ ("Co-Founders and Co-Chairs", ["Lisa Getter", "Lisa Soeder"]),
+ ("Executive Director", ["Frank Schadt"]),
+ ("Marketing", ["Lola Piuggi"]),
+ ("Cinematographer", ["Zac Visco"]),
+ ("Editor", ["Dee White"]),
+ ("Advisory Committee", ["Lisa Getter", "Lisa Soeder", "John Copenhaver",
+                         "Dan Driscoll", "Michael Getter", "Heather Ray",
+                         "Frank Schadt"]),
+ ("Selection Committee", ["Lisa Getter", "Lisa Soeder", "Karen Keelan",
+                          "Judith Greenberg Seinfeld", "SueEllen Ward",
+                          "Dee White"]),
+]
+
+
+def nmf_team_section():
+    """Meet the Team: the festival's roles and committees, behind a Learn More.
+
+    Two columns, asked for by Frank on 2026-11-08. The split is CSS `columns`
+    rather than two hand-written <div>s, so the browser balances the groups by
+    height and a group added or lengthened later cannot leave one column long.
+    Each group takes break-inside:avoid, so a role never splits from its names.
+    Below 640px it drops to one column.
+
+    The eyebrow is an <h2> here, not the <span> the page's other eight sections
+    use, so the role labels under it can be <h3> without skipping a level --
+    the Staff & Board page converted its own two the same way, and the
+    .section__head .eyebrow rule already states the line-height that conversion
+    needs. See the header note in CLAUDE.md.
+    """
+    groups = []
+    for role, names in NMF_TEAM:
+        items = "\n".join(f'            <li>{n}</li>' for n in names)
+        groups.append(
+            f'        <div class="nmf-team__group">\n'
+            f'          <h3 class="nmf-team__role">{role}</h3>\n'
+            f'          <ul class="nmf-team__names">\n{items}\n          </ul>\n'
+            f'        </div>')
+    return f"""<section class="section nmf-team">
+  <div class="wrap">
+    <div class="section__head" data-reveal>
+      <h2 class="eyebrow"><span class="dot"></span>Meet the Team</h2>
+    </div>
+    <details class="pastsel__year dl-group nmf-sub" data-reveal>
+      <summary>Learn More</summary>
+      <div class="dl-group__body">
+        <div class="nmf-team__cols">
+{chr(10).join(groups)}
+        </div>
+      </div>
+    </details>
+  </div>
+</section>"""
+
 # The festival's own FilmFreeway page, behind both of this page's FilmFreeway
 # Gold buttons -- the submissions bullet and the call to action above the
 # rules. They pointed at /dashboard, a visitor's own FilmFreeway account,
@@ -44292,7 +44367,12 @@ def nmf_news_section():
     <div class="section__head" data-reveal>
       <span class="eyebrow"><span class="dot"></span>Recent News</span>
     </div>
-    <details class="pastsel__year dl-group nmf-sub" data-reveal>
+    <!-- Open on load (Frank, 2026-11-08). The plain `open` attribute, so the
+         section is expanded before a line of JavaScript runs and there is no
+         flash of it shut. It is still a real <details>: the summary closes it
+         again, and nothing in site.js opens or closes these. Recent News is
+         the only section on this page that starts open. -->
+    <details class="pastsel__year dl-group nmf-sub" data-reveal open>
       <summary>Learn More</summary>
       <div class="dl-group__body">
         <ul class="news-list">
@@ -44313,11 +44393,18 @@ def nmf_news_section():
 # since a lead-in paragraph is the shape this section may want again.
 # A tuple is (bullet, [sub-bullets]); a plain string is a bullet on its own.
 NMF_RULES = [
- # Frank added this one on 2026-11-07, at the top. It is the only bullet that
- # runs to two paragraphs, so it is written as two <p>s rather than a <br><br>:
- # the gap between them is then the typographic one every other paragraph on
- # the site gets, and the bullet marker still lines up with the first line,
- # since .nmf-rules__list li::before is positioned against the <li>.
+ # Frank added the first two paragraphs on 2026-11-07 and folded the Wild Woman
+ # paragraph in on 2026-11-08, so this is ONE bullet running to three
+ # paragraphs -- the only multi-paragraph item in the list. The Wild Woman
+ # sentence was a bullet of its own until that second edit; it is now the third
+ # <p> here and has no marker of its own.
+ #
+ # Written as <p>s rather than <br><br> so the gaps between them are the
+ # typographic one every other paragraph on the site gets, and the bullet
+ # marker still lines up with the first line, since .nmf-rules__list li::before
+ # is positioned against the <li>. .nmf-rules__list li>p:last-child kills the
+ # last paragraph's trailing margin so the gap down to the NEXT bullet stays
+ # the list's own 12px.
  ('<p>More than a film festival, NEW Moon Fest is a celebration of women '
   'supporting women through shared stories, meaningful connection, and '
   'collective inspiration.</p>'
@@ -44326,10 +44413,9 @@ NMF_RULES = [
   'dramas, comedies, documentaries, animations and experimental works that '
   'reflect the richness and complexity of women&rsquo;s experiences. Stories '
   'of resilience and vulnerability, belonging and transformation, courage and '
-  'creativity all have a place here.</p>'),
- ('In honor of the Wild Woman archetype, films that depict strong, intuitive and '
-  'persevering women characters qualify for NEW Moon Fest.'),
- 'Only short films can be submitted.',
+  'creativity all have a place here.</p>'
+  '<p>In honor of the Wild Woman archetype, films that depict strong, '
+  'intuitive and persevering women characters qualify for NEW Moon Fest.</p>'),
  ('Important Dates:',
  [
    'Submissions Open: 11/1/26',
@@ -44339,88 +44425,133 @@ NMF_RULES = [
    'The notification date is 4/15/27',
    'New Moon Fest 2027 takes place at the Siasconset Casino on 5/29/27.',
  ]),
- ('Qualified submissions feature women in at least three (or 75% of) lead creative roles: '
-  'Writer, Producer, Director, Cinematographer, Editor, Composer, Lead Actor(s), or other '
+ # Frank rewrote everything from here down on 2026-11-08, and the rewrite is
+ # his copy word for word. Three things it changed in SHAPE, not just in
+ # wording, all of them raised with him in the run report:
+ #   * the old standalone 'Only short films can be submitted.' bullet is
+ #     gone -- his first item below is that sentence with a 15-minute
+ #     runtime, so the page would otherwise say it twice. It now sits
+ #     BELOW Important Dates, where his list puts it, not above.
+ #   * the acknowledgment ('By agreeing to the terms ...') was the LAST
+ #     bullet and is now mid-list, lifted out of the AI-Content Policy
+ #     group his copy runs it in with -- it is a general term, and
+ #     nesting it there would read as agreeing only to the AI rules.
+ #   * the two publicity items are nested under the right they belong to
+ #     rather than being its siblings. That is the third level
+ #     nmf_rules_items() was made recursive for.
+ ('Only short films can be submitted, with a maximum runtime of 15 minutes.'),
+ ('Qualified submissions feature women in at least three of the following lead creative roles: '
+  'writer, producer, director, cinematographer, editor, composer, lead actors, or another '
   'significant key role.'),
  'Premiere status is not required.',
- ('Non-English films must be subtitled in English. For accessibility, English-language shorts '
-  'must offer English captioning.'),
- (('NEW Moon Fest can only accept, consider, and notify entries submitted with a valid entry '
+ ('Non-English-language films must be subtitled in English. For accessibility, English-language '
+  'shorts must offer English captioning.'),
+ (('NEW Moon Fest can accept, consider, and notify only entries submitted with a valid entry '
    'form and non-refundable entry fee. To be considered for NEW Moon Fest, entrants must fill '
-   'out the entry form on FilmFreeway. Entrants must submit a Secure Online Screener. Pay the '
-   'entry fee online through FilmFreeway. We will provide fee waivers on a case-by-case basis. '
-   'Because of the limited number of fee waivers, we cannot guarantee you will receive one, '
-   'even if you meet the criteria outlined below. Eligibility for a Fee Waiver will depend on '
-   'the following:'),
+   'out the entry form on FilmFreeway, submit a Secure Online Screener, and pay the entry fee '
+   'online through FilmFreeway. We will provide fee waivers on a case-by-case basis. Because '
+   'fee waivers are limited, we cannot guarantee you will receive one, even if you meet the '
+   'criteria outlined below. Eligibility for a fee waiver will depend on the following:'),
  [
-   'You lack the financial means to pay our submission fee, either partially or in full.',
-   ('You are unable to pay the submission fee for political/geographical reasons outside of '
-     'your control.'),
+   'You lack the financial means to pay our submission fee, in full or in part.',
+   ('You cannot pay the submission fee for political or geographic reasons outside your '
+     'control.'),
  ]),
- ('For requests to submit after the Extended Deadline, please contact the NEW Moon Fest '
-  'programmers at <a href="mailto:newmoon@ournctv.org">newmoon@ournctv.org</a>.'),
- ('If your contact information or premiere status changes between entry submission and our '
-  'notification date, please update your information on FilmFreeway and email any changes to '
-  'the NEW Moon Fest programmers at: <a '
-  'href="mailto:newmoon@ournctv.org">newmoon@ournctv.org</a>'),
- ('Entrants must be legally authorized to enter their film in NEW Moon Fest and the entry must '
-  'not be subject to any claims or litigation and must not be threatened by any claims or '
-  'litigation. It is the sole responsibility of the entrant to secure clearance from the '
-  'copyright holders of any copyrighted materials in the film. The entrant releases and '
-  'discharges NEW Moon Fest, its employees and agents from any and all claims, demands or '
-  'causes of actions related to misappropriation or infringement of copyright or violation of '
-  'any other right arising out of or relating to the film submission.'),
- (('In the event that a submission is accepted as a finalist by NEW Moon Fest, the finalist '
-   'hereby agrees to the following rights and requests and grants to NEW Moon Fest without '
-   'reservations, conditions or qualifications:'),
+ ('For late-deadline submissions, please contact our programming team at '
+  '<a href="mailto:NEWmoon@ournctv.org">NEWmoon@ournctv.org</a> before submitting.'),
+ ('We will notify all films of their status on April 15, 2027. If your contact information or '
+  'premiere status changes between entry submission and our notification date, please update '
+  'your information on FilmFreeway and email any changes to the NEW Moon Fest programmers at '
+  '<a href="mailto:NEWmoon@ournctv.org">NEWmoon@ournctv.org</a>.'),
+ ('Entrants must be legally authorized to enter their film in NEW Moon Fest, and the entry must '
+  'not be subject to or threatened by any claims or litigation. It is the sole responsibility '
+  'of the entrant to secure clearance from the copyright holders of any copyrighted materials '
+  'in the film. The entrant releases and discharges NEW Moon Fest, its employees, and agents '
+  'from any and all claims, demands, or causes of action related to misappropriation or '
+  'infringement of copyright or violation of any other right arising out of or relating to the '
+  'film submission.'),
+ ('AI-Content Policy',
  [
-   ('NEW Moon Fest reserves the right to charge tickets for guests to attend a screening '
-     'of an exhibition-quality digital file of your film for up to two times between the '
-     'dates of the main event (5/29/27) and Labor Day (9/6/27).'),
-   ('NEW Moon Fest reserves the right to coordinate ALL publicity and press outreach '
-     'concerning the film&rsquo;s presentation leading up to and at the festival event, '
-     'including but not limited to:'),
-   ('The right to use excerpted clips, trailers, still images and/or titles, and information '
-     'from or relating to the film for promotional purposes in all media including NEW Moon '
-     'Fest&rsquo;s website.'),
-   ('The right to issue and authorize publicity concerning the filmmakers and the film and to '
-     'use all associated names, likenesses and biographical information.'),
+   'AI-assisted work is allowed, but AI-generated films are not.',
+   ('Films may use AI-assisted tools for production support, editing, color correction, '
+     'transcription, visual effects assistance, etc. However, films in which the screenplay, '
+     'visual content, performances, or the majority of creative assets are generated by AI are '
+     'not eligible.'),
+   'All entrants must disclose any use of generative AI in the production process.',
  ]),
- ('NEW Moon Fest reserves the right to collect any and all proceeds fundraised at the NEW Moon '
-  'Fest - Nantucket Empowering Women event including but not limited to: festival tickets, '
-  'auction items, sponsorships, and pledges. All funds raised will be contributed to the '
-  'Nantucket Community Television&rsquo;s mission to engage Nantucket by connecting stories to '
-  'audiences, government to citizens, and students to hands-on learning.'),
- ('NEW Moon Fest encourages applications from people of all races, religions, national '
-  'origins, sexual orientations, gender identities, gender expressions, and ages, as well as '
-  'veterans and individuals with disabilities. We strongly encourage you to apply if you are '
-  'from a marginalized or underrepresented group, particularly in the film industry. NEW Moon '
-  'Fest reserves the right to consider for inclusion in the event, and include in the event, '
-  'films received at any time and through any means, channel, or process, including means, '
-  'channels, or processes other than those outlined in these Terms. Nothing in these terms or '
-  'otherwise requires NEW Moon Fest to select for event inclusion any of the films submitted '
-  'through the process outlined in these terms.'),
- ('Filmmakers are welcome to reach out to the NEW Moon Fest programmers at any time during the '
-  'submission process at <a href="mailto:newmoon@ournctv.org">newmoon@ournctv.org</a>'),
- ('NEW Moon Fest - Nantucket Empowering Women is an original festival event of the 501(c)(3) '
-  'organization, Nantucket Community Television, Inc.'),
+ # Frank's copy runs this paragraph in with the AI bullets, but it is the
+ # general acknowledgment -- the old list's LAST item -- and nesting it under
+ # the AI policy would read as agreeing only to the AI rules. Lifted to top
+ # level, in the place he put it. Raised with him 2026-11-08.
  ('By agreeing to the terms and conditions on the entry form for NEW Moon Fest, the entrant '
-  'submitting a film to NEW Moon Fest - Nantucket Empowering Women acknowledges that s/he has '
-  'read, understood and agrees to the rules and guidelines described above.'),
+  'submitting a film to NEW Moon Fest &ndash; Nantucket Empowering Women acknowledges that they '
+  'have read and understood, and agree to, the rules and guidelines described above.'),
+ (('<p>FINALISTS</p><p>If a submission is accepted as a finalist by NEW Moon Fest, the finalist '
+   'agrees to the following and grants to NEW Moon Fest, without reservation, condition, or '
+   'qualification, the right to:</p>'),
+ [
+   ('Charge guests for the right to attend a screening of an exhibition-quality digital file '
+     'of your film for up to two times between the dates of the main event (5/29/27) and '
+     'Labor Day (9/6/27).'),
+   # Frank's copy indents the two publicity items under this one, and the
+   # grammar agrees -- "including: Using ... / Issuing ...". They were flat
+   # siblings before, which read as four separate rights.
+   (('Coordinate all publicity and press outreach concerning the film&rsquo;s presentation '
+      'leading up to and at the festival event, including:'),
+   [
+     ('Using excerpted clips, trailers, still images, and/or titles, and information from or '
+       'relating to the film, for promotional purposes in all media, including NEW Moon '
+       'Fest&rsquo;s website.'),
+     ('Issuing and authorizing publicity concerning the filmmakers and the film, and using '
+       'all associated names, likenesses, and biographical information.'),
+   ]),
+   ('Collect any and all proceeds raised at the NEW Moon Fest &ndash; Nantucket Empowering '
+     'Women event, including festival tickets, auction items, sponsorships, and pledges. All '
+     'funds raised will go to Nantucket Community Television&rsquo;s programs, and a portion '
+     'of proceeds will support and empower women and individuals served at A Safe Place.'),
+ ]),
+ ('NEW Moon Fest encourages applications from people of all races, religions, national origins, '
+  'sexual orientations, gender identities, gender expressions, and ages, as well as veterans '
+  'and individuals with disabilities. We strongly encourage you to apply if you are from a '
+  'marginalized or underrepresented group, particularly in the film industry.'),
+ ('NEW Moon Fest reserves the right to consider for inclusion in the event, and include in the '
+  'event, films received at any time and through any means, channel, or process, including '
+  'those other than the ones outlined in these terms. Nothing in these terms or otherwise '
+  'requires NEW Moon Fest to select for event inclusion any of the films submitted through the '
+  'process outlined in these terms.'),
+ ('Filmmakers are welcome to reach out to the NEW Moon Fest programmers at any time during the '
+  'submission process at <a href="mailto:NEWmoon@ournctv.org">NEWmoon@ournctv.org</a>.'),
+ ('NEW Moon Fest &ndash; Nantucket Empowering Women is an original festival event of the '
+  '501(c)(3) organization Nantucket Community Television, Inc.'),
+
 ]
 
 
-def nmf_rules_items():
-    """The rules as nested <li>s, rendered from NMF_RULES at build time."""
+def nmf_rules_items(items=None, depth=0):
+    """The rules as nested <li>s, rendered from NMF_RULES at build time.
+
+    An item is either a string or a (head, children) tuple, and a CHILD may be
+    a tuple too -- the function recurses. It was two levels deep and flat until
+    2026-11-08, when Frank's rewrite nested the two publicity items under
+    "Coordinate all publicity ... including:"; they had been siblings of the
+    right they belong to, which read as four separate grants rather than two.
+
+    `depth` only sets the indentation of the generated markup. The marker for
+    each level is CSS -- .nmf-rules__list li::before and the ul/ul ul rules
+    under it -- so a fourth level would need a rule there, not a change here.
+    """
+    if items is None:
+        items = NMF_RULES
+    pad = "        " + "    " * depth
     out = []
-    for item in NMF_RULES:
+    for item in items:
         if isinstance(item, tuple):
             head, subs = item
-            inner = "\n".join(f"            <li>{x}</li>" for x in subs)
-            out.append(f"        <li>{head}\n          <ul>\n{inner}\n"
-                       f"          </ul>\n        </li>")
+            inner = nmf_rules_items(subs, depth + 1)
+            out.append(f"{pad}<li>{head}\n{pad}  <ul>\n{inner}\n"
+                       f"{pad}  </ul>\n{pad}</li>")
         else:
-            out.append(f"        <li>{item}</li>")
+            out.append(f"{pad}<li>{item}</li>")
     return "\n".join(out)
 
 
@@ -45145,6 +45276,14 @@ def nmf_auction_section():
     place, since putting the buttons back outside a collapsible is the kind
     of thing Frank has asked for twice already.
 
+    It DOES take yearpick--toggle (Frank, 2026-11-08): clicking the open year
+    again shuts its partner list and leaves the buttons with none selected.
+    The lecture and meeting archives deliberately do not -- collapsing one
+    of those to nothing reads as the page having lost its contents -- but
+    here the standfirst above the buttons stays on screen either way, so an
+    empty picker still says what the buttons are for. It is markup only;
+    initYearPicker() has carried the branch all along.
+
     Years run oldest to newest, like the awards and past-selections pickers
     further down the page."""
     years = sorted(AUCTION_PARTNERS_BY_YEAR)
@@ -45172,7 +45311,7 @@ def nmf_auction_section():
       <summary>Learn More</summary>
       <div class="dl-group__body">
         <p class="auction-note">{AUCTION_NOTE}</p>
-        <div class="yearpick">
+        <div class="yearpick yearpick--toggle">
           <div class="yearpick__btns" role="group" aria-label="Auction partners by year">
 {btns}
           </div>
@@ -45192,7 +45331,17 @@ def nmf_awards_section():
 
     The open year's graphic loads normally; the rest are lazy, and every one
     carries its real pixel size so a hidden panel reserves the right height
-    instead of collapsing to nothing."""
+    instead of collapsing to nothing.
+
+    Takes yearpick--toggle (Frank, 2026-11-08), so clicking the open year
+    hides its graphic again and leaves no year selected. The page opens on
+    NMF_AWARDS_OPEN, so there is always one to close. Markup only --
+    initYearPicker() has carried the branch all along -- which is why this
+    is a content change and ASSET_VER does not move.
+
+    The Shorts Fest awards section is a separate function,
+    shorts_awards_section(), and was NOT given this. Raised with Frank;
+    adding it there is the same one-class edit."""
     years = sorted(NMF_AWARDS)
     btns = "\n".join(
         f'        <button type="button" class="year-btn'
@@ -45224,7 +45373,7 @@ def nmf_awards_section():
       <span class="eyebrow"><span class="dot"></span>Awards</span>
       <h2>Congratulations to the New&nbsp;Moon&nbsp;Fest winners!</h2>
     </div>
-    <div class="yearpick" data-reveal>
+    <div class="yearpick yearpick--toggle" data-reveal>
       <div class="yearpick__btns" role="group" aria-label="New Moon Fest winners by year">
 {btns}
       </div>
@@ -46548,7 +46697,17 @@ newmoon_body = f"""{video_hero("1241568900:0350ef0ccc", "hero-fallback-newmoon.w
 {nmf_auction_section()}
 {nmf_photos_section()}
 {nmf_featured_videos_section()}
-{nmf_sponsors2026_section()}"""
+{nmf_sponsors2026_section()}
+{nmf_team_section()}
+<!-- A second copy of the same rule, at the other end of the sky (Frank,
+     2026-11-08). It marks the boundary between the starry background and
+     the footer, exactly as the one under the banner marks the boundary
+     between the footage and the sky. Same element and same drawing; the
+     only difference is which way it hangs, so .nmf-skyrule--foot flips the
+     -13px from the top margin to the bottom one and the footer rises to
+     meet it. It sits here rather than inside the footer because the footer
+     is on every page and this rule belongs to this one. -->
+<div class="nmf-skyrule nmf-skyrule--foot" aria-hidden="true"></div>"""
 new_moon_fest = shell("events-new-moon-fest.html", "New Moon Fest — NCTV", newmoon_body)
 
 # ----------------------------------------------------------------------
@@ -62926,6 +63085,27 @@ WHALER_WORD = {
   "field hockey 1&ndash;3&ndash;2, and boys cross country still undefeated. A weather forecast, "
   "a roundup of volunteer openings toward the twenty hours needed to graduate, and a trivia "
   "question follow, and Word on the Street asks students their dream job."),
+ ("i7820MoSzcI", "Episode 2, Nov. 6th, 2026",
+  "The broadcast follows homecoming week, with sweatshirts still on sale and tickets going for "
+  "Saturday evening&rsquo;s dance. Announcements cover applications to the Tri-M Music Honor "
+  "Society through December 4th, World Language Assessment dates in November and March for the "
+  "Seal of Biliteracy, a reminder to use Smart Pass when leaving a classroom, a November 23rd "
+  "deadline for senior yearbook submissions, college representatives still visiting through the "
+  "fall, and volunteer and vendor signups for December Delight, which seniors are required to "
+  "attend. A short item on Tuesday&rsquo;s midterm elections reports that Democrats took both "
+  "chambers of Congress, that Massachusetts returned Senator Edward Markey and that the district "
+  "returned Representative Bill Keating. The sports desk closes out the fall: boys golf "
+  "10&ndash;7 and 13th of 14 at the Division 3 South sectional, volleyball 11&ndash;6 and into "
+  "the preliminary round, boys soccer 12&ndash;4&ndash;2 with the Cape and Islands league title "
+  "and a 2&ndash;0 homecoming win over Martha&rsquo;s Vineyard, girls soccer 6&ndash;11&ndash;1 "
+  "and just outside the playoffs, football a 56&ndash;7 Island Cup victory in the last "
+  "regular-season game at Vito Capizzo Stadium before the field is renovated, field hockey "
+  "7&ndash;8&ndash;3 and drawn against Dedham in the first round of the Division 3 playoffs, and "
+  "both cross country teams finishing at the Cape and Islands championship meet. A cheerleading "
+  "coach is honored at halftime for thirty-five years with the program, and the junior and "
+  "senior girls meet in the Powder Puff game. A weather forecast, a roundup of island events, "
+  "volunteer openings, a trivia question and a homecoming edition of Word on the Street close "
+  "the episode."),
  ],
 }
 
@@ -64162,6 +64342,29 @@ CPS_PULSE = {
   "the Tavern and the Gazebo gives $18,000 to an island addiction nonprofit, raised by selling "
   "memorabilia, and Nantucket places fifth among American islands in Condé Nast "
   "Traveler&rsquo;s Readers&rsquo; Choice Awards."),
+ ("kJxANweRRV8", "Episode 6, Nov. 6th, 2026",
+  "The top story is relief in sight for the bus driver shortage: Superintendent Elizabeth "
+  "Hallett announced Tuesday that the district has reached an agreement with a new bus company "
+  "to replace the Cape Cod Collaborative, adding three drivers. Nantucket&rsquo;s commercial "
+  "scallop season opened Monday, after a year in which scallopers landed 7,800 bushels, down "
+  "from more than 10,000 in each of the two seasons before it; the Select Board has raised the "
+  "daily limit from five bushels to seven to make up for days lost to a hard winter. The "
+  "Nantucket Conservation Foundation has made its first detailed map of Coatue by drone, "
+  "recording the height and shape of the land and identifying Second Bend as at risk from storms "
+  "and high tides, paid for by a $70,000 grant from the Great Harbor Yacht Club Foundation. On "
+  "the sports desk, Cyrus Peirce volleyball loses to Barnstable and football to Falmouth while "
+  "cross country takes second, and at the high school varsity football beats Martha&rsquo;s "
+  "Vineyard 56&ndash;7 over homecoming weekend and girls JV soccer closes its season "
+  "9&ndash;2&ndash;3; the segment also covers the Patriots, the end of the last unbeaten record "
+  "in the NFL and the first college football playoff rankings. The entertainment report runs "
+  "through the weekend&rsquo;s films at the Dreamland, the twelfth Run for Robin 5K at the "
+  "Sconset Casino on November 22nd, the Cold Turkey Plunge at Children&rsquo;s Beach on "
+  "Thanksgiving in support of the Weezie Library for Children, an after-school clay workshop at "
+  "NISDA, and island live music. The politics segment reports Democratic majorities in both "
+  "chambers of Congress and considers what that means for the rest of the term, from the veto to "
+  "the mechanics of impeachment. The movie reviewer opens the slot to viewer suggestions on a "
+  "monthly theme, and the episode closes with thanks to the athletic director, the boosters and "
+  "the volunteers behind Friday&rsquo;s pep rally, pig roast and bonfire."),
  ],
 }
 

@@ -1092,12 +1092,26 @@ th[aria-sort="descending"] .shows__sort::after{opacity:1}
    red-carpet portraits mixed with one landscape, and cropping them to a
    common aspect ratio cuts the tops off people's heads. Columns let every
    photo keep the framing it was shot with. */
-/* Both of these put a collapsible heading straight under the eyebrow, so the
-   usual gap below a section head is far too much. */
+/* Each of these puts a collapsible heading straight under the eyebrow, so the
+   usual gap below a section head is far too much. .nmf-team joined the list on
+   2026-11-08: its own gap measured 51px against the 16px every other
+   collapsible-subtitle section on the New Moon page shows. */
 .shorts-photos .section__head,
 .shorts-pastfilms .section__head,
 .nmf-photos .section__head,
+.nmf-team .section__head,
 .nmf-auction .section__head{margin-bottom:clamp(10px,1.6vw,18px)}
+/* Meet the Team's eyebrow is an <h2>, not the <span> every other section title
+   is, so that its role labels can be <h3> without skipping a heading level.
+   That makes it match .section__head h2, which is the SUBTITLE rule, and it
+   picked up the subtitle's margin-top:12px -- 12px of space above the title
+   that no other title on the page has. Everything else that rule sets is
+   already overridden by .section__head .eyebrow; the margin was the one leak.
+   Zeroed here rather than on .section__head .eyebrow itself, because the two
+   other <h2> eyebrows on the site (Staff, Board of Directors, on
+   about-staff.html) take the same 12px and Frank has not asked for those to
+   move -- 2026-11-08. */
+.nmf-team .section__head .eyebrow{margin-top:0}
 /* Three New Moon headings set at the collapsible summary's size rather than
    the section heading's -- Frank, 2026-10-25, taking "See the latest New Moon
    updates." as the measure. The clamp is copied from .pastsel__year>summary
@@ -1344,7 +1358,62 @@ body.is-docopen{overflow:hidden}
    FilmFreeway button inside it keeps a.ff-btn's own styling: that rule sits
    further down the file at equal specificity, so its text-decoration:none
    wins over the underline the sentence gives its links. */
-.nmf-submit-notice{margin-top:clamp(18px,2.4vw,28px)}
+/* Frank asked on 2026-11-08 for this sentence in the section titles' face,
+   Fraunces, but at neither their size nor their weight -- so ONLY the
+   family moves. It keeps the 20px, the 1.65 leading, the 400 weight and
+   the gold the shared notice rule above gives it, and it takes neither
+   the titles' uppercase nor their .1em tracking.
+
+   Written here rather than in that shared rule on purpose. The Shorts Fest
+   notice and the home page's mailing-list sentence are in its selector
+   list so that restyling one restyles the others (see CLAUDE.md), and
+   those two were not part of this request. This rule is a single class
+   like the shared one and beats it on source order alone, so it has to
+   stay BELOW it in this file.
+
+   Fraunces 400 is a real face here -- the Google Fonts URL in build.py
+   asks for 400, 560 and 700 -- so nothing is being faked at this weight. */
+.nmf-submit-notice{margin:0;font-family:var(--serif);text-align:center;
+  font-size:1.5rem}
+/* Tightened and sized up on 2026-11-08, both asked for in one breath.
+
+   SIZE: 1.5rem. It went 20px -> 1.4rem -> 1.5rem over two requests on
+   2026-11-08, both of them 'one size up'. A flat value on purpose.
+   The clamp the page's other notices take, clamp(1.29rem,1.71vw,1.48rem),
+   was tried first and sits on its 20.64px FLOOR below about 1207px, so at
+   a 1024px window it was a 0.64px change and read as no change at all.
+   Flat means the step is there at every width.
+
+   It stays below the section titles, which Frank asked it not to match,
+   but there is NO ROOM FOR ANOTHER STEP. The titles are
+   clamp(1.6rem,2.45vw,2.1rem) and sit on their 1.6rem floor at any window
+   under about 1045px, so 1.5rem clears them by 1.6px there -- wider than
+   that the gap opens up, to 11px at 1440. Weight 400 against their 700,
+   sentence case against their caps and no tracking against their .1em are
+   what keep the two apart at the narrow end, not the size. Go up again
+   and this sentence is a section title.
+
+   SPACE: the gap above and below came almost entirely from section
+   padding, not from this paragraph -- the page-wide
+   [data-page=...] .section rule gives every section 4vw top and bottom,
+   and the sentence's own margin-top added a third as much again. Measured
+   at 1024px before this change: 88px from the banner rule down to the
+   text and 82px from the text down to the ABOUT eyebrow.
+
+   So the margin goes, this one section's padding is cut, and the padding
+   of the section BELOW it is cut too -- the space under the sentence is
+   mostly that next section's own top padding, so trimming only this one
+   would halve the gap above and leave the one below. The + combinator is
+   what keeps that scoped: every other section on the page keeps the full
+   4vw, and a section inserted between the two would take the trim with
+   it rather than leaving a hole. */
+.section.nmf-submit{padding-block:clamp(18px,2.4vw,34px)}
+.nmf-submit + .section{padding-top:clamp(6px,.8vw,12px)}
+/* Centred on 2026-11-08, in this rule and not the shared one above, for the
+   same reason the family is: the Shorts Fest notice and the home page's
+   mailing-list sentence share that rule and stay left. The FilmFreeway
+   button is inline inside the sentence, so it centres with the last line
+   rather than needing a rule of its own. */
 /* Clickable logos laid over the sponsor banner, the same technique as the
    past-films maps. Each hotspot is square in the artwork's pixels, so the 50%
    radius traces the logo's disc rather than an ellipse. */
@@ -1560,8 +1629,14 @@ body.is-docopen{overflow:hidden}
 /* Awards — winner graphic reveal + explanatory text */
 .awards-panel{padding:clamp(4px,1.2vw,12px) 0 clamp(24px,3vw,36px)}
 .awards-img{display:block;width:100%;height:auto;border-radius:12px}
-.awards-text{margin:clamp(16px,2.4vw,26px) 0 0;max-width:78ch;line-height:1.6;
-  color:var(--ink-soft);font-size:clamp(1.02rem,1.25vw,1.16rem)}
+/* Centred at Frank's request, 2026-11-08, in all three year panels at once --
+   one class, used only here. The 78ch measure makes the paragraph ~145px
+   narrower than the graphic above it, and it was flush left, so centring the
+   text alone would have left it sitting off the graphic's centre line. The
+   auto side margins centre the block as well, which is what "centred under the
+   graphic" has to mean. */
+.awards-text{margin:clamp(16px,2.4vw,26px) auto 0;max-width:78ch;line-height:1.6;
+  text-align:center;color:var(--ink-soft);font-size:clamp(1.02rem,1.25vw,1.16rem)}
 .nmf-awards .year-panel:not([hidden]) .awards-panel{animation:awardReveal .65s var(--ease) both}
 @keyframes awardReveal{
   from{opacity:0;transform:translateY(28px) scale(.985);filter:blur(9px)}
@@ -1648,8 +1723,29 @@ a.ff-btn img{display:block;width:210px;height:auto}
 .nmf-rules__list li>p:last-child{margin-bottom:0}
 .nmf-rules__list ul{list-style:none;margin:12px 0 0;padding:0}
 .nmf-rules__list ul li::before{content:"\2013";font-weight:400}
+/* A third level arrived on 2026-11-08 with the FINALISTS block, whose two
+   publicity items nest under the right they belong to rather than beside it.
+   The level-two rule above is `ul li`, which matches at ANY depth, so without
+   this both levels draw an en dash and the nesting is invisible -- which is
+   exactly how that block read before the rewrite. */
+.nmf-rules__list ul ul li::before{content:"\25E6"}
 .nmf-rules__list a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
 .nmf-rules__list a:hover{color:var(--ink)}
+/* ---- Meet the Team (New Moon Fest, 2026-11-08) ----
+   Two columns by CSS `columns`, not two hand-written divs: the browser
+   balances the eight groups by height, so adding one or lengthening a
+   committee cannot leave one column running past the other. break-inside on
+   the group is what keeps a role attached to its names -- without it a column
+   can break between the <h3> and its first <li>. One column below 640px,
+   where two would leave each about 150px wide. */
+.nmf-team__cols{columns:2;column-gap:clamp(24px,4vw,56px)}
+@media (max-width:640px){ .nmf-team__cols{columns:1} }
+.nmf-team__group{break-inside:avoid;margin:0 0 clamp(18px,2.4vw,26px)}
+.nmf-team__group:last-child{margin-bottom:0}
+.nmf-team__role{font-family:var(--serif);font-weight:700;line-height:1.3;
+  color:var(--ink);margin:0 0 6px}
+.nmf-team__names{margin:0;padding:0;list-style:none;line-height:1.6;
+  color:var(--ink-soft)}
 /* 2026 Sponsors flyer (full width). The margin lives on the wrapper, not the
    image, because the hotspots are positioned against the wrapper and a margin
    on the image would shift the picture out from under them. */
@@ -2346,6 +2442,10 @@ a.cfn-funds__mark:focus-visible img{transform:scale(1.09)}
    partner rows, and the film-card metadata under each title. */
 .auction-note,.nmf-rules__submit{font-size:clamp(1.29rem,1.71vw,1.48rem)}
 .auction-partners__name,.lunafest-films__title{font-size:1.39rem}
+/* Meet the Team: the role label is one step over the names under it, which
+   stay at body size -- so the section reads eyebrow 1.6-2.1, role
+   1.32-1.48, names 20px, in order at every width. */
+.nmf-team__role{font-size:clamp(1.32rem,1.58vw,1.48rem)}
 .auction-partners__what,.lunafest-films__director{font-size:1.18rem}
 .docmodal__text{font-size:1.24rem}
 .movie-meta{font-size:1.01rem}
@@ -2581,3 +2681,13 @@ body[data-page="events-new-moon-fest.html"] .awards-img{
       no-repeat left center / calc(50% - 76px) 1.5px,
     linear-gradient(90deg,rgba(233,196,106,.9),rgba(233,196,106,0))
       no-repeat right center / calc(50% - 76px) 1.5px}
+/* The same rule at the foot of the page, over the footer's top edge (Frank,
+   2026-11-08). Everything it draws is inherited; all this does is hang the
+   element the other way. The original pulls itself UP by half its height so
+   it straddles the bottom of the banner; this one pulls the FOOTER up by
+   half its height instead, which straddles the top of the footer. The z-index
+   above is what keeps it painted over the footer, which sets neither a
+   position nor a stacking context -- give .footer one and this disappears
+   underneath it. The footer's 60px of top padding means the overlap never
+   reaches its text. */
+.nmf-skyrule--foot{margin:0 0 -13px}
