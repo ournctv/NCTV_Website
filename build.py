@@ -15,7 +15,7 @@ BANNER_VIDEO = "1241589049:76cd5a88fc"  # home hero; Vimeo id:hash
 FEATURED_ID = "9BnRkR2W9Zc"  # home "Featured Video" section
 # Bump this whenever styles.css or site.js changes — it forces browsers to
 # fetch the fresh files instead of serving a cached (stale) copy.
-ASSET_VER = "436"
+ASSET_VER = "439"
 
 # The address the finished site will answer to. Everything absolute on the
 # site comes from this one string: the canonical link in every <head>, the
@@ -44301,7 +44301,19 @@ NMF_TEAM = [
 
 
 def nmf_team_section():
-    """Meet the Team: the festival's roles and committees, behind a Learn More.
+    """Our Team: the festival's roles and committees, behind a Learn More.
+
+    It is the LAST section of the page. Notable Nantucket Women came in above
+    it on 2026-11-08 and went above it the same day, at Frank's ask, so the
+    page now ends on the festival's own people rather than on the history.
+    Nothing in either section depends on the order -- they are siblings in
+    newmoon_body and each carries its own eyebrow spacing -- so swapping them
+    back is swapping those two lines.
+
+    The heading read "Meet the Team" until 2026-11-08, when Frank renamed it.
+    The class, the CSS and the NMF_TEAM constant keep the old name: they are
+    identifiers rather than copy, and renaming them would touch a dozen rules
+    to change nothing a reader can see.
 
     Two columns, asked for by Frank on 2026-11-08. The split is CSS `columns`
     rather than two hand-written <div>s, so the browser balances the groups by
@@ -44326,13 +44338,766 @@ def nmf_team_section():
     return f"""<section class="section nmf-team">
   <div class="wrap">
     <div class="section__head" data-reveal>
-      <h2 class="eyebrow"><span class="dot"></span>Meet the Team</h2>
+      <h2 class="eyebrow"><span class="dot"></span>Our Team</h2>
     </div>
     <details class="pastsel__year dl-group nmf-sub" data-reveal>
       <summary>Learn More</summary>
       <div class="dl-group__body">
         <div class="nmf-team__cols">
 {chr(10).join(groups)}
+        </div>
+      </div>
+    </details>
+  </div>
+</section>"""
+
+# ----------------------------------------------------------------------
+# Notable Nantucket Women. Frank asked for this on 2026-11-08 and supplied
+# it as a PDF print of the festival's own "About: Women in History" page --
+# twenty-five entries, nineteen portraits, and the introduction above them.
+# The copy is that page's, word for word.
+#
+# Nothing here was retyped. The bios come out of the PDF's text layer joined
+# line by line, and the portraits are cropped out of the page images baked
+# into the same file; scratchpad/wih-work holds the scripts and the literal
+# was proved by running it back through the interpreter and comparing every
+# field, which is the check [[rewrapping-build-py-literals]] exists for.
+#
+# THE QUOTES WERE CONVERTED. The source mixes straight and curly quotes --
+# six straight double quotes, twenty-seven straight apostrophes -- and those
+# are the site's entities here, the way a YouTube description's straight
+# apostrophe becomes &rsquo; on a card. A straight quote carries no
+# direction, so choosing one is the conversion, not a repair.
+#
+# ITS OWN ERRORS were flagged on 2026-11-08 and left in, under the house
+# rule that a posting's inconsistencies are raised rather than quietly
+# corrected. Frank read the list the same day and asked for them to be
+# corrected, so nine of them are:
+#   Wonoma    "planning to attach Autopscot's village" -- attack
+#   Abiah     the quotation never closed; it closes now, after
+#             "eighty-five." The full stop was always there -- the flag
+#             overstated that part -- so only the &rdquo; was added.
+#   Kezia     the quotation closed on a right single quote: the law',
+#   McCleave  "Elliza gave guided tours" -- Eliza, as the heading spells it
+#   Veeder    "Talcahhuano" -- Talcahuano; "Azubah Cast" -- Azubah Cash,
+#             whose journal of the Columbia the NHA holds
+#   Pleasant  "successfully attached racial discrimination" -- attacked
+#   Jewett    "Jewitt was made and honorary" -- Jewett, an honorary. The
+#             entry's own first sentence spells her Jewett; so does every
+#             other source. The NHA's Whaling Museum talk says Jewitt too,
+#             so the wobble is not this page's alone.
+#   Cooper    "she was on hundred ten years old" -- one hundred ten. Only
+#             the one word; "and" would be writing, not repairing.
+#
+# ROSS KEEPS "a seventeen-year-old student". It was flagged as an error
+# against her 1824-1895 heading and the flag is WITHDRAWN: the NHA's own
+# description of yDFnxSufBQU -- on this site, on partner-nha.html -- reads
+# "seventeen-year-old" too, and the sources behind it put her at seventeen
+# at the 1840 examination and twenty-four when the schools integrated, which
+# is the age this entry already gives. The doubtful figure is the 1824 birth
+# year in the heading, not the age in the sentence, and Frank looked at that
+# on 2026-11-08 and said to leave it alone. So both stand as written.
+#
+# BAKER LOST HER DATE. "In 1838, she published a volume of her collected
+# poems" could not stand -- she was born in 1846 and was minister here from
+# 1880 -- but no catalogue record gives a year for "By the Sea", so there
+# was nothing to put in its place. Frank's answer on 2026-11-08 was to take
+# the date out rather than guess at it, so the sentence now begins "She
+# published a volume of her collected poems". If a year ever surfaces it
+# goes back in here.
+#
+# THE INTRODUCTION'S OWN ERROR was corrected too. Frank pasted that
+# paragraph himself, so "Travel writer William Oliver Stephens" was left
+# alone until he could rule on it; he read it the same day and asked for
+# Stevens. William Oliver Stevens wrote "Nantucket: The Far-Away Island",
+# and the same quotation on partner-nha.html spells him Stevens.
+#
+# KEZIA IS DATED 1723-1798, AND THAT DISAGREES WITH partner-nha.html.
+# That page says 1772-1798, in the description of the 2018 Whaling Museum
+# talk (7KqRYdWzfk0), which is the only dated mention of her anywhere on it.
+# Told of the conflict on 2026-11-08, Frank first made partner-nha.html the
+# authority and the heading read 1772-1798 for a few minutes; shown what
+# that date implies, he changed it back the same day. So the conflict is
+# known, settled, and deliberate -- do not "fix" this heading to match the
+# other page, and do not raise it again as a discrepancy.
+#
+# What settled it: 1772 would put her at four years old at the Declaration,
+# seven during the 1779 smuggling this very entry describes, and twenty-six
+# at her death. Every outside source -- Quaker birth records, the Maria
+# Mitchell Association, the genealogies -- gives 9 December 1723.
+#
+# The other half of it is still open, and is Frank's: the NHA's figure lives
+# in a YouTube description, which this site reproduces verbatim, so it is
+# not ours to edit here. It would have to be corrected on YouTube.
+#
+# The order is the source page's own, which runs roughly by birth year with
+# four entries out of sequence (Pleasant and Gardner after Ross, Jewett
+# after Higginbotham, Andrews after Gaillard). That is a curated order, so
+# it is kept rather than sorted.
+#
+# A row is (slug, button label, heading, dates, [(asset, alt), ...], bio,
+# credit). Six women have no portrait on the source page and seven carry no
+# image credit; both are rendered away rather than left as empty furniture.
+# The Monaghan sisters are one entry with two portraits, which is why the
+# images are a list and not a single file name.
+# The portraits are drawn this much larger than the files are. Frank asked
+# for a quarter more on 2026-11-08, after seeing them at 1:1.
+#
+# THERE IS NO MORE RESOLUTION TO GIVE THEM. They were cropped out of the
+# bitmaps the PDF has embedded in it -- 1112px-wide slabs of the printed
+# page -- so 155x196 is the file and the source both. Re-rendering that PDF
+# at any DPI enlarges the same bitmap. This is therefore an upscale and it
+# softens them, which Frank was told before it was done.
+#
+# It is done in the markup, not in the files or the stylesheet: the <img>
+# asks for 1.25x and the WebP keeps its own pixels, so the assets stay as
+# sharp as they ever were and going back to 1:1 is this one number. The
+# stylesheet still gives .wih-portrait no width -- see nmf_women_section()
+# -- because a width there would make nineteen different pictures one size.
+WIH_SCALE = 1.25
+
+# The introduction, one string to a paragraph. It arrived as a single block
+# and Frank asked on 2026-11-08 for the Stevens quotation to start a new
+# line; told a <br> gives a line break and not a gap, he asked for a
+# paragraph break, so it is a list and the renderer writes one <p> each.
+# .wih-intro's own bottom margin is the gap between them -- the same margin
+# that already separated the block from the buttons -- so there is no rule
+# for this and another break is another string.
+NMF_WOMEN_INTRO = [
+    "By the 1840s nearly half of the world&rsquo;s whaling ships sailed out of Nantucket. "
+    "Usually left ashore while their men sailed the seas were the women who raised large "
+    "families, managed their households and ran island businesses. In the early 18th century "
+    "Nantucket was a predominantly Quaker community. A tenet of the Quaker religion was that "
+    "men and women were socially and spiritually equal. During the height of the whaling "
+    "industry, women outnumbered the men four to one. J. Hector St. John de Creve Coeur "
+    "visited Nantucket in the 1770s. He wrote that the women of Nantucket &ldquo;were justly "
+    "entitled to a rank superior to that of other wives.&rdquo;",
+
+    "Travel writer William Oliver Stevens wrote: &ldquo;Indeed, it is probable that no other "
+    "community in America of the size of Nantucket has ever given to the country so many "
+    "extraordinary women.&rdquo; The first English settlers came to Nantucket in 1659. The "
+    "men and women who decided to make this island their home had to work hard to make the "
+    "fledgling settlement survive. When whaling became the dominant industry, whaling "
+    "husbands would be away from the island for years at a time. Women had to fill the breach "
+    "and did so in remarkable ways, raising large families, managing their households, "
+    "supplementing their incomes by starting businesses, and still found the time to become "
+    "involved in the social movements of the day. To learn more about these notable Nantucket "
+    "women, please click the buttons below.",
+]
+
+
+NOTABLE_WOMEN = [
+ (
+  "wonoma", "Wonoma",
+  "Wonoma",
+  "Mid-1600&rsquo;s",
+  [],
+  "In the early 17th century there were several thousand Wampanoags living here. The island "
+  "was divided between two sachems: Wauwinet was the leader on the eastern side. Wonoma was "
+  "his cherished daughter, well known as a healer with great knowledge of medicinal plants "
+  "and their healing powers. Autopscot was the leader to the west. There were wars over "
+  "hunting grounds among the two tribes. When a terrible sickness befell the people of the "
+  "west side, she was summoned to assist them. There she met Autopscot and fell in love with "
+  "him, in addition to saving the western tribe. Wonoma returned home and shortly thereafter "
+  "learned that her father was planning to attack Autopscot&rsquo;s village. Wonoma set out "
+  "on a starlit night to warn her lover and to make a plea for peace. Not only did Wauwinet "
+  "and Autopscot agree to make a pledge for peace, they agreed to unite their people with an "
+  "intertribal marriage.",
+  "",
+ ),
+ (
+  "mary-coffin-starbuck", "Mary Coffin Starbuck",
+  "Mary Coffin Starbuck",
+  "1645&ndash;1717",
+  [],
+  "Known as &ldquo;The Great Mary of Nantucket&rdquo;, Mary Coffin Starbuck was a woman of "
+  "power and influence. A charismatic personality, Starbuck converted to the Quaker faith at "
+  "the age of fifty-six and brought much of the island&rsquo;s white population with her. "
+  "Meetings were initially held in her home, and she became the first recognized minister on "
+  "the island. She also ran the family&rsquo;s trading post, the island&rsquo;s commercial "
+  "center at the time. As she could read and write while her husband was illiterate, she kept "
+  "the store&rsquo;s account book, now held in the NHA&rsquo;s collection. The volume "
+  "illustrates the vital nature of her business to both the white and indigenous populations "
+  "of the island.",
+  "",
+ ),
+ (
+  "abiah-folger-franklin", "Abiah Folger Franklin",
+  "Abiah Folger Franklin",
+  "1667&ndash;1752",
+  [
+   ("abiah-folger-franklin",
+    "Painted portrait of Abiah Folger Franklin, seated in a dark gown with white lace cuffs "
+    "and collar, one hand at her waist"),
+  ],
+  "Franklin was the mother of Benjamin Franklin. She had ten children, Benjamin being her "
+  "eighth. In his biography Franklin described his mother, &ldquo;she suckled all ten of her "
+  "children, and was never sick a day in her life until she died at the age of "
+  "eighty-five.&rdquo;",
+  "",
+ ),
+ (
+  "kezia-folger-coffin", "Kezia Folger Coffin",
+  "Kezia Folger Coffin",
+  "1723&ndash;1798",
+  [],
+  "Kezia Coffin, wife of a whaling captain, ran a lucrative international trading business "
+  "before and during the American Revolution that made her and her husband the island&rsquo;s "
+  "wealthiest residents. Not content to rest in this position, Kezia considered it her duty "
+  "to supply the island with necessary foods and goods during the Revolution. "
+  "Nantucket&rsquo;s economy depended on British trade, and in 1779 she was suspected of "
+  "smuggling, allegedly importing fresh flour through British connections. Coffin was tried "
+  "for treason, but historians have noted that if no one had &ldquo;moved more rapidly than "
+  "the law&rdquo;, there would have been much suffering on the island. The court found her "
+  "not guilty.",
+  "",
+ ),
+ (
+  "lucretia-coffin-mott", "Lucretia Coffin Mott",
+  "Lucretia Coffin Mott",
+  "1793&ndash;1880",
+  [
+   ("lucretia-coffin-mott",
+    "Sepia photograph of Lucretia Coffin Mott in later life, seated in a Quaker cap and a "
+    "pale shawl"),
+  ],
+  "Lucretia Mott was mentor to women&rsquo;s activist Elizabeth Cady Stanton, co-organizing "
+  "the first women&rsquo;s rights convention in the U.S. in Seneca Falls, NY in 1848. She "
+  "also contributed to the Declaration of Sentiments, the conference manifesto asserting "
+  "women&rsquo;s equality in politics, family, education, jobs, religion and morals.",
+  "Image credit: Courtesy of the Nantucket Historical Association, CDV1327.",
+ ),
+ (
+  "eliza-starbuck-barney", "Eliza Starbuck Barney",
+  "Eliza Starbuck Barney",
+  "1802&ndash;1889",
+  [
+   ("eliza-starbuck-barney",
+    "Green-toned photograph of Eliza Starbuck Barney seated in a wide hooped dress beside a "
+    "stone column"),
+  ],
+  "Well known as an &ldquo;agitator&rdquo; for temperance, equal rights, and women&rsquo;s "
+  "suffrage, she attended the first women&rsquo;s suffrage convention in Massachusetts in "
+  "1851 and was among the first women to vote on Nantucket (for school committee) in 1880. "
+  "Her later years focused on a genealogical record of 40,000 islanders dating back to the "
+  "original settlers. The seven volumes now rest in the NHA Research Library and are "
+  "available online for all Nantucket genealogical research.",
+  "Image credit: Courtesy of the Nantucket Historical Association, F6742.",
+ ),
+ (
+  "eliza-ann-chase-mccleave", "Eliza Ann Chase McCleave",
+  "Eliza Ann Chase McCleave",
+  "1811&ndash;1895",
+  [
+   ("eliza-ann-chase-mccleave",
+    "Photograph of Eliza Ann Chase McCleave seated in a dark dress, a white brooch at her "
+    "collar and her gloved hands folded in her lap"),
+  ],
+  "McCleave was the wife of whaling captain Robert McCleave. Captain McCleave brought "
+  "souvenirs and curiosities from his whaling voyages to his wife as a way of sharing his "
+  "experiences visiting exotic places. As the collection grew, McCleave displayed her "
+  "collection on the second floor of her Main Street home. For a fee, Eliza gave guided "
+  "tours to the public. Her museum had benches and a daily &ldquo;lecture&rdquo; describing "
+  "her artifacts. She gained a reputation for giving colorful, theatrical tours.",
+  "Image credit: Courtesy of the Nantucket Historical Association, GPN243.",
+ ),
+ (
+  "susan-veeder", "Susan Veeder",
+  "Susan Veeder",
+  "1816&ndash;1897",
+  [
+   ("susan-veeder",
+    "Photograph of Susan Veeder in a dark dress with a large white lace collar, her hair "
+    "parted and drawn back"),
+  ],
+  "Veeder accompanied her whaling captain husband Charles on the whaleship Nauticon in 1848. "
+  "She kept a journal of her experiences. She illustrated her journal with watercolors and "
+  "careful penmanship, chronicling a voyage that lasted almost five years. Beyond the "
+  "notations of wind and weather, Veeder described life at sea, including joys, hardships and "
+  "discoveries. Perhaps the most difficult aspect of the voyage was the birth and subsequent "
+  "death of her baby girl born in Talcahuano, Chile. She then chronicled the highs and lows "
+  "of the crew in their pursuit of whales. In the summer of 1851, the Nauticon went north to "
+  "the Arctic where the ship was stuck in the ice for thirteen days. Her journal provides a "
+  "fascinating window into the lives of women who went to sea. [Other Nantucket women who "
+  "went on whaling voyages with their captain husbands include Mary Hayden Russell, Azubah "
+  "Cash, Malvina Pinkham Marshall and Helen Marshall.]",
+  "Image credit: Courtesy of the Nantucket Historical Association, GPN768.",
+ ),
+ (
+  "maria-mitchell", "Maria Mitchell",
+  "Maria Mitchell",
+  "1818&ndash;1889",
+  [
+   ("maria-mitchell",
+    "Sepia photograph in a gilt frame of Maria Mitchell at a table, a small telescope raised "
+    "to her eye"),
+  ],
+  "Maria Mitchell was a trailblazer. In 1847, she became the second woman to discover a "
+  "comet, and, the following year, was the first woman elected to the American Academy of "
+  "Arts and Sciences. As the Atheneum&rsquo;s head librarian, she was one of the first women "
+  "in the world to lead a public library. Concurrently, she was the first professional woman "
+  "employed by the U.S. government, hired in 1846 by the Coast Survey and in 1849 by the "
+  "American Nautical Almanac Office. In 1864, as a professor of astronomy, she was the first "
+  "person appointed to the faculty at Vassar College. She championed women in the sciences "
+  "and advocated for women&rsquo;s rights, co-founding the Association for the Advancement of "
+  "Women in 1873 and remaining active in its work until 1888.",
+  "Image credit: Courtesy of the Nantucket Historical Association, CDV1370.",
+ ),
+ (
+  "lydia-folger-fowler", "Lydia Folger Fowler",
+  "Lydia Folger Fowler",
+  "1822&ndash;1879",
+  [
+   ("lydia-folger-fowler",
+    "Engraved oval portrait of Lydia Folger Fowler in ringlets, a lace collar and a pendant"),
+  ],
+  "In 1850, Lydia Folger Fowler was the first American born woman to receive a medical "
+  "degree. In 1851, she became the first woman professor of medicine at a U.S. college. She "
+  "specialized in the health of women and children and wrote and lectured on hygiene, "
+  "nutrition, physiology, and phrenology. In later years, she served the poor and needy of "
+  "the slums where she eventually contracted blood poisoning which led to her death at the "
+  "age of fifty-six. She was also active in the temperance and women&rsquo;s rights "
+  "movements.",
+  "Image credit: Courtesy of the Nantucket Historical Association, F900.",
+ ),
+ (
+  "eunice-ross", "Eunice Ross",
+  "Eunice Ross",
+  "1824&ndash;1895",
+  [],
+  "In the 1840s, communities across America saw the bitter divisions of slavery, and racial "
+  "prejudice. On Nantucket in 1840, Eunice Ross, a seventeen-year-old student of Anna Gardner "
+  "at the African School, by vote of a town meeting, was denied admission to the Nantucket "
+  "High School because of her race. Five years of hot debate followed the ban, bringing to "
+  "light prejudices within the community. Finally, in 1845, frustrated by the delays of the "
+  "Nantucket School Committee, Edward J. Pompey and 104 other Black citizens, including "
+  "members of the Ross family, submitted a petition to the Massachusetts State House "
+  "requesting that admission to public school be extended to all children. Ross submitted her "
+  "own petition. Ross was twenty-four when the school system finally integrated, but she made "
+  "history as an advocate for equal education.",
+  "",
+ ),
+ (
+  "mary-ellen-pleasant", "Mary Ellen Pleasant",
+  "Mary Ellen Pleasant",
+  "1812&ndash;1904",
+  [],
+  "Mary Ellen Pleasant, a Black woman, came to Nantucket in 1827 as a bonded servant to the "
+  "Hussey family. She worked out her bondage, then became a family member and lifelong friend "
+  "to Phebe Hussey Gardner. The Husseys were involved in the abolition movement, and Pleasant "
+  "met many famous abolitionists. She worked in the Underground Railroad, transporting slaves "
+  "to Ohio and Canada. She took her abolition work to California during the Gold Rush era. In "
+  "California, she ran a men&rsquo;s dining establishment and identified herself as a "
+  "capitalist by profession. In 1866, Pleasant successfully attacked racial discrimination in "
+  "San Francisco public transportation after she was ejected from a city streetcar.",
+  "",
+ ),
+ (
+  "anna-gardner", "Anna Gardner",
+  "Anna Gardner",
+  "1816&ndash;1901",
+  [
+   ("anna-gardner",
+    "Photograph of Anna Gardner seated at a cloth-covered table with an open book, her chin "
+    "resting on her hand"),
+  ],
+  "Born on Nantucket, Gardner grew up in an abolitionist Quaker family. At the age of "
+  "twenty-two, she began to teach at the African School. She had fifty pupils in one room and "
+  "taught all levels up to the ninth grade. She was at the center of the segregation issue, "
+  "as one of her students, Eunice Ross, was denied entry to the Nantucket High School. Anna "
+  "resigned her teaching position, not just in protest, but to devote herself to the cause of "
+  "equality for African Americans. Gardner also helped initiate Nantucket&rsquo;s first "
+  "anti-slavery convention. The convention included speeches by many well-known "
+  "abolitionists, including William Lloyd Garrison and Frederick Douglass. She later worked "
+  "in the south, establishing and teaching in schools for Black children.",
+  "Image credit: Courtesy of the Nantucket Historical Association, GPN1319.",
+ ),
+ (
+  "phebe-coffin-hanaford", "Reverend Phebe Coffin Hanaford",
+  "Reverend Phebe Coffin Hanaford",
+  "1829&ndash;1921",
+  [
+   ("phebe-coffin-hanaford",
+    "Photograph of Phebe Coffin Hanaford standing beside a chair in a dark dress, a book held "
+    "against her, with columns behind"),
+  ],
+  "Born a Quaker in &rsquo;Sconset, Coffin became the first woman in New England to be "
+  "ordained as a Universalist minister in 1868. Hanaford had both public and private "
+  "schooling and studied an advanced, classical curriculum. Raised in the Quaker tradition, "
+  "she was accustomed to hearing women speak and preach in Friends meetings. At the age of "
+  "sixteen took a teaching job in &rsquo;Sconset. During the 1850s and 1860s she wrote many "
+  "books, including The Life of Abraham Lincoln, the first biography published after his "
+  "assassination. She left the Quaker faith to join her husband Joseph in the Baptist church, "
+  "but eventually she turned to Universalism. Hanaford had a long ministerial career, while "
+  "writing prolifically and working for women&rsquo;s rights, antislavery and temperance.",
+  "Image credit: Courtesy of the Nantucket Historical Association, CDV15556.",
+ ),
+ (
+  "margaret-swain-getchell", "Margaret Swain Getchell",
+  "Margaret Swain Getchell",
+  "1841&ndash;1880",
+  [
+   ("margaret-swain-getchell",
+    "Oval photographic portrait of Margaret Swain Getchell in profile in a dark jacket with a "
+    "pendant, printed over an engraving of a storefront"),
+  ],
+  "Credited with many of the store&rsquo;s marketing innovations, in 1866, she was promoted "
+  "to superintendent at Macy&rsquo;s Department Store in New York City, making her one of the "
+  "first women to hold an executive position in American retail, managing the store&rsquo;s "
+  "routine operations and nearly 200 employees.",
+  "Image credit: Courtesy of Macy&rsquo;s Archive",
+ ),
+ (
+  "louise-s-baker", "Reverend Louise S. Baker",
+  "Reverend Louise S. Baker",
+  "1846&ndash;1896",
+  [
+   ("louise-s-baker",
+    "Photograph of Louise S. Baker standing in a long dark coat beside a carved mantelpiece"),
+  ],
+  "A former teacher, Baker was engaged as the minister of the First Congregational Church in "
+  "1880. After four years, the church found her ministry to and preaching to be &ldquo;most "
+  "acceptable&rdquo; and voted unanimously to grant her the right to administer the "
+  "sacraments of Baptism and the Lord&rsquo;s Supper, to admit members of the Church, and to "
+  "perform all duties of the ministerial service. After her ordination, she refused several "
+  "calls from other churches. Baker had a deep interest in literature. She published a volume "
+  "of her collected poems entitled &ldquo;By the Sea&rdquo;. She also wrote a book "
+  "of fiction, Eunice Hussey: A Nantucket Story.",
+  "Image credit: Courtesy of the Nantucket Historical Association, GPN1558.",
+ ),
+ (
+  "anne-ring", "Anne Ring",
+  "Anne Ring",
+  "1865&ndash;1953",
+  [
+   ("anne-ring",
+    "Photograph of Anne Ring as a young woman, in a dark dress and a wide hat against a "
+    "shingled wall, holding flowers"),
+  ],
+  "In 1926, Nantucketers elected educator Anne Ring to the Board of Selectmen, the first "
+  "woman elected not only in Nantucket but in the Commonwealth of Massachusetts. Ring was a "
+  "teacher at the Tuckernuck School.",
+  "Image credit: Courtesy of the Nantucket Historical Association, P1564.",
+ ),
+ (
+  "clara-parker", "Clara Parker",
+  "Clara Parker",
+  "1877&ndash;1970",
+  [
+   ("clara-parker",
+    "Photograph of Clara Parker seated in a dark dress with large puffed sleeves against a "
+    "plain backdrop"),
+  ],
+  "Following the ratification of the 19th amendment in August 1920, Clara Parker registered "
+  "to vote in the national elections. She was listed in the Inquirer and Mirror as one of "
+  "sixty-nine Nantucket women registered as &ldquo;New Voters&rdquo;. Parker was head "
+  "librarian at the Atheneum for fifty years, serving three generations of Nantucket readers.",
+  "Image credit: Courtesy of the Nantucket Historical Association, GPN1031.",
+ ),
+ (
+  "monaghan-sisters", "Gertrude and Hanna Monaghan",
+  "Gertrude and Hanna Monaghan",
+  "Gertrude Monaghan 1887&ndash;1962 &middot; Hanna Monaghan 1889&ndash;1972",
+  [
+   ("monaghan-hanna",
+    "Photograph of Hanna Monaghan standing outdoors in a patterned jacket and a long dark "
+    "skirt, a small dog at her feet"),
+   ("monaghan-gertrude",
+    "Photograph of Gertrude Monaghan seated in profile, holding an artist&rsquo;s palette and "
+    "brush"),
+  ],
+  "Quaker sisters Gertrude and Hanna Monaghan arrived on Nantucket at the time when Nantucket "
+  "had ceased to be a whaling center and was beginning to be a summer resort destination and "
+  "an art colony. Gertrude was an accomplished artist, and Hanna, the more dramatic of the "
+  "two, was devoted to the arts. Hanna said she and her sister were affected by &ldquo;a "
+  "virus struck under the pseudonym of ART&rdquo;. When they first came to the island, the "
+  "sisters from Pennsylvania rented a studio on the wharf. On a return visit in 1929, they "
+  "followed a farmer leading cows up Main Street to a barn on Howard Street. The sisters fell "
+  "in love with the building and decided it would be perfect for their summer home. As "
+  "religious women, the sisters believed that everything in their lives happened through "
+  "divine influence, and the creation of their home was no exception. They named their new "
+  "home &ldquo;Greater Light&rdquo; from Genesis, &ldquo;And God made the two great lights; "
+  "the greater light to rule the day, and the lesser light to rule the night.&rdquo;",
+  "Image credits: Hanna &mdash; Courtesy of the Nantucket Historical Association, P16954. "
+  "Gertrude &mdash; Courtesy of the Nantucket Historical Association, P16956.",
+ ),
+ (
+  "florence-clay-higginbotham", "Florence Clay Higginbotham",
+  "Florence Clay Higginbotham",
+  "1893&ndash;1972",
+  [
+   ("florence-clay-higginbotham",
+    "Photograph of Florence Clay Higginbotham in a wide plumed hat and a fur-trimmed coat"),
+  ],
+  "Born in Virginia, Higginbotham made Nantucket her home. After training at the Boston "
+  "Cooking School, she arrived on the island in 1911 to work as a summer staff in "
+  "&rsquo;Sconset. In 1920, she was hired to manage the Underhill Cottages where she lived "
+  "with owner Evelyn Underhill, and purchased the historic Seneca Boston home, in the New "
+  "Guinea neighborhood, which she used for rental income. After the stock market crash of "
+  "1929, Higginbotham moved to the Boston house permanently, with her former employer "
+  "Underhill. In 1933, she purchased the adjoining historic African Meeting house, which she "
+  "also rented out for storage.",
+  "Image credit: Courtesy of the Nantucket Historical Association, P19179",
+ ),
+ (
+  "mildred-jewett", "Mildred Jewett",
+  "Mildred Jewett",
+  "1907&ndash;1990",
+  [
+   ("mildred-jewett",
+    "Photograph of Mildred Jewett walking along a road in a peaked cap and work clothes, a "
+    "car behind her"),
+  ],
+  "Jewett, known as &ldquo;Madaket Millie&rdquo;, was a lifelong resident of the island, "
+  "spending most of her life at her grandmother&rsquo;s homestead in Madaket. As a child she "
+  "dreamed of a career in the U.S. Coast Guard. The American services did not accept women "
+  "until the outbreak of WWII; however, Jewett was denied enlistment due to health concerns. "
+  "She spent most of the war years training dogs, running her ice cream stand and patrolling "
+  "the coast for shipwrecks, spies, and vessels in distress. Due to her forty-year dedication "
+  "to the mission of the Coast Guard, Jewett was made an honorary Chief Warrant Officer in "
+  "1984.",
+  "Image credit: Courtesy of the Nantucket Historical Association, P21503.",
+ ),
+ (
+  "lucinda-cooper", "Lucinda Cooper",
+  "Lucinda Cooper",
+  "",
+  [],
+  "Our next notable woman is Lucinda Cooper. She was born in Africa and abducted by slave "
+  "traders when she was in her teens. She lived on two continents, survived the Revolutionary "
+  "War, the War of 1812 and the American Civil War. Lucinda Cooper, or &ldquo;Aunt "
+  "Lucy&rdquo; was the second wife of Arthur Cooper the fugitive slave who Anna "
+  "Gardner&rsquo;s family helped. Lucinda was known to the neighborhood as a caring friend "
+  "and a member of the African Methodist Episcopal Zion Church. In 1833, she and her husband "
+  "purchased a house on Angola Street, known as Allentown. An 1858 map shows the home of the "
+  "Coopers on the north side of Angola Street. Aunt Lucy was a favorite of the island "
+  "children who were fascinated by the brand on her forehead which looked like cluster of "
+  "grapes. Lucy survived her husband and islanders said she was one hundred ten years old at "
+  "the time of her death in 1866.",
+  "",
+ ),
+ (
+  "ruth-west-coombs", "Ruth West Coombs",
+  "Ruth West Coombs",
+  "1891&ndash;1964",
+  [
+   ("ruth-west-coombs",
+    "Photograph of Ruth West Coombs outdoors in a dark top, her braided hair coiled over her "
+    "ears, with houses and a utility pole behind her"),
+  ],
+  "When the original English settlers arrived in 1659, it is estimated that there were "
+  "approximately 2,000 Wampanoags living on the island. In the mid-1700s an epidemic took its "
+  "toll on the Native American population. Today there are no Wampanoags on the island. "
+  "However, Nantucket&rsquo;s Native American population heritage lives on through "
+  "interracial marriages and Nantucket&rsquo;s Wampanoags who joined other communities on "
+  "Martha&rsquo;s Vineyard and the mainland. Late in the 1800&rsquo;s the West family with "
+  "descent from Martha&rsquo;s Vineyard Wampanoags moved to Nantucket. Ruth West Coombs was "
+  "part African American and part Wampanoag, born on Nantucket in the 19th century. Ruth West "
+  "married Wampanoag Darius Coombs from the mainland and they moved to Nantucket along with "
+  "several members of his family. She was a singer, touring New England under her native "
+  "title, &ldquo;Princess Red Feather&rdquo;. Ruth&rsquo;s concerts raised awareness and "
+  "appreciation for the Wampanoag culture. Ruth was also on the costume team for the "
+  "Nantucket Theater Workshop. Her costumes were described as &ldquo;outstanding in their "
+  "flamboyance&rdquo; in the local paper. She is buried here with her family. Today it is "
+  "estimated that 4,000 to 5,000 Wampanoags live in New England.",
+  "Image credit: Photo by Louis Davidson, courtesy of the Nantucket Historical Association, "
+  "PH165-P178H.",
+ ),
+ (
+  "gwen-gaillard", "Gwen Gaillard",
+  "Gwen Gaillard",
+  "1921&ndash;2005",
+  [],
+  "Gwen Gaillard, regarded as the Grand Dame of Nantucket, is remembered for being the "
+  "legendary Opera House restaurant owner and she was known to be the inspiration behind the "
+  "Opera House Cup, a classic wooden sailboat race on Nantucket. A socialite and maternal "
+  "figure, Gwen shared recipes with James Beard and Julia Child and was known to have greatly "
+  "influenced the Nantucket food scene. People adored and respected Gwen, she was a true "
+  "Nantucket treasure.",
+  "",
+ ),
+ (
+  "edith-andrews", "Edith Andrews",
+  "Edith Andrews",
+  "1915&ndash;2015",
+  [
+   ("edith-andrews",
+    "Color photograph of Edith Andrews in a knitted hat and a teal jacket, binoculars round "
+    "her neck, beside a wooden nest box"),
+  ],
+  "Edith Folger Andrews first came to Nantucket on a postgraduate trip after receiving her "
+  "bachelor&rsquo;s degree in biology and nature study in 1938. It was on this trip that "
+  "Edith fell in love with the island, its birdlife, nature, and the Maria Mitchell "
+  "Association. Edith was later invited to teach nature classes at the Maria Mitchell "
+  "Association and this is where she continued to work for over 60 years. Edith was a "
+  "teacher, an observer, an advocate and an inspiration to many people within the community. "
+  "She spent much of her time marveling at and observing the island&rsquo;s birdlife and "
+  "started a column &ldquo;Island Bird Sightings&rdquo; in the Inquirer and Mirror which her "
+  "daughter still writes today. During WWII she was involved with a local network of spotters "
+  "who watched for enemy craft and she also stepped in and taught biology, physics and "
+  "chemistry for the drafted science teacher at Nantucket High School. Just as she was "
+  "inspired by the remarkable Maria Mitchell, Edith went on to inspire students and "
+  "researchers and never stopped observing, learning or being curious about the natural world "
+  "that surrounds her. Deeply connected to nature, the island and the community, Edith "
+  "Andrews, a celebrated ornithologist, is highly regarded as a notable Nantucket woman.",
+  "Image credit: Jim Powers",
+ ),
+]
+
+
+# The films these women already have on the site. Frank asked for the panels
+# to point at them on 2026-11-08. Every id here is on partner-nha.html and
+# nowhere else, so the link goes where that page's own cards go -- youtu.be,
+# new tab -- rather than to a page anchor the cards do not carry.
+#
+# One film to a woman, the one that is about her. Six of the twenty-five
+# have one. The other candidates found in the same sweep were left out and
+# raised with Frank instead: a second Ross film (FlR7LToIxtc) and a second
+# Veeder (1dNZXRi-WQw), four more Monaghan films about Greater Light
+# (PKAwWM8rEe8, oDdRE66f7AI, 131kCkg0fYM, VvQSa3ph584), the Boston-
+# Higginbotham House dig (OJ6Wxkx8cQA, about the house rather than Florence)
+# and the 2018 Whaling Museum talk (7KqRYdWzfk0), which covers fifteen of
+# these women at once and so belongs to no single panel.
+#
+# The titles are the cards' own, entities and all, because the link text is
+# what the reader will look for when they get to the NHA page.
+WOMEN_FILMS = {
+    "wonoma": [
+        ("GjGwlJWOYZ4",
+         "Extraordinary Nantucket Woman: Wonoma, Wampanoag Healer and Legendary Hero"),
+    ],
+    "susan-veeder": [
+        ("cbPy8vA8JFc",
+         "Extraordinary Nantucket Woman: Susan Austin Veeder, Whaling Voyage Journalist"),
+    ],
+    "eunice-ross": [
+        ("yDFnxSufBQU",
+         "Extraordinary Nantucket Woman: Eunice Ross, African American Student Activist "
+         "for Education Rights"),
+    ],
+    "phebe-coffin-hanaford": [
+        ("RObT3CcL0rA", "Phebe Ann Coffin Hanaford: A Force from Nantucket"),
+    ],
+    "clara-parker": [
+        ("oE7FzUdFTZQ",
+         "&ldquo;Miss Parker&rdquo;: Clara Parker, Nantucket Atheneum Head Librarian, "
+         "&ldquo;New Voter&rdquo;"),
+    ],
+    "monaghan-sisters": [
+        ("qd8VobqXBys",
+         "Extraordinary Nantucket Women: Gertrude and Hanna Monaghan, Quakers, Artists, "
+         "Designers"),
+    ],
+}
+
+
+
+def nmf_women_section():
+    """Notable Nantucket Women, behind the subtitle Frank wrote for it.
+
+    It sits ABOVE Our Team, which is where Frank moved it on 2026-11-08,
+    the day it was built. The two are siblings in newmoon_body and neither
+    depends on the order.
+
+    The shape is the auction section's: an eyebrow, then one collapsible
+    holding everything, so the section reads like the eight around it. The
+    summary is the subtitle itself -- "Meet these Legendary Nantucketers" --
+    rather than the "Learn More" the others carry, because Frank asked for
+    that wording and for the introduction to appear on clicking it.
+
+    Under the introduction is a picker of twenty-five name buttons. It is
+    the yearpick component with no changes at all: --labels puts the names
+    in the sans face and lets them wrap as a block of choices, which is what
+    the NHA's sixteen Browse-by-Topic buttons need and what twenty-five
+    names need more; --toggle is what shuts a woman's panel when her own
+    button is clicked a second time, which is the behaviour Frank asked for.
+    Nothing is active and every panel is hidden on load, so the reader opens
+    the section and sees the choices rather than one woman's life.
+
+    So there is no new JavaScript: initYearPicker() already carries both
+    branches, and data-year holds a slug here exactly as it holds a topic
+    name on the NHA page. The buttons also pick up this page's gold active
+    state for free, since that rule is written against .year-btn.
+
+    The eyebrow is an <h2>, not the <span> most sections use, so that each
+    woman's name can be an <h3> without skipping a heading level -- the same
+    reason Our Team's is one, and it needs the same margin-top:0 beside it.
+
+    The portraits are drawn at WIH_SCALE times their own pixel size -- 1.25
+    since Frank asked for a quarter more on 2026-11-08 -- and the files keep
+    their own pixels. 155px wide is all the PDF carries, so that quarter is
+    an upscale and it softens them; the constant's comment says so. Set it
+    back to 1 and they are 1:1 again.
+
+    The scaling is on the <img> and nowhere else. .wih-portrait still sets
+    no width at all, because these are nineteen different sizes and one
+    width would flatten them to the same picture; verify.py fails on a width
+    in that rule. If larger originals ever arrive -- the credits give the
+    NHA's accession number for sixteen of them -- replace the files, drop
+    WIH_SCALE back to 1, and nothing else has to move.
+
+    Six panels end with a link to the film the site already has about that
+    woman, from WOMEN_FILMS. They go to youtu.be in a new tab, which is
+    where the cards on partner-nha.html go; that page carries no id on a
+    card, so there is nothing nearer to point at.
+    """
+    intro = "\n".join(f'        <p class="wih-intro">{p}</p>'
+                      for p in NMF_WOMEN_INTRO)
+    btns, panels = [], []
+    for slug, label, name, dates, imgs, bio, credit in NOTABLE_WOMEN:
+        btns.append(
+            f'            <button type="button" class="year-btn" data-year="{slug}" '
+            f'aria-pressed="false">{label}</button>')
+        figs = ""
+        if imgs:
+            shots = []
+            for asset, alt in imgs:
+                fn = f"wih-{asset}.webp"
+                size = webp_size(os.path.join(OUT, "assets", fn))
+                dims = ""
+                if size:
+                    dims = (f' width="{int(round(size[0] * WIH_SCALE))}"'
+                            f' height="{int(round(size[1] * WIH_SCALE))}"')
+                shots.append(
+                    f'                  <img class="wih-portrait" '
+                    f'src="assets/{fn}?v={ASSET_VER}" alt="{alt}"{dims} loading="lazy">')
+            figs = ('                <div class="wih-figs">\n'
+                    + "\n".join(shots) + '\n                </div>\n')
+        meta = f'                  <p class="wih-dates">{dates}</p>\n' if dates else ""
+        films = "".join(
+            f'                  <p class="wih-film">Watch: '
+            f'<a href="https://youtu.be/{vid}" target="_blank" rel="noopener">{title}</a></p>\n'
+            for vid, title in WOMEN_FILMS.get(slug, ()))
+        note = f'                  <p class="wih-credit">{credit}</p>\n' if credit else ""
+        panels.append(
+            f'            <div class="year-panel" data-year="{slug}" hidden>\n'
+            f'              <div class="wih-panel">\n'
+            f'{figs}'
+            f'                <div class="wih-text">\n'
+            f'                  <h3 class="wih-name">{name}</h3>\n'
+            f'{meta}'
+            f'                  <p class="wih-bio">{bio}</p>\n'
+            f'{films}'
+            f'{note}'
+            f'                </div>\n'
+            f'              </div>\n'
+            f'            </div>')
+    return f"""<section class="section nmf-women">
+  <div class="wrap">
+    <div class="section__head" data-reveal>
+      <h2 class="eyebrow"><span class="dot"></span>Notable Nantucket Women</h2>
+    </div>
+    <details class="pastsel__year dl-group nmf-sub" data-reveal>
+      <summary>Meet these Legendary Nantucketers</summary>
+      <div class="dl-group__body">
+{intro}
+        <div class="yearpick yearpick--toggle yearpick--labels">
+          <div class="yearpick__btns" role="group" aria-label="Notable Nantucket women">
+{chr(10).join(btns)}
+          </div>
+          <div class="yearpick__panels">
+{chr(10).join(panels)}
+          </div>
         </div>
       </div>
     </details>
@@ -46698,6 +47463,7 @@ newmoon_body = f"""{video_hero("1241568900:0350ef0ccc", "hero-fallback-newmoon.w
 {nmf_photos_section()}
 {nmf_featured_videos_section()}
 {nmf_sponsors2026_section()}
+{nmf_women_section()}
 {nmf_team_section()}
 <!-- A second copy of the same rule, at the other end of the sky (Frank,
      2026-11-08). It marks the boundary between the starry background and

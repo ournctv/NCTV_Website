@@ -1618,6 +1618,143 @@ graphic is capped at 960px and centred in the 1072px column, asked for in the
 same breath; `.encore-img-link` carries the auto margin, the image inside it
 is `width:100%`.
 
+## Notable Nantucket Women — New Moon Fest
+
+Twenty-five women, one at a time. `NOTABLE_WOMEN` in `build.py` holds them;
+`nmf_women_section()` draws the section. It is the **second-to-last** section
+of the page, **above** "Our Team" — it was built below it on 2026-11-08 and
+Frank swapped the two the same day, so the page ends on the festival's own
+people. The two are siblings in `newmoon_body` and neither depends on the
+order; swapping them back is swapping those two lines. "Our Team" is itself
+the heading Frank renamed from "Meet the Team" that day.
+
+The section is **the auction section's shape** — eyebrow, one collapsible, and
+everything behind it — except that the summary is the subtitle Frank wrote,
+"Meet these Legendary Nantucketers", instead of "Learn More". Expanding it
+shows the introduction, then a picker of twenty-five name buttons.
+
+**The introduction has its own size and its own last line.** It shares
+`.auction-note`'s margin, serif face, measure and colour, but not its
+font-size: Frank asked for it a size smaller on 2026-11-08, so `.wih-intro` has
+its own rule in the type scale at `clamp(1.2rem,1.47vw,1.36rem)` — the
+`.news-sign` rung, one step under the auction note, not a new number. The
+closing sentence ("To learn more about these notable Nantucket women, please
+click the buttons below.") is Frank's wording and is part of `NMF_WOMEN_INTRO`,
+not markup, so it travels with the paragraph.
+
+`NMF_WOMEN_INTRO` is a **list, one string to a paragraph** — two of them since
+Frank asked on 2026-11-08 for the Stevens quotation to begin a new paragraph.
+The renderer writes one `<p class="wih-intro">` each, and `.wih-intro`'s own
+bottom margin is the gap between them, so there is no rule for this and another
+break is another string in the list.
+
+**No JavaScript was written for it.** The picker is `.yearpick
+.yearpick--toggle .yearpick--labels` exactly as the NHA's "Browse by Topic" is:
+`--labels` puts the names in the sans face and lets them wrap as a block,
+`--toggle` is what shuts a woman's panel when her own button is clicked again,
+and `data-year` holds a slug here the way it holds a topic name there.
+`initYearPicker()` already carried both branches. The buttons also take this
+page's gold active state for free, that rule being written against `.year-btn`.
+
+**Nothing is open on load** — no `is-active`, every panel `hidden` — so the
+reader opens the section and sees the choices. The awards and auction pickers
+on the same page both open on a chosen year, so this is one copy-and-paste
+away from being undone; `verify.py` checks it.
+
+**The eyebrow is an `<h2>`**, like Our Team's and for the same reason: each
+woman's name is an `<h3>`. That means it matches `.section__head h2`, the
+*subtitle* rule, and picks up its `margin-top:12px` — so `.nmf-women` is on
+that `margin-top:0` selector list beside `.nmf-team`, and on the tight
+`margin-bottom` list with the other collapsible-subtitle sections.
+
+**The portraits are drawn at `WIH_SCALE` times their own pixel size** — 1.25
+since Frank asked for a quarter more on 2026-11-08. They were cropped out of
+the PDF he supplied — a print of the festival's own "About: Women in History"
+page — and are about 155x196, which is **all that file carries**: the PDF holds
+1112px-wide bitmaps of the printed page, so re-rendering it at any DPI enlarges
+the same pixels. That quarter is therefore an **upscale**, and it softens them.
+He was told before it was done.
+
+The scaling is on the `<img>` and nowhere else. The WebP files keep their own
+pixels, so the assets stay as sharp as they ever were and going back to 1:1 is
+one constant. `.wih-portrait` still sets **no `width` at all** — these are
+nineteen different sizes and one width would flatten them to the same picture —
+and `verify.py` still fails on a `width` in that rule. It also now checks each
+`<img>` asks for exactly `WIH_SCALE` × the file, which catches both a tag that
+drifts off the constant and a file re-encoded larger to meet it. If larger
+originals ever arrive — the credits give the NHA's accession number for sixteen
+of them — replace the files, set `WIH_SCALE` back to 1, and nothing else moves.
+
+Six women have no portrait on the source page, seven carry no image credit, and
+the Monaghan sisters are one entry with two portraits. All three are rendered
+away rather than left as empty furniture, which is why `images` is a list.
+
+**The copy is the source page's, word for word, and nothing was retyped.** The
+bios come out of the PDF's text layer joined line by line; the literal was
+proved by running it back through the interpreter and comparing every field,
+the check the re-wrapping notes exist for. Only typography changed: the source
+mixes straight and curly quotes, and those are the site's entities here, the
+same conversion a YouTube description's straight apostrophe gets.
+
+**Its own errors were flagged, then corrected when Frank asked** — ten were
+raised on 2026-11-08 and he said to fix them, so nine are fixed: "attach
+Autopscot's village" → attack, a quotation that closed on a right single
+quote, an unclosed quotation in Abiah's entry, Elliza → Eliza, Talcahhuano →
+Talcahuano, Azubah Cast → Cash, "attached racial discrimination" → attacked,
+"Jewitt was made and honorary" → "Jewett was made an honorary", and "on
+hundred ten years old" → "one hundred ten". The comment above `NOTABLE_WOMEN`
+lists each one.
+
+**Eunice Ross keeps "seventeen-year-old"** — that flag was **withdrawn**. The
+NHA's own description of `yDFnxSufBQU`, on this site, reads seventeen-year-old
+as well, and the sources behind it agree; the doubtful figure is the 1824
+birth year in the heading, and Frank said on 2026-11-08 to leave that alone
+too.
+
+**Reverend Baker has no date on *By the Sea*.** "In 1838, she published" was
+impossible (born 1846, minister from 1880), and no catalogue gives a year, so
+Frank's answer was to take the date out rather than guess. The sentence now
+begins "She published a volume of her collected poems". A year, if one ever
+surfaces, goes back there.
+
+**The introduction says Stevens.** Frank pasted that paragraph himself, so
+"Travel writer William Oliver **Stephens**" was flagged rather than changed;
+he asked for it on 2026-11-08. William Oliver Stevens wrote *Nantucket: The
+Far-Away Island*, and partner-nha.html spells him Stevens in the same
+quotation.
+
+**Kezia Folger Coffin is dated 1723–1798, and that disagrees with
+`partner-nha.html`** — which says 1772–1798, in the description of the 2018
+Whaling Museum talk (`7KqRYdWzfk0`), the only dated mention of her on that
+page. On 2026-11-08 Frank first made partner-nha.html the authority and the
+heading read 1772–1798 briefly; shown what that date implies, he reversed it
+the same day. **The conflict is known, settled and deliberate** — do not
+"correct" this heading to match the other page, and do not re-raise it as a
+discrepancy. What settled it: 1772 would put her at four years old at the
+Declaration, seven during the 1779 smuggling her own entry describes, and
+twenty-six at her death, against 9 December 1723 in the Quaker birth records,
+the Maria Mitchell Association and the genealogies. The NHA's figure sits in a
+YouTube description, which this site reproduces verbatim, so it is not ours to
+edit here — correcting it would mean correcting it on YouTube, and that is
+Frank's to do.
+
+The order is the source page's too: roughly by birth year with four entries
+out of sequence, which is a curated order rather than a sorting mistake.
+
+**Six panels link to the film the site already has about that woman.**
+`WOMEN_FILMS` in `build.py` keys them by slug — Wonoma, Susan Veeder, Eunice
+Ross and the Monaghan sisters from the NHA's "Extraordinary Nantucket Woman"
+series, plus Phebe Coffin Hanaford and Clara Parker. Every one is on
+`partner-nha.html` and nowhere else. The link goes where that page's own cards
+go — `youtu.be`, `target="_blank" rel="noopener"` — because no card there
+carries an `id`, so there is nothing nearer to point at. One film to a woman,
+the one that is about her; the rest of the candidates (a second Ross and a
+second Veeder film, four more Monaghan films about Greater Light, the
+Boston-Higginbotham House dig, and the 2018 Whaling Museum talk that covers
+fifteen of these women at once) were raised with Frank, not added.
+`verify.py` checks each link is a `youtu.be` id in a new tab and is still
+listed on `partner-nha.html`.
+
 ## Live TV
 
 `videos-live.html` embeds NCTV's own broadcast stream. Until 2026-10-29 the

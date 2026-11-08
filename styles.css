@@ -1100,6 +1100,7 @@ th[aria-sort="descending"] .shows__sort::after{opacity:1}
 .shorts-pastfilms .section__head,
 .nmf-photos .section__head,
 .nmf-team .section__head,
+.nmf-women .section__head,
 .nmf-auction .section__head{margin-bottom:clamp(10px,1.6vw,18px)}
 /* Meet the Team's eyebrow is an <h2>, not the <span> every other section title
    is, so that its role labels can be <h3> without skipping a heading level.
@@ -1110,8 +1111,13 @@ th[aria-sort="descending"] .shows__sort::after{opacity:1}
    Zeroed here rather than on .section__head .eyebrow itself, because the two
    other <h2> eyebrows on the site (Staff, Board of Directors, on
    about-staff.html) take the same 12px and Frank has not asked for those to
-   move -- 2026-11-08. */
-.nmf-team .section__head .eyebrow{margin-top:0}
+   move -- 2026-11-08.
+
+   Notable Nantucket Women joined it the same day, for the same reason: its
+   eyebrow is an <h2> so that each woman's name can be an <h3>. Add a third
+   section with a heading eyebrow and it belongs on this list too. */
+.nmf-team .section__head .eyebrow,
+.nmf-women .section__head .eyebrow{margin-top:0}
 /* Three New Moon headings set at the collapsible summary's size rather than
    the section heading's -- Frank, 2026-10-25, taking "See the latest New Moon
    updates." as the measure. The clamp is copied from .pastsel__year>summary
@@ -1459,7 +1465,13 @@ body.is-docopen{overflow:hidden}
    move the __lead lines make elsewhere on the site. Bold was tried first and
    reversed -- Frank, 2026-10-25. Line-height comes down from the sans 1.66
    because Fraunces sets looser at the same measure. */
-.auction-note{margin:0 0 clamp(18px,2.4vw,26px);font-family:var(--serif);
+/* .wih-intro joined this on 2026-11-08. The Notable Nantucket Women
+   introduction plays exactly this part -- a standfirst behind the same
+   nmf-sub collapsible, spanning the picker under it -- so it shares the
+   margin, the serif face, the measure and the colour rather than keeping a
+   copy of them. It no longer shares the SIZE: see the type scale, where it
+   sits one rung lower. */
+.auction-note,.wih-intro{margin:0 0 clamp(18px,2.4vw,26px);font-family:var(--serif);
   font-size:clamp(1.1rem,1.45vw,1.26rem);line-height:1.55;color:var(--ink)}
 .auction-note a{color:var(--ink);text-decoration:none;
   border-bottom:1px solid var(--green);padding-bottom:1px}
@@ -1746,6 +1758,54 @@ a.ff-btn img{display:block;width:210px;height:auto}
   color:var(--ink);margin:0 0 6px}
 .nmf-team__names{margin:0;padding:0;list-style:none;line-height:1.6;
   color:var(--ink-soft)}
+/* ---- Notable Nantucket Women (New Moon Fest, 2026-11-08) ----
+   One woman at a time, under the picker of twenty-five names. The panel is
+   the film panel's shape -- portrait to the left, words to the right, the
+   two dropping into one column when there is no room for both -- because
+   the page Frank supplied is laid out that way and because the film panels
+   are four sections up this same page.
+
+   THE PORTRAIT IS NEVER GIVEN A WIDTH. Every one of them is about 155px
+   across, which is all the PDF they were cropped out of carries, so a width
+   rule could only enlarge them and blur them. The <img> states its own
+   pixel size, and max-width:100% is there for a phone and nothing else. If
+   larger originals ever arrive this is the one rule to widen. */
+.wih-panel{display:flex;flex-wrap:wrap;align-items:flex-start;
+  gap:clamp(20px,3vw,38px);padding-bottom:clamp(20px,2.6vw,32px)}
+/* A column rather than one image: the Monaghan sisters are a single entry
+   with a portrait each, and every other entry has one portrait or none. */
+.wih-figs{flex:0 0 auto;max-width:100%;display:flex;flex-direction:column;
+  gap:clamp(12px,1.6vw,18px)}
+.wih-portrait{display:block;max-width:100%;height:auto;border-radius:10px;
+  box-shadow:0 18px 40px -22px rgba(0,0,0,.75)}
+/* A reading measure, which the film panels opposite do not need: their
+   poster is twice this portrait's width, so their synopsis never gets the
+   whole column. A life here would run to about ninety characters a line at
+   1440 without the cap. The air left at the right is the trade. */
+.wih-text{flex:1 1 340px;min-width:0;max-width:72ch}
+.wih-name{font-family:var(--serif);font-weight:700;letter-spacing:-.01em;
+  line-height:1.2;font-size:clamp(1.35rem,2.4vw,1.7rem);margin:0 0 6px}
+/* The dates are set exactly as a film's genre line is, four sections up:
+   the other thing on this page that labels a panel under its title. On the
+   night sky --green-deep is the starlight gold, so they come out gold. */
+.wih-dates{font-family:var(--mono);font-size:.86rem;letter-spacing:.03em;
+  color:var(--green-deep);margin:0 0 16px;text-transform:uppercase}
+.wih-bio{margin:0;line-height:1.6;color:var(--ink-soft)}
+/* Six of the women have a film about them on partner-nha.html, and the panel
+   links out to it the way that page's own cards do. The label stays outside
+   the link so the link text is the film's title and nothing else, which is
+   what a reader scanning the NHA page is looking for. */
+.wih-film{margin:clamp(14px,1.8vw,20px) 0 0;font-size:.95rem;line-height:1.55}
+.wih-film+.wih-film{margin-top:6px}
+.wih-film a{color:var(--green-deep);text-decoration:underline;
+  text-decoration-thickness:1px;text-underline-offset:3px}
+.wih-film a:hover,.wih-film a:focus-visible{color:var(--ink)}
+/* Nineteen of the twenty-five carry an image credit on the source page --
+   sixteen of them the NHA's -- so the credits come with the pictures. Set
+   under the life it belongs to: it is a note on the photograph, not part
+   of the reading. */
+.wih-credit{margin:clamp(14px,1.8vw,20px) 0 0;font-size:.9rem;line-height:1.5;
+  color:var(--ink-soft);opacity:.78}
 /* 2026 Sponsors flyer (full width). The margin lives on the wrapper, not the
    image, because the hotspots are positioned against the wrapper and a margin
    on the image would shift the picture out from under them. */
@@ -2441,11 +2501,26 @@ a.cfn-funds__mark:focus-visible img{transform:scale(1.09)}
 /* New Moon Fest's own blocks: the auction note and rules lead-in, the
    partner rows, and the film-card metadata under each title. */
 .auction-note,.nmf-rules__submit{font-size:clamp(1.29rem,1.71vw,1.48rem)}
+/* The Women in History introduction came down one rung on 2026-11-08, when
+   Frank asked for it a size smaller. It is a fourteen-line paragraph rather
+   than the two-line standfirst the auction note is, and it reads better a
+   step under it. This is the .news-sign rung above, not a new number: the
+   page keeps its ladder, the introduction just moved down one. */
+.wih-intro{font-size:clamp(1.2rem,1.47vw,1.36rem)}
 .auction-partners__name,.lunafest-films__title{font-size:1.39rem}
 /* Meet the Team: the role label is one step over the names under it, which
    stay at body size -- so the section reads eyebrow 1.6-2.1, role
    1.32-1.48, names 20px, in order at every width. */
 .nmf-team__role{font-size:clamp(1.32rem,1.58vw,1.48rem)}
+/* Notable Nantucket Women, in the same order: a name is one step under the
+   section eyebrow -- the step .nmf-history__h takes -- the dates match a
+   film's genre line, the life sits at body size, the film link one notch
+   under it and the credit one notch under that. Eyebrow 1.6-2.1, name
+   1.45-1.68, life 20px, film 1.13, credit 1.07. */
+.wih-name{font-size:clamp(1.45rem,1.85vw,1.68rem)}
+.wih-dates{font-size:1.01rem}
+.wih-film{font-size:1.13rem}
+.wih-credit{font-size:1.07rem}
 .auction-partners__what,.lunafest-films__director{font-size:1.18rem}
 .docmodal__text{font-size:1.24rem}
 .movie-meta{font-size:1.01rem}

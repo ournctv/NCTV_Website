@@ -87,6 +87,14 @@ def asset_ver():
     return asset_ver._c
 
 
+def wih_scale():
+    if not hasattr(wih_scale, "_c"):
+        m = re.search(r'^WIH_SCALE\s*=\s*([0-9.]+)',
+                      open("build.py", encoding="utf-8").read(), re.M)
+        wih_scale._c = float(m.group(1)) if m else 1.0
+    return wih_scale._c
+
+
 def im(path):
     from PIL import Image
     return Image.open(path)
@@ -873,6 +881,110 @@ def _():
     # undated card that is missing from it.
     return card_order("videos-sports-connection.html",
                       card_dates("SPORT_CARD_DATES"), "SPORT_CARD_DATES")
+
+
+@check("nmf-women-panels", "the Notable Nantucket Women picker opens empty, its portraits track WIH_SCALE and its films are ours")
+def _():
+    # Three things this guards, all of which look perfectly normal when they
+    # are wrong.
+    #
+    # The picker must open with nothing selected and every panel hidden. That
+    # is what makes the section a set of choices rather than one woman's life
+    # with twenty-four buttons round it, and it is only true because no
+    # is-active and no unhidden panel is written into the markup -- one
+    # copy-and-paste from the awards or auction picker, which both DO open on
+    # a chosen panel, would quietly undo it.
+    #
+    # Every button must have the panel its data-year names, and the other way
+    # round. initYearPicker() hides the panels that do not match and shows
+    # nothing when none does, so a mistyped slug is a button that does
+    # nothing at all -- no error, no empty panel, just a dead control.
+    #
+    # And the portraits must still be drawn at their own size. They were
+    # cropped out of the PDF Frank supplied and are about 155px across, which
+    # is all that file carries; .wih-portrait therefore sets no width, and the
+    # <img> states its real pixels so the box is reserved. A width rule added
+    # to that selector later would enlarge nineteen thumbnails past their own
+    # resolution and blur every one of them, which is exactly the kind of
+    # change that looks deliberate in a stylesheet. If larger originals ever
+    # arrive, widen the rule and this check comes off with it.
+    bad = []
+    h = pages()["events-new-moon-fest.html"]
+    m = re.search(r'<section class="section nmf-women">.*?\n</section>', h, re.S)
+    if not m:
+        return ["the Notable Nantucket Women section is not on the page"]
+    sec = m.group(0)
+
+    btns = re.findall(r'<button[^>]*class="year-btn"[^>]*data-year="([^"]+)"', sec)
+    panels = re.findall(r'<div class="year-panel" data-year="([^"]+)"([^>]*)>', sec)
+    if len(btns) != len(set(btns)):
+        bad.append("a slug is used by two buttons")
+    if sorted(btns) != sorted(p for p, _ in panels):
+        bad.append("buttons and panels do not pair up: %s" %
+                   (set(btns) ^ set(p for p, _ in panels)))
+    for slug, attrs in panels:
+        if "hidden" not in attrs:
+            bad.append("%s opens on load; the picker must open empty" % slug)
+    if "is-active" in sec:
+        bad.append("a name button carries is-active; the picker must open empty")
+
+    # No width on the portrait, read off the rule itself rather than by
+    # searching the file -- the selector may pick up company later, the way
+    # the four film-strip banners did.
+    for rule in re.findall(r'([^{}]*)\{([^{}]*)\}', css()):
+        sels = [x.strip() for x in rule[0].split("}")[-1].split(",")]
+        if ".wih-portrait" in sels and re.search(r'(^|;)\s*width\s*:', rule[1]):
+            bad.append(".wih-portrait is given a width: %s" % rule[1].strip())
+
+    # Every portrait exists, is versioned, and states the file's own pixels.
+    for tag in re.findall(r'<img class="wih-portrait"[^>]*>', sec):
+        src = re.search(r'src="([^"?]+)\?v=(\d+)"', tag)
+        if not src:
+            bad.append("a portrait has no src?v=: %s" % tag[:90])
+            continue
+        path, ver = src.group(1), src.group(2)
+        if not os.path.exists(path):
+            bad.append("%s is referenced and missing" % path)
+            continue
+        if ver != asset_ver():
+            bad.append("%s carries ?v=%s, not %s" % (path, ver, asset_ver()))
+        # The tag draws the file at WIH_SCALE, so it must ask for exactly
+        # that and the file must still be the size it was cropped at. Both
+        # halves matter: a tag that drifts off the constant makes the
+        # upscale accidental, and a file that grows to meet the tag is the
+        # blur baked in, which is the thing the constant exists to avoid.
+        w = re.search(r'width="(\d+)" height="(\d+)"', tag)
+        real = im(path).size
+        want = (int(round(real[0] * wih_scale())), int(round(real[1] * wih_scale())))
+        if not w or (int(w.group(1)), int(w.group(2))) != want:
+            bad.append("%s is %dx%d, so at %gx the tag wants %dx%d; it says %s" %
+                       ((path,) + real + (wih_scale(),) + want +
+                        (w.group(0) if w else "nothing",)))
+
+    # And every film a panel links to must still be on the site. Six panels
+    # end with a link to the NHA film about that woman, and the only reason
+    # a reader is sent off to YouTube is that the film is one of ours and
+    # the card is on partner-nha.html. If that page ever stops listing the
+    # id -- the video pulled, the card moved to another partner, the whole
+    # section rebuilt -- the link still works and still plays, so nothing
+    # breaks visibly; it just stops being a pointer into our own archive.
+    # The link must also be a youtu.be address in a new tab, which is the
+    # form every card on that page uses.
+    nha = pages()["partner-nha.html"]
+    films = re.findall(r'<p class="wih-film">[^<]*<a ([^>]*)>', sec)
+    if not films:
+        bad.append("no panel links to a film; six of them should")
+    for attrs in films:
+        href = re.search(r'href="https://youtu\.be/([A-Za-z0-9_-]{11})"', attrs)
+        if not href:
+            bad.append("a film link is not a youtu.be/<id> address: %s" % attrs[:90])
+            continue
+        if 'target="_blank"' not in attrs or 'rel="noopener"' not in attrs:
+            bad.append("%s does not open in a new tab with rel=noopener" % href.group(1))
+        if "youtu.be/%s" % href.group(1) not in nha:
+            bad.append("%s is linked from a panel but is not on partner-nha.html"
+                       % href.group(1))
+    return bad
 
 
 
