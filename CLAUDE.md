@@ -655,6 +655,38 @@ is the point -- a card with no date anywhere has no position the rule can
 derive, and silently leaving it where it fell is what the table replaces. The
 Civic page has the same arrangement in `CIVIC_CARD_DATES`.
 
+**An upcoming game leads with a sentence and then reads like any other
+card.** Frank asked for this on 2026-11-10. `SPORT_UPCOMING` -- "This game is
+upcoming." -- sits at the top of the description, then `<br><br>`, then the
+preview NSC posted with the scheduled stream: records, the last meeting
+between the two teams, the venue and the start time. Those previews are
+substantial, 500 to 1,400 characters, and they are the reason to put a card up
+weeks early at all. Until that date the renderer showed the sentence *instead
+of* the description and the entry stored `""`, so the preview never reached the
+page.
+
+Three things about how it is built:
+
+- **The sentence lives in `sport_desc()`, never in the data.** The entry holds
+  the YouTube description and nothing else; the flag decides whether the
+  sentence is prepended. So **healing a card is flipping `True` to `False`** --
+  the sentence goes, the description stays, and no description is ever
+  rewritten. Pasting the sentence into a description literal would strand it
+  there forever, past the game, past the flag; `verify.py` fails on that.
+- **It is one paragraph, in one `<p class="watch-episode__desc">`.** The gap is
+  the `<br><br>` the multi-block descriptions already use, so this needed no
+  CSS and `ASSET_VER` did not move.
+- **The sentence-only fallback is still there**, for an upcoming card whose
+  stream has no description on YouTube yet. Nothing uses it; `verify.py` fails
+  if anything does, which is the signal to go and pull the description.
+
+`verify.py`'s **`sports-upcoming-lead`** guards four things: the sentence leads
+rather than trails, every upcoming card has a description under it, the number
+of cards showing the sentence equals the number of `upcoming=True` flags in
+`SPORTS_VIDEOS`, and the sentence appears in no description literal and on no
+other page. It reads the sentence out of `build.py` rather than hardcoding it,
+so rewording `SPORT_UPCOMING` cannot quietly mute the check.
+
 **Not every card is a game.** Cross Country and Golf (added 2026-10-30) hold
 *Spotlight* features — NSC's profiles of the teams it cannot carry on a live
 broadcast. They have no opponent in the title, no `vs.`, and no Instagram
@@ -748,7 +780,10 @@ included, which is how it survived. The amended rule splits the two things the
 sweep was conflating:
 
 - **The flag and the description stay** — the game has not happened, so
-  `upcoming` stays `True` and the description stays empty.
+  `upcoming` stays `True` and the description is left as it is. Since
+  2026-11-10 that description is the stream's YouTube preview rather than `""`;
+  the sweep does not refresh it, because NSC writes the preview once and the
+  sweep exists to fix dates and dead links.
 - **The date is re-synced.** yt-dlp's **`release_date`** is the scheduled start
   and is authoritative for an `is_upcoming` video. Compare it with the date in
   the card's title on every sweep and rewrite the title when they differ. Keep

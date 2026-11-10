@@ -843,8 +843,10 @@ SPORT_SEASONS = [
 # files by the date in its own title, falling back to its scheduled air date
 # and then its posting date; the four dates agree to within a day or two
 # except for a playoff run posted weeks later, which the title date keeps in
-# the right season. The trailing flag marks a game that has not aired yet:
-# those carry no description of their own and show SPORT_UPCOMING instead.
+# the right season. The trailing flag marks a game that has not aired yet;
+# such a card leads with SPORT_UPCOMING and then reads its description like
+# any other. Descriptions here are verbatim from YouTube, upcoming games
+# included -- NSC's own typos and doubled words stay as NSC wrote them.
 SPORTS_VIDEOS = {
  "Football": {
   "School Yr 22-23": [
@@ -1460,7 +1462,35 @@ SPORTS_VIDEOS = {
   ],
   "School Yr 26-27": [
    ("rwYI6DoyWRg", "MIAA Round of 32: Nantucket Whalers Boys Soccer vs. Pentucket Panthers - November 9, 2026",
-    "", True),
+    "The Nantucket Sports Connection brings you playoff coverage as the #8 Nantucket varsity boys "
+    "soccer squad takes on #25 Pentucket in the Round of 32 of the MIAA Division 3 "
+    "tournament.<br><br>The Whalers are 12-4-2, and here&rsquo;s how they got here since our last "
+    "time checking in Coach Rich Brannigan&rsquo;s team on Senior Night:<br><br>After a tough "
+    "result in a 2-2 draw on senior night back on Oct. 27, against a previously 1-10-1 Sandwich "
+    "squad, Nantucket had three games to prove to the MIAA and itself that the recent stretch of "
+    "mediocre results was a fluke. The Whalers had three games to prove their point.<br><br>It "
+    "started off hot with a 6-0 rout of Dennis-Yarmouth on Thursday, Oct. 29, led by four goals "
+    "from Aldo Lemus Castro, with Marcos Leandro Hernandez Maldonado and Stoyan Popov Jr. adding "
+    "two extra goals to secure the Cape and Islands League title. Popov Jr. chipped in with three "
+    "assists, alongside a Raakin Brannigan assist on a long throw-in. Even goalkeeper Parker "
+    "Furtado assisted on a deep kick.<br><br>The victory on Cape Cod cemented NHS&rsquo; 19th Cape "
+    "and Islands title since 2001 and got the Whalers back in their groove.<br><br>Then, on "
+    "Saturday, Oct. 31, Nantucket reclaimed the coveted &ldquo;Golden Anchor&rdquo; trophy, "
+    "competed for between rivals Nantucket and Martha&rsquo;s Vineyard, with a tough 2-0 victory "
+    "over the Vineyarders, scoring once in each half. An early penalty kick by Lemus Castro gave "
+    "Nantucket their initial one goal lead. Then, in the second half, freshman Danny Aguiar tapped "
+    "in a ball at the back post off an assist from Raakin Brannigan to push Nantucket&rsquo;s lead "
+    "to two.<br><br>Parker Furtado made six saves on the day, securing his second consecutive "
+    "shutout, while Edvin Valentukevicius, Jason Ayala and Pedro Guzman held up the defense in the "
+    "shutout.<br><br>Finally, Nantucket headed to Abington on Monday, Nov. 2, and avenged a 2-2 "
+    "draw from earlier this season with a 4-2 win. Both squads traded goals in the first half. "
+    "Popov Jr. connected on a pair of goals as the Whalers headed into halftime tied. Then, late "
+    "in the half, Raakin Brannigan scored what would be the game-winner from distance, assisted by "
+    "Lemus Castro. Lemus Castro then provided some breathing room for Nantucket when he scored on "
+    "a free kick. Furtado recorded seven saves at Abington as the Whalers won their third "
+    "straight.<br><br>Our live coverage begins at 1:45pm from the Surfside Soccer Field, coming to "
+    "you live both on the NSC YouTube channel as well as on NCTV HD Channel 1072."
+    , False),
    ("ib5YEeJYyp4", "Nantucket Whalers Boys Soccer vs. Sandwich Blue Knights - October 28, 2026",
     "The Nantucket Sports Connection brings you the Whalers varsity boys soccer squad as they take "
     "on the Blue Knights from the Upper Cape in the penultimate home match of the regular "
@@ -1746,13 +1776,83 @@ SPORTS_VIDEOS = {
     , False),
   ],
   "School Yr 26-27": [
-   ("ZuaJyzF5kIo", "Nantucket Whalers Girls Basketball vs. Cape Cod Academy Seahawks - February 5, 2027", "", True),
-   ("fbY7ewIZvkw", "Nantucket Whalers Girls Basketball vs. Rising Tide Herons - February 2, 2027", "", True),
-   ("S8m0B_vnJnE", "Nantucket Whalers Girls Basketball vs. Sturgis West Navigators - January 26, 2027", "", True),
-   ("-K5csCClxWg", "Nantucket Whalers Girls Basketball vs. Dennis-Yarmouth Dolphins - January 21, 2027", "", True),
-   ("emfmJW9S_e8", "Nantucket Whalers Girls Basketball vs. Vineyard - January 9, 2027", "", True),
-   ("BdmztE88dCQ", "Nantucket Whalers Girls Basketball vs. Sturgis East Storm - January 5, 2027", "", True),
-   ("LtoH0yIhvtM", "Nantucket Whalers Girls Basketball vs. Falmouth Academy Mariners - December 15, 2026", "", True),
+   ("ZuaJyzF5kIo", "Nantucket Whalers Girls Basketball vs. Cape Cod Academy Seahawks - February 5, 2027",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
+    "play an important league game against Cape Cod Academy from over in Barnstable.<br><br>The "
+    "Whalers swept the series against the Seahawks last season, netting 58 points in both "
+    "contests, with CCA scoring 23 in response on their home court, and a measly 13 points here on "
+    "island on Jan. 13. This broke the deadlock in head-to-head play, giving Nantucket a 9-7 "
+    "advantage over the modern history of the two programs.<br><br>Our live coverage begins at "
+    "4:45 with tipoff set for 5pm from from John J. O&rsquo;Neill Gymnasium, coming to you live "
+    "both on the NSC YouTube channel as well as on NCTV HD Channel 1072."
+    , True),
+   ("fbY7ewIZvkw", "Nantucket Whalers Girls Basketball vs. Rising Tide Herons - February 2, 2027",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
+    "they face the Herons traveling down from Rising Tide in Plymouth.<br><br>Nantucket has been "
+    "riding high against Rising Tide in recent years, winning 47-17 on island on Jan. 9 &amp; "
+    "40-16 over at Mass Maritime on Feb. 4 as part of their ongoing eight-game winning "
+    "streak.<br><br>Our live coverage begins at 4:45pm with tipoff set for 5 from from John J. "
+    "O&rsquo;Neill Gymnasium, coming to you live both on the NSC YouTube channel as well as on "
+    "NCTV HD Channel 1072."
+    , True),
+   ("S8m0B_vnJnE", "Nantucket Whalers Girls Basketball vs. Sturgis West Navigators - January 26, 2027",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
+    "play an important league matchup against Sturgis West from across the sound.<br><br>The "
+    "Navigators were on a lifetime losing streak against the Whalers throughout the history of the "
+    "two programs. This all came crashing down 362 days ago when Sturgis West, in a game delayed "
+    "twice in two months due to last year&rsquo;s nasty winter weather, stunned Nantucket on their "
+    "own home court, winning 37-32.<br><br>Nantucket came roaring back on the road, in their final "
+    "regular season game that all their playoff hopes were riding on; in a literal buzzer-beater "
+    "shot, Nantucket won 37-36 at the Hyannis Youth &amp; Community Complex on Feb. 16.<br><br>Our "
+    "live coverage begins at 4:45pm with tipoff set for 5 from from John J. O&rsquo;Neill "
+    "Gymnasium, coming to you live both on the NSC YouTube channel as well as on NCTV HD Channel "
+    "1072."
+    , True),
+   ("-K5csCClxWg", "Nantucket Whalers Girls Basketball vs. Dennis-Yarmouth Dolphins - January 21, 2027",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
+    "they welcome the Dolphins from over on the Lower Cape back to the island for their first "
+    "visit in over five years.<br><br>While the Whalers hold a slim 7-6 advantage in head-to-head "
+    "matchups over the last decade, they&rsquo;ve lost their last five to the Dolphins, with their "
+    "last meeting a 74-22 thrashing over in Yarmouth on Jan. 3, 2023. The last Nantucket home win "
+    "was by a 42-33 score on Jan. 24, 2020.<br><br>Our live coverage begins at 4:45 with tipoff "
+    "set for 5pm from from John J. O&rsquo;Neill Gymnasium, coming to you live both on the NSC "
+    "YouTube channel as well as on NCTV HD Channel 1072."
+    , True),
+   ("emfmJW9S_e8", "Nantucket Whalers Girls Basketball vs. Vineyard - January 9, 2027",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
+    "they play an important league matchup against their cross-water rivals, the "
+    "Vineyarders.<br><br>These teams split their series based on home court advantage last season, "
+    "with the Whalers pulling off a 46-28 rampage just 371 days ago. The grapes hold a 9-4 "
+    "advantage in head-to-head play in the recent history of the two programs.<br><br>It&rsquo;s "
+    "always a big game when it&rsquo;s Nantucket against Martha&rsquo;s Vineyard!<br><br>Our live "
+    "coverage begins at 11:15am with tipoff set for 11:30 from from John J. O&rsquo;Neill "
+    "Gymnasium, coming to you live both on the NSC YouTube channel as well as on NCTV Channel "
+    "1072."
+    , True),
+   ("BdmztE88dCQ", "Nantucket Whalers Girls Basketball vs. Sturgis East Storm - January 5, 2027",
+    "Nantucket Sports Connection brings you the Whalers Varsity Girls Basketball squad as they "
+    "welcome the Storm from across the sound for an important League matchup.<br><br>Nantucket "
+    "bested Sturgis East by nearly identical scores of 51-29 in Hyannis and 52-27 on island, "
+    "continuing a winning streak that&rsquo;s lasted throughout the 2020s.<br><br>Our live "
+    "coverage begins at 4:45pm with tipoff set for 5 from from John J. O&rsquo;Neill Gymnasium, "
+    "coming to you live both on the NSC YouTube channel as well as on NCTV HD Channel 1072."
+    , True),
+   ("LtoH0yIhvtM", "Nantucket Whalers Girls Basketball vs. Falmouth Academy Mariners - December 15, 2026",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Girls Basketball squad as "
+    "they they hit the ground running in this season&rsquo;s home opener with a league matchup "
+    "against the Mariners from across the sound at Falmouth Academy.<br><br>The Whalers are "
+    "looking for revenge after last season&rsquo;s home opener resulted in a 37-28 defeat by the "
+    "Mariners 364 days ago. Nantucket stands at 10-4 vs. Falmouth Academy in the modern history of "
+    "the two programs.<br><br>Nantucket pulled off a buzzer beater 37-36 win on the road at "
+    "Sturgis West to end their 2025-26 regular season at 10-10 and qualify for the MIAA Division 4 "
+    "tournament, where they quickly fell 49-26 to Boston powerhouse "
+    "O&rsquo;Bryant.<br><br>Falmouth Academy finished their season 14-5 to enter the tourney "
+    "ranked #32; they easily won their preliminary round game against Sturgis West before a brutal "
+    "79-17 crushing by #1 seed Frontier Regional, the eventual Div. 4 runner-up in the state title "
+    "game.<br><br>Our live coverage begins at 3:45pm with tipoff set for 4 from from John J. "
+    "O&rsquo;Neill Gymnasium, coming to you live both on the NSC YouTube channel as well as on "
+    "NCTV HD Channel 1072."
+    , True),
   ],
  },
  "Boys Basketball": {
@@ -1996,12 +2096,73 @@ SPORTS_VIDEOS = {
     , False),
   ],
   "School Yr 26-27": [
-   ("syAcPNxBD_Q", "Nantucket Whalers Boys Basketball vs. Monomoy Sharks - January 29, 2027", "", True),
-   ("bEjXQipdEPo", "Nantucket Whalers Boys Basketball vs. Falmouth Clippers - January 22, 2027", "", True),
-   ("FhdCDpJBpyk", "Nantucket Whalers Boys Basketball vs. Nauset Warriors - January 12, 2027", "", True),
-   ("pDC6r8Ypn0Q", "Nantucket Whalers Boys Basketball vs. Mashpee Falcons - January 6, 2027", "", True),
-   ("dn2KRkGhbaI", "Nantucket Whalers Boys Basketball vs. Cape Cod Academy Seahawks - December 21, 2026", "", True),
-   ("LVuEY91AhWQ", "Nantucket Whalers Boys Basketball vs. Dennis-Yarmouth Dolphins - December 18, 2026", "", True),
+   ("syAcPNxBD_Q", "Nantucket Whalers Boys Basketball vs. Monomoy Sharks - January 29, 2027",
+    "Nantucket Sports Connection brings you the Whalers Varsity Boys Basketball squad as they "
+    "welcome the Sharks from Monomoy in an important Cape &amp; Islands League "
+    "matchup.<br><br>These two teams split their series based on home court last season, with the "
+    "Whalers winning 66-55 at home on Jan. 3 before falling 50-46 over on the Lower "
+    "Cape.<br><br>Most memorably in recent history, the Whalers &amp; Sharks were ranked #34 &amp; "
+    "#32 in Division 4, and played for the Lighthouse Division championship on Feb. 19, 2024. In "
+    "an incredible buzzerbeater, Monomoy scored the game-winning 3-pointer, as we brought to you "
+    "on the NSC: https://www.youtube.com/watch?v=CkiJsgRfB4w<br><br>Live coverage begins at 4:45 "
+    "with the tipoff scheduled for 5pm from John J. O&rsquo;Neill Gymnasium."
+    , True),
+   ("bEjXQipdEPo", "Nantucket Whalers Boys Basketball vs. Falmouth Clippers - January 22, 2027",
+    "Nantucket Sports Connection proudly presents the Nantucket Whalers Varsity Boys Basketball "
+    "squad as they welcome the Clippers from across the sound in Falmouth as the playoff hunt in "
+    "the Cape &amp; Islands League intensifies.<br><br>Prior to last season, these two teams have "
+    "split their series at three a piece this decade; Falmouth managed a season sweep in 2026, "
+    "including a narrow 61-55 victory on Feb. 11, the first on the Whalers home court in five "
+    "years.<br><br>Despite that sweep, both teams finished 14-6 last season, both teams advanced "
+    "from the Div. 3 preliminary round, and both teams were knocked out in Round of 32 road trips, "
+    "with Falmouth getting clipped 46-39 by Norwell, while Nantucket pushed Swampscott into an "
+    "overtime thriller before falling 67-61.<br><br>Our live coverage begins at 4:45pm with tipoff "
+    "set for 5 from from John J. O&rsquo;Neill Gymnasium, coming to you live on the NSC YouTube "
+    "channel."
+    , True),
+   ("FhdCDpJBpyk", "Nantucket Whalers Boys Basketball vs. Nauset Warriors - January 12, 2027",
+    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they "
+    "welcome the Warriors over from Nauset on the Lower Cape in a crucial Cape &amp; Islands "
+    "League matchup.<br><br>These two teams split their series based on home court advantage for "
+    "the last three consecutive years, with the Whalers winning 78-65 on island back on Feb. 6, "
+    "2026, as seen on the NSC: https://www.youtube.com/watch?v=MQYZkzW05VY<br><br>Nauset holds the "
+    "over all lead at 8-7 in the modern history of contests between the two programs.<br><br>Our "
+    "live coverage begins at 4:45pm with tipoff set for 5 from from John J. O&rsquo;Neill "
+    "Gymnasium, coming to you live both on the NSC YouTube channel as well as on NCTV HD Channel "
+    "1072."
+    , True),
+   ("pDC6r8Ypn0Q", "Nantucket Whalers Boys Basketball vs. Mashpee Falcons - January 6, 2027",
+    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they "
+    "welcome the Falcons from Mashpee.<br><br>The Whalers have won all six games this decade "
+    "against the Falcons, and hold a 10-4 head-to-head advantage over the last decade; the Falcons "
+    "last managed a win on island by a narrow 70-65 score back on Feb. 17, 2018.<br><br>Our live "
+    "coverage begins at 4:45 with tipoff set for 5pm from from John J. O&rsquo;Neill Gymnasium, "
+    "coming to you live both on the NSC YouTube channel as well as on NCTV HD Channel 1072."
+    , True),
+   ("dn2KRkGhbaI", "Nantucket Whalers Boys Basketball vs. Cape Cod Academy Seahawks - December 21, 2026",
+    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball team as they play "
+    "some winter vacation hoops against the Seahawks from across the sound.<br><br>Nantucket "
+    "easily handled Cape Cod Academy 70-50 on Jan. 8, continuing a seven-game win streak. CCA last "
+    "won on island 67-65 on Feb. 8, 2022, while the Whalers enjoy a 12-4 advantage over the last "
+    "decade.<br><br>The Seahawks entered the Div. 5 tournament as the #31 seed last year, edging "
+    "out Calvary Chapel in the preliminary round before falling to Hopedale 59-50 in the Round of "
+    "32.<br><br>Live coverage begins at 3:45 pm with the tipoff scheduled for 4:00 from John J. "
+    "O&rsquo;Neill Gymnasium."
+    , True),
+   ("LVuEY91AhWQ", "Nantucket Whalers Boys Basketball vs. Dennis-Yarmouth Dolphins - December 18, 2026",
+    "Nantucket Sports Connection presents the Whalers Varsity Boys Basketball squad as they play "
+    "their 2026-27 home opener against the Dolphins from over on the Lower Cape.<br><br>Nantucket "
+    "comes off a banner 2025-26 season with a 70% win rate, losing only one game at home to "
+    "achieve a 14-6 record and bagging a 71-53 win in their first MIAA Division 3 appearance "
+    "against Oakmont; they fell 67-61 to Swampscott in the Round of 32 after scoring a "
+    "buzzer-beater to force overtime.<br><br>The Whalers swept last year&rsquo;s series against "
+    "Dennis-Yarmouth by a combined score of 149-85, and are 10-4 in head-to-head play since 2019. "
+    "The Dolphins went 7-12 and sat out the tourney last year; while qualifying for the Div. 3 "
+    "playoffs in 2024 &amp; 2025, they fell in their first game to Tantasqua and Medway, "
+    "respectively.<br><br>Our live coverage begins at 4:45pm with tipoff set for 5 from from John "
+    "J. O&rsquo;Neill Gymnasium, coming to you live both on the NSC YouTube channel as well as on "
+    "NCTV HD Channel 1072."
+    , True),
   ],
  },
  "Girls Hockey": {
@@ -2102,13 +2263,72 @@ SPORTS_VIDEOS = {
     , False),
   ],
   "School Yr 26-27": [
-   ("aGOqHYxYcXw", "Nantucket Whalers Girls Ice Hockey vs Marblehead Magicians - February 6, 2027", "", True),
-   ("4OMM0V_J6fo", "Nantucket Whalers Girls Ice Hockey vs Boston Latin Academy Dragons - January 30, 2027", "", True),
-   ("soQ7DxLyqXc", "Nantucket Whalers Girls Ice Hockey vs Plymouth South Panthers - January 27, 2027", "", True),
-   ("bqJcQdvq9VI", "Nantucket Whalers Girls Ice Hockey vs Whitman-Hanson Panthers - January 20, 2027", "", True),
-   ("YpypUFNf5UA", "Nantucket Whalers Girls Ice Hockey vs Barnstable Red Hawks - January 13, 2027", "", True),
-   ("rlb0lAXOLZc", "Nantucket Whalers Girls Ice Hockey vs Martha&rsquo;s Vineyard - January 9, 2027", "", True),
-   ("yjXjnjXBzE0", "Nantucket Whalers Girls Ice Hockey vs Dennis-Yarmouth Dolphins - December 12, 2026", "", True),
+   ("aGOqHYxYcXw", "Nantucket Whalers Girls Ice Hockey vs Marblehead Magicians - February 6, 2027",
+    "The Nantucket Sports Connection proudly presents the Whalers Varsity Girls Ice Hockey squad "
+    "as they welcome the Magicians from Marblehead in their first-ever trip to the "
+    "island!<br><br>The Magicians finished 5-13-2 last season, mostly due to their tough "
+    "neighborhood up on the North Shore. Thanks to their strength of schedule, they made the MIAA "
+    "Division 2 tournament as the #30 seed, where they quickly fell 5-0 to Duxbury, who made it to "
+    "the state semifinals.<br><br>Our live coverage begins at 1:45 with the puck drop set for 2pm "
+    "from the BOG (Nantucket Ice Community Rink), coming to you live both on the NSC YouTube "
+    "channel as well as on NCTV HD Channel 1072."
+    , True),
+   ("4OMM0V_J6fo", "Nantucket Whalers Girls Ice Hockey vs Boston Latin Academy Dragons - January 30, 2027",
+    "The Nantucket Sports Connection proudly presents the Whalers Varsity Girls Ice Hockey squad "
+    "as they take on the Dragons from Boston Latin Academy.<br><br>Boston Latin swept the series "
+    "between these teams last season, though Nantucket managed their largest goal total, netting "
+    "three in their game here on island on Feb. 14.<br><br>Our live coverage begins at 1:45 with "
+    "the puck drop set for 2pm from the BOG (Nantucket Ice Community Rink), coming to you live "
+    "both on the NSC YouTube channel as well as on NCTV HD Channel 1072."
+    , True),
+   ("soQ7DxLyqXc", "Nantucket Whalers Girls Ice Hockey vs Plymouth South Panthers - January 27, 2027",
+    "The Nantucket Sports Connection proudly presents the Whalers Varsity Girls Ice Hockey team "
+    "taking on the visiting Panthers from Plymouth South in their second-ever visit to the "
+    "island!<br><br>The Panthers got the best of the Whalers in the first-ever series between the "
+    "two teams, most recently 6-2 on island &mdash; though this was the closest result o the "
+    "season for Nantucket.<br><br>Our live coverage begins at 5pm with the puck drop set for 5:15 "
+    "from the BOG (Nantucket Ice Community Rink), coming to you live both on the NSC YouTube "
+    "channel as well as on NCTV HD Channel 1072."
+    , True),
+   ("bqJcQdvq9VI", "Nantucket Whalers Girls Ice Hockey vs Whitman-Hanson Panthers - January 20, 2027",
+    "The Nantucket Sports Connection proudly presents the Whalers Varsity Girls Ice Hockey team "
+    "taking on the visiting Panthers from Whitman-Hanson in their first visit to the "
+    "island!<br><br>The Whalers faced off against the Panthers for the first time at Hobomock Ice "
+    "Arena in Pembroke last season, where Whitman-Hanson skated to an 11-1 win.<br><br>Our live "
+    "coverage begins at 5pm with the puck drop set for 5:15 from the BOG (Nantucket Ice Community "
+    "Rink), coming to you live both on the NSC YouTube channel as well as on NCTV HD Channel 1072."
+    , True),
+   ("YpypUFNf5UA", "Nantucket Whalers Girls Ice Hockey vs Barnstable Red Hawks - January 13, 2027",
+    "The Nantucket Sports Connection proudly presents the Whalers Varsity Girls Ice Hockey squad "
+    "as they take on the co-op team from Barnstable, Cape Cod Tech &amp; Upper Cape "
+    "Tech.<br><br>The Red Hawks swept the series last year, winning 10-2 at Kennedy Rink in "
+    "Hyannis and 7-0 here on island 371 days ago.<br><br>In the history of their young program, "
+    "the Whalers are still looking for their first win over this higher division Barnstable team "
+    "&mdash; coming closest here at home in 2023 when Barnstable escaped with a 4-3 "
+    "win.<br><br>Our live coverage begins at 5pm with the puck drop set for 5:15 from the BOG "
+    "(Nantucket Ice Community Rink), coming to you live both on the NSC YouTube channel as well as "
+    "on NCTV HD Channel 1072."
+    , True),
+   ("rlb0lAXOLZc", "Nantucket Whalers Girls Ice Hockey vs Martha&rsquo;s Vineyard - January 9, 2027",
+    "The Nantucket Sports Connection proudly presents the Whalers Varsity Girls Ice Hockey squad "
+    "as they kick off the new year hosting their cross-island rival Vineyarders.<br><br>Nantucket "
+    "last bested the grapes at the Martha&rsquo;s Vineyard Ice Arena on Feb. 24, 2022, scoring a "
+    "4-0 shutout; they&rsquo;ve since dropped four straight, including two here on "
+    "island.<br><br>Our live coverage begins at 1:45 with the puck drop set for 2pm from the BOG "
+    "(Nantucket Ice Community Rink), coming to you live both on the NSC YouTube channel as well as "
+    "on NCTV HD Channel 1072."
+    , True),
+   ("yjXjnjXBzE0", "Nantucket Whalers Girls Ice Hockey vs Dennis-Yarmouth Dolphins - December 12, 2026",
+    "The Nantucket Sports Connection proudly presents the Whalers Varsity Girls Ice Hockey squad "
+    "as they open their 2026-27 campaign with a home matchup against the Dolphins over from the "
+    "Lower Cape.<br><br>The Whalers&rsquo; most recent victory on the ice was against the "
+    "Dolphins, winning 6-5 on Feb. 22, 2023.<br><br>Dennis-Yarmouth had the better of Nantucket in "
+    "their last faceoff over at Tony Kent Arena, winning 9-0 on Dec. 20, 2025. The Dolphins went "
+    "on to score the #7 seed in the MIAA Division 2 tournament, edging past Norwood 1-0 in the "
+    "opening round before falling 2-0 to Scituate in the Sweet 16.<br><br>Our live coverage begins "
+    "at 1:45 with the puck drop set for 2pm from the BOG (Nantucket Ice Community Rink), coming to "
+    "you live both on the NSC YouTube channel as well as on NCTV HD Channel 1072."
+    , True),
   ],
  },
  "Boys Hockey": {
@@ -2342,12 +2562,72 @@ SPORTS_VIDEOS = {
     , False),
   ],
   "School Yr 26-27": [
-   ("0-Y6rK3sw30", "Nantucket Whalers Boys Ice Hockey vs Dennis-Yarmouth Dolphins - February 3, 2027", "", True),
-   ("sBzupvwZfgA", "Nantucket Whalers Boys Ice Hockey vs. Bourne Canalmen - January 30, 2027", "", True),
-   ("wT_ORFMFucE", "Nantucket Whalers Boys Ice Hockey vs. Foxborough Warriors - January 23, 2027", "", True),
-   ("x9yPeXxKzZs", "Nantucket Whalers Boys Ice Hockey vs. St. John Paul II Lions - January 6, 2027", "", True),
-   ("yB2ALlvworI", "Nantucket Whalers Boys Ice Hockey vs. Plymouth North Eagles - January 2, 2027", "", True),
-   ("iLzBk7X_WjU", "Nantucket Whalers Boys Ice Hockey vs. North Quincy Raiders - December 12, 2026", "", True),
+   ("0-Y6rK3sw30", "Nantucket Whalers Boys Ice Hockey vs Dennis-Yarmouth Dolphins - February 3, 2027",
+    "The Nantucket Sports Connection proudly presents the Whalers Varsity Boys Ice Hockey squad as "
+    "they host an important league matchup against the Dolphins from Dennis-Yarmouth over on the "
+    "Cape.<br><br>These teams split their series last season, with Nantucket carrying the day 4-1 "
+    "on home ice on Jan. 14, while Dennis-Yarmouth has the most recent win over at Tony Kent "
+    "Arena, winning 8-3 just 364 days ago; however, the Dolphins have lost all seven matches at "
+    "the BOG so far this decade.<br><br>Our live coverage begins at 5pm with the puck drop set for "
+    "5:15 from the BOG (Nantucket Ice Community Rink), coming to you live both on the NSC YouTube "
+    "channel as well as on NCTV HD Channel 1072."
+    , True),
+   ("sBzupvwZfgA", "Nantucket Whalers Boys Ice Hockey vs. Bourne Canalmen - January 30, 2027",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Boys Ice Hockey squad as "
+    "they host the Bourne Canalmen.<br><br>Facing off against the Canalmen was a bright spot in a "
+    "tough season for the Whalers last year, winning 3-2 on home ice and 4-3 over at Gallo "
+    "Arena.<br><br>Prior to the last couple of seasons, these two teams seldom faced each other, "
+    "save for the Round of 16 on March 3, 2024, where the Whalers managed a hard-fought 3-2 win "
+    "&mdash; this was also the last time Nantucket hosted a tournament game.<br><br>Our live "
+    "coverage begins at 5pm with the puck drop set for 5:15 from the BOG (Nantucket Ice Community "
+    "Rink), coming to you live both on the NSC YouTube channel as well as on NCTV HD Channel 1072."
+    , True),
+   ("wT_ORFMFucE", "Nantucket Whalers Boys Ice Hockey vs. Foxborough Warriors - January 23, 2027",
+    "Nantucket Sports Connection proudly presents the Whalers Varsity Boys Ice Hockey squad as "
+    "they host the Foxborough Warriors in a non-league matchup.<br><br>Traveling to the home of "
+    "the Patriots 364 days ago was a rare bright spot in a 4-14 season for the Whalers, as they "
+    "out-skated the Warriors 7-5 at the Foxboro Sports Center.<br><br>Foxborough had the better of "
+    "Nantucket here at the BOG, where they won 8-3 back on Feb. 15, 2025.<br><br>Our live coverage "
+    "begins at 1:45 with the puck drop set for 2pm from the BOG (Nantucket Ice Community Rink), "
+    "coming to you live both on the NSC YouTube channel as well as on NCTV HD Channel 1072."
+    , True),
+   ("x9yPeXxKzZs", "Nantucket Whalers Boys Ice Hockey vs. St. John Paul II Lions - January 6, 2027",
+    "The Whalers Varsity Boys Ice Hockey take on the Lions from across the sound in Hyannis in "
+    "their first league matchup of the season.<br><br>Nantucket dropped 3-2 to St. John Paul II in "
+    "their last visit to the island on Jan. 28, a duplicate of the score at Nantucket Ice on Feb. "
+    "5, 2025. Overall the Whalers still hold an 8-4 advantage in head-to-head play even after "
+    "dropping four straight in two tough seasons.<br><br>Puck drops at 5:15pm with the livestream "
+    "starting at 5 from the BOG (Nantucket Ice Community Rink)."
+    , True),
+   ("yB2ALlvworI", "Nantucket Whalers Boys Ice Hockey vs. Plymouth North Eagles - January 2, 2027",
+    "Nantucket Sports Connection kicks off 2027 with the Whalers Varsity Boys Ice Hockey squad "
+    "hosting the Eagles from Plymouth North on their second trip to the island!<br><br>In the "
+    "first series between these two teams last year, the Eagles easily won 7-4 on island, though "
+    "they had a tougher time back at Armstrong Arena, narrowly edging out the Whalers "
+    "3-2.<br><br>Despite going 5-15 in the regular season, Plymouth North limped into the Division "
+    "2 playoffs at #29 based on strength of schedule, and gave #3 Falmouth a good scare, falling "
+    "by a 5-4 margin on the road.<br><br>Our live coverage begins at 1:45 with the puck drop set "
+    "for 2pm from the BOG (Nantucket Ice Community Rink), coming to you live both on the NSC "
+    "YouTube channel as well as on NCTV HD Channel 1072."
+    , True),
+   ("iLzBk7X_WjU", "Nantucket Whalers Boys Ice Hockey vs. North Quincy Raiders - December 12, 2026",
+    "The Nantucket Sports Connection proudly presents the Whalers Varsity Boys Ice Hockey team "
+    "taking on the Raiders from North Quincy in their second visit to the island in the modern "
+    "history of the two programs.<br><br>The Whalers have fallen fall since their banner days of "
+    "the 2022-24 seasons, when they penetrated deep into the playoff brackets in three consecutive "
+    "seasons, including a Final Four match against Sandwich and two Elite Eight appearances "
+    "against Stoneham. Nantucket went 1-14 in 2025 and 4-14 last year, though their strength of "
+    "schedule put them in the Division 4 tournament as the #31 seed, where a shorthanded squad "
+    "fell 10-0 to eventual state champion Littleton.<br><br>The final game of the regular season "
+    "for both these teams took place at Nantucket Ice on Feb. 19, where the Raiders won 5-2 with a "
+    "brawl in front of their bench wrapping up the contest. Despite their 6-12-2 record, North "
+    "Quincy limped into the MIAA Div. 3 tournament, falling 4-3 to Essex North Shore in the Round "
+    "of 32.<br><br>The Whalers and the Raiders do have a track record going back years, though "
+    "typically through mainland games at the holiday tournament held at North Quincy, where the "
+    "home team won 9-3 on Dec. 26, 2024.<br><br>Our live coverage begins at 5pm with the puck drop "
+    "set for 5:15 from the BOG (Nantucket Ice Community Rink), coming to you live both on the NSC "
+    "YouTube channel as well as on NCTV HD Channel 1072."
+    , True),
   ],
  },
  "Girls Lacrosse": {
@@ -2961,6 +3241,14 @@ SPORT_CARD_DATES = {
     "LUbx_JS-Juw": "2023-04-27",   # opponent not in the title
 }
 
+# What an upcoming game's card leads with, above the YouTube description.
+# Until 2026-11-10 it was the whole of what such a card said and the
+# description was dropped; Frank asked for both, in that order, because NSC
+# writes a real preview weeks before the game -- records, the last meeting
+# between the two teams, the venue and the start time -- and that preview is
+# the reason to put the card up early at all. The sentence is removed when the
+# game airs simply by the trailing flag flipping to False, which leaves the
+# description untouched: see sport_desc().
 SPORT_UPCOMING = "This game is upcoming."
 SPORT_HIGHLIGHT = '<p class="watch-episode__soon">Highlights coming soon.</p>'
 
@@ -3003,6 +3291,7 @@ SPORT_HIGHLIGHTS = {
  "hdTc4UkdMJM": "DdKqS0GottQ",    # Falmouth Clippers, Sep. 10, 2026
  "CIuXdj6jwIw": "DeQLe-1IYto",    # Sandwich Blue Knights, Oct. 2, 2026
  # Boys Soccer
+ "rwYI6DoyWRg": "Dfie2Jfog35",    # MIAA Rd. of 32, Pentucket Panthers, Nov. 9, 2026
  "Y3DFqDS0LEk": "Ddc-tqfRF9Y",    # Nauset Warriors, Sep. 16, 2026
  "fTQIC3TrBOM": "Dd-KH8KIncP",    # Cape Cod Regional Tech Crusaders, Sep. 30, 2026
  "ZP1Sdhn1t5w": "DeLTOr3oK1M",    # Falmouth Clippers, Oct. 6, 2026
@@ -3035,6 +3324,29 @@ def highlight_block(vid):
 def sport_slug(name):
     return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
 
+def sport_desc(desc, up):
+    """What one sports card says.
+
+    A game that has aired reads its description and nothing else. One that has
+    not leads with SPORT_UPCOMING, then the same description below it -- NSC
+    posts the preview with the scheduled stream, so the text is there to show
+    long before the game is.
+
+    The flag is the only thing that changes when the game happens. Flipping it
+    to False drops the sentence and leaves the description exactly as it was,
+    so healing a card never rewrites a description and cannot damage one. That
+    is deliberate: before 2026-11-10 an upcoming card stored no description at
+    all, and the heal had to write one.
+
+    An upcoming card with no description still falls back to the sentence on
+    its own, which is what a brand-new stream looks like for as long as it
+    takes NSC to write the preview.
+    """
+    if not up:
+        return desc or None
+    return f"{SPORT_UPCOMING}<br><br>{desc}" if desc else SPORT_UPCOMING
+
+
 def sport_cards(videos):
     """One school year of one sport. Every card but the last closes with a rule.
 
@@ -3047,7 +3359,7 @@ def sport_cards(videos):
     for i, (vid, title, desc, up) in enumerate(videos):
         reel = highlight_block(vid)
         out.append(civic_card(vid, title, rule=(i != last),
-                              desc=(SPORT_UPCOMING if up else (desc or None)),
+                              desc=sport_desc(desc, up),
                               toggle=("Highlight", reel),
                               title_moves=bool(reel)))
     return "\n".join(out)
@@ -49821,11 +50133,11 @@ files[ROSSINI_PAGE] = custom_partner_page(
 # not yet known is left empty and renders as a dash. The table draws nothing at
 # all while the list is empty, so the page can stand on its banner and intro.
 PAST_SHOWS_INTRO = (
-    "Since its founding, NCTV &amp; its members have created original TV shows that explore life on "
-    "Nantucket. We believe that a variety of shows across many years paints a rich picture of our "
-    "community that a single show cannot. So, we dove deep into our archive to find as many "
-    "perspectives as possible. We will update this collection as we locate more past programming. We "
-    "hope you enjoy this tapestry of Nantucket stories.")
+    "Since its founding, NCTV &amp; its members have created TV shows that explore life on "
+    "Nantucket. We believe that a variety of shows &amp; themes across many years paint a richer "
+    "picture of our community than a single genre can. So, we dove into our archive to find as many "
+    "perspectives as possible. We will update this collection as we locate more past programming. "
+    "Please enjoy this tapestry of Nantucket stories.")
 
 # Set on its own italic line under the intro.
 PAST_SHOWS_NOTE = (

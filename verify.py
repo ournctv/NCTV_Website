@@ -19,6 +19,7 @@ None of it shows up in a page that renders, which is why it is worth a
 script rather than a look.
 """
 
+import ast
 import collections
 import math
 import os
@@ -881,6 +882,102 @@ def _():
     # undated card that is missing from it.
     return card_order("videos-sports-connection.html",
                       card_dates("SPORT_CARD_DATES"), "SPORT_CARD_DATES")
+
+
+def sports_videos():
+    """SPORTS_VIDEOS as data: {sport: {year: [(id, title, desc, upcoming)]}}.
+
+    Read out of the source and literal_eval'd rather than imported, because
+    importing build.py would run it. The literal is plain -- no sentinels --
+    so this is the whole of it.
+    """
+    if not hasattr(sports_videos, "_c"):
+        tree = ast.parse(open("build.py", encoding="utf-8").read())
+        for node in tree.body:
+            if (isinstance(node, ast.Assign)
+                    and getattr(node.targets[0], "id", "") == "SPORTS_VIDEOS"):
+                sports_videos._c = ast.literal_eval(node.value)
+                break
+        else:
+            raise ValueError("SPORTS_VIDEOS not found in build.py")
+    return sports_videos._c
+
+
+def sport_upcoming_text():
+    """SPORT_UPCOMING, read from build.py so a reword cannot mute the check."""
+    if not hasattr(sport_upcoming_text, "_c"):
+        m = re.search(r'^SPORT_UPCOMING = "([^"]+)"',
+                      open("build.py", encoding="utf-8").read(), re.M)
+        if not m:
+            raise ValueError("SPORT_UPCOMING not found in build.py")
+        sport_upcoming_text._c = m.group(1)
+    return sport_upcoming_text._c
+
+
+@check("sports-upcoming-lead", "an upcoming game leads with the sentence and carries its description below")
+def _():
+    # Frank asked for this shape on 2026-11-10: a game that has not aired says
+    # "This game is upcoming." and then, below it, the preview NSC posted with
+    # the scheduled stream. Before that the sentence was the whole of the card
+    # and the description was thrown away by the renderer.
+    #
+    # What makes it worth a check is how the sentence is supposed to GO. It is
+    # not deleted when the game airs; the trailing flag in SPORTS_VIDEOS flips
+    # to False and sport_desc() stops prepending it. So the sentence must live
+    # only in the renderer. The day someone "helpfully" pastes it into a
+    # description literal instead, that card keeps saying a played game is
+    # upcoming forever, and flipping the flag -- the one thing the protocol
+    # does to heal a card -- will not fix it. Nothing about the page looks
+    # wrong until the game has been over for a week.
+    #
+    # Four things, then: the sentence leads rather than trails, every upcoming
+    # card has a description under it, the count on the page matches the flags
+    # in the data, and the sentence appears in no description literal and on no
+    # other page.
+    sentence = sport_upcoming_text()
+    page = "videos-sports-connection.html"
+    bad = []
+
+    # (1) and (2): how the sentence sits in each description on the page.
+    bodies = re.findall(r'<p class="watch-episode__desc">(.*?)</p>',
+                        pages()[page], re.S)
+    carrying = [b for b in bodies if sentence in b]
+    for b in carrying:
+        if not b.startswith(sentence):
+            bad.append("%s: a card has %r somewhere other than the start of "
+                       "its description -- it is the lead-in, not a trailer"
+                       % (page, sentence))
+        elif b[len(sentence):].strip() in ("", "<br>", "<br><br>"):
+            bad.append("%s: %r stands alone on a card, with no description "
+                       "under it -- pull the stream's YouTube description into "
+                       "its SPORTS_VIDEOS entry (if YouTube really has none, "
+                       "say so here and loosen this check)"
+                       % (page, b[:70]))
+
+    # (3): the page's count against the data's flags.
+    flagged = [(vid, title) for years in sports_videos().values()
+               for cards in years.values()
+               for vid, title, _desc, up in cards if up]
+    if len(carrying) != len(flagged):
+        bad.append("%s shows the sentence on %d cards but SPORTS_VIDEOS flags "
+                   "%d as upcoming -- a flag was flipped without a rebuild, or "
+                   "sport_desc() stopped leading with it"
+                   % (page, len(carrying), len(flagged)))
+
+    # (4): the sentence belongs to the renderer alone.
+    for years in sports_videos().values():
+        for cards in years.values():
+            for vid, title, desc, _up in cards:
+                if sentence in (desc or ""):
+                    bad.append("%s carries %r inside its own description "
+                               "literal -- it must come from sport_desc(), or "
+                               "flipping the flag will never remove it"
+                               % (vid, sentence))
+    for name, html in pages().items():
+        if name != page and sentence in html:
+            bad.append("%s says %r, and only the Sports Connection page should"
+                       % (name, sentence))
+    return bad
 
 
 @check("nmf-women-panels", "the Notable Nantucket Women picker opens empty, its portraits track WIH_SCALE and its films are ours")
