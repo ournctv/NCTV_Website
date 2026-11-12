@@ -1213,6 +1213,20 @@ body.is-docopen{overflow:hidden}
    on a phone. */
 .warrant-doc{max-width:68ch;margin:0 auto;font-size:17px;line-height:1.6;
   overflow-wrap:break-word}
+/* A press release in the same overlay, on the home page. It is prose and a
+   thousand words of it, not a legal text of seventy pages, so it is set at
+   the size and measure a Luna Fest description already uses in this panel
+   rather than at the warrant's smaller setting. */
+.press-doc{max-width:62ch;margin:0 auto;font-size:1.05rem;line-height:1.65;
+  color:var(--ink)}
+.press-doc p{margin:0 0 1.1em}
+.press-doc p:last-child{margin-bottom:0}
+/* The release closes on a link to the video. a{color:inherit} would leave it
+   looking like the sentence around it, so it takes the treatment every other
+   link in running text on a paper background has. */
+.press-doc a{color:var(--green-deep);text-decoration:underline;
+  text-underline-offset:3px}
+.press-doc a:hover,.press-doc a:focus-visible{color:var(--ink)}
 .warrant-doc p{margin:0 0 1em}
 .warrant-doc__cover{margin:0 0 2em;padding:0 0 1.4em;text-align:center;
   border-bottom:1px solid var(--sand)}
@@ -2185,6 +2199,14 @@ a.cfn-funds__mark:focus-visible img{transform:scale(1.09)}
 /* The date each card is printed with, repeated at the head of its paragraph.
    Same treatment the dated news bullets on the New Moon page already use. */
 .newsreel__date{font-family:var(--serif);color:var(--ink);font-weight:600}
+/* A "click here" that opens a document over the page instead of going
+   somewhere. It has to be a button and not a link, and nothing about it
+   should look different from the links beside it in the same sentence: it
+   takes the paragraph's type and colour and the underline the browser gives
+   those. cursor:pointer comes from the `button` selector in the control list
+   further down, so it is not restated here. */
+.newsreel__doc{font:inherit;color:inherit;letter-spacing:inherit;
+  padding:0;border:0;background:none;text-decoration:underline}
 
 .newsreel__controls{display:flex;align-items:center;justify-content:center;
   gap:clamp(14px,2.5vw,26px);margin-top:clamp(26px,3.5vw,40px)}
@@ -2522,7 +2544,12 @@ a.cfn-funds__mark:focus-visible img{transform:scale(1.09)}
 .wih-film{font-size:1.13rem}
 .wih-credit{font-size:1.07rem}
 .auction-partners__what,.lunafest-films__director{font-size:1.18rem}
-.docmodal__text{font-size:1.24rem}
+/* The two bodies of prose that open over the page: a Luna Fest description
+   and the NCTV press release behind the Rika Welsh news card. Both are set
+   at 1.05rem where they are declared, which was chosen against a 17px body,
+   so both come up here. The warrant does not: it is a legal text and keeps
+   the smaller setting it is given on purpose. */
+.docmodal__text,.press-doc{font-size:1.24rem}
 .movie-meta{font-size:1.01rem}
 .movie-award{font-size:1.08rem}
 .movie-credits{font-size:1.15rem}

@@ -782,7 +782,12 @@ function initAgendaToggles(){
    Town Meeting and the button only names it. The one that is opened is moved
    into the overlay and handed back on close rather than copied, so the page
    holds one of it and an in-page search never finds the same sentence twice.
-   Nothing is fetched: it ships with the page, the way the agendas do. */
+   Nothing is fetched: it ships with the page, the way the agendas do.
+
+   The home page uses it too, for the press release behind the Rika Welsh
+   card's second "click here" (2026-11-12). That trigger is a word inside a
+   sentence rather than a button under a thumbnail, so it carries its own
+   class; everything below it is the same. */
 function initDocModal(){
   var box = null, home = null, body = null, lastFocus = null;
 
@@ -839,13 +844,16 @@ function initDocModal(){
   }
 
   document.addEventListener("click", function(e){
-    var btn = e.target.closest(".watch-episode__doc-btn");
+    // Two triggers: the Warrant and Summary buttons under a Town Meeting
+    // card, and the "click here" inside a news paragraph.
+    var btn = e.target.closest(".watch-episode__doc-btn, .newsreel__doc");
     if(!btn) return;
     openBox(btn);
   });
 
-  // The warrant has no links of its own, so in practice this pins focus to
-  // the close button.
+  // The warrant carries no link, so for it this pins focus to the close
+  // button. The press release ends on one, and wireOverlayKeys collects
+  // `button, a[href]`, so there the tab cycles Close and that link.
   wireOverlayKeys(function(){ return box; }, closeBox);
 }
 

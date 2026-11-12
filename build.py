@@ -15,7 +15,7 @@ BANNER_VIDEO = "1241589049:76cd5a88fc"  # home hero; Vimeo id:hash
 FEATURED_ID = "9BnRkR2W9Zc"  # home "Featured Video" section
 # Bump this whenever styles.css or site.js changes — it forces browsers to
 # fetch the fresh files instead of serving a cached (stale) copy.
-ASSET_VER = "439"
+ASSET_VER = "440"
 
 # The address the finished site will answer to. Everything absolute on the
 # site comes from this one string: the canonical link in every <head>, the
@@ -1461,7 +1461,7 @@ SPORTS_VIDEOS = {
     , False),
   ],
   "School Yr 26-27": [
-   ("K4k0sjgW3ZA", "MIAA Div. 3 Round of 16: Nantucket Whalers Boys Soccer vs. Fairhaven Blue Devils - November 11, 2026",
+   ("g5oXhSrVYmA", "MIAA Div. 3 Round of 16: Nantucket Whalers Boys Soccer vs. Fairhaven Blue Devils - Nov. 11, 2026",
     "The Nantucket Sports Connection proudly continues our playoff coverage of Nantucket varsity "
     "boys soccer! The Whalers are through to the Sweet 16 as they face the Blue Devils of "
     "Fairhaven in the MIAA Division 3 tournament.<br><br>Nantucket is 13-4-2 this season after a "
@@ -1482,8 +1482,9 @@ SPORTS_VIDEOS = {
     "wins in the prior two seasons combined. The Blue Devils have only allowed 18 goals on net "
     "this season, compared to 24 for the Whalers.<br><br>Our live coverage begins at 1:45pm from "
     "the Surfside Soccer Field, coming to you live both on the NSC YouTube channel as well as on "
-    "NCTV HD Channel 1072."
-    , True),
+    "NCTV HD Channel 1072.<br><br>[This is a corrected copy of the original livestream, which had "
+    "1,857 views.]"
+    , False),
    ("rwYI6DoyWRg", "MIAA Round of 32: Nantucket Whalers Boys Soccer vs. Pentucket Panthers - November 9, 2026",
     "The Nantucket Sports Connection brings you playoff coverage as the #8 Nantucket varsity boys "
     "soccer squad takes on #25 Pentucket in the Round of 32 of the MIAA Division 3 "
@@ -3314,6 +3315,7 @@ SPORT_HIGHLIGHTS = {
  "hdTc4UkdMJM": "DdKqS0GottQ",    # Falmouth Clippers, Sep. 10, 2026
  "CIuXdj6jwIw": "DeQLe-1IYto",    # Sandwich Blue Knights, Oct. 2, 2026
  # Boys Soccer
+ "g5oXhSrVYmA": "DfnzETeoqvR",    # MIAA Rd. of 16, Fairhaven Blue Devils, Nov. 11, 2026
  "rwYI6DoyWRg": "Dfie2Jfog35",    # MIAA Rd. of 32, Pentucket Panthers, Nov. 9, 2026
  "Y3DFqDS0LEk": "Ddc-tqfRF9Y",    # Nauset Warriors, Sep. 16, 2026
  "fTQIC3TrBOM": "Dd-KH8KIncP",    # Cape Cod Regional Tech Crusaders, Sep. 30, 2026
@@ -3964,7 +3966,162 @@ NEWS_SIGNUP_URL = "https://lp.constantcontactpages.com/su/J1R7rh8/NCTV"
 # Change one and change the other.
 NMF_SUBMIT_URL_LITERAL = "https://filmfreeway.com/NEWMoonFest"
 
+# The press release NCTV put out about the Rika Welsh award, which the
+# second "click here" on that card opens. Frank sent the text on 2026-11-12
+# and it is his, word for word. Four mechanical repairs and nothing else:
+# two missing spaces, where a comma and a period ran straight into the next
+# word, and the apostrophe in two "NCTVs". The wording is untouched. The one
+# addition is the closing sentence, which Frank asked for separately and
+# which is marked where it sits.
+#
+# It opens over the page instead of going on the card for the same reason a
+# Town Meeting warrant does -- see CIVIC_DOCS far below -- and through the
+# same machinery: a thousand words will not sit in a news paragraph. The
+# body is not inside the card. news_section() ships it once in a hidden
+# block and the button names it by id, so the reel still holds one slide
+# and one paragraph per card and an in-page search finds the text once.
+AWARD_DOC_ID = "doc-nctv-press-release"
+AWARD_DOC_TITLE = "NCTV Press Release"
+
+AWARD_PRESS_RELEASE = (
+    "<p>Regional community media organization recognizes Morris for building "
+    "an award-winning sports broadcasting program that has transformed local "
+    "sports coverage and inspired a new generation of broadcasters.</p>"
+
+    "<p>NANTUCKET, MA &ndash; Chris Morris, the driving force behind "
+    "Nantucket Community Television&rsquo;s Nantucket Sports Connection, has "
+    "been selected to receive the 2026 Rika Welsh Community Impact Award "
+    "from the Alliance for Community Media - Northeast Region (ACM-NE).</p>"
+
+    "<p>The award recognizes an individual or group that has generated a "
+    "project using Public, Educational, and Government (PEG) media resources "
+    "to advance awareness and understanding of an important cause. Morris "
+    "was selected in recognition of his extraordinary contributions to the "
+    "Nantucket community through the creation and development of the "
+    "Nantucket Sports Connection, NCTV&rsquo;s live sports broadcasting "
+    "initiative.</p>"
+
+    "<p>The award will be formally presented at the ACM-NE Special Award "
+    "Luncheon on Tuesday, November 17, 2026, during the organization&rsquo;s "
+    "annual Fall Conference in Nashua, New Hampshire.</p>"
+
+    "<p>What began approximately five years ago as a modest independent "
+    "production effort has grown into one of Nantucket Community "
+    "Television&rsquo;s most successful and recognizable programming "
+    "initiatives. Working initially with little more than a camera, a "
+    "microphone, and a borrowed laptop running a shareware program, Morris "
+    "and NSC co-founder Sean Davis established a live sports coverage "
+    "operation that has fundamentally changed how Nantucket&rsquo;s "
+    "student-athletes, families, and community experience local sports.</p>"
+
+    "<p>In the fall of 2023, NCTV brought the Nantucket Sports Connection "
+    "in-house as a dedicated department, providing an institutional "
+    "foundation for its continued growth. Since its inception, the program "
+    "has accumulated more than 300,000 views on YouTube and over 60,000 "
+    "hours of watch time &ndash; remarkable numbers for a community serving "
+    "a high school with an annual graduating class of approximately 150 "
+    "students.</p>"
+
+    "<p>The impact extends well beyond viewership statistics. "
+    "Student-athletes have used NSC footage to create highlight reels that "
+    "have helped them pursue opportunities at NCAA Division I programs, as "
+    "well as competitive broadcasting and journalism programs. Students have "
+    "also gained hands-on production experience as members of the NSC "
+    "broadcast crews, with some inspired to pursue broadcasting as a "
+    "career.</p>"
+
+    "<p>The program&rsquo;s popularity has translated into extraordinary "
+    "community support. Surveys of Nantucket residents and students have "
+    "consistently identified the Nantucket Sports Connection as NCTV&rsquo;s "
+    "most important programming initiative and among the services they most "
+    "want to see expanded. Originally covering eight sports teams, the "
+    "program has nearly doubled its team coverage over the past two "
+    "years.</p>"
+
+    "<p>The Commonwealth of Massachusetts has also recognized the "
+    "program&rsquo;s significance, allocating $30,000 in its most recent "
+    "state budget specifically to support the work of the Nantucket Sports "
+    "Connection &ndash; an exceptional achievement for a community media "
+    "initiative.</p>"
+
+    "<p>&ldquo;Chris took an idea and built something that has become "
+    "enormously important to this community,&rdquo; said NCTV station "
+    "manager Charles Douglas, who nominated Morris for the award. "
+    "&ldquo;What started with borrowed equipment and a tremendous amount of "
+    "personal initiative has grown into a program that connects our "
+    "community, gives student-athletes greater visibility, provides students "
+    "with real-world broadcasting experience, and has become a model of what "
+    "community television can accomplish. This recognition is richly "
+    "deserved.&rdquo;</p>"
+
+    "<p>Morris&rsquo;s influence has also extended beyond Nantucket. NCTV "
+    "shares NSC broadcasts with other community media stations, and "
+    "livestream links are shared with visiting teams traveling to Nantucket, "
+    "allowing their home communities to follow their athletes&rsquo; "
+    "performances even when their own local media outlets cannot provide "
+    "coverage. NCTV has also shared the story of the Nantucket Sports "
+    "Connection with other community media organizations at the national "
+    "level, encouraging stations to develop similar locally focused sports "
+    "broadcasting initiatives.</p>"
+
+    "<p>As Morris relocates to Maine with his family to conclude his five "
+    "years of service, NCTV has taken steps to ensure that the program he "
+    "helped build will continue to thrive. The organization recently hired "
+    "sports broadcaster Patrick Scanlon, a graduate of Syracuse "
+    "University&rsquo;s prestigious Newhouse School of Public "
+    "Communications, to carry the program forward. Morris has embraced the "
+    "transition, demonstrating the same commitment to mentorship and "
+    "collaboration that has characterized his work throughout his "
+    "tenure.</p>"
+
+    "<p>&ldquo;Chris is irreplaceable, but his legacy is something we shall "
+    "carry forward,&rdquo; Douglas added. &ldquo;He has helped establish "
+    "something that belongs to this community, and we are committed to "
+    "making sure the Nantucket Sports Connection continues to grow and serve "
+    "future generations of Whalers athletes and Nantucket "
+    "families.&rdquo;</p>"
+
+    "<p>In anticipation of Morris&rsquo;s departure, NCTV also produced a "
+    "special five-minute thank-you video featuring testimonials from "
+    "colleagues, school administrators, and students whose lives and "
+    "experiences have been touched by his work. The 2026 Rika Welsh "
+    "Community Impact Award recognizes not simply a successful television "
+    "program, but the lasting community impact that can result when local "
+    "people are given the tools and opportunity to tell their own stories. "
+    "For Nantucket, the Nantucket Sports Connection has become precisely "
+    "that: a community institution built through initiative, collaboration, "
+    "and a shared commitment to celebrating local student-athletes.</p>"
+
+    # Not part of the release NCTV issued. Frank asked on 2026-11-12 for the
+    # overlay to close with the same offer the card above it makes, so that a
+    # reader who has reached the end of a thousand words does not have to go
+    # back up to the paragraph to find the video.
+    "<p>To watch a video about Chris&rsquo;s impact on Nantucket, "
+    '<a href="https://youtu.be/gnn7C-UdDns" target="_blank" '
+    'rel="noopener">click here</a>.</p>'
+)
+
 NEWS = [
+ dict(img="news-rika-welsh-award.webp", date="11/12/26",
+      doc=(AWARD_DOC_ID, AWARD_PRESS_RELEASE),
+      alt="Congratulations! in white script on navy, over gold and navy "
+          "waves. Chris Morris in a Whalers cap and pullover, holding a pen "
+          "and clipboard beside a rink, next to the words The winner of the "
+          "2026 Rika Welsh Community Impact Award is Chris Morris, above "
+          "the Alliance for Community Media Northeast Region logo. Caption: "
+          "Among all community TV stations in the Northeast, Chris Morris "
+          "won!",
+      body='Every year, the Rika Welsh Community Impact Award recognizes an individual who has '
+           'used his/her community TV station to support a cause among his/her community to '
+           'an exceptional degree. This award is given to one recipient among all community '
+           'TV stations in the Northeast region. NCTV is thrilled and honored to announce '
+           'that Nantucket Sports Connection Lead Broadcaster &amp; Co-Founder Chris Morris '
+           'has won this year&rsquo;s award! Congratulations Chris!!! To watch a video about '
+           'Chris&rsquo;s impact on Nantucket, <a href="https://youtu.be/gnn7C-UdDns" '
+           'target="_blank" rel="noopener">click here</a>. To read NCTV&rsquo;s press '
+           f'release, <button type="button" class="newsreel__doc" data-doc="{AWARD_DOC_ID}" '
+           f'data-doc-title="{AWARD_DOC_TITLE}" aria-haspopup="dialog">click here</button>.'),
+
  dict(img="news-football-south-shore.webp", date="11/7/26",
       alt="The Nantucket Sports Connection logo above the word Presents, over "
           "a floodlit football field at night, with the Nantucket Whalers W "
@@ -4025,18 +4182,6 @@ NEWS = [
            'documentary about the history of this storied rivalry, '
            '<a href="https://www.youtube.com/watch?v=lftcwt6wXJk&amp;t=1543s" '
            'target="_blank" rel="noopener">click here</a>.'),
-
- dict(img="news-chris-morris-farewell.webp", date="10/31/26",
-      alt="Chris Morris in a Whalers cap and pullover, holding a pen and "
-          "clipboard beside a rink. Caption: Thank you and farewell to "
-          "Nantucket Sports Connection founder Chris Morris",
-      body='Chris Morris is the founder and lead broadcaster of the Nantucket Sports Connection '
-           '(NSC). He is moving from Nantucket to Maine and his last game as the &ldquo;voice of '
-           'Whaler sports&rdquo; was the 2026 Island Cup. NCTV &amp; Whalers Nation are so '
-           'grateful for his passion, determination, and live commentary skills that created the '
-           'NSC. To watch a short video about his impact on Whalers Nation, <a '
-           'href="https://youtu.be/gnn7C-UdDns?si=RCK2NvhnIC9MO_Va" target="_blank" '
-           'rel="noopener">click here</a>.'),
 
  dict(img="news-spotlight-golf.webp", date="10/29/26",
       alt="NCTV presents Nantucket Whalers Team Spotlight: Golf, Nantucket "
@@ -4127,6 +4272,16 @@ def news_section():
     # the dots, the labels and the peeks all describe what is really there.
     items = news_live()
     n = len(items)
+    # A card may carry a document that opens over the page: the press release
+    # behind the second "click here" on the Rika Welsh card. It ships once,
+    # hidden and outside the reel, exactly as the Town Meeting warrants ship
+    # on the Civic TV page, and the button in the copy names it by id. This
+    # reads the LIVE list and not NEWS, so a card that has aged out takes its
+    # document off the page with it.
+    docs = "".join(
+        '\n        <div class="press-doc" id="%s">%s</div>' % d
+        for d in (item.get("doc") for item in items) if d)
+    store = '\n      <div class="news-docs" hidden>%s\n      </div>' % docs if docs else ""
     slides, copies, dots = [], [], []
     for i, item in enumerate(items):
         first = (i == 0)
@@ -4143,9 +4298,12 @@ def news_section():
         # Reading it back out of the copy is deliberate: change the link in
         # the paragraph and the card follows it, with nothing to keep in
         # step by hand. A card whose copy carries no link stays a plain
-        # picture -- an <a href=""> would reload the page. The Chris Morris
-        # card was the one example until 2026-11-02, when Frank gave it the
-        # farewell video; every card in NEWS links somewhere now.
+        # picture -- an <a href=""> would reload the page. Every card in
+        # NEWS links somewhere today, so that is a guard and not a live case.
+        # It is an href it looks for and never a doc button: the award card's
+        # second "click here" opens the press release over the page, and the
+        # picture should go to the video, which is the first link in its
+        # copy.
         href = re.search(r'href="([^"]+)"', item["body"])
         img = ('<img class="newsreel__img"\n'
                '                   src="assets/' + item["img"] + '?v=' + ASSET_VER + '"\n'
@@ -4244,7 +4402,7 @@ def news_section():
         <ul class="newsreel__copies">
 {nl.join(copies)}
         </ul>
-{controls}      </div>
+{controls}      </div>{store}
     </div>
   </section>
 """
@@ -32228,7 +32386,24 @@ CIVIC_DESCRIPTIONS = {
   "private connection on top, with a voluntary lien spreading the fee over up to twenty years at "
   "4.414 percent. Questions run long. One resident puts a single connection nearer $50,000; "
   "another argues that only dredging will restore the pond.",
- "m3wQuYtQ0bw": "Video description coming soon.",
+ "m3wQuYtQ0bw": HDC_SUMMARY_PREFIX + (
+  "an addition at 54 Washington Street, a new dwelling at 7 Reaper Circle, and an addition at 42 "
+  "Main Street in Siasconset. Washington Street took the longest, about twenty-two minutes. An "
+  "earlier approval lifted this contributing house five feet out of the flood zone rather than "
+  "the eleven first proposed, and the owners now want a second story and a front porch within "
+  "the same footprint, detailed as a cape with exposed rafter tails and no corner boards. "
+  "Commissioners found the elevations inconsistent, the chimney drawn on opposite sides of the "
+  "ridge in two views, and one said the old building could no longer be seen under the new story "
+  "and dormers. It was held for revisions. Reaper Circle is a second house on a lot beside the "
+  "owners&rsquo; developed property on Hawk Circle, where the pool and cabana would come out and "
+  "a new pool would sit in line with the proposed building. Questions turned on vehicle access, "
+  "which is not planned, and on how much of the lot&rsquo;s heavy vegetation would remain; it "
+  "was approved subject to an Exhibit A showing screening, one commissioner opposed. The Main "
+  "Street house, built in 2000 and outside the old historic district, would raise its front "
+  "gable to meet the main ridge, and its roof walk, set off to one side, drew comment. That one "
+  "was held for revisions too. The meeting ran close to four hours, and 13 Primrose Lane, 12 "
+  "Washington Avenue and a pool at 7 Maxey Pond Road were called twice and passed over when "
+  "nobody appeared."),
  "EUh0Ergt0e8": "Video description coming soon.",
 }
 
