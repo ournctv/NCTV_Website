@@ -136,6 +136,57 @@ function initNewsreel(){
   start();
 }
 
+/* ---------- additional-support sponsor slideshow (New Moon Fest) ----------
+   One sponsor card at a time, the rest stacked in the same grid cell with
+   visibility:hidden, so they are neither tab stops nor read aloud. It keeps
+   the news carousel's manners: it holds still while someone is hovering over
+   it or tabbing through it, holds still in a background tab, and never moves
+   on its own for a visitor who has asked for less motion -- the arrows are
+   how they get through the set. Anything the visitor does restarts the
+   clock, so the card they asked for gets its full turn. */
+function initAuxSponsors(){
+  document.querySelectorAll("[data-aux]").forEach(box=>{
+    const slides = [...box.querySelectorAll(".nmf-aux__slide")];
+    if(slides.length < 2) return;
+    const ms = Number(box.dataset.auxMs) || 5000;
+    const still = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+    let at = slides.findIndex(s=>s.classList.contains("is-current"));
+    if(at < 0) at = 0;
+    let timer = null;
+
+    function show(i){
+      at = (i + slides.length) % slides.length;
+      slides.forEach((s,n)=>s.classList.toggle("is-current", n===at));
+    }
+    function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+    function start(){
+      stop();
+      if(still) return;
+      timer = setInterval(()=>show(at + 1), ms);
+    }
+    function go(i){ show(i); start(); }
+
+    const prev = box.querySelector("[data-aux-prev]");
+    const next = box.querySelector("[data-aux-next]");
+    if(prev) prev.addEventListener("click", ()=>go(at - 1));
+    if(next) next.addEventListener("click", ()=>go(at + 1));
+
+    box.addEventListener("mouseenter", stop);
+    box.addEventListener("mouseleave", start);
+    box.addEventListener("focusin", stop);
+    box.addEventListener("focusout", (e)=>{
+      if(!box.contains(e.relatedTarget)) start();
+    });
+    document.addEventListener("visibilitychange", ()=>{
+      if(document.hidden) stop(); else start();
+    });
+
+    show(at);
+    start();
+  });
+}
+
 /* ---------- scroll reveal ---------- */
 function initReveal(){
   const els = document.querySelectorAll("[data-reveal]");
@@ -964,6 +1015,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   if(nav) wireNav(nav);
   refreshFooterYear();
   initNewsreel();
+  initAuxSponsors();
   initReveal();
   initMoviePicker();
   initShowsTable();

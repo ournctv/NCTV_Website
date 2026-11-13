@@ -15,7 +15,7 @@ BANNER_VIDEO = "1241589049:76cd5a88fc"  # home hero; Vimeo id:hash
 FEATURED_ID = "9BnRkR2W9Zc"  # home "Featured Video" section
 # Bump this whenever styles.css or site.js changes — it forces browsers to
 # fetch the fresh files instead of serving a cached (stale) copy.
-ASSET_VER = "440"
+ASSET_VER = "445"
 
 # The address the finished site will answer to. Everything absolute on the
 # site comes from this one string: the canonical link in every <head>, the
@@ -1461,6 +1461,33 @@ SPORTS_VIDEOS = {
     , False),
   ],
   "School Yr 26-27": [
+   ("AAsG_9-FLS0", "MIAA Div. 3 Quarterfinals: Nantucket Whalers Boys Soccer vs. Medfield Warriors - November 14, 2026",
+    "The Nantucket Sports Connection proudly continues our playoff coverage of Nantucket varsity "
+    "boys soccer! The Whalers are onto the Elite 8 as they face the top-seed in the MIAA Division "
+    "3 tournament, the Medfield Warriors.<br><br>Nantucket is 14-4-2 this season after a 3-1 "
+    "defensive victory against #9 Fairhaven in the Sweet 16 &mdash; the 30th postseason win for "
+    "head coach Rich Brannigan, who has a terrific 316-132-55 career record at the helm. The "
+    "Whalers scored five minutes before halftime when Stoyan Popov headed home a corner kick from "
+    "Aldo Lemus to break the 0-0 tie. The Whalers held a 1-0 lead headed into the final 40 "
+    "minutes, where their defense was tested. The Blue Devils scored in the 45th minute to knot "
+    "the game at one. Within a minute Tigger Sirisophapong scored the winner with an unassisted "
+    "stinger from distance with his non-dominant foot. Then, in the 70th minute Captain Aldo Lemus "
+    "scored on a Stoyan Popov Jr. assist to give the Whalers a comfortable lead, and a trip to the "
+    "Elite 8.<br><br>The top-ranked Warriors have all the accolades. Coming off a 6-0 annihilation "
+    "of #16 Foxborough, this Tri-Valley League champion Medfield squad has yet to let up a goal "
+    "this postseason. At 19-1 on the season overall, Medfield has also won 16 straight. "
+    "They&rsquo;ve scored 107 goals through 20 games &mdash; averaging nearly five and a half "
+    "goals a game &mdash; led by all star striker Max Tillmann, who&rsquo;s already broken the "
+    "program record for scoring as a junior. The Warriors were also the #1 seed in last "
+    "year&rsquo;s Div. 3 tournament, though they fell in the Round of 16 to #17 ranked Scituate, "
+    "an upset the Whalers hope to repeat this year.<br><br>This is the first off-island "
+    "Whalers&rsquo; soccer match streamed in the history of the NSC on NCTV, and will be the last "
+    "true road game for Nantucket this year. If the Whalers deliver a quarterfinals upset to "
+    "Medfield, they would head to a Final Four semifinal matchup, which would take place on a "
+    "neutral field (as would the MIAA D3 Championship).<br><br>Our live coverage begins at 2:15 pm "
+    "from Medfield High School coming to you live both on the NSC YouTube channel as well as on "
+    "NCTV HD Channel 1072."
+    , True),
    ("g5oXhSrVYmA", "MIAA Div. 3 Round of 16: Nantucket Whalers Boys Soccer vs. Fairhaven Blue Devils - Nov. 11, 2026",
     "The Nantucket Sports Connection proudly continues our playoff coverage of Nantucket varsity "
     "boys soccer! The Whalers are through to the Sweet 16 as they face the Blue Devils of "
@@ -3954,7 +3981,12 @@ def single_video(vid, title):
 # The copy is Frank's, kept word for word. Links go inline wherever it says
 # "click here" -- the two in the Island Cup card are deliberately different
 # addresses: the first is the live broadcast, the second the documentary.
-NEWS_INTERVAL_MS = 12000
+#
+# Twelve seconds until 2026-11-12, when Frank asked for fifteen. It is read
+# off data-newsreel-ms in the markup, so this is an HTML change and nothing
+# in site.js or the stylesheet moves with it. site.js keeps its own 7000
+# fallback for a reel written without the attribute.
+NEWS_INTERVAL_MS = 15000
 
 # The mailing-list sign-up the sentence above the reel points at. Frank's own
 # Constant Contact landing page (Frank, 2026-10-30).
@@ -4102,6 +4134,21 @@ AWARD_PRESS_RELEASE = (
 )
 
 NEWS = [
+ dict(img="news-soccer-playoff-medfield.webp", date="11/13/26",
+      alt="The Nantucket Sports Connection logo above the word Presents, "
+          "beside an MIAA Quarter Finals mark, over a green soccer pitch, "
+          "with the Nantucket Whalers W and the Medfield Warriors M either "
+          "side of a soccer ball marked VS. Caption: Off-island coverage! "
+          "Whalers vs. Medfield in the boys soccer playoffs! Live at 2:15pm "
+          "on 11/14",
+      body='The Nantucket Sports Connection proudly continues our playoff coverage of '
+           'Nantucket varsity boys soccer! The Whalers are onto the Elite 8 as they face '
+           'the top-seed in the MIAA Division 3 tournament, the Medfield Warriors. Our '
+           'live coverage begins at <strong>2:15 pm on Saturday 11/14</strong> from '
+           'Medfield High School on the NSC YouTube channel as well as on NCTV HD Channel '
+           '1072. To watch, <a href="https://youtube.com/live/AAsG_9-FLS0" '
+           'target="_blank" rel="noopener">click here</a>.'),
+
  dict(img="news-rika-welsh-award.webp", date="11/12/26",
       doc=(AWARD_DOC_ID, AWARD_PRESS_RELEASE),
       alt="Congratulations! in white script on navy, over gold and navy "
@@ -4112,8 +4159,8 @@ NEWS = [
           "Among all community TV stations in the Northeast, Chris Morris "
           "won!",
       body='Every year, the Rika Welsh Community Impact Award recognizes an individual who has '
-           'used his/her community TV station to support a cause among his/her community to '
-           'an exceptional degree. This award is given to one recipient among all community '
+           'used his/her community TV station to support a cause in his/her community to an '
+           'exceptional degree. This award is given to one recipient among all community '
            'TV stations in the Northeast region. NCTV is thrilled and honored to announce '
            'that Nantucket Sports Connection Lead Broadcaster &amp; Co-Founder Chris Morris '
            'has won this year&rsquo;s award! Congratulations Chris!!! To watch a video about '
@@ -32404,7 +32451,23 @@ CIVIC_DESCRIPTIONS = {
   "was held for revisions too. The meeting ran close to four hours, and 13 Primrose Lane, 12 "
   "Washington Avenue and a pool at 7 Maxey Pond Road were called twice and passed over when "
   "nobody appeared."),
- "EUh0Ergt0e8": "Video description coming soon.",
+ "EUh0Ergt0e8":
+  "A Civic League board member opens public comment by reading a resolution on airport noise "
+  "adopted on behalf of the island&rsquo;s neighborhood associations. It asks for public "
+  "reporting of compliance with the voluntary overwater routes, an electronic way to file "
+  "complaints, incentives tied to discretionary services, and enforcement of the existing ground "
+  "controls on auxiliary power units. A commissioner who flies replies that arrivals are already "
+  "held offshore while departures have no published procedure at all: aircraft leaving runway 24 "
+  "are turned west at 400 feet, over Surfside, and extending that leg a mile or two out before "
+  "the turn is what the FAA would have to be asked for. The first quarter report is strong. "
+  "Revenue is $4.76 million above the same quarter last year, $3.3 million of it fuel, on 1.9 "
+  "million gallons sold against 1.7 million; FBO services are up 26 percent and airline income 41 "
+  "percent. Expenses are up $3.6 million, almost all of it the fuel itself, which cost $4.94 a "
+  "gallon against $3.18. Counted by season rather than by fiscal year, the first two quarters "
+  "bring in nearly $35 million, more than all four quarters of last year, on operating expenses "
+  "up 6 percent. Terminal optimization is back under contract and into design. The expanded "
+  "environmental notification form went in on October 29 covering all twelve capital projects, "
+  "and eight candidates have been interviewed for assistant airport manager.",
 }
 
 
@@ -44615,7 +44678,16 @@ NMF_SPONSOR_LINKS = [
 def nmf_sponsor_links():
     return disc_sponsor_links(NMF_SPONSOR_ART, NMF_SPONSOR_LINKS)
 
-# The 2026 sponsor flyer carries 35 logos above the Legacy Original Founders
+# The 2026 sponsor flyer. NOT RENDERED any more: Frank replaced it with the
+# six-disc top-sponsor banner on 2026-11-12 -- see nmf_sponsors2026_section()
+# below. It is kept whole, the way the unused *_intro_section() functions are
+# kept, because its 35 boxes were measured off the artwork and its 35 URLs
+# were confirmed one by one; putting it back is one line in that function and
+# nothing has to be done again. assets/2026-nmf-sponsor-flyer.webp was moved
+# to image-originals/superseded/ when it came off the page, so restoring it
+# means copying that file back into assets/ as well.
+#
+# The flyer carries 35 logos above the Legacy Original Founders
 # Society roll. NMF_FLYER_ART is the artwork's own pixel size; each hotspot is
 # (name, url, x1, y1, x2, y2) in those pixels, so the overlay rescales with the
 # image. The boxes were measured from the artwork itself -- threshold the navy
@@ -44665,28 +44737,6 @@ NMF_FLYER_LINKS = [
 
 def nmf_flyer_links():
     return box_sponsor_links(NMF_FLYER_ART, NMF_FLYER_LINKS)
-
-def newmoon_sponsors_section():
-    """The 2026 top-sponsor banner. NOT RENDERED any more.
-
-    Frank asked for it off the page on 2026-11-07. It is kept whole --
-    the artwork, the alt text and nmf_sponsor_links() with its six measured
-    disc hotspots -- the way the unused *_intro_section() functions are kept,
-    so putting it back is one line in newmoon_body and nothing has to be
-    re-measured. assets/2026-top-sponsors.webp stays in place for the same
-    reason; it is now referenced by this function only.
-
-    The 2026 Sponsors flyer at the FOOT of the page is a different thing and
-    is still live -- see nmf_sponsors2026_section()."""
-    return f"""<section class="section newmoon-sponsors">
-  <div class="wrap">
-    <div class="sponsor-map" data-reveal>
-      <img class="newmoon-sponsors__img" src="assets/2026-top-sponsors.webp?v={ASSET_VER}" alt="Thank you to all our sponsors, especially Lemon Press, SCA, The Inquirer and Mirror, White Elephant Nantucket, Cisco Brewers, N Magazine and Nantucket Current">
-{nmf_sponsor_links()}
-    </div>
-  </div>
-</section>"""
-
 
 def nmf_submit_section():
     """The 2027 submissions call Frank asked for on 2026-11-07.
@@ -44918,6 +44968,151 @@ def nmf_featured_videos_section():
   </div>
 </section>"""
 
+# "Additional support" -- the sponsors below the top six, as a slideshow that
+# turns itself over rather than a second flat flyer (Frank, 2026-11-12). One
+# logo at a time, the business name under it, and the whole slide is one link
+# out, so the logo and the name are the same click.
+#
+# Each logo is normalised to EQUAL VISUAL AREA on an 880x440 canvas (2x of the
+# 440x220 card), not to a common width or height: these marks run from a
+# 0.78:1 upright to a 7.3:1 wordmark, and matching either single dimension
+# makes the wide ones tower over the tall ones. The area is 120,000 px^2 of
+# the trimmed mark, clamped to the canvas less a 22px margin, so only the two
+# widest fall short of it. The normalisation is baked into the asset, so every
+# <img> is the same 440x220 box and nothing jumps as the slideshow turns.
+#
+# The area is of the BOUNDING BOX, not of the ink inside it, so a sparse line
+# drawing reads smaller than a dense wordmark that measures the same. The
+# Copper Rose is 4.8% ink inside its box, the airiest mark in the set, and
+# Frank asked for it larger on 2026-11-12; it takes 2x the common area. That
+# multiplier is per-logo and set by eye against its neighbours -- there is no
+# formula here, because ink coverage alone would blow up the hairline marks.
+#
+# A Safe Place is the other exception, at Frank's word the same day: it is not
+# a mark on transparency but a PICTURE of a painting, with a hard rectangular
+# edge and a white ground of its own. Equal-area sizing left it floating in
+# the middle of a white card looking shrunken, with no edge to tell it from
+# the card, so it fills the card instead -- the way a photograph fills its
+# frame. Any other bounded picture that joins the set wants the same, which
+# is why the generator keeps it as a named set and not a one-off. The
+# script that did it is in the scratch notes; the trimmed PNGs are archived in
+# image-originals/nmf-aux-sponsors/, so a logo can be re-cut without redoing
+# the set.
+#
+# They sit on WHITE cards. Most of these marks are near-black and would vanish
+# into the night sky, and recolouring the set was not open to us because much
+# of it is multi-colour or pictorial -- A Safe Place is a painting, Nantucket
+# Dance Theater is white out of a solid teal. Frank gave leave on 2026-11-12
+# to change a logo's colour for legibility; three of the 29 needed it, each
+# one drawn in WHITE for a dark background and so invisible on the card:
+#
+#   ACK Gift Bags    white text -> the anchor's own navy
+#   Donna Elle Design  white text -> the monogram's own blue
+#   The Copper Rose  the WHOLE mark -> navy
+#
+# The first two were repainted in a tone taken from the mark's own other half.
+# The Copper Rose has no other half -- it is white line work throughout -- so
+# navy is a colour the mark did not previously carry. Frank was told. The
+# alternative, kept here in case he wants it, is to leave that logo untouched
+# and give its slide a dark card instead; the taupe from the sponsor's own
+# gift card was tried and is too faint to read at this size, and the
+# "no trans" file in Frank's folder is a gift-card graphic, not a logo.
+#
+# The <img> carries alt="" on purpose: the business name is in the same link,
+# a few pixels below, so alt text would read the name out twice.
+NMF_AUX_LEAD = "Additional support for New Moon Fest is brought to you by:"
+NMF_AUX_MS = 5000
+# (business name, url, asset stem), alphabetical by business name. Every URL
+# is one already confirmed for NMF_FLYER_LINKS -- same sponsors, same sites.
+#
+# These are the sponsors BELOW the top six, and the two lists do not overlap:
+# Frank had Cisco Brewers, Lemon Press, Siasconset Casino Association and The
+# Inquirer and Mirror taken out on 2026-11-12 because each already has a disc
+# in the banner above, and "additional support" reads wrong over a name that
+# is up there too. N Magazine, Nantucket Current and White Elephant are the
+# rest of that banner and were never in here. If a sponsor is ever promoted
+# into the banner, drop it from this list in the same stroke -- their dropped
+# assets are in image-originals/superseded/ under -dropped-2026-11-12.
+NMF_AUX_SPONSORS = [
+    ("A Safe Place, Inc.",                  "https://asafeplacenantucket.org/",            'a-safe-place'),
+    ("a Sharpe Point",                      "https://www.ackartgallery.com/",              'a-sharpe-point'),
+    ("ACK Gift Bags &amp; Events",          "https://ackgiftbags.com/",                    'ack-gift-bags'),
+    ("Atlantic East Nantucket Real Estate", "https://nantucketrealestate.com/",            'atlantic-east'),
+    ("Bigelow Investment Advisors",         "https://www.bigelowadvisors.com/",            'bigelow'),
+    ("BPC Architecture",                    "https://bpc-architecture.com/",               'bpc'),
+    ("By Casendra",                         "https://bycasendra.massagetherapy.com/",      'by-casendra'),
+    ("Charity Grace Photography",           "https://www.charitygracephotography.com/",    'charity-grace'),
+    ("Commonwealth",                        "https://commonwealthnantucket.com/",          'commonwealth'),
+    ("DayBreak Nantucket",                  "https://daybreaknantucket.com/",              'daybreak'),
+    ("Donna Elle Design",                   "https://donnaelle.com/",                      'donna-elle'),
+    ("Florabundant",                        "https://florabundantnantucket.com/",          'florabundant'),
+    ("Handy &amp; Dallaire Events",         "https://handydallaireevents.com/",            'handy-dallaire'),
+    ("Harborside Advisors",                 "https://harborsideadv.com/",                  'harborside'),
+    ("Laurie Richards Pixel Perfect",       "https://pixelperfectnantucket.zenfolio.com/", 'laurie-richards'),
+    ("Little Saints",                       "https://littlesaints.com/",                   'little-saints'),
+    ("Monarch Face &amp; Body",             "https://monarchnantucket.com/",               'monarch'),
+    ("Nalu Nantucket",                      "https://nalunantucket.com/",                  'nalu'),
+    ("Nantucket Cultural District",         "https://nantucketculturaldistrict.org/",      'cultural-district'),
+    ("Nantucket Dance Theater",             "https://nantucketdancetheater.org/",          'dance-theater'),
+    ("Nantucket Looms",                     "https://www.nantucketlooms.com/",             'looms'),
+    ("Nantucket Wellness Festival",         "https://nantucketwellnessfestival.com/",      'wellness-festival'),
+    ("Nantucket Wine &amp; Food Festival",  "https://nantucketwinefestival.com/",          'wine-food'),
+    ("Optimize HR",                         "https://www.optimizehrllc.com/",              'optimize-hr'),
+    ("Sheltair Aviation",                   "https://sheltairaviation.com/",               'sheltair'),
+    ("ShorePoint Advisory Group",           "https://shorepointadvisorygroup.com/",        'shorepoint'),
+    ("Sign Here Nantucket",                 "https://signherenantucket.com/",              'sign-here'),
+    ("The Copper Rose",                     "https://thecopperrosenantucket.com/",         'copper-rose'),
+    ("The Palms Bookkeeping Services",      "https://thepalmsbookkeepingservices.com/",    'the-palms'),
+]
+
+def nmf_aux_slides():
+    out = []
+    for i, (name, url, stem) in enumerate(NMF_AUX_SPONSORS):
+        cur = " is-current" if i == 0 else ""
+        # Only the card that is showing when the page arrives is worth
+        # fetching eagerly; the other eighteen are second-tier sponsor art
+        # and follow the rule Frank set on 2026-10-28.
+        lazy = "" if i == 0 else ' loading="lazy"'
+        out.append(
+            '        <a class="nmf-aux__slide%s" href="%s" target="_blank" rel="noopener">\n'
+            '          <span class="nmf-aux__card"><img src="assets/nmf-aux-%s.webp?v=%s" '
+            'alt="" width="440" height="220"%s decoding="async"></span>\n'
+            '          <span class="nmf-aux__name">%s</span>\n'
+            '        </a>' % (cur, url, stem, ASSET_VER, lazy, name))
+    return "\n".join(out)
+
+def nmf_aux_sponsors():
+    arrow = ('      <button class="nmf-aux__arrow nmf-aux__arrow--%s" type="button" '
+             'data-aux-%s aria-label="%s sponsor">'
+             '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
+             '<path d="%s"/></svg></button>')
+    prev = arrow % ("prev", "prev", "Previous", "M15.5 4.5 8 12l7.5 7.5")
+    nxt  = arrow % ("next", "next", "Next",     "M8.5 4.5 16 12l-7.5 7.5")
+    return f"""    <p class="nmf-aux__lead" data-reveal>{NMF_AUX_LEAD}</p>
+    <div class="nmf-aux" data-aux data-aux-ms="{NMF_AUX_MS}" data-reveal>
+{prev}
+      <div class="nmf-aux__stage">
+{nmf_aux_slides()}
+      </div>
+{nxt}
+    </div>"""
+
+# The section that closes the page. Until 2026-11-12 it carried the 35-logo
+# sponsor flyer; Frank asked that day for the six-disc TOP sponsor banner in
+# its place -- the same banner that stood higher up the page until he took it
+# off on 2026-11-07. The PNG he sent ("2026 Top Sponsors_2.png") is
+# byte-identical to image-originals/2026-top-sponsors.png, so the artwork was
+# already encoded and NMF_SPONSOR_LINKS' six measured discs still land on it;
+# nothing was re-measured, only re-checked by drawing the circles back on.
+#
+# It keeps this section's own heading and the .sponsor-flyer wrapper, which is
+# a layout class (centre, small top margin, rounded full-width image) and not
+# a statement about which artwork is inside -- the banner wants exactly the
+# same treatment the flyer wanted.
+#
+# The flyer is NOT deleted: NMF_FLYER_ART, NMF_FLYER_LINKS and
+# nmf_flyer_links() are kept unrendered above, so putting it back is one line
+# here and none of its 35 boxes has to be measured again.
 def nmf_sponsors2026_section():
     return f"""<section class="section nmf-sponsors2026">
   <div class="wrap">
@@ -44926,9 +45121,10 @@ def nmf_sponsors2026_section():
       <h2>With Gratitude to the Sponsors Who Power this Movement</h2>
     </div>
     <div class="sponsor-map sponsor-flyer" data-reveal>
-      <img src="assets/2026-nmf-sponsor-flyer.webp?v={ASSET_VER}" alt="2026 New Moon Fest sponsors">
-{nmf_flyer_links()}
+      <img src="assets/2026-top-sponsors.webp?v={ASSET_VER}" alt="Thank you to all our sponsors, especially Lemon Press, SCA, The Inquirer and Mirror, White Elephant Nantucket, Cisco Brewers, N Magazine and Nantucket Current">
+{nmf_sponsor_links()}
     </div>
+{nmf_aux_sponsors()}
   </div>
 </section>"""
 
