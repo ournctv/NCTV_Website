@@ -1487,7 +1487,7 @@ SPORTS_VIDEOS = {
     "neutral field (as would the MIAA D3 Championship).<br><br>Our live coverage begins at 2:15 pm "
     "from Medfield High School coming to you live both on the NSC YouTube channel as well as on "
     "NCTV HD Channel 1072."
-    , True),
+    , False),
    ("g5oXhSrVYmA", "MIAA Div. 3 Round of 16: Nantucket Whalers Boys Soccer vs. Fairhaven Blue Devils - Nov. 11, 2026",
     "The Nantucket Sports Connection proudly continues our playoff coverage of Nantucket varsity "
     "boys soccer! The Whalers are through to the Sweet 16 as they face the Blue Devils of "
@@ -6301,6 +6301,7 @@ CIVIC_BOARDS = {
    ("lD_hiVvZU1s", "Oct. 27th, 2026 Nantucket Historic District Commission", 10),
    ("ZRsz4cxcoTQ", "Nov. 3rd, 2026 Nantucket Historic District Commission", 11),
    ("m3wQuYtQ0bw", "Nov. 10th, 2026 Nantucket Historic District Commission", 11),
+   ("npcGOPN29m0", "Nov. 17th, 2026 Nantucket Historic District Commission", 11),
   ],
  },
  "Finance Committee": {
@@ -7093,6 +7094,7 @@ CIVIC_BOARDS = {
    ("ujYlVLeSEzA", "Sep. 14th, 2026 Nantucket Planning Board", 9),
    ("yOk7KrY-3nw", "Sep. 30th, 2026 Zoning Board of Appeals and Planning Board Joint Meeting", 9),
    ("UWKCbpltIDk", "Oct. 19th, 2026 Nantucket Planning Board", 10),
+   ("EDVCixMtteg", "Nov. 16th, 2026 Nantucket Planning Board", 11),
   ],
  },
  "Select Board": {
@@ -7652,6 +7654,7 @@ CIVIC_BOARDS = {
    ("EGzgmcRU2zY", "Oct. 21st, 2026 Nantucket Select Board", 10),
    ("WKo4F_u1jXw", "Oct. 28th, 2026 Nantucket Select Board", 10),
     ("eh76nuJyXCY", "Nov. 4th, 2026 Nantucket Select Board", 11),
+   ("AnKZrPDcUjs", "Nov. 16th, 2026 Nantucket Select Board (Licensing &amp; Petitions)", 11),
   ],
  },
  "Zoning Board of Appeals": {
@@ -26099,6 +26102,130 @@ CIVIC_AGENDAS = {
   "pending</li><li>Clause 3: To discuss strategy with respect to collective bargaining or "
   "litigation if an open meeting may have a detrimental effect on the bargaining or litigating "
   "position of the public body and the chair so declares &ndash; LIUNA</li></ol></li></ol>",
+ "npcGOPN29m0":
+  "<p>Tuesday, November 17, 2026 at 4:00 P.M.</p><ol><li>COMMISSIONER "
+  "COMMENTS</li><li>COMMISSIONER DISCUSSION- VOTES MAY BE TAKEN<ol><li>Sign Advisory Council- "
+  "request to add an alternate member</li></ol></li><li>CONSENTS<ol><li>Jeff &amp; Densie "
+  "McCarthy 15595 2 Crestwood Cir 2nd driveway curb cut 76/77 Housing Nantucket RP</li><li>Nant "
+  "Isl Land Bank 15605 189 Eel Point Rd Move off to 77 Hummock Pond Rd 33/20 LINK RP</li><li>Eel "
+  "Point Rd Nom Tr 15604 77 Hummock Pond Rd Move on from 189 Eel Point Rd 56/311 LINK "
+  "RP</li></ol></li><li>CONSENT WITH CONDITIONS<ol><li>Selig, Adam 15540 3 Pochick Av Pergola "
+  "80/282 Natalie Cowger AM<ol><li>Due to lack of visibility. Must not be visible from publicly "
+  "traveled ways or public land at time of inspection and in "
+  "perpetuity.</li></ol></li></ol></li><li>COMMISSIONER Q &amp; A WITH PRESERVATION "
+  "PLANNER</li><li>OLD BUSINESS 11/17/2026<ol><li>100 Baxter Rd LLC 15527 100 Baxter Rd "
+  "Addition/Alter 48/42 Paul Beaulieu<ol><li>Commissioners: MacLeod (Acting Chair), Camp, Welch, "
+  "Thornewill and Paul; Alternates: Patten Last heard 10/27/2026</li></ol></li><li>Scrambled LLC "
+  "15427 47 Hulbert Ave Driveway 29/15 Atlantic Landscaping<ol><li>Commissioners: MacLeod (Acting "
+  "Chair), Camp, Welch, Oliver and Patten; Alternates: Thornewill, Paul Last heard "
+  "10/27/2026</li></ol></li><li>Earle, Brian 15428 8 Dunham St Pool hardscape 80/12 Atlantic "
+  "Landscaping<ol><li>Commissioners: MacLeod (Acting Chair), Camp, Welch, Thornewill and Oliver; "
+  "Alternates: Patten, Paul Last heard 10/27/2026</li></ol></li><li>Radioacktive LLC 15218 5 "
+  "Columbus Ave Pool hardscape 59.3/175 Studio Viburnum<ol><li>Commissioners: MacLeod (Acting "
+  "Chair), Pohl, Oliver, Thornewill, and Paul; Alternates: none Last heard "
+  "10/06/2026</li></ol></li><li>Borisov 15218 4 Rose Bud Ln Duplex 68/781 Sanne "
+  "Payne<ol><li>Commissioners: Pohl, MacLeod, Camp, Welch, and Paul Alternates: Thornewill Last "
+  "heard 11/03/2026</li></ol></li><li>Ward Gail, ETAL 15524 95 Hummock Pond Rd Rev. 15122; garage "
+  "demo/move off 56/309 JB Studio<ol><li>Commissioners: MacLeod (Acting Chair), Camp, Welch, Paul "
+  "and Patten; Alternates: Thornewill Last heard 10/27/2026</li></ol></li><li>Gary L Rogers 15340 "
+  "2 Wingspread Ln Main house 27/17 JB Studio<ol><li>Commissioners: Pohl, MacLeod, Camp, Oliver "
+  "and Paul; Alternates: none Last heard 10/20/2026</li></ol></li><li>Gary L Rogers 15341 2 "
+  "Wingspread Ln Garage 27/17 JB Studio<ol><li>Commissioners: Pohl, MacLeod, Camp, Oliver and "
+  "Paul; Alternates: none Last heard 10/20/2026</li></ol></li><li>Gary L Rogers 15342 2 "
+  "Wingspread Ln Pool house 27/17 JB Studio<ol><li>TRACK</li></ol></li><li>Three Sea St LLC 15275 "
+  "3 Sea St New Inn 42.4.2/54.2 Emeritus LTD<ol><li>Commissioners: Pohl, MacLeod, Camp, Oliver "
+  "and Welch; Alternates: Paul Last heard 11/03/2026</li></ol></li><li>Grey Lady Capital LLC "
+  "15201 8 Derry Ln New Dwelling 41/100 Emeritus LTD<ol><li>Commissioners; MacLeod (Acting "
+  "Chair), Welch, Oliver and Paul; Alternates: none Last heard 11/03/2026</li></ol></li><li>450 "
+  "Green Park LLC 14653 2 Stone Alley Railing/addition 42.3.1/102 Emeritus LTD<ol><li>Pohl "
+  "(Acting Chair), Welch, Camp, Oliver MacLeod; Alternates: Patten, Paul Last heard "
+  "11/03/2026</li></ol></li><li>Fairgrounds Rd LLC 15515 25 Fairgrounds Rd New Dwelling 67/151 "
+  "Emeritus LTD<ol><li>Commissioners; MacLeod (Acting Chair), Camp, Patten, Paul and Thornewill; "
+  "Alternates: none Last heard 10/27/2026</li></ol></li><li>Van Velle 13314 10 Maxey Pond Fence "
+  "40/100 CWA<ol><li>Commissioners; MacLeod (Acting Chair), Welch, Camp, Oliver, Thornewill; "
+  "Alternates: Patten, Paul Last heard 10/27/2026</li></ol></li></ol></li><li>OTHER "
+  "BUSINESS<ol><li>Approve Minutes October 20, 2026</li><li>Next HDC Meeting December 1, 2026- "
+  "New Business</li><li>Future Discussion Topics: Discussion on distinguishing between solid and "
+  "veneer brick on chimneys and foundations.</li><li>Classification of street trees &amp; "
+  "vegetation mapping.</li><li>Review policy of move/demo hearings in relation to new dwellings "
+  "and historic dwellings.</li><li>Hardscaping</li><li>Discussion of salvaging demos and options "
+  "for house moves.</li><li>Value of written submission and submission "
+  "deadlines.</li><li>Discussion on presentation of applications limited to prior approval or "
+  "existing; prior submitted and currently proposed.</li><li>3D "
+  "Renderings</li><li>Walkthroughs</li><li>Consents</li></ol></li></ol>",
+ "EDVCixMtteg":
+  "<p>Monday, November 16, 2026 at 4:00 PM.</p><ol><li>Call to order:</li><li>Approval of the "
+  "agenda:</li><li>Response to Written Public Comment from Nantucket Tipping Point, votes may be "
+  "taken</li><li>Public Comment: for items not listed on the "
+  "agenda</li><li>Minutes:<ol><li>October 19, 2026</li></ol></li><li>Secondary "
+  "Dwellings:<ol><li>Warren, Michael James Etal &ndash; 12 Madequecham Valley Road, CONTINUED TO "
+  "DECEMBER 14, 2026</li><li>11 Totts Hills LLC&ndash; 12 Trotts Hills Road</li><li>14 Sheep Pond "
+  "LLC &ndash; 14-16 Sheep Pond Road</li><li>Schaefer City 88 Nominee Trust &ndash; 49 New Street "
+  "(Siasconset)</li></ol></li><li>Approval Not Required (ANRs) - Plans:<ol><li>Jeffrey Kaschuluk "
+  "&amp; Therese Kaschuluk &ndash; 1-3-5-7-9 Van Gilder Avenue</li><li>Scott R. Herrmann &amp; "
+  "Laurie B. Herrmann &ndash; 2 Wamasquid Place</li><li>Nonantum 25 LLC, and Carmine &amp; Sheila "
+  "Giardini &ndash; 23, 25 &amp; 27 Nonantum Avenue</li><li>Gail Ward, Steven Conner, &amp; "
+  "Frederick Conner III &ndash; 95 Hummock Pond Road</li></ol></li><li>Previous Plans:<ol><li>16A "
+  "(16-1/2) Waydale Road &ndash; 3-6 Month Review</li><li>31 Fairgrounds Road (Wiggles Way), "
+  "Request for Release of Escrow funds</li><li>6 Oak Street, 8 Oak Street, 4 East Chestnut Street "
+  "(Queequeg&rsquo;s Restaurant) &ndash; Request for Minor modification to enclose existing "
+  "raised deck area, and relocate four exterior four seats to interior</li><li>1 Shawkemo Hills "
+  "Lane &ndash; Request for waiver of Building Envelope Restrictions and Consideration of Minor "
+  "Modification to Previously Approved Subdivision Plan</li></ol></li><li>Public "
+  "Hearings:<ol><li>Christopher H. Wofford &ndash; 20 Madequecham Valley Road, action deadline "
+  "12-13-2026, CONTINUED TO DECEMBER 14, 2026</li><li>Matt G. &amp; Ruby Fee &ndash; 2 &amp; 6 "
+  "Rugged Road and a portion of 56 Fairgrounds Road, action deadline 01-17-2027, CONTINUED TO "
+  "DECEMBER 14, 2026</li><li>Matt G. &amp; Ruby Fee &ndash; 2 Rugged Road &amp; 58 Fairgrounds "
+  "Road, action deadline 01-17-2026, CONTINUED TO DECEMBER 14, 2026</li><li>Callen Miller, Inc. "
+  "&ndash; 1 Cherry Street, action deadline 02-14-2027, CONTINUED TO DECEMBER 14, "
+  "2026</li><li>Forrest Avenue LLC &ndash; 6 Forrest Avenue, action deadline "
+  "02-14-2027</li><li>Ironie Nominee Trust: Johnathan D. Featherstone-Witty, Trustee &ndash; 69 "
+  "Fairgrounds Road, action deadline 12-13-2026</li><li>Scout Island Club, LLC &ndash; "
+  "&ldquo;Hensdale Club&rdquo; &ndash; 60, 62 &amp; 64 Old South Road, action deadline "
+  "01-17-2027</li><li>Paul &amp; Susan Belanger &ndash; 11 Williams Lane, action deadline "
+  "01-18-2027</li><li>9 Gingy Lane LLC, Ladybird Realty LLC &amp; 15 Gingy Lane LLC &ndash; 9, "
+  "13, and 15 Gingy Lane, action deadline 03-04-2027</li><li>27 Fairgrounds LLC &ndash; 27 "
+  "Fairgrounds Road, action deadline 02-14-2027</li><li>Diane Archer &ndash; 1 Weetamo Road, "
+  "action deadline 02-14-2027</li></ol></li><li>Other Business:<ol><li>Planning Board Regular "
+  "Meeting &ndash; Monday, December 14, 2026, at 4:00PM "
+  "Hybrid</li></ol></li><li>Adjournment:</li></ol>",
+ "AnKZrPDcUjs":
+  "<p>Monday, November 16, 2026 at 11:00 AM.</p><ol><li>CALL TO "
+  "ORDER</li><li>ANNOUNCEMENTS<ol><li>The Select Board Meeting is Being Audio and Video "
+  "Recorded.</li><li>Compliance Checks for Christmas Stroll and Holiday "
+  "Entertainment.</li></ol></li><li>LICENSING &ndash; DEPARTMENTAL REQUESTS<ol><li>Request for "
+  "Approval of Application for Change of Manager for Annual All-Alcoholic Beverages Restaurant "
+  "License for Servedwell Brotherhood, LLC dba The Brotherhood of Thieves from James T. "
+  "Strombino, Manager to Alexandra Calvanese, Manager, for Premises Located at 23 Broad "
+  "Street.</li><li>Request for Approval of Stroll One-Day Entertainment Permits for:<ol><li>Bar "
+  "Yoshi, 22 Old South Wharf</li><li>The Pearl/Boarding House, 12 Federal "
+  "Street</li><li>Billie&rsquo;s on Broad, 20 Broad Street</li><li>The Green Room, 17 Broad "
+  "Street (4 N. Water Street).</li></ol></li></ol></li><li>LICENSING &ndash; COMPLIANCE "
+  "HEARINGS<ol><li>Liquor License Compliance Hearing Pursuant to MGL Chapter 138, Section 26 for "
+  "Surfside Smokehouse LLC d/b/a B-Ack Yard BBQ, Frederick Bisaillon, Manager, for Premises "
+  "Located at 20 Straight Wharf for Violating Regulations Concerning Changes to License "
+  "Information, Managers, Officers and Directors (Request to Continue to December 14, "
+  "2026).</li></ol></li><li>LICENSING AND PETITIONS - PUBLIC HEARINGS<ol><li>Public Hearing to "
+  "Consider Application for New Seasonal All-Alcoholic Beverages Restaurant License for "
+  "Servedwell Straight Wharf, LLC d/b/a One Harbor, James T. Strobino, Manager, for Premises "
+  "Located at 1 Harbor Square (Continued from October 19, 2026).</li><li>Public Hearing to "
+  "Consider Application for New Non-Live Entertainment License for Servedwell Straight Wharf, LLC "
+  "d/b/a One Harbor, James T. Strobino, Manager, for Premises Located at 1 Harbor Square "
+  "(Continued from October 19, 2026).</li><li>Public Hearing to Consider Utility Petition from "
+  "Nantucket Electric Company/ National Grid, Plan #31374761 to Install Approximately 30&rsquo; "
+  "of 2-3&rdquo; Conduit Encased in Concrete from Pole 3 Across Gray Avenue to New Handhole (HH "
+  "3-2) for New Service to 7 Gray Avenue.</li><li>Public Hearing to Consider Utility Petition "
+  "from Nantucket Electric Company/ National Grid, Plan #30352439 to Install Approximately "
+  "1,056&rsquo; of 2-3&rdquo; Conduit Starting at Existing Vault Located Near the Base of Pole 45 "
+  "on Hummock Pond Road, Down Somerset Lane and Ending at Existing Junction MT1 on Somerset Lane "
+  "(Continued from March 16, 2026; April 27, 2026; May 18, 2026; September 28, 2026; Request to "
+  "Continue to December 14, 2025).</li><li>Public Hearing to Consider Utility Petition from "
+  "Nantucket Electric Company/ National Grid, Plan #31106075 to Install 2-3&rdquo; Conduit from "
+  "Existing Junction MT1 on Somerset Lane for Approximately 475&rsquo; and Ends at the Property "
+  "Line of 31 Somerset Lane; and, to Install 2-3&rdquo; Conduit Approximately 45&rsquo; Across "
+  "Somerset Lane Between Property Lines of 35 and 40 Somerset Lane (Continued from March 16, "
+  "2026; April 27, 2026; May 18, 2026; September 28, 2026; Request to Continue to December 14, "
+  "2025).</li></ol></li><li>ADJOURNMENT</li></ol>",
 }
 
 
@@ -32468,6 +32595,12 @@ CIVIC_DESCRIPTIONS = {
   "up 6 percent. Terminal optimization is back under contract and into design. The expanded "
   "environmental notification form went in on October 29 covering all twelve capital projects, "
   "and eight candidates have been interviewed for assistant airport manager.",
+ "npcGOPN29m0":
+  "Video description coming soon.",
+ "EDVCixMtteg":
+  "Video description coming soon.",
+ "AnKZrPDcUjs":
+  "Video description coming soon.",
 }
 
 
@@ -61844,8 +61977,11 @@ CPS_MISSION = (
 # "School Yr 26-27". The year comes from the date in each meeting's own title,
 # not the upload date.
 #
-# Excluded from the playlist: six meetings scheduled for later in the year that
-# have not happened yet, and two videos YouTube reports as unavailable.
+# Excluded from the playlist: the meetings scheduled further out than 48 hours,
+# and two videos YouTube reports as unavailable. Since 2026-11-16 a stream due
+# within 48 hours IS listed, carrying the placeholder description until it airs
+# -- Update_SV step 7. At the time of writing that leaves three scheduled
+# meetings off the page: December 1 and 15, 2026 and January 5, 2027.
 #
 # Descriptions were written from the auto-captions for the two most recent
 # school years only &mdash; 21 of those 22 meetings have captions. Note that the
@@ -62050,6 +62186,63 @@ AGENDA_2026_10_06 = (
  "<li>Sub-Committee / Work Group Report</li>"
  "<li>Agenda for the next meeting, October 20, 2026: workshop on the 2026 MCAS and "
  "accountability review and the school improvement plans</li>"
+ "<li>Adjournment</li>"
+ "</ol>"
+)
+
+# The agenda as posted with the Town Clerk for the 17 November 2026 meeting, fetched
+# while the meeting was still scheduled: Update_SV step 7 cards a stream due within
+# 48 hours, and the agenda is on CivicClerk days before the stream goes out.
+AGENDA_2026_11_17 = (
+ "<p>Tuesday, November 17, 2026 at 6:00 PM &mdash; held as a hybrid meeting in the Large "
+ "Group Instruction Room at Nantucket High School, 10 Surfside Road.</p>"
+ "<ol>"
+ "<li>Call to order</li>"
+ "<li>Welcome and approval of agenda</li>"
+ "<li>Announcement: this meeting is being audio and video recorded</li>"
+ "<li>Public Comment</li>"
+ "<li>Superintendent&rsquo;s Update"
+   "<ol><li>Student Enrollment</li><li>Transportation Update</li>"
+   "<li>Additional Updates</li></ol></li>"
+ "<li>Presentations and discussions of issues to the Committee"
+   "<ol>"
+   "<li>1st Quarter Budget Updates &mdash; Martin Anguelov, Chief Financial Officer</li>"
+   "<li>2026 MCAS/Accountability Review &mdash; Amanda Bardsley, Assistant "
+   "Superintendent</li>"
+   "<li>School Improvement Plans &mdash; Nantucket Elementary School Principal Michael "
+   "Stanton, Nantucket Intermediate School Principal Becky Janda, Cyrus Peirce Middle "
+   "School Principal Michael Horton, and Nantucket High School Principal Mandy "
+   "Hilemn</li>"
+   "</ol></li>"
+ "<li>Committee discussions and votes to be taken"
+   "<ol>"
+   "<li>Vote to approve goods and services donated by the Nantucket Babe Ruth Little "
+   "League Baseball Program for additional work at the Backus Lane baseball field</li>"
+   "<li>Vote to appoint Dr. Timothy Lepore as the School Physician for Nantucket Public "
+   "Schools</li>"
+   "<li>Vote to approve the NHS overnight field trip to NYC April 1 &ndash; April 4, "
+   "2027</li>"
+   "<li>Vote to approve the donation from Stop and Shop to the CPS gift account for "
+   "$184.00</li>"
+   "<li>Vote to approve $1,304.77 from Hayward Photography to the CPS gift account</li>"
+   "<li>Vote to approve the donation from Community Solutions for Behavioral Health to "
+   "Nantucket Community School Early Childhood program for $500.00</li>"
+   "<li>Vote to approve the donation of books to the Nantucket Community School Early "
+   "Childhood program, valued at $3,375.00 from Kate and Logan Ferrucci</li>"
+   "<li>Vote to approve the donation from the Nantucket Athletic Association for "
+   "$6,000.00, to the Nantucket Community School, Family swim program</li>"
+   "<li>Vote to approve the NIS Outdoor Classroom (Yarmouth Port, MA) overnight field "
+   "trip on June 7, 2027 &ndash; June 10, 2027</li>"
+   "<li>Vote to approve the September 1, 2026 Meeting Minutes</li>"
+   "<li>Vote to approve the September 15, 2026 Meeting Minutes</li>"
+   "<li>Vote to approve the October 6, 2026 Meeting Minutes</li>"
+   "<li>Vote to approve Transfers &amp; Invoices</li>"
+   "</ol></li>"
+ "<li>Student Council Representatives &mdash; Natalie Penkova and Tomas Young</li>"
+ "<li>Sub-Committee / Work Group Report</li>"
+ "<li>Agenda for the next meeting, December 1, 2026: student enrollment, the future "
+ "school calendar, the annual report, a community school update, a federal grants "
+ "update and the preliminary budget forecast</li>"
  "<li>Adjournment</li>"
  "</ol>"
 )
@@ -64286,6 +64479,9 @@ NPS_COMMITTEE = {
   "vote needed by December for next year&rsquo;s ninth graders, and separate provision for "
   "students on education plans and for English learners.",
   None, None, AGENDA_2026_10_06),
+ ("GnDxbAp12gg", "Nov. 17th, 2026 School Committee",
+  "Video description coming soon.",
+  None, None, AGENDA_2026_11_17),
  ],
 }
 
@@ -65995,6 +66191,30 @@ CPS_PULSE = {
   "the mechanics of impeachment. The movie reviewer opens the slot to viewer suggestions on a "
   "monthly theme, and the episode closes with thanks to the athletic director, the boosters and "
   "the volunteers behind Friday&rsquo;s pep rally, pig roast and bonfire."),
+ ("Yvuq0c2utN4", "Episode 7, Nov. 13th, 2026",
+  "The top story is Project 351: two eighth graders will represent Cyrus Peirce as this "
+  "year&rsquo;s ambassadors to the youth-led service program, which brings together eighth "
+  "graders from all 351 Massachusetts cities and towns, and they will organize a clothing drive "
+  "for the school in the spring. The Nantucket Island Chamber of Commerce brings back its "
+  "Christmas Eve red ticket drawing, one ticket for every $25 spent at a participating local "
+  "business, with five prizes of $1,000 and one of $5,000 drawn on Main Street. A yearbook club "
+  "opens to students in grades six through eight, meeting Wednesdays in the guidance suite. The "
+  "wind turbine at Nantucket High School is back in service after more than a month out: a power "
+  "surge during the September nor&rsquo;easter damaged its control boards, which the Ohio "
+  "company that services them has now repaired. It supplies 12 to 15 percent of the "
+  "school&rsquo;s electricity and saves about $35,000 a year. On the sports desk the fall season "
+  "is over and winter tryouts are set for the end of November and the start of December, while "
+  "at the high school boys varsity soccer beats Pentucket 5&ndash;1 and Fairhaven 3&ndash;1 to "
+  "reach the MIAA Division 3 quarterfinals and travels to Medfield on Saturday. A special report "
+  "explains the Dominican Republic&rsquo;s professional winter baseball league, its six clubs, "
+  "the standings as they stand and the best-of-seven final. The entertainment report covers the "
+  "weekend&rsquo;s films at the Dreamland, a surf and turf dinner at St. Mary&rsquo;s, hands-on "
+  "nature crafts at the Maria Mitchell Association&rsquo;s science museum, the twelfth Run for "
+  "Robin 5K on November 22nd, the Cold Turkey Plunge at Children&rsquo;s Beach on Thanksgiving "
+  "and the third annual Clam Jam at Cisco Brewers. The politics segment covers a change of White "
+  "House chief of staff, an investigation opened by Nvidia&rsquo;s board and an impeachment "
+  "effort against the Defense Secretary led by a Kentucky congressman, and the movie reviewer "
+  "gives the stop-motion feature <cite>Wildwood</cite> 4.9 out of five."),
  ],
 }
 
