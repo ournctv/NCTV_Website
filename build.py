@@ -7655,6 +7655,7 @@ CIVIC_BOARDS = {
    ("WKo4F_u1jXw", "Oct. 28th, 2026 Nantucket Select Board", 10),
     ("eh76nuJyXCY", "Nov. 4th, 2026 Nantucket Select Board", 11),
    ("AnKZrPDcUjs", "Nov. 16th, 2026 Nantucket Select Board (Licensing &amp; Petitions)", 11),
+   ("g1yhWgCqeeU", "Nov. 18th, 2026 Nantucket Select Board", 11),
   ],
  },
  "Zoning Board of Appeals": {
@@ -26226,6 +26227,57 @@ CIVIC_AGENDAS = {
   "Somerset Lane Between Property Lines of 35 and 40 Somerset Lane (Continued from March 16, "
   "2026; April 27, 2026; May 18, 2026; September 28, 2026; Request to Continue to December 14, "
   "2025).</li></ol></li><li>ADJOURNMENT</li></ol>",
+ "g1yhWgCqeeU":
+  "<p>Wednesday, November 18, 2026 at 5:30 PM.</p><ol><li>CALL TO ORDER</li><li>SELECT BOARD "
+  "ACCEPTANCE OF AGENDA</li><li>ANNOUNCEMENTS<ol><li>The Select Board Meeting is Being Audio and "
+  "Video Recorded.</li><li>Annual Recognition of Municipal Employees Years of Service "
+  "Acknowledgement.</li><li>Recognition of Retiring Sewer Director David C. Gray "
+  "Sr.</li><li>Thanksgiving Holiday No Select Board Meeting on Wednesday, November 25, 2026; Town "
+  "Offices Closed on Thursday, November 26, 2026. Next Select Board Meeting on Wednesday, "
+  "December 2, 2026.</li><li>Public Restrooms at Visitor Services Building, 22 Federal Street "
+  "Will be Closed for Renovations as of Monday, December 7th. Alternatives Will be Posted at the "
+  "Building.</li><li>Select Board Announcements/Comments.</li></ol></li><li>UPDATE ON PUBLIC "
+  "COMMENT QUESTIONS FROM PRIOR SELECT BOARD MEETINGS (see "
+  "https://nantucket-ma.gov/3788/2026-Public-Comment-Questions-Responses)</li><li>PUBLIC "
+  "COMMENT*</li><li>NEW BUSINESS**</li><li>APPROVAL OF MINUTES, WARRANTS AND PENDING "
+  "CONTRACTS<ol><li>Approval of Minutes of November 4, 2026 at 5:30 PM; November 5, 2026 at 9:00 "
+  "AM.</li><li>Approval of Payroll Warrants for November 8, 2026.</li><li>Approval of Treasury "
+  "Warrants for November 11, 2026; November 18, 2026.</li><li>Approval of Pending Contracts for "
+  "November 18, 2026 - as Set Forth on the Spreadsheet Identified as Exhibit 1, Which Exhibit is "
+  "Incorporated Herein by Reference.</li></ol></li><li>CITIZEN/DEPARTMENTAL/COMMITTEE "
+  "REQUESTS/REPORTS<ol><li>Request for Acceptance of Gift of Sidewalk Reconstruction in Town "
+  "Right-of-Way at 14 Milk Street Valued at $5,295.</li><li>Housing Department: Request for "
+  "Approval of Nantucket Affordable Housing Trust Funding Authorization to Continue &ldquo;Lease "
+  "to Locals&rdquo; Program.</li><li>Energy Coordinator: Review of and Request for Approval of "
+  "Net Metering Credit Agreements.</li></ol></li><li>REAL ESTATE<ol><li>Request for Approval and "
+  "Execution of Documents Regarding New Our Island Home Facility: (1) Massachusetts Natural "
+  "Heritage and Endangered Species Program (NHESP) Return to Compliance Agreement Acceptance by "
+  "Town of Nantucket, Including Authorization for Payments Required Therein; (2) Memorandum of "
+  "Understanding between Nantucket Islands Land Bank and Town of Nantucket for Land Management "
+  "Requirements; (3) Declaration of Restriction Between NHESP and Town of Nantucket over "
+  "Restricted Land Identified on Exhibit Plan; and (4) Escrow Letter to NHESP.</li><li>Request "
+  "for Approval and Execution of Closing Documents Regarding New Our Island Home Facility Between "
+  "Town of Nantucket and The Residences at Sherburne Commons, Inc.: (1) 2026 Amended and Restated "
+  "Sherburne Commons Ground Lease; (2) Second Amendment to the Master Deed for Sherburne Commons "
+  "Leasehold Condominium; and (3) Amendment to the Amended Memorandum of Understanding between "
+  "Town of Nantucket and Residences at Sherburne Commons, Inc. (4) Closing Settlement "
+  "Statement.</li><li>Request for Approval and Execution of Documents Regarding Egan Lane: (1) "
+  "Memorandum of Understanding between County of Nantucket, Town of Nantucket and Center Place "
+  "Homeowners Association Regarding Obligations and Requirements in Conjunction with Easement "
+  "Taking and Layout of Egan Lane by County of Nantucket; and (2) Acceptance of Grant of Right of "
+  "Enforcement of Restrictions by Town of Nantucket from Owners of Lots 504&ndash;517 on Land "
+  "Court Plan 16514-23 and Trustees of Center Place Homeowners Association Trust, Contingent upon "
+  "County&rsquo;s Adoption of Order of Layout and Order of Taking of Easements in Egan "
+  "Lane.</li><li>Request for Approval and Execution of Assent to Real Estate Transfer Between 9 "
+  "Myles Standish Street and 44 Nonantum Avenue.</li></ol></li><li>PUBLIC HEARINGS<ol><li>Public "
+  "Hearing to Consider Amending Town Regulations Chapter 375, Traffic to Increase Overtime "
+  "Parking Fines from Current $25 to $50.</li></ol></li><li>TOWN MANAGER&rsquo;S "
+  "REPORT<ol><li>Sustainability Projects Manager: Presentation of Sediment Transport Study and "
+  "10-Year Harbors Dredge Plan Draft Report.</li><li>Continued Review and/or Adoption of Capital "
+  "Improvement Plan for FY 2028 and/or FY 2028 -2037.</li><li>Monthly Town Management "
+  "Report.</li></ol></li><li>SELECT BOARD REPORTS/COMMENT<ol><li>Review and Approval of Proposed "
+  "2027 Select Board Meeting Schedule.</li><li>Committee "
+  "Reports.</li></ol></li><li>ADJOURNMENT</li></ol>",
 }
 
 
@@ -32600,6 +32652,24 @@ CIVIC_DESCRIPTIONS = {
  "EDVCixMtteg":
   "Video description coming soon.",
  "AnKZrPDcUjs":
+  "The Stroll one-day entertainment permits take about twenty-five minutes, the longest item. "
+  "Staff note that such requests will go on consent agendas in future. One applicant withdraws "
+  "its request after staff recommend denial, another asks only for a tent, and two more want a DJ "
+  "indoors. Members object that restaurants are trying to be nightclubs for one weekend a year, "
+  "and the board votes five to zero to allow the outdoor tents and igloos subject to building and "
+  "fire approval while denying both DJ requests. The entertainment license for One Harbor runs "
+  "nearly twenty minutes. A resident who keeps a boat nearby objects to gazebo music carrying to "
+  "1 a.m., and the board grants a non-live license with all outdoor speakers and televisions off "
+  "at 10 p.m., aligning the premises with the noise bylaw; two older licenses remain exceptions. "
+  "Announcements cover compliance checks with the fire department before Stroll, no one-day "
+  "pouring permits that weekend, and a proposal to close additional streets, which members set "
+  "aside for this year. The seasonal all-alcoholic license for the same premises passes four to "
+  "zero with one recusal, conditional on the previous tenant&rsquo;s unsurrendered license "
+  "expiring or transferring by January 15. A change of manager at 23 Broad Street is approved, "
+  "and the Gray Avenue utility petition carries with the staff conditions after a member objects "
+  "to cutting the pavement rather than boring beneath it. Three matters are continued to December "
+  "14.",
+ "g1yhWgCqeeU":
   "Video description coming soon.",
 }
 
