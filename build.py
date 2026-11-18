@@ -4141,17 +4141,15 @@ NEWS = [
           "in Nashua, NH",
       body='NCTV&rsquo;s Station Mgr. Charles Douglas &amp; Lead Sports Broadcaster Chris Morris '
            'represented NCTV in Nashua, NH at the 2026 Nor&rsquo;Easters Awards, which recognizes '
-           'excellence in community TV stations across the Northeast. Despite NCTV&rsquo;s small '
-           'size, we won 1st place in 3 categories! Chris Morris won the Rika Welsh Community '
-           'Impact Award for his accomplishments at NCTV&rsquo;s Nantucket Sports Connection, '
-           'NCTV won the &ldquo;About Access and Community Media&rdquo; competition for our '
-           '&ldquo;2025 Year in Review&rdquo; video (to watch, <a '
+           'excellence in community TV stations across the Northeast. We won 1st place in 3 '
+           'categories! Chris Morris won the Rika Welsh Community Impact Award for his '
+           'accomplishments at NCTV&rsquo;s Nantucket Sports Connection, NCTV won the '
+           '&ldquo;About Access and Community Media&rdquo; competition for our &ldquo;2025 Year '
+           'in Review&rdquo; video (to watch, <a '
            'href="https://www.youtube.com/watch?v=gLR1LHdrNTo" target="_blank" '
            'rel="noopener">click here</a>), and NCTV won the &ldquo;PSA/Short Program&rdquo; '
            'competition for our promo for the Nantucket Booster Club (to watch, <a '
-           'href="https://youtu.be/3-_r6scBw9M" target="_blank" rel="noopener">click here</a>). '
-           'Thank you to everyone that worked with us to make these projects so successful. These '
-           'awards are yours too!'),
+           'href="https://youtu.be/3-_r6scBw9M" target="_blank" rel="noopener">click here</a>).'),
 
  dict(img="news-chris-receiving-award.webp", date="11/17/26",
       alt="Chris Morris stands between two other men in a hotel function "
