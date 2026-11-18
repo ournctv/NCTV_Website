@@ -4134,6 +4134,36 @@ AWARD_PRESS_RELEASE = (
 )
 
 NEWS = [
+ dict(img="news-charles-chris-receiving-awards.webp", date="11/17/26",
+      alt="Four men stand together at the front of a function room, one in a jacket with his arm "
+          "around another, while people watch from tables in the foreground. Caption: Charles "
+          "Douglas &amp; Chris Morris receive 3 awards for NCTV at the Nor&rsquo;Easters Awards "
+          "in Nashua, NH",
+      body='NCTV&rsquo;s Station Mgr. Charles Douglas &amp; Lead Sports Broadcaster Chris Morris '
+           'represented NCTV in Nashua, NH at the 2026 Nor&rsquo;Easters Awards, which recognizes '
+           'excellence in community TV stations across the Northeast. Despite NCTV&rsquo;s small '
+           'size, we won 1st place in 3 categories! Chris Morris won the Rika Welsh Community '
+           'Impact Award for his accomplishments at NCTV&rsquo;s Nantucket Sports Connection, '
+           'NCTV won the &ldquo;About Access and Community Media&rdquo; competition for our '
+           '&ldquo;2025 Year in Review&rdquo; video (to watch, <a '
+           'href="https://www.youtube.com/watch?v=gLR1LHdrNTo" target="_blank" '
+           'rel="noopener">click here</a>), and NCTV won the &ldquo;PSA/Short Program&rdquo; '
+           'competition for our promo for the Nantucket Booster Club (to watch, <a '
+           'href="https://youtu.be/3-_r6scBw9M" target="_blank" rel="noopener">click here</a>). '
+           'Thank you to everyone that worked with us to make these projects so successful. These '
+           'awards are yours too!'),
+
+ dict(img="news-chris-receiving-award.webp", date="11/17/26",
+      alt="Chris Morris stands between two other men in a hotel function "
+          "room, holding a small square glass award. Caption: Chris Morris "
+          "receives his Community Impact Award at the 2026 Nor&rsquo;Easters "
+          "Awards",
+      body='NCTV&rsquo;s Lead Sports Broadcaster Chris Morris traveled to Nashua, NH to attend '
+           'the 2026 Nor&rsquo;Easters, an awards ceremony celebrating accomplishments by '
+           'community TV stations in the Northeast. In this photo, Chris is receiving the Rika '
+           'Welsh Community Impact Award which recognizes an individual who has supported his/her '
+           'community in remarkable ways by using his/her community TV station.'),
+
  dict(img="news-soccer-playoff-medfield.webp", date="11/13/26",
       alt="The Nantucket Sports Connection logo above the word Presents, "
           "beside an MIAA Quarter Finals mark, over a green soccer pitch, "
@@ -5195,6 +5225,7 @@ CIVIC_BOARDS = {
    ("k8iFr3QMnbg", "Aug. 20th, 2026 Nantucket Board of Health", 8),
    ("PHNa9pkgGfg", "Sep. 17th, 2026 Nantucket Board of Health", 9),
    ("H2eZEov95CM", "Oct. 15th, 2026 Nantucket Board of Health", 10),
+   ("VbVDQ1ScJkc", "Nov. 19th, 2026 Nantucket Board of Health", 11),
   ],
  },
  "Conservation Commission": {
@@ -5570,6 +5601,7 @@ CIVIC_BOARDS = {
    ("jQngdY2OANo", "Oct. 22nd, 2026 Conservation Commission (Special Meeting)", 10),
    ("dNyUHzwdMDU", "Oct. 29th, 2026 Nantucket Conservation Commission", 10),
    ("90lq9haY6CU", "Nov. 5th, 2026 Nantucket Conservation Commission", 11),
+   ("LKwMi8nBWYk", "Nov. 19th, 2026 Nantucket Conservation Commission", 11),
   ],
  },
  "Historic District Commission": {
@@ -7882,6 +7914,7 @@ CIVIC_BOARDS = {
    ("HVZ8kDaO14c", "Sep. 10th, 2026 Nantucket Zoning Board of Appeals", 9),
    ("yOk7KrY-3nw", "Sep. 30th, 2026 Zoning Board of Appeals and Planning Board Joint Meeting", 9),
    ("6p7jYuqnryc", "Oct. 15th, 2026 Nantucket Zoning Board of Appeals", 10),
+   ("jlSpuMfxC2A", "Nov. 19th, 2026 Nantucket Zoning Board of Appeals", 11),
   ],
  },
 }
@@ -26278,6 +26311,104 @@ CIVIC_AGENDAS = {
   "Report.</li></ol></li><li>SELECT BOARD REPORTS/COMMENT<ol><li>Review and Approval of Proposed "
   "2027 Select Board Meeting Schedule.</li><li>Committee "
   "Reports.</li></ol></li><li>ADJOURNMENT</li></ol>",
+ "jlSpuMfxC2A":
+  "<p>Thursday, November 19, 2026 at 1:00 PM.</p><ol><li>CALL TO ORDER:</li><li>APPROVAL OF THE "
+  "AGENDA:</li><li>PUBLIC COMMENT for items not listed on the agenda:</li><li>APPROVAL OF "
+  "MINUTES:<ol><li>OCTOBER 15, 2026</li></ol></li><li>OLD BUSINESS (VOTES MAY BE "
+  "TAKEN):<ol><li>2026-0044 7 Orange Street LLC 7 Orange Street Cohen Sitting: SM, EA, LB, JB, TG "
+  "Continued to December 10, 2026 The Applicant seeks relief by Variance pursuant to Nantucket "
+  "Zoning By-law &sect; 139-17(A). to permit a maximum building and structure height of up to "
+  "thirty-two (32) feet. Locus is situated at 7 Orange Street and shown on Assessor&rsquo;s Map "
+  "42.3.1 as Parcel 149.1 and as Lot 30 on Land Court Plan 2023-9. Evidence of Owner&rsquo;s "
+  "title is registered in Plan Book 2069 Page 220 at the Nantucket County Registry of Deeds. The "
+  "site is zoned Residential Old Historic (ROH).</li><li>2026-0046 Michael James Warren &amp; "
+  "Lynn Karen Taliento 12 Madequecham Valley Road Reade Continued to December 10, 2026 The "
+  "Applicants seek Variance relief pursuant to Nantucket Zoning By-law Section 139-32 from the "
+  "front yard setback requirement of 35 feet to relocate the existing single-family dwelling "
+  "approximately 61 feet from the top of the eroding coastal bank to the south, and to construct "
+  "a secondary dwelling with a 4.1&plusmn; foot setback. Locus is situated at 12 Madequecham "
+  "Valley Road, shown on Assessor&rsquo;s Map 89 as Parcel 12 and as Lot 8 on Land Court Plan "
+  "14990-F. Evidence of Owner&rsquo;s title is registered as Certificate of Title No. 28679 at "
+  "the Nantucket Registry District of Land Court. The site is zoned Limited Use General-3 "
+  "(LUG-3).</li></ol></li><li>OTHER (VOTES MAY BE TAKEN)<ol><li>ZBA regular meeting, Thursday, "
+  "December 10, 2026, at 1 PM in person and via Zoom</li><li>Election of Officers<ol><li>Chair "
+  "(currently Susan McCarthy)</li><li>Vice Chair (currently John Brescher)</li><li>Secretary "
+  "(currently Elisa Allen)</li></ol></li><li>2027 Meeting Schedule</li></ol></li><li>ADJOURNMENT "
+  "(VOTES WILL BE TAKEN)</li></ol>",
+ "VbVDQ1ScJkc":
+  "<p>Thursday, November 19, 2026 at 4:00 PM.</p><ol><li>Call to Order</li><li>Establishment of "
+  "Quorum</li><li>Acceptance of Agenda</li><li>Announcements<ol><li>This Board of Health meeting "
+  "is being audio and video recorded.</li></ol></li><li>Public Comment*</li><li>New "
+  "Business**</li><li>Approval of Minutes<ol><li>Approval of Minutes of October 15, "
+  "2026</li></ol></li><li>Director&rsquo;s Report***<ol><li>The concentration of SARS-CoV-2, the "
+  "virus that causes COVID-19, in Nantucket wastewater spiked on October 26, 2026, before "
+  "returning closer to the regional and national averages on November 2, 2026. Viral "
+  "concentrations for Influenza A and Respiratory Syncytial Virus remain low. Influenza B has not "
+  "been detected since June.</li><li>Fall 2026 respiratory virus vaccination updates.</li><li>The "
+  "Public Health Director and one Inspector attended the Annual Conference of the Massachusetts "
+  "Health Officers Association in Springfield, MA (October 28&ndash;30).</li><li>Recognition and "
+  "appreciation of Jake Visco&rsquo;s five years of service with the Department of "
+  "Health.</li></ol></li><li>PFAS<ol><li>Environmental Contamination Administrator "
+  "Update<ol><li>PFAS refresher for Board of Health</li><li>Overview of recent private well PFAS "
+  "data</li></ol></li></ol></li><li>Variance Requests<ol><li>10 Village Way&mdash;Variance "
+  "request for location of soil absorption system from Board of Health Regulation Chapter "
+  "332-19A, setback to a private well supply, and Local Upgrade Approval for soil absorption "
+  "system to property line, cellar wall, and private water supply well.</li><li>10 Maxey Pond "
+  "Road&mdash;Variance request from Board of Health Regulation Chapter 288-5.1, not to upgrade to "
+  "an I/A System upon new construction.</li><li>83 Squam Road&mdash;Variance request from Board "
+  "of Health Regulation Chapter 327-2 requiring a soil absorption system to be located more than "
+  "100 feet from a wetland.</li><li>4 Golfview Drive&mdash;Variance setback request for a soil "
+  "absorption system to a crawl space (310 CMR 15.211) and Board of Health Regulation Chapter "
+  "386-6E requiring 300 foot separation from a soil absorption system to a downgradient "
+  "well.</li><li>Next Level Watersports&mdash;Variance requests from 105 CMR 430.000 Recreational "
+  "Camps for Children: 105 CMR 430.161(A), 430.360, 430.370, 430.373, 430.379, 430.300, "
+  "430.450(C), 430.457.</li></ol></li><li>Other Action / Discussion Items<ol><li>Memorandum of "
+  "Understanding between Lea Hamner and the Nantucket Board of Health authorizing access to the "
+  "Massachusetts Virtual Epidemiologic Network for the purpose of tick-borne and vector-borne "
+  "disease surveillance and data analysis.</li></ol></li><li>Date and Time of Next "
+  "Meeting<ol><li>Thursday, December 17, 2026, at 4:00 pm</li></ol></li><li>Adjournment</li></ol>",
+ "LKwMi8nBWYk":
+  "<p>Thursday, November 19, 2026 at 5:00 P.M.</p><ol><li>Call To Order</li><li>Acceptance of the "
+  "Agenda</li><li>Announcements<ol><li>The Nantucket Conservation Commission Meeting is being "
+  "audio and Video Recorded.</li></ol></li><li>Update on Public Comment Questions from Prior "
+  "Meetings</li><li>Public Comment</li><li>Public Hearing<ol><li>Notice of Intent- No Waiver "
+  "Required<ol><li>*95 HPR ACK, LLC- 95 Hummock Pond Road (56-309) SE48-4010 "
+  "(Carew)</li><li>*Berkeley Heights, LLC- 6 Berkeley Avenue (54-150) SE48-4008 "
+  "(Rits)</li></ol></li><li>Notice of Intent- Waiver Required<ol><li>Nantucket Islands Land Bank- "
+  "Falmouth Avenue Relocation (82-30) NAN-144 (Phelps)</li><li>Ven Den Born- 145 Wauwinet Road "
+  "(11-7) SE48-3990 (Rits)</li><li>Town of Nantucket-130 Tom Nevers Road (91-109) SE48-4007 "
+  "(McComb)</li><li>*Britannia Nantucket, Inc.- 83 Squam Road (13-5 &amp; 4.3) SE48-4009 "
+  "(Rits)</li></ol></li><li>Amended Orders of Conditions- No Waiver Required<ol><li>*2 Shore "
+  "Nantucket, LLC- 2 Shore Road (55.1.4-4.1) SE48-3963 (Santos)</li></ol></li><li>Amended Orders "
+  "of Conditions- Waiver Required<ol><li>*Tork ACK, LLC- 1 Mothball Way (83-42.4) SE48-3844 "
+  "(Santos)</li></ol></li></ol></li><li>Public Meeting<ol><li>Orders of Conditions/ Amended "
+  "Orders of Conditions- No Waiver Required<ol><li>*95 HPR ACK, LLC- 95 Hummock Pond Road "
+  "(56-309) SE48-4010 (Carew)</li><li>*Berkeley Heights, LLC- 6 Berkeley Avenue (54-150) "
+  "SE48-4008 (Rits)</li><li>*2 Shore Nantucket, LLC- 2 Shore Road (55.1.4-4.1) SE48-3963 "
+  "(Santos)</li></ol></li><li>Orders of Conditions/ Amended Orders of Conditions- Waiver "
+  "Required<ol><li>Nantucket Islands Land Bank- Falmouth Avenue Relocation (82-30) NAN-144 "
+  "(Phelps)</li><li>Ven Den Born- 145 Wauwinet Road (11-7) SE48-3990 (Rits)</li><li>Town of "
+  "Nantucket-130 Tom Nevers Road (91-109) SE48-4007 (McComb)</li><li>*Britannia Nantucket, Inc.- "
+  "83 Squam Road (13-5 &amp; 4.3) SE48-4009 (Rits)</li><li>Nantucket Maria Mitchell Association, "
+  "LLC- 27, 25R Washington Street &amp; 10 Coffin Street (42.3.2-79, 80, &amp; 81) SE48-3682 "
+  "(Madden)</li><li>*Tork ACK, LLC- 1 Mothball Way (83-42.4) SE48-3844 "
+  "(Santos)</li></ol></li><li>Request for Determination of Applicability- Delineation Only "
+  "(none)</li><li>Request for Determination of Applicability- Work Requested (none)</li><li>Minor "
+  "Modifications (none)<ol><li>32 Hulbert Trust- 32 Hulbert Avenue (29-72) SE48-3714 "
+  "(Gasbarro)</li><li>McCausland- 10 Smooth Hummocks Way (82-12) SE48-3897 "
+  "(Gasbarro)</li><li>Birch Family Investments, LLC- 198 Hummock Pond Road (65-29) SE48-4003 "
+  "(Rits)</li><li>Scrambled LLC- 47 Hulbert Avenue (29-15) SE48-3935 "
+  "(Santos)</li></ol></li><li>Certificate of Compliance<ol><li>72 Pocomo Nominee Trust- 72 Pocomo "
+  "Road (15-37) SE48-3878 (Gasbarro)</li><li>Seven Pines LLC- 78 Pocomo Road (15-39) SE48-3879 "
+  "(Gasbarro)</li><li>The Peterson Trust- 8 Jefferson Avenue (29-49) SE48-3936 "
+  "(Gasbarro)</li><li>ERG RGH, LLC- 119 Eel Point Road (33-17.2) SE48-3437 "
+  "(Santos)</li></ol></li><li>Extension Requests (none)</li><li>Other Business<ol><li>Approval of "
+  "Minutes 11/05/2026</li><li>Approval of Conservation Commission Meeting Schedule "
+  "2027</li><li>Monitoring Reports</li><li>Committee Reports- CRAC, CPC, NP &amp; EDC, Harbor "
+  "Plan, etc.</li><li>Enforcement Actions/Potential Enforcement Actions - 27 Washington Street - "
+  "21R Madaket Road - 16 Meadow Lane - Discussion on potential avenue for the Baxter Road Geotube "
+  "Repair and Maintenance (cont 01/28)</li><li>Commissioner Comments</li><li>Staff "
+  "Reports</li></ol></li></ol></li></ol>",
 }
 
 
@@ -32650,7 +32781,23 @@ CIVIC_DESCRIPTIONS = {
  "npcGOPN29m0":
   "Video description coming soon.",
  "EDVCixMtteg":
-  "Video description coming soon.",
+  "The parking layout at 27 Fairgrounds Road takes more than an hour, over two-fifths of the "
+  "meeting. Counsel for the restaurant argues that the fifteen spaces beside the building, "
+  "separated from the boundary by a driveway, form a second parking area not subject to the "
+  "ten-foot planted strip. Abutters describe headlights, noise and the loss of the vegetation "
+  "that screened them, say the work was done without permits, and ask that the application be "
+  "denied. The board treats the lot as one parking area and waives the buffer across the front. "
+  "The waiver is conditioned on a stockade fence running from ten feet inside the frontage to the "
+  "rear corner, plantings to deaden sound, the back door kept shut during events, a certificate "
+  "of water quality compliance, a drainage plan filed with staff, and June as the deadline. It "
+  "carries unanimously. The Hensdale Club on Old South Road returns for a quarter of an hour with "
+  "the peer review traffic report newly in hand, and is continued. A request for feedback on the "
+  "restricted lots at 9, 13 and 15 Gingy Lane runs about twenty minutes; members are reluctant to "
+  "lift a restriction the subdivision was approved under, and it is continued as well. A second "
+  "curb cut at 1 Weetamo Road waits on a letter from the homeowners association. The three-lot "
+  "subdivision at 11 Williams Lane is approved with conditions and a sidewalk contribution of "
+  "$2,500 per dwelling unit. Four further hearings go to December 14, and 69 Fairgrounds Road is "
+  "withdrawn without prejudice.",
  "AnKZrPDcUjs":
   "The Stroll one-day entertainment permits take about twenty-five minutes, the longest item. "
   "Staff note that such requests will go on consent agendas in future. One applicant withdraws "
@@ -32670,6 +32817,12 @@ CIVIC_DESCRIPTIONS = {
   "to cutting the pavement rather than boring beneath it. Three matters are continued to December "
   "14.",
  "g1yhWgCqeeU":
+  "Video description coming soon.",
+ "jlSpuMfxC2A":
+  "Video description coming soon.",
+ "VbVDQ1ScJkc":
+  "Video description coming soon.",
+ "LKwMi8nBWYk":
   "Video description coming soon.",
 }
 
