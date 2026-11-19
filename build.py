@@ -32777,7 +32777,27 @@ CIVIC_DESCRIPTIONS = {
   "environmental notification form went in on October 29 covering all twelve capital projects, "
   "and eight candidates have been interviewed for assistant airport manager.",
  "npcGOPN29m0":
-  "Video description coming soon.",
+  "This summary skips many topics because of the quantity discussed; some principal topics "
+  "include: a fence at 10 Maxey Pond Road, three applications at 2 Wingspread Lane, and a duplex "
+  "at 4 Rose Bud Lane. The fence closes the meeting and takes the longest, close to half an hour "
+  "on its third hearing. The line has been pulled twelve to fifteen feet back from the boundary, "
+  "the mesh opened to six-inch squares and the height dropped from seven feet to six where the "
+  "fence sits on a berm, with staked photographs shown from an adjoining burial ground and from "
+  "Land Bank land. Members ask for a minimum fifteen-foot setback from the burial ground, a more "
+  "serpentine line, and the fence on the house side of the berm rather than on top of it. A dark "
+  "green metal post is preferred to a five-and-a-half-inch wooden one, with a sample wanted in "
+  "place first. It is held for revisions. 2 Wingspread Lane is heard as a main house, a garage "
+  "and a pool house in one block of some twenty-seven minutes. The roofline is simplified, the "
+  "flares deleted so the gambrels read as gambrels, and the first-floor ceiling dropped from ten "
+  "feet to nine. Questions turn on a three-foot plateau graded from the front of the house back "
+  "to the pool, which the elevations do not show. The main house is held for revisions, and so is "
+  "the garage, called too wide for its gambrel and too close to the plane of the house; the pool "
+  "house is not approved and is tracked. The duplex at 4 Rose Bud Lane runs about twenty-four "
+  "minutes over two roof pitches, a nine-over-twelve just above twenty-nine feet and an "
+  "eight-over-twelve at twenty-eight. An abutter raises ground coverage, setbacks, a window well "
+  "and parking, and is told those are not the commission&rsquo;s purview. The eight-over-twelve "
+  "is approved with the east and west dormers left off without prejudice, four in favor, one "
+  "opposed.",
  "EDVCixMtteg":
   "The parking layout at 27 Fairgrounds Road takes more than an hour, over two-fifths of the "
   "meeting. Counsel for the restaurant argues that the fifteen spaces beside the building, "
@@ -64701,7 +64721,27 @@ NPS_COMMITTEE = {
   "students on education plans and for English learners.",
   None, None, AGENDA_2026_10_06),
  ("GnDxbAp12gg", "Nov. 17th, 2026 School Committee",
-  "Video description coming soon.",
+  "The school improvement plans take the longest, about forty minutes, with the principals of all "
+  "four schools presenting goals drawn from the district plan; the high school&rsquo;s include a "
+  "bridge room that eases students back after a long absence and a target of fewer office "
+  "referrals and less class avoidance. The 2026 MCAS and accountability review runs a little over "
+  "half an hour before it. The district sits at the 52nd percentile for accountability, short of "
+  "the 74 percent of improvement targets a school would need to be meeting or exceeding them, and "
+  "part of the high school&rsquo;s figures is attributed to MCAS no longer counting toward "
+  "graduation. Math growth is reported as typical to high at all three tested schools, declines "
+  "across subjects were smaller at the high school than statewide, and the structural answers "
+  "offered are a literacy block extended from ninety minutes to two hours and added math "
+  "intervention positions. Enrollment is 1,601, three fewer than October. The district has a new "
+  "bus company and is back to four full-size buses and one for special education. The "
+  "first-quarter report puts spending at about $1.43 million, with 28 percent of the budget "
+  "expended or encumbered and the lunch program deficit down $8,600 to roughly $28,000. The "
+  "varsity baseball coach returns for a $149,500 Community Preservation Committee award, routed "
+  "through a youth baseball organization, to build a retaining wall and a backstop wall and "
+  "reclaim dead ground at the Backus Lane field. Votes follow on a school physician, overnight "
+  "trips to New York City in April and to an outdoor classroom in June, five further donations, "
+  "three sets of minutes, and transfers and invoices. A student representative reports on the "
+  "advisory block and on a homecoming dance held a week after homecoming week, and proposes the "
+  "Congressional Award program and a website for student feedback.",
   None, None, AGENDA_2026_11_17),
  ],
 }
@@ -65153,6 +65193,27 @@ WHALER_WORD = {
   "senior girls meet in the Powder Puff game. A weather forecast, a roundup of island events, "
   "volunteer openings, a trivia question and a homecoming edition of Word on the Street close "
   "the episode."),
+ ("mQmlwyamGgk", "Episode 3, Nov. 19th, 2026",
+  "The Thursday before Thanksgiving break opens on a reminder to be grateful and to look out for "
+  "the needs of others. Announcements cover mandatory senior shifts and vendor signups for "
+  "December Delight, free weekend food bags distributed on November 30th and December 11th, a "
+  "trivia team meeting, a Poetry Out Loud competition in mid-December with regional rounds on "
+  "the Cape in January, open gym on Tuesdays and Thursdays, Tri-M Music Honor Society "
+  "applications through December 4th, a call for Veritas writers and photographers, a mandatory "
+  "yearbook photo meeting, the Smart Pass requirement, a November 23rd deadline for senior "
+  "yearbook submissions, and a free four-day marine science course on coral reefs at Woods Hole "
+  "in January. The sports roundup closes out the fall: volleyball 11&ndash;7 after a three-set "
+  "preliminary-round loss to Dennis-Yarmouth, boys soccer out in the Division 3 quarterfinals to "
+  "top-seeded Medfield after wins over Pentucket and Fairhaven, girls soccer 6&ndash;11&ndash;1 "
+  "after a tie in its last game, football 2&ndash;6 after a 28&ndash;26 loss at South Shore "
+  "Tech, and field hockey out in the Round of 32 having won the Cape and Islands League "
+  "Lighthouse Division and the Golden Anchor. The girls cross country team has qualified for the "
+  "state championship for the first time and runs on November 21st, with one boy qualifying "
+  "individually. Winter registration is open and that season starts November 30th. Sideline "
+  "interviews ask students what they are playing and what they want out of it. The weather, "
+  "entertainment listings, a community service update on a food pantry mural and the Stroll "
+  "Holiday House Tour, a Wampanoag and Thanksgiving trivia question and a word-on-the-street "
+  "segment close the episode."),
  ],
 }
 
