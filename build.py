@@ -26259,10 +26259,28 @@ CIVIC_AGENDAS = {
   "2026; April 27, 2026; May 18, 2026; September 28, 2026; Request to Continue to December 14, "
   "2025).</li></ol></li><li>ADJOURNMENT</li></ol>",
  "g1yhWgCqeeU":
-  "<p>Wednesday, November 18, 2026 at 5:30 PM.</p><ol><li>CALL TO ORDER</li><li>SELECT BOARD "
-  "ACCEPTANCE OF AGENDA</li><li>ANNOUNCEMENTS<ol><li>The Select Board Meeting is Being Audio and "
-  "Video Recorded.</li><li>Annual Recognition of Municipal Employees Years of Service "
-  "Acknowledgement.</li><li>Recognition of Retiring Sewer Director David C. Gray "
+  "<p>Wednesday, November 18, 2026 at 5:30 PM. The County Commissioners met first and the Select "
+  "Board immediately afterwards; their agendas follow, the county&rsquo;s first.</p><p>County "
+  "Commissioners</p><ol><li>CALL TO ORDER</li><li>ANNOUNCEMENTS<ol><li>The County Commission "
+  "Meeting is Being Audio and Video Recorded.</li></ol></li><li>PUBLIC COMMENT*</li><li>NEW "
+  "BUSINESS**</li><li>APPROVAL OF MINUTES AND WARRANTS<ol><li>Approval of Minutes of October 28, "
+  "2026 at 5:30 PM.</li><li>Approval of Payroll and Treasury Warrants for November, "
+  "2026.</li></ol></li><li>OFFICIAL BUSINESS<ol><li>Request for Approval and Execution of the "
+  "Memorandum of Understanding between County of Nantucket, Town of Nantucket and Center Place "
+  "Homeowners Association Regarding Obligations and Requirements in Conjunction with Easement "
+  "Taking and Layout of Egan Lane by County of Nantucket.</li><li>Request for Approval and "
+  "Execution of Order of Taking by Eminent Domain for Taking of Permanent Easements and Layout of "
+  "Egan Lane as a Public Way as Shown on Plan Entitled &ldquo;Easement Acquisition Plan of Land "
+  "in Nantucket, MA, Egan Lane,&rdquo; Dated June 19, 2025, Prepared by Nantucket Engineering "
+  "&amp; Survey, PC, and Filed with the Town Clerk on March 19, 2026, and Plan Entitled "
+  "&ldquo;Layout Plan of Egan Lane a/k/a Common Driveway Easements in Nantucket, MA,&rdquo; Dated "
+  "July 15, 2026, Prepared by Nantucket Engineering &amp; Survey, PC, and Filed with the Town "
+  "Clerk on August 12, 2026, Pursuant to MGL Chapter 79, as Amended and Article 1, Section 1.3 of "
+  "Nantucket County Charter.</li></ol></li><li>COMMISSIONERS "
+  "REPORTS/COMMENTS</li><li>ADJOURNMENT</li></ol><p>Select Board</p><ol><li>CALL TO "
+  "ORDER</li><li>SELECT BOARD ACCEPTANCE OF AGENDA</li><li>ANNOUNCEMENTS<ol><li>The Select Board "
+  "Meeting is Being Audio and Video Recorded.</li><li>Annual Recognition of Municipal Employees "
+  "Years of Service Acknowledgement.</li><li>Recognition of Retiring Sewer Director David C. Gray "
   "Sr.</li><li>Thanksgiving Holiday No Select Board Meeting on Wednesday, November 25, 2026; Town "
   "Offices Closed on Thursday, November 26, 2026. Next Select Board Meeting on Wednesday, "
   "December 2, 2026.</li><li>Public Restrooms at Visitor Services Building, 22 Federal Street "
@@ -32835,9 +32853,42 @@ CIVIC_DESCRIPTIONS = {
   "to cutting the pavement rather than boring beneath it. Three matters are continued to December "
   "14.",
  "g1yhWgCqeeU":
-  "Video description coming soon.",
+  "The county commissioners meet first on this recording, and a notice problem shapes the "
+  "evening. Their memorandum of understanding with the Center Place Homeowners Association "
+  "passes, but the order of taking that would lay Egan Lane out as a public way was never "
+  "advertised as a public hearing on the agenda, so it waits for a later county meeting. The "
+  "Select Board strikes its own Egan Lane items in response, then takes them up once counsel "
+  "confirms that only the taking required the notice. Three quarters of an hour goes to a draft "
+  "ten-year harbors dredge plan, built on a sediment transport study that ranks Polpis Harbor and "
+  "Hither Creek as the near-term priorities and treats sand as a budget kept within each system. "
+  "One member argues for dredging Hither Creek alone, last done in the 1980s, and against paying "
+  "for further plans; the draft is adopted. The capital improvement plan returns a seventh time, "
+  "cut from $97 million of general fund requests to about $76 million of essential-only projects "
+  "for fiscal 2028, $60 million of that public works, and goes to the Capital Program Committee "
+  "with field lights, traffic data collection and document imaging marked first to fall. The "
+  "LORAN renovation, which did not pass last year, is split so that a $2 million electrical "
+  "service replacement can go forward while the rest waits a year. A public hearing on doubling "
+  "the overtime parking fine from $25 to $50 draws downtown businesses and residents and carries "
+  "four to one, the dissent arguing that workers who cannot leave a job to move a car will simply "
+  "absorb the ticket. Also approved: two twenty-year solar net metering agreements, expected to "
+  "save about $285,000 in the first year across twenty-seven town electric accounts, up to "
+  "$689,893 for a fourth year of Lease to Locals, and the closing documents for Our Island Home "
+  "and Sherburne Commons, a closing now slipped to December 18th. Retiring sewer director David "
+  "Gray is recognized, and the 2027 meeting schedule is held a week after a member objects to "
+  "executive sessions set in the middle of the working day.",
  "jlSpuMfxC2A":
-  "Video description coming soon.",
+  "Eleven minutes, with both hearings continued before either is heard. A height variance at 7 "
+  "Orange Street, seeking up to thirty-two feet in the Residential Old Historic district, and "
+  "setback relief at 12 Madequecham Valley Road, to move an existing dwelling about sixty-one "
+  "feet back from an eroding coastal bank and add a secondary dwelling with a setback of about "
+  "four feet, both go to December 10th at the applicants&rsquo; request. Nobody speaks in public "
+  "comment, and the chair reminds the board that the comment period is a listening session which "
+  "members should not answer unless the matter is already on the agenda for the same meeting. The "
+  "October 15th minutes are approved. The board then re-elects its chair, vice chair and "
+  "secretary unopposed for 2027, each having been offered the chance to step down, and approves "
+  "the 2027 meeting schedule as drafted after checking it against Columbus Day, Veterans Day and "
+  "Thanksgiving. The chair closes by asking members to read a circulated email on civility "
+  "expectations and the public comment policy.",
  "VbVDQ1ScJkc":
   "Video description coming soon.",
  "LKwMi8nBWYk":
@@ -66497,6 +66548,30 @@ CPS_PULSE = {
   "House chief of staff, an investigation opened by Nvidia&rsquo;s board and an impeachment "
   "effort against the Defense Secretary led by a Kentucky congressman, and the movie reviewer "
   "gives the stop-motion feature <cite>Wildwood</cite> 4.9 out of five."),
+ ("kdqWif-R-oI", "Episode 8, Nov. 20th, 2026",
+  "The top story is the Select Board&rsquo;s vote on Monday to keep DJs out of several venues "
+  "over Christmas Stroll, after liquor license violations and disturbances last year; the "
+  "segment reports members arguing that the weekend has drifted from family entertainment toward "
+  "a club night, and notes that businesses are rearranging their plans around the decision. A "
+  "second item covers a new condition on the Gazebo&rsquo;s entertainment license, which the "
+  "board was able to attach when the new operator applied for it, barring music after 10 p.m. "
+  "within quiet hours. The sports desk corrects itself on the fall season being over: Cyrus "
+  "Peirce football played one more game, a win over Mashpee and the last played on grass at Vito "
+  "Capizzo Stadium, while at the high school boys varsity soccer lost 5&ndash;0 at Medfield to "
+  "close a 14&ndash;4&ndash;3 season. High school winter tryouts begin November 30th and middle "
+  "school winter sports on December 7th. The segment also covers the Patriots&rsquo; loss to "
+  "Detroit and an injury to their quarterback, and Notre Dame handing Miami its first defeat of "
+  "the season. A special report gives the standings in the Dominican Republic&rsquo;s winter "
+  "baseball league, and the movie reviewer, finding no good Thanksgiving films, invents one and "
+  "awards it five stars. The entertainment report runs through the weekend&rsquo;s and "
+  "Thanksgiving week&rsquo;s films at the Dreamland, <cite>Elf Jr.</cite> from the Dreamland "
+  "Kids Stage Company, a shell collage workshop at the Whaling Museum, the twelfth Run for Robin "
+  "at the Sconset Casino on Sunday, the Cold Turkey Plunge at Children&rsquo;s Beach on "
+  "Thanksgiving and island live music. The forecast promises a sunny and mild weekend turning "
+  "breezy. The episode closes on North Atlantic right whales, estimated at between 371 and 393 "
+  "animals with 73 breeding females, about eleven fewer than in 2025, with eight found entangled "
+  "and several struck by ships among the known causes. There is no episode next week for the "
+  "Thanksgiving holiday."),
  ],
 }
 
