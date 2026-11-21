@@ -655,6 +655,15 @@ is the point -- a card with no date anywhere has no position the rule can
 derive, and silently leaving it where it fell is what the table replaces. The
 Civic page has the same arrangement in `CIVIC_CARD_DATES`.
 
+**The two Spotlight features are the one exception, and they are NOT in the
+table.** They carry no date by rule rather than by omission (see "A Spotlight
+carries no date" below), so there is no date to put there -- and putting one
+there anyway, to quiet the checker, is the wrong fix: the table renders
+nothing, but a date in it is still a date this site associates with the video,
+and the next reader takes it for a fact. `card_order(undated_ok=...)` skips
+them instead, and `sports-spotlight-undated` fails if either is ever added to
+`SPORT_CARD_DATES`.
+
 **An upcoming game leads with a sentence and then reads like any other
 card.** Frank asked for this on 2026-11-10. `SPORT_UPCOMING` -- "This game is
 upcoming." -- sits at the top of the description, then `<br><br>`, then the
@@ -693,6 +702,44 @@ broadcast. They have no opponent in the title, no `vs.`, and no Instagram
 highlight reel, so `civic_card` greys their Highlight button out. That is
 correct, not a gap to fill. `SPORT_UPCOMING` still says "This game is
 upcoming", which would read oddly on a Spotlight; nothing uses it there yet.
+
+**A Spotlight carries no date finer than its school year.** Frank's rule of
+2026-11-21: *"The golf and cross country videos are a new format of video.
+They are a 'Spotlight' format. Please do not associate any date more specific
+than a school year with a 'Spotlight' video."* Both titles printed the single
+competition they were filmed at -- October 6 and October 5, 2026 -- and both
+now end at `Spotlight`. The school-year panel the card sits in is as precise
+as the site goes, so no date is added back in words either; the panel already
+says `School Yr 26-27` and a title repeating it would be redundant.
+
+Three things follow, and `sports-spotlight-undated` enforces all three:
+
+- **It is a rule about a kind of video, not about two ids.** The test is the
+  word *Spotlight* in the title, so a third one needs no edit to `verify.py`.
+  **These two are the only Spotlight videos on the site** (Frank confirmed it
+  the same day). The three `Nantucket by Design: Spotlight on ...` talks on
+  `partner-nha.html` are an unrelated NHA series and are not on this page,
+  which is why the bare word is specific enough -- but it is also why the
+  predicate is only ever applied to the Sports page.
+- **NSC's own retitle is not followed.** The channel renamed both to
+  `NSC Whalers Spotlight: <sport> - Fall 2026`, and a season is finer than a
+  school year, so that form breaks this rule. The site keeps its own
+  `Nantucket Whalers <sport> Spotlight` wording. Expect these two to show up
+  as title mismatches in every Update_SC title sweep from now on; that is the
+  rule working, not a drift to repair.
+- **Skipping them is only safe while each sits alone in its panel.** Cross
+  Country and Golf hold one card each, and a single card cannot be out of
+  order. The check fails the moment a second card joins either panel, which
+  is the signal to decide how an undated feature sorts against dated games
+  before the page quietly decides for you.
+
+**Still carrying dates, deliberately: the two premiere `NEWS` cards.** Both
+say which competition was filmed -- "its 10/5/26 competition against Nauset
+Regional High School", "their 10/6/26 meet with Falmouth High School" -- in
+Frank's own words, and both expired off the carousel in mid-November. Those
+sentences are where the titles' dates came from in the first place. They were
+left alone and flagged rather than edited, under the usual rule about Frank's
+copy; raise it with him rather than rewriting them.
 
 **Choosing a sport opens its most recent school year.** Asked for on
 2026-11-03. `autoOpenNewestYear()` in `site.js` runs at the end of the
@@ -800,7 +847,10 @@ sweep was conflating:
 
 **A Spotlight's facts come off the home page, not off YouTube.** Both premiered
 as `NEWS` cards first, and those cards carry the opponent, the venue and the
-date of the competition filmed. The YouTube descriptions give the coach and the
+date of the competition filmed. **The date is no longer one of the facts the
+card takes from them** -- as of 2026-11-21 a Spotlight prints none, per the
+rule above -- but the opponent and the venue still come from there. The
+YouTube descriptions give the coach and the
 season record and name neither a date nor an opponent, so both sources are
 needed and neither is sufficient. The two disagree on one spelling: the news
 card says **Gardner Farm**, YouTube says "Gardner Farms". The site's own wording

@@ -1037,7 +1037,7 @@ SPORTS_VIDEOS = {
     "DeConto Stadium, coming to you live both on the NSC YouTube channel as well as on NCTV HD "
     "Channel 1072."
     , False),
-   ("W4OUx85JdNE", "Nantucket Whalers Football vs. Dennis-Yarmouth Dolphins - October 16, 2026",
+   ("W4OUx85JdNE", "Nantucket Whalers Football vs. Dennis-Yarmouth Dolphins - October 15, 2026",
     "Nantucket Sports Connection brings you Varsity High School Football as the Whalers welcome "
     "the Dolphins from the Lower Cape.<br><br>These two teams have flipped their respective "
     "scripts this season, as a rejuvenated lineup has seen the Dolphins (4-1, #8 in Division 6) on "
@@ -1461,7 +1461,7 @@ SPORTS_VIDEOS = {
     , False),
   ],
   "School Yr 26-27": [
-   ("AAsG_9-FLS0", "MIAA Div. 3 Quarterfinals: Nantucket Whalers Boys Soccer vs. Medfield Warriors - November 14, 2026",
+   ("AAsG_9-FLS0", "MIAA Div. 3 Quarterfinals: Nantucket Whalers Boys Soccer AT Medfield Warriors - November 14, 2026",
     "The Nantucket Sports Connection proudly continues our playoff coverage of Nantucket varsity "
     "boys soccer! The Whalers are onto the Elite 8 as they face the top-seed in the MIAA Division "
     "3 tournament, the Medfield Warriors.<br><br>Nantucket is 14-4-2 this season after a 3-1 "
@@ -1542,7 +1542,7 @@ SPORTS_VIDEOS = {
     "straight.<br><br>Our live coverage begins at 1:45pm from the Surfside Soccer Field, coming to "
     "you live both on the NSC YouTube channel as well as on NCTV HD Channel 1072."
     , False),
-   ("ib5YEeJYyp4", "Nantucket Whalers Boys Soccer vs. Sandwich Blue Knights - October 28, 2026",
+   ("ib5YEeJYyp4", "Nantucket Whalers Boys Soccer vs. Sandwich Blue Knights - October 27, 2026",
     "The Nantucket Sports Connection brings you the Whalers varsity boys soccer squad as they take "
     "on the Blue Knights from the Upper Cape in the penultimate home match of the regular "
     "season.<br><br>Nantucket has slid into this week&rsquo;s power rankings as the #9 team in "
@@ -1631,7 +1631,7 @@ SPORTS_VIDEOS = {
  # two sources are doing different jobs here and both are needed.
  "Cross Country": {
   "School Yr 26-27": [
-   ("E6DWX7nHMjk", "Nantucket Whalers Cross Country Spotlight - October 6, 2026",
+   ("E6DWX7nHMjk", "Nantucket Whalers Cross Country Spotlight",
     "Check out this Whalers Team Spotlight 🏃‍♂️🏃‍♀️ with the Nantucket Whalers Varsity Cross "
     "Country Meet at Gardner Farms with our #NSC crew! Coached by Matt Phipps, this is a team who "
     "has improved their times throughout the season, and looks to make a postseason push."
@@ -1640,7 +1640,7 @@ SPORTS_VIDEOS = {
  },
  "Golf": {
   "School Yr 26-27": [
-   ("A1T1aHVSnj4", "Nantucket Whalers Varsity Golf Spotlight - October 5, 2026",
+   ("A1T1aHVSnj4", "Nantucket Whalers Varsity Golf Spotlight",
     "Come check out this spotlight on the Whalers Varsity Golf squad at the Nantucket Golf Club "
     "with our Nantucket Sports Connection crew! In year five under Coach Sam Herrick, we showcase "
     "a very competitive team who got hot this season, winning six straight matches."
@@ -32890,9 +32890,46 @@ CIVIC_DESCRIPTIONS = {
   "Thanksgiving. The chair closes by asking members to read a circulated email on civility "
   "expectations and the public comment policy.",
  "VbVDQ1ScJkc":
-  "Video description coming soon.",
+  "Two hours and ten minutes, most of it variances. The public health director reports that the "
+  "United States lost its measles elimination status on November 17th, with more than 5,400 "
+  "confirmed cases nationally this year against two in Massachusetts and none on Nantucket, and "
+  "argues that the obstacle most worth working on here is access to vaccination rather than "
+  "refusal of it; wastewater concentrations of the virus that causes COVID-19 spiked in late "
+  "October and have since fallen back toward the regional average. The director also announces "
+  "the resignation of the chief environmental health officer, effective December 11th after seven "
+  "years, with an inspector marking five years of service to serve as acting chief. The "
+  "environmental contamination administrator then takes half an hour on PFAS: a refresher on why "
+  "the compounds persist in the environment and in the body, and a review of private well results "
+  "in which about fifteen homes sit above the imminent hazard threshold of 90 parts per trillion, "
+  "one of them at 787. Four variances are granted &mdash; a failed system at 10 Village Way, a "
+  "fifth bedroom and setback relief at 4 Golfview Drive after a long argument about how soon town "
+  "sewer will reach the street, camp regulations for a watersports program, and, against the "
+  "staff recommendation, 10 Maxey Pond Road, where two bedrooms in a garage apartment are allowed "
+  "without the treatment system a 2025 regulation requires, capped at eight bedrooms in all. 83 "
+  "Squam Road is pushed to December for want of a quorum once two members recuse. The board also "
+  "authorizes access to the state&rsquo;s epidemiological network for tick-borne disease "
+  "surveillance, and adds a Polpis Road order-to-connect non-compliance to December&rsquo;s "
+  "agenda.",
  "LKwMi8nBWYk":
-  "Video description coming soon.",
+  "Three and a quarter hours, and nearly all of the filings go through in the last fifty minutes. "
+  "The Land Bank&rsquo;s proposal to move part of a dirt access road at its Cisco Beach property "
+  "further from the dune takes eighty minutes on its own and is continued again. Two questions "
+  "hold it up: whether the new section of road is a structure under the wetlands bylaw, which "
+  "turns on whether compacted gravel is permeable when a twelve-inch swale runs the length of it, "
+  "and whether a waiver can issue for work that has no alternative outside rare-species habitat. "
+  "The commission decides to obtain its own third-party review and continues the hearing to "
+  "February 4th, 2027, having been told that one of the plants at issue, the eastern silvery "
+  "aster, may not be reliably surveyable before next September. A member also puts on the record "
+  "that the relocation preserves one access to Cisco Beach rather than the only one. The hearing "
+  "on 145 Wauwinet Road goes to December 3rd with a sediment transport analysis still "
+  "outstanding; 95 Hummock Pond Road, opened at a member of the public&rsquo;s request, closes "
+  "after the commission asks for a new test pit in place of borings fifteen years old; and the "
+  "town&rsquo;s second phase of debris removal at 130 Tom Nevers Road and a septic upgrade inside "
+  "the hundred-foot buffer at 83 Squam Road both close in minutes. What follows is issuance: "
+  "orders of conditions on everything that closed, an amended order adding a shed and a garage "
+  "addition at 2 Shore Road, four minor modifications and four certificates of compliance. The "
+  "2027 meeting schedule is approved, and the Baxter Road geotube discussion stays continued to "
+  "January 28th.",
 }
 
 
