@@ -773,7 +773,7 @@ def card_dates(name):
     return card_dates._c[name]
 
 
-def card_order(page, fallback=None, table_name=None):
+def card_order(page, fallback=None, table_name=None, undated_ok=None):
     """Every list on one page, newest-first, by the date in each card title.
 
     A "list" is one innermost panel -- one year on the Sports page, one
@@ -792,6 +792,14 @@ def card_order(page, fallback=None, table_name=None):
     position. A title that does carry a date still wins over the table, so a
     video cross-listed under a dated title and an undated one is placed
     correctly in both.
+
+    `undated_ok(title)` is the escape hatch for a card that is undated BY
+    RULE rather than by omission -- the two Spotlight features, which Frank
+    said on 2026-11-21 must carry no date finer than a school year. Such a
+    card is skipped instead of failed. It is deliberately a predicate on the
+    title and not a list of ids: the rule is about a kind of video, so a
+    third Spotlight needs no edit here. Skipping is only safe while each one
+    sits alone in its panel, which `sports-spotlight-undated` is what checks.
 
     Equal dates pass. Two meetings on one day is ordinary -- the Select Board
     met twice on Jul. 17th 2024 -- and nothing in the page decides which of
@@ -819,6 +827,8 @@ def card_order(page, fallback=None, table_name=None):
             if d is None and fallback is not None:
                 d = fallback.get(vid)
                 if d is None:
+                    if undated_ok is not None and undated_ok(title):
+                        continue
                     dateless.append(
                         "%s, panel %s: %r has no date in its title and none in "
                         "%s, so nothing puts it in order -- add its streaming "
@@ -880,8 +890,91 @@ def _():
     # The fallback table makes this total: 27 cards carry no date in the
     # title, and passing SPORT_CARD_DATES both places them and fails on any
     # undated card that is missing from it.
+    #
+    # The two Spotlight features are the exception, and are NOT in that table.
+    # They are undated on purpose, so there is no date to put in it -- see
+    # sports-spotlight-undated below.
     return card_order("videos-sports-connection.html",
-                      card_dates("SPORT_CARD_DATES"), "SPORT_CARD_DATES")
+                      card_dates("SPORT_CARD_DATES"), "SPORT_CARD_DATES",
+                      undated_ok=is_spotlight)
+
+
+def is_spotlight(title):
+    """Is this card one of NSC's Spotlight features rather than a game?
+
+    The word in the title is the whole test. Frank, 2026-11-21: "The golf and
+    cross country videos are a new format of video. They are a 'Spotlight'
+    format", and the only Spotlight videos on the site are those two.
+
+    "Nantucket by Design: Spotlight on Nantucket Gardens" and its two
+    siblings on partner-nha.html are a different series entirely and are not
+    on this page, so the plain word is specific enough here -- but it is why
+    this is only ever applied to the Sports page.
+    """
+    return "Spotlight" in title
+
+
+@check("sports-spotlight-undated", "no Spotlight card claims a date finer than its school year")
+def _():
+    # Frank's rule of 2026-11-21, after NSC retitled both features to "NSC
+    # Whalers Spotlight: <sport> - Fall 2026" and the site was still printing
+    # the single competition date each one was filmed at. A Spotlight is a
+    # profile of a team across a season, not a record of one fixture, so the
+    # school-year panel it sits in is as precise as the site goes. Note that
+    # NSC's own "Fall 2026" is finer than a school year and so is not followed.
+    #
+    # Three things are checked, because dropping the date opened three ways
+    # to get it wrong:
+    #
+    #  1. No Spotlight title carries a date. This is the rule itself.
+    #  2. No Spotlight id is in SPORT_CARD_DATES. The table renders nothing,
+    #     but a date put there to satisfy a checker is still a date the site
+    #     associates with the video, and the next reader would take it for a
+    #     fact. This is the check that would have caught the easy wrong fix.
+    #  3. Each Spotlight sits ALONE in its panel. That is what makes it safe
+    #     for sports-dates-descending to skip them: a single card cannot be
+    #     out of order. Add a second card to Cross Country or Golf and this
+    #     fails, which is the signal to decide how an undated feature sorts
+    #     against dated games BEFORE the page quietly picks for you.
+    out = []
+    h = pages()["videos-sports-connection.html"]
+    spans = panel_spans(h, ("year-panel", "quarter-panel"))
+    buckets = collections.defaultdict(list)
+    for m in re.finditer(r'<article class="watch-episode".*?</article>', h, re.S):
+        inner = max((s for s in spans if s[0] < m.start() < s[1]),
+                    key=lambda s: s[0], default=None)
+        if not inner:
+            continue
+        t = re.search(r'<h3 class="watch-episode__title">(.*?)</h3>', m.group(0), re.S)
+        v = re.search(r'(?:v=|youtu\.be/|embed/)([A-Za-z0-9_-]{11})', m.group(0))
+        buckets[(inner[0], inner[2])].append(
+            (t.group(1) if t else "(no title)", v.group(1) if v else None))
+
+    table = card_dates("SPORT_CARD_DATES")
+    seen = 0
+    for (start, label), cards in sorted(buckets.items()):
+        spots = [(t, v) for t, v in cards if is_spotlight(t)]
+        seen += len(spots)
+        for title, vid in spots:
+            d = title_date(title)
+            if d:
+                out.append("panel %s: %r prints %04d-%02d-%02d -- a Spotlight "
+                           "carries no date finer than its school year"
+                           % ((label, title[:60]) + d))
+            if vid in table:
+                out.append("panel %s: %r is in SPORT_CARD_DATES -- a Spotlight "
+                           "is undated on purpose, so it needs no sort date "
+                           "and must not be given one" % (label, title[:60]))
+        if spots and len(cards) > 1:
+            out.append("panel %s: %d Spotlight card(s) share the panel with %d "
+                       "other card(s) -- sports-dates-descending skips an "
+                       "undated Spotlight, which is only safe while it sits "
+                       "alone" % (label, len(spots), len(cards) - len(spots)))
+    if not seen:
+        out.append("no Spotlight cards found on the Sports page -- there are "
+                   "two (Cross Country and Varsity Golf); has a title been "
+                   "reworded?")
+    return out
 
 
 def sports_videos():
